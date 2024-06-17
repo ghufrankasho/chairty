@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ar">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>جمعية البر والإحسان</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/all.min.css" />
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;500&display=swap" rel="stylesheet" />
+</head>
+
+<section class="addpro">
+    <div class="container text-center " id="addpro">
+        <legend dir="rtl" class="text-success fw-bold">معلومات المشروع</legend>
+        <div class="row">
+
+            <form class="col-lg-6 text-center text-sm-center m-auto form" dir="rtl" id="form">
+                <div class="rr ph offset col-lg-6 col-md-6 col-sm-6 mt-4 inp">
+                    <img src="img/p1.jpeg" width="150px" height="150px" id="profile-pic">
+                    <label for="input-file" class="update-img">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-upload" viewBox="0 0 16 16">
+                            <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5"/>
+                            <path d="M7.646 1.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 2.707V11.5a.5.5 0 0 1-1 0V2.707L5.354 4.854a.5.5 0 1 1-.708-.708z"/>
+                        </svg>
+                    </label>
+                    <input dir="rtl" type="file" accept="image/jpeg, image/png, image/jpg" id="input-file">
+                    <br>
+                </div>
+                <div class="rr col-lg-12 col-md-6 col-sm-6 mb-3 mt-3">
+                    <label for="name">اسم المشروع</label>
+                    <input dir="rtl" type="text" id="nameInput">
+                    <span id="nameError" class="error-message"></span>
+                    <br>
+                </div>
+                <div class="rr col-lg-12 col-md-6 col-sm-6 mb-3 mt-3">
+                    <div class="offset1">
+                        <label for="num">اسم الفرع</label>
+                        <select name="type" id="departments"></select>
+                    </div>
+                </div>
+                <div class="rr col-lg-12 col-md-6 col-sm-6 mb-3 mt-3">
+                    <div class="offset">
+                        <label for="type">نوع المشروع</label>
+                        <select name="type" id="types"></select>
+                    </div>
+                    <br>
+                </div>
+                <div class="rr col-lg-12 col-md-6 col-sm-6 mb-3 mt-3">
+                    <div class="offset1">
+                        <label for="type">تاريخ البداية</label>
+                        <input type="date" id="dateInput1">
+                        <span id="dateE" class="error-message"></span>
+                    </div>
+                    <br>
+                </div>
+                <div class="rr col-lg-12 col-md-6 col-sm-6 mb-3 mt-3">
+                    <div class="offset1">
+                        <label for="type">تاريخ النهاية</label>
+                        <input type="date" id="dateInput2">
+                        <span id="dateError2" class="error-message"></span>
+                    </div>
+                    <br>
+                </div>
+                <div class="rr ph col-lg-12 col-md-6 col-sm-6 mb-3 mt-3">
+                    <div class="offset1">
+                        <label for="type">وصف المشروع</label>
+                        <textarea id="desc" cols="20" rows="2"></textarea>
+                        <span id="descError" class="error-message"></span>
+                    </div>
+                    <br>
+                </div>
+            </form>
+            
+            <div class="button">
+              
+                <button onclick="updateProject()"> تعديل </button>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+<script src="/js/project/updateProject.js"></script>
+<!-- <script src="js/updateProject.js"></script> -->
+<script>
+    let profilePic = document.getElementById("profile-pic");
+    let inputFile = document.getElementById("input-file");
+
+    inputFile.onchange = function()
+    {
+        profilePic.src = URL.createObjectURL(inputFile.files[0]);
+    }
+</script>
+
+</html>

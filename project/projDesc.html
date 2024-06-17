@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- Boxicons -->
+	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+	
+    <!-- Fontawesome CDN Link -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+    />
+    
+
+	<!-- My CSS -->
+	<link rel="stylesheet" href="/css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+	<title>AdminHub</title>
+</head>
+<body style="background-color: #fbfdfd;">
+<div class="container">
+        
+<section id="projDesc " class="py-5" dir="rtl">
+    <div class="container position-absolute">
+        <div class="title text-center py-2">
+            <h2 class="position-relative d-inline-block mb-3" dir="rtl">تفاصيل المشروع </h2>
+        </div>
+        <div class="card mb-3 " style="max-width: 540px;  margin-left: auto; margin-right: auto;">
+            <div class="row g-0 align-items-center desc" id="project">
+            <div class="col-md-4">
+                <img src="/img/p1.jpeg" id="image" class="img-fluid rounded-start" alt="...">
+            </div>
+            <div class="col-md-4">
+                <div class="card-body">
+                <p class="card-title fw-bold ">اسم المشروع</p>
+                <p class="card-text" id="name"></p>
+                <p class="card-title fw-bold">نوعه</p>
+                <p class="card-text" id="type"></p>
+                <p class="card-title fw-bold">الفرع التابع له</p>
+                <p class="card-text" id="department"></p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card-body">
+                <p class="card-title fw-bold">تاريخ البداية </p>
+                <p class="card-text" id="start"> </p>
+                <p class="card-title fw-bold">تاريخ النهاية</p>
+                <p class="card-text" id="end"> </p>
+                </div>
+            </div>
+            <div class="col-md-6 ">
+                <div class="card-body">
+                <p class="card-title fw-bold " >وصف المشروع</p>
+                <p class="card-text" id="desc" style="width: 500px; " dir="rtl"></p>
+                </div>
+                
+            </div>
+            </div>
+        </div>
+  
+        <!--////////////////////////الموظفين\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\-->
+        <div class="title text-center py-2 m-5">
+            <h2 class="position-relative d-inline-block" dir="rtl"> الموظفين </h2>
+
+        </div>
+       <div class="row" id="employees">
+        <h5 class="card-title"  id="employeesh" style = "display:none">لا يوجد موظفون لهذا المشروع</h5> 
+           <div class="card1 col-lg-4">
+                              <div class="image">
+                                <img src="http://127.0.0.1:8000/projects/666231e3f010f.jpg">
+                            </div>
+                            <div class="content">
+                                <div class="card-body">
+                            <p class="card-title fw-bold ">اسم الموظف</p>
+                            <p class="card-text"> lujain</p>
+                            <p class="card-title fw-bold">القسم</p>
+                            <p class="card-text">department1 </p>
+                            <p class="card-title fw-bold">الفرع التابع له</p>
+                            <p class="card-text"> branch1</p>
+                         </div>
+                    </div> </div>   
+       </div>
+
+       <!--////////////////////////المتطوعين\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\-->
+       <div class="title text-center py-2 m-5">
+         <h2 class="position-relative d-inline-block" dir="rtl"> المتطوعين </h2>
+
+       </div>
+            
+        <div class="row" id="users">
+         <h5 class="card-title" id="usersh" style = "display:none">لا يوجد متطوعون لهذا المشروع</h5>
+      
+        </div>
+         <!--////////////////////////الداعمين\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\-->
+         <div class="title text-center py-2 m-5">
+            <h2 class="position-relative d-inline-block" dir="rtl"> الداعمين </h2>
+            
+          </div>
+      
+        <div class="row" id="supporter">
+            <h5 class="card-title" id="supporterh" style = "display:none">لا يوجد جهة داعمة لهذا المشروع</h5>
+        </div>     
+    
+    </div>  
+  </section>
+     </div>
+     <script src="/js/project/projectdesc.js"></script>
+    <script src="/js/script.js"></script>
+    
+</body>
+</html>

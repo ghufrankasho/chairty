@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- HEADER -->
+<div id="header-placeholder"></div>
+<script>
+	fetch('/headerproject.html')
+		.then(response => response.text())
+		.then(text => document.getElementById('header-placeholder').innerHTML = text);
+</script>
+<!-- HEADER -->
+</head>
+
+<body>
+
+
+	<!-- SIDEBAR -->
+	<section id="sidebar">
+		<!-- sidebar -->
+		<div id="sidebar-placeholder"></div>
+		<script>
+			fetch('/sidebar.html')
+				.then(response => response.text())
+				.then(text => document.getElementById('sidebar-placeholder').innerHTML = text);
+		</script>
+		<!-- sidebar -->
+	</section>
+	<!-- SIDEBAR -
+
+	<!-- CONTENT -->
+	<section id="content">
+		<!-- NAVBAR -->
+				<!-- NAVBAR -->
+			<!-- NAV BAR -->
+			<div id="nav-placeholder"></div>
+			<script>
+				fetch('/nav.html')
+					.then(response => response.text())
+					.then(text => document.getElementById('nav-placeholder').innerHTML = text);
+			</script>
+       <!-- NAV BAR -->
+		<!-- NAVBAR -->
+
+
+		<!-- ------------------------------- -->
+		<div class="Volunteer">
+			<!-- MAIN -->
+			<main>
+				<div class="table-data">
+					<div class="order">
+						<div class="head">
+							<h3>المسخدمين</h3>
+							<div class="h d-flex" role="search" dir="rtl">
+								<input class="form-control me-2 p-2" id="search_input" type="search" placeholder="بحث" aria-label="Search">
+								<a class="nav-link align-items-center" id="search"  type="submit"> <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-search"
+									viewBox="0 0 16 16">
+									<path
+									  d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+								  </svg>
+								</a>
+								 
+							</div>
+						</div>
+						<table>
+							<thead>
+								<tr>
+									<th>اسم المستخدم</th>
+									<th>نوع المستخدم </th>
+									<th>العنوان </th>
+									<th>الهاتف </th>
+									<th>اسم المشروع </th>
+
+									<th> </th>
+
+								</tr>
+							</thead>
+							<tbody  id="users">
+								<tr>
+									<td>
+										<img src="/img/people.png">
+										<p>احمد الزين </p>
+									</td>
+									<td> متطوع</td>
+									<td> الفرقان</td>
+									<td> 0988365365</td>
+									<td>مشروع الإحسان</td>
+									<td> <a href=""><i class='bx bx-message-square-x'></i></a>
+										<a href=""><i class='bx bx-edit-alt'></i></a>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<img src="/img/people.png">
+										<p>احمد الزين </p>
+									</td>
+									<td> مستفيد</td>
+									<td> الفرقان</td>
+									<td> 0988365365</td>
+									<td>مشروع الإحسان</td>
+									<td> <a href=""><i class='bx bx-message-square-x'></i></a>
+										<a href=""><i class='bx bx-edit-alt'></i></a>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<img src="/img/people.png">
+										<p>احمد الزين </p>
+									</td>
+									<td> يتيم</td>
+									<td> الفرقان</td>
+									<td> 0988365365</td>
+									<td>مشروع الإحسان</td>
+									<td> <a href=""><i class='bx bx-message-square-x'></i></a>
+										<a href=""><i class='bx bx-edit-alt'></i></a>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<img src="/img/people.png">
+										<p>احمد الزين </p>
+									</td>
+									<td> كفيل</td>
+									<td> الفرقان</td>
+									<td> 0988365365</td>
+									<td>مشروع الإحسان</td>
+									<td> <a href=""><i class='bx bx-message-square-x'></i></a>
+										<a href=""><i class='bx bx-edit-alt'></i></a>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<img src="/img/people.png">
+										<p>احمد الزين </p>
+									</td>
+									<td> وصي</td>
+									<td> الفرقان</td>
+									<td> 0988365365</td>
+									<td>مشروع الإحسان</td>
+									<td> <a href=""><i class='bx bx-message-square-x'></i></a>
+										<a href=""><i class='bx bx-edit-alt'></i></a>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+
+
+				</div>
+
+			</main>
+			<!-- MAIN -->
+		</div>
+
+
+
+		<script src="/js/script.js"></script>
+		<script src="/js/users/user.js"></script>
+</body>
+
+</html>

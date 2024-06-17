@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- HEADER -->
+<div id="header-placeholder"></div>
+<script>
+	fetch('/header.html')
+		.then(response => response.text())
+		.then(text => document.getElementById('header-placeholder').innerHTML = text);
+</script>
+<!-- HEADER -->
+<body>
+
+
+
+	<!-- SIDEBAR -->
+	<section id="sidebar">
+			<!-- sidebar -->
+			<div id="sidebar-placeholder"></div>
+			<script>
+				fetch('/sidebar.html')
+					.then(response => response.text())
+					.then(text => document.getElementById('sidebar-placeholder').innerHTML = text);
+			</script>
+			<!-- sidebar -->
+	</section>
+	<!-- SIDEBAR -
+
+
+	<!-- CONTENT -->
+	<section id="content">
+		 
+			<!-- NAV BAR -->
+			<div id="nav-placeholder"></div>
+			<script>
+				fetch('/nav.html')
+					.then(response => response.text())
+					.then(text => document.getElementById('nav-placeholder').innerHTML = text);
+			</script>
+       <!-- NAV BAR -->
+		<!-- NAVBAR -->
+
+		<!-- MAIN -->
+		<main>
+			<div class="head-title">
+				<div class="left">
+					<h1>> التوظيف </h1>
+					<ul class="breadcrumb">
+						<li>
+							<a href="#">لوحة التحكم </a>
+						</li>
+						<li><i class='bx bx-chevron-right' ></i></li>
+						<li>
+							<a class="active" href="#">الرئيسية</a>
+						</li>
+					</ul>
+				</div>
+				
+			</div>
+
+			<ul class="box-info">
+				<li>
+					<i class='bx bxs-calendar-check' ></i>
+					<span class="text">
+						<h3>1020</h3>
+						<p>الطلبات الحديثة </p>
+					</span>
+				</li>
+				<li>
+					<i class='bx bxs-group' ></i>
+					<span class="text">
+						<h3 id="num_employ"></h3>
+						<p>الموظقين 
+
+						</p>
+					</span>
+				</li>
+				
+				</li>
+			</ul>
+
+
+			<div class="table-data">
+				<div class="order" >
+					<div class="head">
+						<h3>الطلبات الحديثة</h3>
+						<div class="h d-flex" role="search" dir="rtl">
+							<input class="form-control me-2 p-2" id="search_input" type="search" placeholder="بحث" aria-label="Search">
+							<a class="nav-link align-items-center" id="search"  type="submit"> <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-search"
+								viewBox="0 0 16 16">
+								<path
+								  d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+							  </svg>
+							</a>
+							 
+						</div>
+					</div>
+					<table >
+						<thead>
+							<tr>
+								<th>المسخدم</th>
+								<th>تاريخ التقديم  </th>
+								<th>الوضع </th>
+							</tr>
+						</thead>
+						<tbody id="employees"></tbody>
+					
+					</table>
+				</div>
+            </div>
+		</main>
+		<!-- MAIN -->
+	</section>
+	<!-- CONTENT -->
+	
+	<script src="/js/script.js"></script>
+	<script src="/js/employee/employee.js"></script>
+</body>
+</html>

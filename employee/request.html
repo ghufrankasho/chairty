@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- HEADER -->
+<div id="header-placeholder"></div>
+<script>
+	fetch('/header.html')
+		.then(response => response.text())
+		.then(text => document.getElementById('header-placeholder').innerHTML = text);
+</script>
+<!-- HEADER -->
+<body>
+
+
+	<!-- SIDEBAR -->
+	<section id="sidebar">
+		<!-- sidebar -->
+		<div id="sidebar-placeholder"></div>
+		<script>
+			fetch('/sidebar.html')
+				.then(response => response.text())
+				.then(text => document.getElementById('sidebar-placeholder').innerHTML = text);
+		</script>
+		<!-- sidebar -->
+	</section>
+	<!-- SIDEBAR -->
+
+
+
+	<!-- CONTENT -->
+	<section id="content">
+		 
+		<!-- NAV BAR -->
+			<div id="nav-placeholder"></div>
+			<script>
+				fetch('/nav.html')
+					.then(response => response.text())
+					.then(text => document.getElementById('nav-placeholder').innerHTML = text);
+			</script>
+       <!-- NAV BAR -->
+	 
+
+		<!-- MAIN -->
+		<main>
+			<div class="head-title">
+				<div class="left">
+					<h1>>لوحة التحكم </h1>
+					<ul class="breadcrumb">
+						<li>
+							<a href="#">لوحة التحكم </a>
+						</li>
+						<li><i class='bx bx-chevron-right' ></i></li>
+						<li>
+							<a class="active" href="#">الرئيسية</a>
+						</li>
+					</ul>
+				</div>
+				
+			</div>
+
+			 
+
+			<div class="table-data">
+				<div class="order">
+					<div class="head">
+						<h3>الطلبات الحديثة</h3>
+						<input type="search" id="search_input" placeholder=" ابحث عن الاسم او الايميل...">
+						<i class='bx bx-search'  id="search"></i>
+					 
+					</div>
+					<table>
+						<thead>
+							<tr>
+								<th>المسخدم</th>
+								<th>تاريخ الدخول  </th>
+								 
+								<th>نوع المسخدم</th>
+								<th> تأكيد</th>
+							</tr>
+						</thead>
+						<tbody id="accounts">
+						 
+						 
+						</tbody>
+					</table>
+				</div>
+
+				 
+			</div>
+		</main>
+		<!-- MAIN -->
+	</section>
+	<!-- CONTENT -->
+	
+	<script src="/js/script.js"></script>
+	<script src="/js/account/request.js"></script>
+</body>
+</html>

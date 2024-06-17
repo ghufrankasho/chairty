@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="ar">
+<!-- HEADER -->
+<div id="header-placeholder"></div>
+<script>
+	fetch('header.html')
+		.then(response => response.text())
+		.then(text => document.getElementById('header-placeholder').innerHTML = text);
+</script>
+<!-- HEADER -->
+<header class="sticky-top">
+  <div class="header sticky-top">
+    <div class="logo-part ">
+      <div class="parent">
+        <div class="contact d-flex">
+          <a class="btn position-relative search  ">
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-search"
+              viewBox="0 0 16 16">
+              <path
+                d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+            </svg>
+          </a>
+
+          <input type="text" placeholder="بحث" dir="rtl" class=" rounded-pill ">
+          <a class="btn position-relative search order-3  " href="login.html">
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+              class="bi bi-person-circle  " viewBox="0 0 16 16">
+              <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
+              <path fill-rule="evenodd"
+                d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
+            </svg>
+          </a>
+
+        </div>
+
+
+
+        <div class="logo d-flex align-items-center">
+          <p>جمعية البر و الإحسان الخيرية</p>
+          <a class=" navbar-brand  " href="#">
+            <img src="img/logo1.jpg" width="80" height="80" alt="">
+          </a>
+
+        </div>
+
+      </div>
+    </div>
+
+    <nav class="navbar-brand navbar navbar-expand-lg  sticky-top">
+
+
+      <div class="container">
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main"
+          aria-controls="main" aria-expanded="false" aria-label="Toggle navigation">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse " dir="rtl" id="main">
+          <ul class="navbar-nav   mx-auto mb-2 mb-lg-0 order-1 text-center">
+            <li class="nav-item rtl">
+              <a class="nav-link p-2 p-lg-3 active" aria-current="page" href="projects.html"> الرئيسية</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link p-2 p-lg-3" href="HR.html">المشاريع</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link p-2 p-lg-3" href="#">آخر الأخبار</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link p-2 p-lg-3" href="#">ادعمنا</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link p-2 p-lg-3" href="#">تطوع معنا</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link p-2 p-lg-3" href="#">لمحة</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link p-2 p-lg-3" href="contact us.html">تواصل معنا </a>
+            </li>
+
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<body>
+
+  <div class="container-contact">
+
+
+
+    <div class="contactus">
+      <div class="title">
+        <h2>ابقى على تواصل </h2>
+      </div>
+      <div class="box">
+        <!-------form-------->
+        <div class="contact form">
+          <h3>إرسال رسالة</h3>
+          <form>
+            <div class="formbox">
+              <div class="row50">
+                <div class="inputbox">
+                  <span>الاسم الأول</span>
+                  <input type="text" placeholder="rama" id="name1">
+                </div>
+                <div class="inputbox">
+                  <span>الاسم الأخير</span>
+                  <input type="text" placeholder="alzain" id="name2">
+                </div>
+              </div>
+              <div class="row50">
+                <div class="inputbox">
+                  <span>الإيميل</span>
+                  <input type="text" placeholder="rama@email.com" id="email">
+                </div>
+                <div class="inputbox">
+                  <span style="direction: ltr;">الموبايل</span>
+                  <input type="text" placeholder="+963 988 363 365">
+                </div>
+              </div>
+
+              <div class="row100">
+                <div class="inputbox">
+                  <span>الرسالة</span>
+                  <textarea placeholder="......اكتب رسالتك هنا" id="msg"></textarea>
+                </div>
+              </div>
+
+
+
+
+              <div class="message">
+                <div class="success" id="success">تم الإرسال بنجاح</div>
+                <div class="danger" id="danger">لا يمكن أن تكون الحقول فارغة</div>
+              </div>
+
+
+            </div>
+          </form>
+
+          
+          <div class="button">
+            <button id="send" onclick="message()">إرسال</button>
+          </div>
+        </div>
+
+
+
+        <!----box info------>
+        <div class="contact info">
+          <h3>contact info</h3>
+          <div class="infobox">
+            <div>
+              <span><ion-icon name="location"></ion-icon></span>
+              <p>حلب الجديدة-الجهة الغربية لجامع الإمام علي زين العابدين</p>
+            </div>
+            <div>
+              <span><ion-icon name="mail"></ion-icon></span>
+              <a href="mailto:ber_ihsan@hotmail.com"> ber_ihsan@hotmail.com</a>
+            </div>
+            <div>
+              <span style="direction: ltr;"><ion-icon name="call"></ion-icon></span>
+              <a href="tel:+963215232314"> +963215232315 </a>
+            </div>
+            <!-- social media links -->
+            <ul class="sci">
+              <li><a href=""><ion-icon name="logo-facebook"></ion-icon></a></li>
+              <li><a href=""><ion-icon name="logo-twitter"></ion-icon></a></li>
+              <li><a href=""><ion-icon name="logo-linkedin"></ion-icon></a></li>
+              <li><a href=""><ion-icon name="logo-instagram"></ion-icon></a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="contact map">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d25757.3445750533!2d37.11043136565634!3d36.19895360391649!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1z2KzYp9mF2Lkg2LLZitmGINin2YTYudin2KjYr9mK2YY!5e0!3m2!1sar!2suk!4v1714834641814!5m2!1sar!2suk"
+            style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+
+
+
+    </div>
+
+  </div>
+
+
+
+
+
+  <script src="js/contact.js"></script>
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+  <script src="js/app.js"></script>
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/all.min.js"></script>
+
+</body>
+
+
+
+
+
+
+<footer class="bg-dark py-5" dir="rtl">
+  <div class="container">
+    <div class="row text-white g-4">
+      <div class="col-lg-3 col-md-6 text-center">
+        <a class=" text-decoration-none brand text-white fw-bold" href="index.html">عن الجمعية</a>
+        <hr>
+        <p class="text-white text-muted mt-3">
+          جمعية البر والإحسان الخيرية<br>
+
+          منظمة أهلية غير ربحية<br>
+
+          رقم الإشهار(1095) عام(2012)
+        </p>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <h5 class="fw-bold text-center ">معلومات التواصل</h5>
+        <hr>
+        <ul class="list-unstyled ">
+          <li class="my-3  text-muted">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-house"
+              viewBox="0 0 16 16">
+              <path
+                d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z" />
+            </svg>
+            حلب الجديدة-الجهة الغربية لجامع الإمام علي زين العابدين
+
+          </li>
+          <li class="my-3 text-muted">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-telephone"
+              viewBox="0 0 16 16">
+              <path
+                d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.6 17.6 0 0 0 4.168 6.608 17.6 17.6 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.68.68 0 0 0-.58-.122l-2.19.547a1.75 1.75 0 0 1-1.657-.459L5.482 8.062a1.75 1.75 0 0 1-.46-1.657l.548-2.19a.68.68 0 0 0-.122-.58zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z" />
+            </svg>
+            +963215232314
+
+          </li>
+          <li class="my-3 text-muted">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-telephone"
+              viewBox="0 0 16 16">
+              <path
+                d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.6 17.6 0 0 0 4.168 6.608 17.6 17.6 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.68.68 0 0 0-.58-.122l-2.19.547a1.75 1.75 0 0 1-1.657-.459L5.482 8.062a1.75 1.75 0 0 1-.46-1.657l.548-2.19a.68.68 0 0 0-.122-.58zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z" />
+            </svg>
+            +963215232315
+
+          </li>
+          <li class="my-3 text-muted">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-telephone"
+              viewBox="0 0 16 16">
+              <path
+                d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.6 17.6 0 0 0 4.168 6.608 17.6 17.6 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.68.68 0 0 0-.58-.122l-2.19.547a1.75 1.75 0 0 1-1.657-.459L5.482 8.062a1.75 1.75 0 0 1-.46-1.657l.548-2.19a.68.68 0 0 0-.122-.58zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z" />
+            </svg>
+            +96321968002068
+          </li>
+
+          <li class="my-3 tex">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+              class="bi bi-chat-left-text text-success" viewBox="0 0 16 16">
+              <path
+                d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z" />
+              <path
+                d="M3 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5M3 6a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 6m0 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5" />
+            </svg>
+            <a class="text-decoration-none text-success" href="mailto:ber_ihsan@hotmail.com">ber_ihsan@hotmail.com</a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <h5 class="fw-bold mb-3 text-center">الحسابات البنكية </h5>
+        <hr>
+        <div class="d-flex justify-content-start align-items-start my-2 text-muted">
+
+          <span class="fw-light">
+            للتبرع على الحساب / بنك البركة : 7000828
+          </span>
+        </div>
+
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <a class=" navbar-brand  " href="#">
+          <img src="img/logo1.jpg" class="rounded-pill" width="200" height="200" alt="">
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+<!----icon-->
+
+
+</html>
