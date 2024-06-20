@@ -1,3 +1,7 @@
+var type=localStorage.getItem('type');
+   
+    console.log(type);
+ 
 // Function to handle form submission and AJAX request
 function submitSignUpForm(event) {
      event.preventDefault(); // Prevent default form submission
@@ -6,14 +10,17 @@ function submitSignUpForm(event) {
     var email = document.getElementById('email').value;
     var password = document.getElementById('password').value;
     var password_confirmation = document.getElementById('password_confirmation').value;
-
+    var type=localStorage.getItem('type');
+    console.log(type);
     // Now you have the data from the signup form, you can use it as needed
 
  
     var formData = {
         email: email,
         password: password,
-        password_confirmation: password_confirmation
+        password_confirmation: password_confirmation,
+        type:type
+
       };
     // Add your AJAX request here
 
@@ -25,11 +32,12 @@ function submitSignUpForm(event) {
             // Handle successful response
             var response = JSON.parse(xhr.responseText);
              
-            window.location.href =`/project/proj.html`;
+           
             
-            // if (response.user.type==2){
-            //  // window.location.href =`emolyee_index.html`;
-            // }
+            if (type==0){
+             window.location.href =`/users/adduser.html`;
+            }
+            window.location.href =`/project/proj.html`;
         } 
         else {
           
@@ -55,12 +63,15 @@ function submitSignInForm(event) {
     // Get form data
     var email = document.getElementById('singinemail').value;
     var password = document.getElementById('singinpassword').value;
-
+    var type=localStorage.getItem('type');
+   
+    console.log(type);
    
 
     var formData = {
         email: email,
         password: password,
+        type:type
        
       };
     // Add your AJAX request here
@@ -75,9 +86,12 @@ function submitSignInForm(event) {
             // showSuccessAlert(null,response.message,true);
             
            
-            
+            if (type=="0"){
+              
+              window.location.href =`/users/adduser.html`;
+             }
              
-              window.location.href =`/index.html`;
+            else{window.location.href =`/index.html`;}
             
             // Handle response as needed
         } else {
@@ -123,6 +137,7 @@ function showSuccessAlert(data, message, status,form) {
     }
     if (!status) {
       div.className = "warning alert d-none mt-3 mx-auto"
+      
       div.innerHTML = ` 
     
     <div class="content" id ="AlertMessage">
@@ -140,6 +155,7 @@ function showSuccessAlert(data, message, status,form) {
   </div>
   
   `
+ 
     }
     if (status == null) {
       div.className = "danger alert d-none mt-3 mx-auto"
@@ -163,9 +179,11 @@ function showSuccessAlert(data, message, status,form) {
     const alertButton = document.getElementById('AlertButton');
     alertButton.addEventListener('click', () => {
       // Get the message container
-  
+      if(data=="user type  is not correct chose the right  type for this account"){
+        window.location.href =`tochoose.html`;
+      }
   
       // Remove the message container from the DOM
       div.remove();
     });
-  }
+}

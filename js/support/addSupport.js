@@ -117,6 +117,7 @@ document.addEventListener('DOMContentLoaded', () => {
     phone.addEventListener('input', validatePhone);
     email.addEventListener('input', validateEmail);
   });
+  
 function validateName() {
     const nameInput = document.getElementById('nameInput');
     const nameError = document.getElementById('nameError');

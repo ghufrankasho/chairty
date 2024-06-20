@@ -1798,3 +1798,155 @@ width: 50%;
 	color: white;
 	margin-left: 1%;
   }
+/****************add user**************/
+
+/* Style the container */
+
+
+.adduser .container {
+	width: 500px;
+	margin: 50px auto;
+	background-image: linear-gradient(to bottom, #f0f0f0, #e0e0e0);
+	padding: 20px;
+	border: none;
+	border-radius: 8px;
+  
+	box-shadow: 0 3px 9px 3px rgba(87, 156, 90, 0.904);
+  }
+  
+  
+  .adduser h1 {
+	text-align: center;
+	margin-bottom: 20px;
+  }
+  
+  .adduser form {
+	display: flex;
+	
+	flex-direction: column;
+  
+	justify-content: center;
+	
+	align-items: center;
+  
+  }
+  
+  
+  .adduser .input-group {
+	display: flex;
+  
+	align-items: center;
+	margin-bottom: 15px;
+  
+  
+  }
+  
+  .adduser .input-group:hover input[type="text"] {
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  
+  }
+  
+  
+  
+  .adduser button[type="submit"] {
+	background-color: #4CAF50;
+	color: white;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	width: 100%;
+	background-image: linear-gradient(to right, #4CAF50, #388E3C);
+  
+  }
+  
+  .adduser button[type="submit"]:active {
+	animation: bounce 0.3s ease-in-out;
+	
+  }
+  
+  @keyframes bounce {
+	0% {
+	  transform: translateY(0);
+	
+	}
+  
+	50% {
+	  transform: translateY(-10px);
+  
+	}
+  
+	100% {
+	  transform: translateY(0);
+	
+	}
+  }
+  
+  
+  .adduser .input-group label,
+  .adduser .input-group input[type="text"] {
+  
+  
+	padding: 8px;
+	border: none;
+	border-radius: 3px;
+	font-weight: normal;
+	
+  }
+  
+  .adduser .input-group label {
+  
+	margin-right: 15px;
+	transition: top 0.2s ease-in-out;
+  
+  }
+  
+  .adduser .input-group:focus-within label {
+	top: 10px;
+	
+	font-size: 0.8rem;
+	
+  }
+  
+  #projectuser {
+	margin-left: 14px;
+  }
+  
+  
+  .user-image-container:hover .change-image-icon {
+	color: #333;
+  
+  }
+  .user-image-container {
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+	overflow: hidden;
+	position: relative;
+	}
+	
+	#userImage {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	}
+	
+	.change-user-image {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	cursor: pointer;
+	font-size: 20px;
+	color: #fff;
+	}
+  
+  
+	.error-message {
+	color: red;
+	font-size: 12px;
+	display: flex;
+	flex-direction: column; /* Stack elements vertically */
+	align-items: flex-start; 
+  
+  
+	}
