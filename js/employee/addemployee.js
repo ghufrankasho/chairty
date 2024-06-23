@@ -1,65 +1,20 @@
 var account_id=0;
  
-
-
-function displayuser() {
-    
-   
-  
-      const xhr = new XMLHttpRequest();
-      xhr.open('GET', 'http://127.0.0.1:8000/api/work', true);
-    
-      xhr.onreadystatechange = function () {
-          if (xhr.readyState === 4) {
-              if (xhr.status === 200) {
-               
-                  try {
-                       
-                    const response = JSON.parse(xhr.responseText);
-                    
-                    const select1 = document.getElementById('work_types');
-                     
-                      response.forEach(function(work) {
-                      
-                          var c1 = document.createElement("option");
-                          c1.text = work.name;
-                          c1.id = work.id;
-                          select1.options.add(c1, work.name);
-                      });
-                     
-                     
-                    
-                  } 
-                  catch (e) {
-                      console.error("Failed to parse response JSON:", e);
-                  }
-              } 
-              else {
-                  console.error("Error with request, status code:", xhr.status);
-              }
-          }
-      } 
-      xhr.send();
-    
-     
-}
-
-function adduser(event) {
+function addemployee(event) {
   event.preventDefault();
   const formData = new FormData();  
 
-  const first_nameInput = document.getElementById('first_name').value;
-  const last_nameInput = document.getElementById('last_name').value;
+  const nameInput = document.getElementById('name').value;
+  const email = document.getElementById('email').value;
   const address = document.getElementById('address').value;
   const phone = document.getElementById('phone').value;
-  const typeElement = document.querySelector('#work_types');
-  const type = typeElement.options[typeElement.selectedIndex].id;
+  
 
-  if(type !=='')formData.append('type', type);
-  if(first_nameInput !=='')formData.append('first_name', first_nameInput);
-  if(last_nameInput !=='')formData.append('last_name', last_nameInput);
+ 
+  if(nameInput !=='')formData.append('name', nameInput);
+  if(email !=='')formData.append('email', email);
   if(address !=='')formData.append('address', address);
-  if(phone !=='')formData.append('mobile', phone);
+  if(phone !=='')formData.append('phone', phone);
   formData.append('account_id', account_id);
   // Check if a new image file has been selected
  
@@ -67,10 +22,14 @@ function adduser(event) {
   if ( imageInput !=null && imageInput.files.length > 0) {
       formData.append('image', imageInput.files[0]);
   }
+  const cvInput = document.getElementById('cvInput');
+  if ( cvInput !=null && cvInput.files.length > 0) {
+      formData.append('cv', cvInput.files[0]);
+  }
 
 console.log(...formData);
   const xhr = new XMLHttpRequest();
-  xhr.open('POST', 'http://127.0.0.1:8000/api/user/add/', true);
+  xhr.open('POST', 'http://127.0.0.1:8000/api/employee/add/', true);
 
   xhr.onreadystatechange = function () {
       if (xhr.readyState === 4) {
@@ -159,7 +118,7 @@ function showAlert(data, message, status) {
 
     // Remove the message container from the DOM
     div.remove();
-    if(status)window.location.href =`/users/Users.html`;
+   if(status) window.location.href =`/employee/employees.html`;
   });
 }
 
@@ -168,29 +127,39 @@ document.addEventListener('DOMContentLoaded', () => {
   const urlParams = new URLSearchParams(window.location.search);
   const accountId = urlParams.get('accountId');
   account_id=accountId;
-  console.log("accountId from URL:", accountId);
-  displayuser();
-    // Call the function with the retrieved project ID
-    
-    // if (accountId) {
-    //     displayuser();
-    // } else {
-    //   displayuser();
-    //     console.error("No accountId found in URL parameters.");
-    // }
-  const firstnameInput = document.getElementById('first_name');
-  const lastnameInput = document.getElementById('last_name');
+   
+  
+  const  nameInput = document.getElementById('name');
+  const email = document.getElementById('email');
  
   const address = document.getElementById('address');
   const phone = document.getElementById('phone');
 
-  firstnameInput.addEventListener('input', validateFirstName);
-  lastnameInput.addEventListener('input', validateLastName);
+  nameInput.addEventListener('input', validateFirstName);
+  email.addEventListener('input', validateEmail);
   address.addEventListener('input', validateAddress);
   phone.addEventListener('input', validatePhone);
  
 });
-
+function validateEmail() {
+  const email = document.getElementById('email');
+  const emailError = document.getElementById('emailError');
+  const value = email.value.trim();
+  const pattern =/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!value) {
+    email.classList.add('error');
+    emailError.textContent = 'الايميل  مطلوب';
+  } else 
+  {
+    const isValid = pattern.test(value);
+    if (!isValid) {
+      email.classList.add('error');
+      emailError.textContent = 'هذا الحقل يجب أن يكون ايميل';
+  } else {
+    email.classList.remove('error');
+    emailError.textContent = '';
+  }}
+}
 function validateFirstName() {
   const nameInput =document.getElementById('first_name');
   const nameError = document.getElementById('firstname-length-error');

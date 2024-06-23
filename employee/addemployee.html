@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <title>إضافة مستخدم</title>
+    <title>إضافة موظف</title>
 
     <link rel="stylesheet" href="/css/all.min.css" />
     <link rel="stylesheet" href="/css/style.css">
@@ -15,7 +15,7 @@
 <body>
     <div class="adduser">
         <div class="container">
-            <h1>إضافة مستخدم</h1>
+            <h1>إضافة موظف</h1>
             <form action="#" id="form">
 
 
@@ -23,17 +23,14 @@
                     <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="صورة المستخدم" id="userImage">
                     <i class="change-user-image" title="تغيير الصورة"></i>
                 </div>
-                <i class='bx bxs-image-alt'> <input type="file" id="userImageInput" class="account-settings-fileinput">
+                <i class='bx bxs-image-alt'> <input type="file" id="userImageInput" accept=".jpg,.png,.jpeg,.gif,.svg,.webp" class="account-settings-fileinput">
                 </i>
 
                 <div class="input-group" dir="rtl"> <label for="name" dir="rtl">  الاسم :</label>
-                    <input type="text" id="first_name" name="first_name" required class="validate-input">
-                    <span id="firstname-length-error" class="error-message"></span>
+                    <input type="text" id="name" name="name" required class="validate-input">
+                    <span id="name-length-error" class="error-message"></span>
                 </div>
-                <div class="input-group" dir="rtl"> <label for="name" dir="rtl">   الكنية:</label>
-                    <input type="text" id="last_name" name="last_name" required class="validate-input">
-                    <span id="lastname-length-error" class="error-message"></span>
-                </div>
+               
 
                 <div class="input-group" dir="rtl"> <label for="job">العنوان:</label>
                     <input type="text" id="address" name="address" required>
@@ -46,18 +43,23 @@
                     
                     
                 </div>
-
-        
-                <div class="rr col-lg-12 col-md-6 col-sm-6 mb-3 mt-3">
-                    <div class="offset" dir="rtl">
-                        <label for="type">نوع العمل</label>
-                        <select name="type" id="work_types"></select>
-                    </div>
+                <div class="input-group" dir="rtl">
+                    <label for="job"> البريد الالكتروني :</label>
+                    <input dir="rtl" type="text" id="email" required>
+                    <span id="emailError" class="error-message"></span>
                     <br>
                 </div>
+                <div class="input-group" dir="rtl"> <label for="job">CV :</label>
+                 
+                    <i class='bx bxs-image-alt'> <input type="file" id="cvInput" accept=".pdf,.txt" class="account-settings-fileinput">
+                    </i>
+                        
+              
+                </div>
+         
                 <div class="button">
               
-                    <button onclick="adduser(event)">   حفظ  </button>
+                    <button onclick="addemployee(event)">   حفظ  </button>
                 </div>
             </form>
 
@@ -65,7 +67,7 @@
 
         </div>
     </div>
-    <script src="/js/users/adduser.js"></script>
+    <script src="/js/employee/addemployee.js"></script>
     <script>
         let profilePic = document.getElementById("userImage");
         let inputFile = document.getElementById("userImageInput");

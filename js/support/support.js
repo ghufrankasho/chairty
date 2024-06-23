@@ -43,16 +43,7 @@ function displayDoners() {
               deletedoner(doner.id); }
           });
         
-          const searchButton = document.getElementById(`search`);
-
-          searchButton.addEventListener('click', function (e) {
-            e.stopImmediatePropagation();
-            const search = document.getElementById('search_input').value;
-            console.log("inside button " + search)
-            searchdoner(search);
-
-
-          });
+         
            // Create a update button and add an event listener
            const updateButton = document.getElementById(`update-${doner.id}`);
            updateButton.textContent = 'تعديل';
@@ -64,6 +55,16 @@ function displayDoners() {
              window.location.href =`updateSupport.html?donerId=${donerId}`;
  
            });
+        });
+        const searchButton = document.getElementById(`search`);
+
+        searchButton.addEventListener('click', function (e) {
+          e.stopImmediatePropagation();
+          const search = document.getElementById('search_input').value;
+          console.log("inside button " + search)
+          searchdoner(search);
+
+
         });
 
       } else {

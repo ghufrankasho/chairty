@@ -1,7 +1,4 @@
-var type=localStorage.getItem('type');
-   
-    console.log(type);
- 
+
 // Function to handle form submission and AJAX request
 function submitSignUpForm(event) {
      event.preventDefault(); // Prevent default form submission
@@ -34,10 +31,21 @@ function submitSignUpForm(event) {
              
            
             
-            if (type==0){
-             window.location.href =`/users/adduser.html`;
+            account_id=response.account.id;
+            console.log(type,account_id);
+            if (type=="0"){
+              console.log("inside if",type,account_id);
+             window.location.href =`/users/adduser.html?accountId=${account_id}`;
             }
-            window.location.href =`/project/proj.html`;
+            if (type=="2"){
+            console.log("inside if",type,account_id);
+            window.location.href =`/employee/addemployee.html?accountId=${account_id}`;
+            }
+            if (type=="3"){
+              console.log("inside if",type,account_id);
+              window.location.href =`/support/addSupport.html?accountId=${account_id}`;
+              }
+              
         } 
         else {
           
@@ -63,15 +71,13 @@ function submitSignInForm(event) {
     // Get form data
     var email = document.getElementById('singinemail').value;
     var password = document.getElementById('singinpassword').value;
-    var type=localStorage.getItem('type');
-   
-    console.log(type);
+    
    
 
     var formData = {
         email: email,
         password: password,
-        type:type
+       
        
       };
     // Add your AJAX request here
@@ -85,12 +91,17 @@ function submitSignInForm(event) {
             var response = JSON.parse(xhr.responseText);
             // showSuccessAlert(null,response.message,true);
             
-           
-            if (type=="0"){
+           console.log(response.user.type,response);
+            if (response.user.type=="0"){
               
-              window.location.href =`/users/adduser.html`;
+              // window.location.href =`/users/userindex.html`;
+              window.location.href =`/index.html`;
              }
-             
+            if (response.user.type=="2"){
+              
+              // window.location.href =`/employee/employeeindex.html`;
+              window.location.href =`/employee/employees.html`;
+             }
             else{window.location.href =`/index.html`;}
             
             // Handle response as needed
@@ -103,7 +114,7 @@ function submitSignInForm(event) {
              
 }
             else{
-                    // console.log("something went wrong");
+                    console.log("something went wrong",response.errors);
                     showSuccessAlert('Error occurred during login .',response.errors,null,`signInForm`);
                 }
         }

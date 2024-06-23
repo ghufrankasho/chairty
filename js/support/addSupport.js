@@ -104,6 +104,7 @@ function showAlert(data, message, status,form) {
 
       // Remove the message container from the DOM
       div.remove();
+      if(status) window.location.href =`/support/support.html`;
     });
   }
 document.addEventListener('DOMContentLoaded', () => {
@@ -133,8 +134,7 @@ function validateName() {
         nameInput.classList.remove('error');
         nameError.textContent = '';
     }
-  }
-  
+}
 function validateAddress() {
   const address = document.getElementById('address');
     const addressError = document.getElementById('addressError');
@@ -171,8 +171,7 @@ function validatePhone() {
       phone.classList.remove('error');
       phoneError.textContent = '';
     }}
-}
-  
+} 
 function validateEmail() {
     const email = document.getElementById('email');
     const emailError = document.getElementById('emailError');

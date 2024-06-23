@@ -1,13 +1,12 @@
+ 
 
-var Doner_id=0;
-
-let originalDoner = {};
-
-function displayDoner(donerId) {
-    const data = { id: donerId };
+let originalemployee = {};
+var employee_id=0;
+function displayemployee(employeeId) {
+    const data = { id: employeeId };
     
     const xhr = new XMLHttpRequest();
-    xhr.open('POST', 'http://127.0.0.1:8000/api/doner/show/', true);
+    xhr.open('POST', 'http://127.0.0.1:8000/api/employee/show/', true);
   
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4) {
@@ -15,20 +14,18 @@ function displayDoner(donerId) {
                 try {
                     const response = JSON.parse(xhr.responseText);
                     document.getElementById('profile-pic').src = response.image;
-                    document.getElementById('nameInput').value = response.name;
-                    
-                    document.getElementById('address').value = response.address;
-                    document.getElementById('phone').value = response.phone;
-                    document.getElementById('email').value = response.email;
+                    document.getElementById('name').textContent = response.name;
                   
+                    
+                    
                     // Store original values
-                    originalDoner = {
-                        name: response.name,
+                    originalemployee = {
+                        branch: response.depart.branch.id,
+                        department: response.depart.id
                       
-                        address: response.address,
-                        email: response.email,
-                        phone: response.phone
+                      
                     };
+                 
                 } catch (e) {
                     console.error("Failed to parse response JSON:", e);
                 }
@@ -41,56 +38,137 @@ function displayDoner(donerId) {
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.send(JSON.stringify(data));
 }
+function displayBranches() {
+  const xhr = new XMLHttpRequest();
+  xhr.open('GET', 'http://127.0.0.1:8000/api/branch/', true);
 
- 
-function updateDoner() {
-  const formData = new FormData();  
-  
-  const currentDoner = {
-      name: document.getElementById('nameInput').value,
-      
-      phone: document.getElementById('phone').value,
-      email: document.getElementById('email').value,
-      address: document.getElementById('address').value
+  xhr.onreadystatechange = function() {
+      if (xhr.readyState === 4) {
+          if (xhr.status === 200) {
+              try {
+                  const response = JSON.parse(xhr.responseText);
+                  const select_branch = document.getElementById('branchs');
+                  const select_project = document.getElementById('projects');
+                 
+                  select_branch.options.length = 0;
+                   // Clear existing options
+                   const option = document.createElement("option");
+                   option.text ="select branch";
+                   option.value ="0";
+                   select_branch.add(option);
+                  // Populate branches
+                  for (const key in response) {
+                      
+                          const branch = response[key];
+                          const option = document.createElement("option");
+                          option.text = branch.name;
+                          option.value = branch.id;
+                          select_branch.add(option);
+                    
+                   
+                  }
+                  // response.projects.forEach(function(project){
+                  //   var option = document.createElement("option");
+                  //   option.text = project.name;
+                  //   option.value = project.id;
+                  //   select_project.add(option);
+                  // });
+                  
+                  // Automatically update departments for the first branch
+                  updateDepartments();
+                  
+              } catch (e) {
+                  console.error("Failed to parse response JSON:", e);
+              }
+          } else {
+              console.error("Error with request, status code:", xhr.status);
+          }
+      }
   };
 
+  xhr.send();
+}
+function updateDepartments() {
+  const select_branch = document.getElementById('branchs');
+  const select_depart = document.getElementById('departments');
+  const branchId = select_branch.value;
+
+  const xhr = new XMLHttpRequest();
+  xhr.open('GET', 'http://127.0.0.1:8000/api/branch/', true);
+
+  xhr.onreadystatechange = function() {
+      if (xhr.readyState === 4) {
+          if (xhr.status === 200) {
+              try {
+                  const response = JSON.parse(xhr.responseText);
+                  
+                  // Clear existing options
+                  select_depart.options.length = 0;
+                  const option = document.createElement("option");
+                  option.text ="select department";
+                  option.value ="0";
+                  select_depart.add(option);
+                  // Find the selected branch's departments
+                  for (const key in response) {
+                      
+                          const branch = response[key];
+                          if (branch.id == branchId) {
+                              branch.departments.forEach(function(department) {
+                                  var option = document.createElement("option");
+                                  option.text = department.name;
+                                  option.value = department.id;
+                                  select_depart.add(option);
+                              });
+                              break;
+                          }
+                      
+                  }
+                  
+              } catch (e) {
+                  console.error("Failed to parse response JSON:", e);
+              }
+          } else {
+              console.error("Error with request, status code:", xhr.status);
+          }
+      }
+  };
+
+  xhr.send();
+}
+
+function updateemployee() {
+  const formData = new FormData();  
+  const select_depart = document.getElementById('departments');
+ 
+
+  const department = select_depart.options[select_depart.selectedIndex].value;
+   
+  const currentemployee = {
+    department: department,
+   
+    
+  };
+console.log(currentemployee,originalemployee)
   // Compare current values with original values and append only changed fields
-  if (currentDoner.name !== originalDoner.name) {
-      formData.append('name', currentDoner.name);
+  if (currentemployee.department !== originalemployee.department) {
+      formData.append('department_id', currentemployee.department);
   }
  
-  
-  if (currentDoner.email !== originalDoner.email) {
-      formData.append('email', currentDoner.email);
-  }
-  if (currentDoner.phone !== originalDoner.phone) {
-      formData.append('phone', currentDoner.phone);
-  }
-  if (currentDoner.address !== originalDoner.address) {
-      formData.append('address', currentDoner.address);
-  }
+ 
 
-  // Check if a new image file has been selected
-  const imageInput = document.getElementById('input-file');
-  if ( imageInput !=null && imageInput.files.length > 0) {
-      formData.append('image', imageInput.files[0]);
-  }
+  formData.append('id', employee_id); // Always include the employee ID
 
-  formData.append('id', Doner_id); // Always include the Doner ID
-console.log(...formData);
   const xhr = new XMLHttpRequest();
-  xhr.open('POST', 'http://127.0.0.1:8000/api/doner/update/', true);
+  xhr.open('POST', 'http://127.0.0.1:8000/api/employee/update/', true);
 
   xhr.onreadystatechange = function () {
       if (xhr.readyState === 4) {
           if (xhr.status === 200) {
               const response = JSON.parse(xhr.responseText);
-            //   console.log('Update success:', response.message);
               showAlert(null, response.message, response.status);
           } else {
               const response = JSON.parse(xhr.responseText);
               showAlert(null, response.message, response.status);
-            //   console.error('Update error:', response.errors || response.message);
           }
       }
   };
@@ -98,26 +176,26 @@ console.log(...formData);
   xhr.send(formData);
 }
 
-  
-  // Call the displayDoner function when the page loads
-  window.addEventListener('load', () => {
-    // Get the Doner ID from the query parameters (e.g., "?donerId=20")
+  // Call the displayemployee function when the page loads
+window.addEventListener('load', () => {
+ 
     const urlParams = new URLSearchParams(window.location.search);
-    const donerId = urlParams.get('donerId');
-    Doner_id=donerId;
+    const employeeId = urlParams.get('employeeId');
+    employee_id=employeeId;
+    displayBranches();
      
-    // Call the function with the retrieved Doner ID
-    if (donerId) {
-        displayDoner(donerId);
+    // Call the function with the retrieved employee ID
+    if (employeeId) {
+        displayemployee(employeeId);
     } else {
-        console.error("No donerId found in URL parameters.");
+        console.error("No employeeId found in URL parameters.");
     }
   });
 function showAlert(data, message, status) {
     // Show the success message in the "success-message" div
     const Message = document.getElementById('form');
     const div = document.createElement('div');
-    console.log(data)
+    
     if (status) {
       div.className = "success alert d-none mt-3 mx-auto"
       div.innerHTML = ` 
@@ -181,92 +259,10 @@ function showAlert(data, message, status) {
   
       // Remove the message container from the DOM
       div.remove();
-      if(status) window.location.href =`/support/support.html`;
+      if(status) window.location.href =`/employee/employees.html`;
     });
   }
-
-  document.addEventListener('DOMContentLoaded', () => {
-    const nameInput = document.getElementById('nameInput');
-    const address = document.getElementById('address');
-    const phone = document.getElementById('phone');
-    const email = document.getElementById('email');
+ 
+ 
   
-    nameInput.addEventListener('input', validateName);
-    address.addEventListener('input', validateAddress);
-    phone.addEventListener('input', validatePhone);
-    email.addEventListener('input', validateEmail);
-  });
-function validateName() {
-    const nameInput = document.getElementById('nameInput');
-    const nameError = document.getElementById('nameError');
-    const value = nameInput.value.trim();
-  
-    if (!value) {
-        nameInput.classList.add('error');
-        nameError.textContent = 'اسم الجهة الداعمة مطلوب';
-    } else if (value.length > 100) {
-        nameInput.classList.add('error');
-        nameError.textContent = 'اسم المشروع لا يجب أن يتجاوز 100 أحرف';
-    } else {
-        nameInput.classList.remove('error');
-        nameError.textContent = '';
-    }
-  }
-  
-function validateAddress() {
-  const address = document.getElementById('address');
-    const addressError = document.getElementById('addressError');
-    const value = address.value.trim();
-  
-    if (!value) {
-      address.classList.add('error');
-      addressError.textContent = 'عنوان الجهة الداعمة مطلوب';
-    } else if (value.length > 200) {
-      address.classList.add('error');
-      addressError.textContent = 'اسم المشروع لا يجب أن يتجاوز 200 أحرف';
-    } else {
-      address.classList.remove('error');
-        addressError.textContent = '';
-    }
-}
-function validatePhone() {
-  const phone = document.getElementById('phone');
-    const phoneError = document.getElementById('phoneError');
-    const value = phone.value.trim();
-    const pattern =/^\+963\d{3}\d{3}\d{3}$/;
-
-    // Validate phone number and update message
-   
-    if (!value) {
-      phone.classList.add('error');
-      phoneError.textContent = 'رقم الهاتف  الخاص بالجهة الداعمة مطلوب';
-    } else 
-   { const isValid = pattern.test(value);
-     if (!isValid) {
-      phone.classList.add('error');
-      phoneError.textContent = 'رقم المشروع يجب أن يبدأ ب 963+ وأن يكون 9 خانات    ';
-    } else {
-      phone.classList.remove('error');
-      phoneError.textContent = '';
-    }}
-}
-  
-function validateEmail() {
-    const email = document.getElementById('email');
-    const emailError = document.getElementById('emailError');
-    const value = email.value.trim();
-    const pattern =/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!value) {
-      email.classList.add('error');
-      emailError.textContent = 'الايميل  مطلوب';
-    } else 
-    {
-      const isValid = pattern.test(value);
-      if (!isValid) {
-        email.classList.add('error');
-        emailError.textContent = 'هذا الحقل يجب أن يكون ايميل';
-    } else {
-      email.classList.remove('error');
-      emailError.textContent = '';
-    }}
-  }
+ 

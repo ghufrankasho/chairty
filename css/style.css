@@ -1802,7 +1802,15 @@ width: 50%;
 
 /* Style the container */
 
-
+.adduser .item{
+	display: flex;
+	
+	flex-direction: column;
+  
+	justify-content: center;
+	
+	align-items: center;
+  }
 .adduser .container {
 	width: 500px;
 	margin: 50px auto;

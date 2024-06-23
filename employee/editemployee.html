@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ar">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>جمعية البر والإحسان</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/all.min.css" />
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;500&display=swap" rel="stylesheet" />
+</head>
+
+<section class="addpro">
+    <div class="container text-center " id="addpro">
+        <legend dir="rtl" class="text-success fw-bold">تغيير الفرع او القسم الخاص بالموظف</legend>
+        <div class="row" id="doner">
+
+            <form class="col-lg-6 text-center text-sm-center m-auto form" dir="rtl" id="form">
+                <div class="card-body">
+                    <img src="/img/p1.jpeg" width="150px" height="150px" id="profile-pic">
+                  
+ 
+                    <br>
+                </div>
+                <div class="card-body">
+                    <p class="card-title fw-bold ">اسم الموظف</p>
+                    <p class="card-text" id="name"></p>
+                </div>
+               
+                <div class="rr col-lg-12 col-md-6 col-sm-6 mb-3 mt-3">
+                    <div class="offset1">
+                        <label for="num">  الفرع :</label>
+                        <select name="branchs" id="branchs" onchange="updateDepartments()">
+                            
+                        </select>
+                        
+                    </div>
+                </div>
+                <div class="rr col-lg-12 col-md-6 col-sm-6 mb-3 mt-3">
+                    <div class="offset1">
+                        <label for="num"> القسم :</label>
+                        <select name="departments" id="departments">
+                        </select>
+                        
+                    </div>
+                </div>
+                <!-- <div class="rr col-lg-12 col-md-6 col-sm-6 mb-3 mt-3">
+                    <div class="offset1">
+                        <label for="num"> المشاريع :</label>
+                        <select name="projects" id="projects"></select>
+                    </div>
+                </div> -->
+              
+            </form>
+            <div class="button">
+              
+                <button onclick="updateemployee()">   تعديل  </button>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+<script src="/js/script.js"></script>
+<script src="/js/employee/assignemployee.js"></script>
+
+
+</html>

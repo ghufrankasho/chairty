@@ -1,5 +1,5 @@
 
-var project_id=0;
+ 
  
 document.addEventListener('DOMContentLoaded', () => {
   const nameInput = document.getElementById('nameInput');
@@ -88,7 +88,7 @@ let originalProject = {};
 function displayProject() {
     
    
-console.log("displayProject ");
+ 
     const xhr = new XMLHttpRequest();
     xhr.open('GET', 'http://127.0.0.1:8000/api/project/type_department', true);
   
@@ -97,7 +97,7 @@ console.log("displayProject ");
             if (xhr.status === 200) {
                
                 try {
-                    console.log("displayProject 1 ");
+                   
                     const response = JSON.parse(xhr.responseText);
                     
                     const select1 = document.getElementById('departments');
@@ -176,14 +176,14 @@ function addProject() {
       formData.append('image', imageInput.files[0]);
   }
 
-  formData.append('id', project_id); // Always include the project ID
+  
 console.log(...formData);
   const xhr = new XMLHttpRequest();
   xhr.open('POST', 'http://127.0.0.1:8000/api/project/add/', true);
 
   xhr.onreadystatechange = function () {
       if (xhr.readyState === 4) {
-          if (xhr.status === 200) {
+          if (xhr.status === 201) {
               const response = JSON.parse(xhr.responseText);
               console.log('Update success:', response.message);
               showAlert(null, response.message, response.status);
@@ -273,5 +273,6 @@ function showAlert(data, message, status) {
   
       // Remove the message container from the DOM
       div.remove();
+      if(status)window.location.href =`/project/proj.html`;
     });
   }

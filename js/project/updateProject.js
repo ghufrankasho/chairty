@@ -290,5 +290,6 @@ function showAlert(data, message, status) {
   
       // Remove the message container from the DOM
       div.remove();
+      if(status)window.location.href =`/project/proj.html`;
     });
   }
