@@ -1,109 +1,78 @@
-function displayaccounts() {
+function displayemployees() {
+  console.log("  console.log(employee_request);");
     const xhr = new XMLHttpRequest();
-    xhr.open('GET', 'http://127.0.0.1:8000/api/user/get_accounts', true);
+    const num_employ = document.getElementById('num_employ');
+    xhr.open('GET', 'http://127.0.0.1:8000/api/employee/request', true);
     xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4) {
-            if (xhr.status === 200) {
-                const accounts = JSON.parse(xhr.responseText);
-                const accountContainer = document.getElementById('accounts');
+        if (xhr.readyState === 4 & xhr.status === 200) {
+         
+                const employee_request = JSON.parse(xhr.responseText);
+                const employeeContainer = document.getElementById('employee_request');
+                num_employ.textContent= employee_request[0].number;
+                 
+                // Clear existing employee_request
+                employeeContainer.innerHTML = '';
+               
+                employee_request.forEach(function(employee) {
                 
-                // Clear existing accounts
-                accountContainer.innerHTML = '';
-                
-                accounts.forEach(function(account) {
-                
-                    const accounttr = document.createElement('tr');
+                    const employeetr = document.createElement('tr');
                     
-                    accounttr.innerHTML = `
+                    employeetr.innerHTML = `
                     <td>
                     
-                    <p>${account.email}</p>
+                    <p>${employee.email}</p>
                 </td>
-                <td>${account.date}</td>
+                <td>${employee.date}</td>
                  <td><div class="col-lg-12 col-md-6 col-sm-6  mb-3">
                     
-                    <select name="type" id="select-${account.id}">
-                        <option id="option-${account.id}" > </option>
-                        <option value="0" > مستخدم</option>
-                        <option value="2"  >جهة داعمة </option>
-                        <option value="3" >موظف </option>
-                        <option value="4" >رئيس قسم </option>
-                         
-                    </select>
-    
-                </div></td>
-                <td> <input type="checkbox"  value="0" id='box-${account.id}'></td>`;
+                </div></td> `;
                     
-                    accountContainer.appendChild(accounttr);
-                    
-                  
-                  const checkbox=document.getElementById(`box-${account.id}`);
-                  checkbox.addEventListener('change', function () {
-                  const option=document.getElementById(`option-${account.id}`);
-                 
-                  if (this.checked ) {
-                 const selectElement = document.querySelector(`#select-${account.id}`);
-                 option.text=selectElement.options[selectElement.selectedIndex].text
-                
-                  let type = selectElement.value;
- 
-               
-                  if(window.confirm("هل تريد المتابعة بهذا التأكيد؟"))
-                   
-                  {
-                
-                    changeAccountType(type,account.id); 
-                  }
-                  } 
-                   
-                  });
-                  const searchButton = document.getElementById(`search`);    
-                  searchButton.addEventListener('click',  function(e) {
-                    e.stopImmediatePropagation();
-                    const search=document.getElementById('search_input').value;
-                    console.log("inside button "+search)
-                    searchaccount(search);
-                   
-                    
-                  });
+                employeeContainer.appendChild(employeetr);
                 });
-            } else {
-                console.error('Error fetching accounts:', xhr.statusText);
-            }
-        }
-    };
-    xhr.send();
-  }
-function searchaccount(input) {
-    console.log("inside searchaccount" +input);
+                const searchButton = document.getElementById(`search`);    
+                searchButton.addEventListener('click',  function(e) {
+                e.stopImmediatePropagation();
+                const search=document.getElementById('search_input').value;
+                
+                searchemployee(search);});
+                }
+            
+        else {
+          console.log('Error fetching employee_request:', xhr.statusText);
+          }
+        } 
+      xhr.send();
+}
+function searchemployee(input) {
+    console.log("inside searchemployee" +input);
     const data = JSON.stringify({ "search": input });  // Ensure id is an integer
 
     
     const xhr = new XMLHttpRequest();
-    xhr.open('POST', 'http://127.0.0.1:8000/api/user/search_account/', true);
+    xhr.open('POST', 'http://127.0.0.1:8000/api/user/search_employee/', true);
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.onreadystatechange = function () {
        
         if (xhr.readyState === 4) {
             if (xhr.status === 200) {
                 
-                const accounts = JSON.parse(xhr.responseText);
-                const accountContainer = document.getElementById('accounts');
-                accountContainer.innerHTML='';
-                accounts.forEach(function(account) {
-                  const accounttr = document.createElement('tr');
+                const employee_request = JSON.parse(xhr.responseText);
+                const employeeContainer = document.getElementById('employee_request');
+                employeeContainer.innerHTML='';
+                employee_request.forEach(function(employee) {
+                  const employeetr = document.createElement('tr');
                   
-                  accounttr.innerHTML = `
+                  employeetr.innerHTML = `
                   
                   <td>
                     
-                  <p>${account.email}</p>
+                  <p>${employee.email}</p>
               </td>
-              <td>${account.date}</td>
+              <td>${employee.date}</td>
                <td><div class="col-lg-12 col-md-6 col-sm-6  mb-3">
                   
-                  <select name="type" id="type-${account.id}">
-                      <option >${account.type}</option>
+                  <select name="type" id="type-${employee.id}">
+                      <option >${employee.type}</option>
                       <option value="0"> مستخدم</option>
                       <option value="2">جهة داعمة </option>
                       <option value="3">موظف </option>
@@ -112,9 +81,9 @@ function searchaccount(input) {
                   </select>
   
               </div></td>
-              <td> <input type="checkbox"  value="0" id='${account.id}'></td>`;
+              <td> <input type="checkbox"  value="0" id='${employee.id}'></td>`;
                   
-               accountContainer.appendChild(accounttr);
+               employeeContainer.appendChild(employeetr);
             
               });
                
@@ -124,21 +93,21 @@ function searchaccount(input) {
                 // show no result message
                 console.log("no result");
                
-          const accountthead = document.getElementById('thead');
-          accountthead.innerHTML = '';
-          const accountContainer = document.getElementById('accounts');
-          accountContainer.innerHTML = '';
+          const employeethead = document.getElementById('thead');
+          employeethead.innerHTML = '';
+          const employeeContainer = document.getElementById('employee_request');
+          employeeContainer.innerHTML = '';
 
-          const accounttr = document.createElement('tr');
+          const employeetr = document.createElement('tr');
 
-          accounttr.innerHTML = `
+          employeetr.innerHTML = `
                       
             <td>
              
             <td > no result found !!</td>    
             
          `;
-          accountContainer.appendChild(accounttr);
+          employeeContainer.appendChild(employeetr);
               }
             }
         }
@@ -146,7 +115,7 @@ function searchaccount(input) {
     xhr.send(data);
     
 }  
-function changeAccountType(type,id) {
+function changeemployeeType(type,id) {
     const data = JSON.stringify({ "type": type, "id":id});  // Ensure id is an integer
     console.log(data);
     const xhr = new XMLHttpRequest();
@@ -156,7 +125,7 @@ function changeAccountType(type,id) {
         if (xhr.readyState === 4) {
             if (xhr.status === 200) {
               const response = JSON.parse(xhr.responseText);
-              // displayaccounts();
+              // displayemployee_request();
             } 
             else {
               const response = JSON.parse(xhr.responseText);
@@ -168,10 +137,10 @@ function changeAccountType(type,id) {
     };
     xhr.send(data);
   }
-  function deleteaccount(id) {
+  function deleteemployee(id) {
     const data = JSON.stringify({ "id": id });  // Ensure id is an integer
     const xhr = new XMLHttpRequest();
-    xhr.open('DELETE', 'http://127.0.0.1:8000/api/account/delete/', true);
+    xhr.open('DELETE', 'http://127.0.0.1:8000/api/employee/delete/', true);
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4) {
@@ -179,8 +148,8 @@ function changeAccountType(type,id) {
                 const response = JSON.parse(xhr.responseText);
                 console.log('Delete success:', response.message);
                 showAlert(null,response.message,response.status);
-                // Optionally, refresh the accounts list or remove the deleted account from the DOM
-                displayaccounts();
+                // Optionally, refresh the employee_request list or remove the deleted employee from the DOM
+                displayemployees();
             } else {
                 const response = JSON.parse(xhr.responseText);
                 showAlert(response.errors ,response.message,response.status);
@@ -192,7 +161,7 @@ function changeAccountType(type,id) {
   }  
 function showAlert(data, message, status) {
     // Show the success message in the "success-message" div
-    const Message = document.getElementById('account');
+    const Message = document.getElementById('employee');
     const div = document.createElement('div');
     console.log(data)
     if (status) {
@@ -260,5 +229,5 @@ function showAlert(data, message, status) {
       div.remove();
     });
   }
-  window.addEventListener('load', displayaccounts);
+window.addEventListener('load', displayemployees);
   
