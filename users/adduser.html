@@ -23,7 +23,7 @@
                     <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="صورة المستخدم" id="userImage">
                     <i class="change-user-image" title="تغيير الصورة"></i>
                 </div>
-                <i class='bx bxs-image-alt'> <input type="file" id="userImageInput" class="account-settings-fileinput">
+                <i class='bx bxs-image-alt'> <input type="file" id="userImageInput" accept=".jpg,.png,.jpeg,.gif,.svg,.webp" class="account-settings-fileinput">
                 </i>
 
                 <div class="input-group" dir="rtl"> <label for="name" dir="rtl">  الاسم :</label>
@@ -51,9 +51,16 @@
                 <div class="rr col-lg-12 col-md-6 col-sm-6 mb-3 mt-3">
                     <div class="offset" dir="rtl">
                         <label for="type">نوع العمل</label>
-                        <select name="type" id="work_types"></select>
+                        <select name="type" id="work_types" onchange="displaycv()"></select>
                     </div>
                     <br>
+                </div>
+                <div class="input-group" style = "display:none" id="cv"  dir="rtl"> <label for="job">CV :</label>
+                 
+                    <i class='bx bxs-image-alt'> <input type="file" id="cvInput" accept=".pdf,.txt" class="account-settings-fileinput">
+                    </i>
+                        
+              
                 </div>
                 <div class="button">
               

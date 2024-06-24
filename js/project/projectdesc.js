@@ -43,7 +43,7 @@ function viewProject(projectId) {
                             employeesClass.appendChild(employtdiv); });
                     }
                     else{
-                        document.getElementById("employeesh").style.display = "block"
+                        document.getElementById("employeesh").style.display = "block";
                     }
                     // showing volunter of the project
                     const userClass=document.getElementById('users');

@@ -43,6 +43,51 @@ function displayemployees() {
         } 
       xhr.send();
 }
+function displayVolunter() {
+  console.log("  console.log(employee_request);");
+    const xhr = new XMLHttpRequest();
+    const num_volunter = document.getElementById('num_volunter');
+    xhr.open('GET', 'http://127.0.0.1:8000/api/user/get_volunter', true);
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 & xhr.status === 200) {
+         
+                const volunter_request = JSON.parse(xhr.responseText);
+                const vlounterContainer = document.getElementById('volunter_request');
+                num_volunter.textContent= volunter_request[0].number;
+                 
+                // Clear existing employee_request
+                vlounterContainer.innerHTML = '';
+               
+                volunter_request.forEach(function(volunter) {
+                
+                    const voluntertr = document.createElement('tr');
+                    
+                    voluntertr.innerHTML = `
+                    <td>
+                    
+                    <p>${volunter.first_name}</p>
+                </td>
+                <td>${volunter.last_name}</td>
+                 <td><div class="col-lg-12 col-md-6 col-sm-6  mb-3">
+                    
+                </div></td> `;
+                    
+                vlounterContainer.appendChild(voluntertr);
+                });
+                const searchButton = document.getElementById(`search`);    
+                searchButton.addEventListener('click',  function(e) {
+                e.stopImmediatePropagation();
+                const search=document.getElementById('search_input').value;
+                
+                searchemployee(search);});
+                }
+            
+        else {
+          console.log('Error fetching employee_request:', xhr.statusText);
+          }
+        } 
+      xhr.send();
+}
 function searchemployee(input) {
     console.log("inside searchemployee" +input);
     const data = JSON.stringify({ "search": input });  // Ensure id is an integer
@@ -229,5 +274,8 @@ function showAlert(data, message, status) {
       div.remove();
     });
   }
-window.addEventListener('load', displayemployees);
+window.addEventListener('load', function(){
+  displayVolunter();
+  displayemployees();
+});
   

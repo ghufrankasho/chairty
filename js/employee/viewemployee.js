@@ -104,6 +104,9 @@ function displayEmployee(){
                             });
                           
                         });}
+                        else{
+                            document.getElementById("employeesh").style.display = "block"
+                       }
                     }
                     else{
                          document.getElementById("employeesh").style.display = "block"
@@ -122,10 +125,7 @@ function displayEmployee(){
     xhr.send(JSON.stringify(data));
 }
 
-function assign(){
-    
-    
-  }
+ 
 
   // Call the displayProject function when the page loads
   window.addEventListener('load', () => {

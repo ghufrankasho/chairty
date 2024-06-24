@@ -1,7 +1,5 @@
 var account_id=0;
  
-
-
 function displayuser() {
     
    
@@ -18,7 +16,10 @@ function displayuser() {
                     const response = JSON.parse(xhr.responseText);
                     
                     const select1 = document.getElementById('work_types');
-                     
+                    var c1 = document.createElement("option");
+                    c1.text = "select work";
+                    c1.id =0;
+                    select1.options.add(c1);
                       response.forEach(function(work) {
                       
                           var c1 = document.createElement("option");
@@ -43,7 +44,6 @@ function displayuser() {
     
      
 }
-
 function adduser(event) {
   event.preventDefault();
   const formData = new FormData();  
@@ -55,7 +55,8 @@ function adduser(event) {
   const typeElement = document.querySelector('#work_types');
   const type = typeElement.options[typeElement.selectedIndex].id;
 
-  if(type !=='')formData.append('type', type);
+
+  if(type !=='')formData.append('work_id', type);
   if(first_nameInput !=='')formData.append('first_name', first_nameInput);
   if(last_nameInput !=='')formData.append('last_name', last_nameInput);
   if(address !=='')formData.append('address', address);
@@ -66,6 +67,11 @@ function adduser(event) {
   const imageInput = document.getElementById('userImageInput');
   if ( imageInput !=null && imageInput.files.length > 0) {
       formData.append('image', imageInput.files[0]);
+  }
+   
+  const cvInput = document.getElementById('cvInput');
+  if ( cvInput !=null && cvInput.files.length > 0) {
+      formData.append('cv', cvInput.files[0]);
   }
 
 console.log(...formData);
@@ -89,8 +95,6 @@ console.log(...formData);
 
   xhr.send(formData);
 }
-
- 
 function showAlert(data, message, status) {
   // Show the success message in the "success-message" div
   const Message = document.getElementById('form');
@@ -162,22 +166,21 @@ function showAlert(data, message, status) {
     if(status)window.location.href =`/users/Users.html`;
   });
 }
-
 document.addEventListener('DOMContentLoaded', () => {
   
   const urlParams = new URLSearchParams(window.location.search);
   const accountId = urlParams.get('accountId');
   account_id=accountId;
   console.log("accountId from URL:", accountId);
-  displayuser();
+   
     // Call the function with the retrieved project ID
     
-    // if (accountId) {
-    //     displayuser();
-    // } else {
-    //   displayuser();
-    //     console.error("No accountId found in URL parameters.");
-    // }
+    if (accountId) {
+        displayuser();
+    } else {
+      // displayuser();
+        console.error("No accountId found in URL parameters.");
+    }
   const firstnameInput = document.getElementById('first_name');
   const lastnameInput = document.getElementById('last_name');
  
@@ -190,7 +193,6 @@ document.addEventListener('DOMContentLoaded', () => {
   phone.addEventListener('input', validatePhone);
  
 });
-
 function validateFirstName() {
   const nameInput =document.getElementById('first_name');
   const nameError = document.getElementById('firstname-length-error');
@@ -259,4 +261,13 @@ function validatePhone() {
       phone.classList.remove('error');
       phoneError.textContent = '';
     }}
+}
+function displaycv(){
+  const typeElement = document.querySelector('#work_types');
+  const type = typeElement.options[typeElement.selectedIndex].text;
+ console.log(type);
+ if(type=='متطوع'){
+  document.getElementById("cv").style.display = "block";
+ }
+
 }
