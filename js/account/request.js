@@ -18,14 +18,14 @@ function displayemployees() {
                     const employeetr = document.createElement('tr');
                     
                     employeetr.innerHTML = `
-                    <td>
-                    
-                    <p>${employee.email}</p>
-                </td>
-                <td>${employee.date}</td>
-                 <td><div class="col-lg-12 col-md-6 col-sm-6  mb-3">
-                    
-                </div></td> `;
+                     <td>
+                    <img src="${employee.image}">
+                        <p> ${employee.name} </p>
+                    </td>
+                       
+                    <td> <a  ><i class='bx bx-message-square-x' id="delete-${employee.id}"></i></a>
+                    <a ><i class='bx bx-edit-alt' id="update-${employee.id}">عرض</i></a></td>
+                 ` ;
                     
                 employeeContainer.appendChild(employeetr);
                 });
@@ -63,14 +63,14 @@ function displayVolunter() {
                     const voluntertr = document.createElement('tr');
                     
                     voluntertr.innerHTML = `
-                    <td>
-                    
-                    <p>${volunter.first_name}</p>
-                </td>
-                <td>${volunter.last_name}</td>
-                 <td><div class="col-lg-12 col-md-6 col-sm-6  mb-3">
-                    
-                </div></td> `;
+                     <td>
+                    <img src="${volunter.image}">
+                        <p> ${volunter.first_name} </p>
+                    </td>
+                       
+                    <td> <a  ><i class='bx bx-message-square-x' id="delete-${volunter.id}"></i></a>
+                    <a ><i class='bx bx-edit-alt' id="update-${volunter.id}">عرض</i></a></td>
+                 `;
                     
                 vlounterContainer.appendChild(voluntertr);
                 });
