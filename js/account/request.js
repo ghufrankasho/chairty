@@ -28,6 +28,24 @@ function displayemployees() {
                  ` ;
                     
                 employeeContainer.appendChild(employeetr);
+                const deleteButton = document.getElementById(`delete-${employee.id}`);
+                deleteButton.addEventListener('click', function () {
+                  if (window.confirm("هل  أنت متأكد ؟")) { 
+                    deleteemployee(employee.id); }
+                });
+              
+               
+                 // Create a update button and add an event listener
+                 const updateButton = document.getElementById(`update-${employee.id}`);
+                 
+       
+                 updateButton.addEventListener('click',  () => {
+       
+                   const employeeId = employee.id;
+                   
+                   window.location.href =`employmentapplication.html?employeeId=${employeeId}`;
+       
+                 });
                 });
                 const searchButton = document.getElementById(`search`);    
                 searchButton.addEventListener('click',  function(e) {
@@ -73,6 +91,24 @@ function displayVolunter() {
                  `;
                     
                 vlounterContainer.appendChild(voluntertr);
+                const deleteButton = document.getElementById(`delete-${volunter.id}`);
+                deleteButton.addEventListener('click', function () {
+                  if (window.confirm("هل  أنت متأكد ؟")) { 
+                    deleteuser(volunter.id); }
+                });
+              
+               
+                 // Create a update button and add an event listener
+                 const updateButton = document.getElementById(`update-${volunter.id}`);
+                 
+       
+                 updateButton.addEventListener('click',  () => {
+       
+                   const volunterId = volunter.id;
+                
+                   window.location.href =`employmentapplication.html?volunterId=${volunterId}`;
+       
+                 });
                 });
                 const searchButton = document.getElementById(`search`);    
                 searchButton.addEventListener('click',  function(e) {
@@ -160,53 +196,54 @@ function searchemployee(input) {
     xhr.send(data);
     
 }  
-function changeemployeeType(type,id) {
-    const data = JSON.stringify({ "type": type, "id":id});  // Ensure id is an integer
-    console.log(data);
-    const xhr = new XMLHttpRequest();
-    xhr.open('POST', 'http://127.0.0.1:8000/api/user/type', true);
-    xhr.setRequestHeader('Content-Type', 'application/json');
-    xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4) {
-            if (xhr.status === 200) {
-              const response = JSON.parse(xhr.responseText);
-              // displayemployee_request();
-            } 
-            else {
-              const response = JSON.parse(xhr.responseText);
-              
-              // showAlert(response.errors ,response.message,response.status);
-               
-            }
-        }
-    };
-    xhr.send(data);
-  }
-  function deleteemployee(id) {
+ 
+function deleteemployee(id) {
     const data = JSON.stringify({ "id": id });  // Ensure id is an integer
     const xhr = new XMLHttpRequest();
-    xhr.open('DELETE', 'http://127.0.0.1:8000/api/employee/delete/', true);
+    xhr.open('DELETE', 'http://127.0.0.1:8000/api/employee/delete', true);
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4) {
             if (xhr.status === 200) {
                 const response = JSON.parse(xhr.responseText);
                 console.log('Delete success:', response.message);
-                showAlert(null,response.message,response.status);
+                 
                 // Optionally, refresh the employee_request list or remove the deleted employee from the DOM
                 displayemployees();
             } else {
                 const response = JSON.parse(xhr.responseText);
-                showAlert(response.errors ,response.message,response.status);
-                console.error('Delete error:', response.errors || response.message);
+                showAlert(response.errors ,response.message,response.status,'employee_request');
+                 
             }
         }
     };
     xhr.send(data);
   }  
-function showAlert(data, message, status) {
+  function deleteuser(id) {
+    const data = JSON.stringify({ "id": id });  // Ensure id is an integer
+    const xhr = new XMLHttpRequest();
+    xhr.open('DELETE', 'http://127.0.0.1:8000/api/user/delete', true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+                const response = JSON.parse(xhr.responseText);
+                console.log('Delete success:', response.message);
+                 
+                // Optionally, refresh the employee_request list or remove the deleted employee from the DOM
+                displayVolunter();
+            } else {
+                const response = JSON.parse(xhr.responseText);
+                showAlert(response.errors ,response.message,response.status,'volunter_request');
+                 
+            }
+        }
+    };
+    xhr.send(data);
+  }  
+function showAlert(data, message, status,form) {
     // Show the success message in the "success-message" div
-    const Message = document.getElementById('employee');
+    const Message = document.getElementById(form);
     const div = document.createElement('div');
     console.log(data)
     if (status) {

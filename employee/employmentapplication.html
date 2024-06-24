@@ -35,19 +35,19 @@
                         <div class="col-md-4">
                             <div class="card-body">
                                 <p class="card-title fw-bold ">اسم الموظف</p>
-                                <p class="card-text" id="fnameemp"></p>
-                                <p class="card-title fw-bold">الكنية </p>
-                                <p class="card-text" id="lnameemp"></p>
+                                <p class="card-text" id="name"></p>
+                              
                                 <p class="card-title fw-bold"> العنوان  </p>
-                                <p class="card-text" id="addressemp"></p>
+                                <p class="card-text" id="address"></p>
                                 <p class="card-title fw-bold"> رقم الهاتف  </p>
-                                <p class="card-text" id="phoneemp"></p>
-
+                                <p class="card-text" id="phone"></p>
+                                <p class="card-title fw-bold">  البريد الالكتروني  </p>
+                                <p class="card-text" id="email"></p>
 
                                 <p class="card-title fw-bold"> السيرة الذاتية 
-                                    <a href="/employee/showbiography.html" style="color: black;">
+                                    <a href="" style="color: black;" id="cv">
                                         <i class='bx bxs-user-detail'></i></a>
-                                <p class="card-text" id="cvemp"></p>
+                               
                                 
 
                             </div>
@@ -60,9 +60,9 @@
                         </div>
                         <div class="col-md-7 ">
                             <div class="card-body">
-                                <input type="radio" value="html" name="lang">
+                                <input type="radio" value="html" onchange="isAccepted()" name="lang">
                                 <label for="">مقبول</label>
-                                <input type="radio" value="html" name="lang">
+                                <input type="radio" value="html" onchange="isRejected()" name="lang">
                                 <label for="">مرفوض</label>
                 
                             </div>
@@ -74,7 +74,7 @@
                         <div class="col-md-7 ">
                             <div class="card-body">
                                 <span class="rr col-lg-12 col-md-6 col-sm-6  mb-3">
-                                    <a href="employees.html" class=" m-2   mt-2 mb-2 fw-bolder p-2 " type="button" value="update" style="text-decoration: none;
+                                    <a href="#" class=" m-2   mt-2 mb-2 fw-bolder p-2 " onclick="save()" type="button" value="update" style="text-decoration: none;
                                     border-radius: 10px;
                                     box-shadow: 0 2px 2px 2px rgba(130, 209, 134, 0.904);
                                     color: black;"> حفظ </a>
@@ -83,7 +83,7 @@
                             </div>
                     </div>
                 </div>
-           
+<script src="/js/employee/empApplication.js"></script>          
 
 </body>
 
