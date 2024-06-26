@@ -42,8 +42,8 @@ function submitSignUpForm(event) {
             window.location.href =`/employee/addemployee.html?accountId=${account_id}`;
             }
             if (type=="3"){
-              console.log("inside if",type,account_id);
-              window.location.href =`/support/addSupport.html?accountId=${account_id}`;
+             
+              window.location.href =`/support/addSupport.html`;
               }
               
         } 
