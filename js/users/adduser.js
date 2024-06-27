@@ -245,8 +245,8 @@ function validatePhone() {
   const phone = document.getElementById('phone');
     const phoneError = document.getElementById('phone-length-error');
     const value = phone.value.trim();
-    const pattern =/^\+963\d{3}\d{3}\d{3}$/;
-
+    // const pattern1 =/^\0963\d{3}\d{3}\d{3}$/;
+    const pattern =/^09\d{2}\d{3}\d{3}$/;
     // Validate phone number and update message
    
     if (!value) {
@@ -256,7 +256,7 @@ function validatePhone() {
    { const isValid = pattern.test(value);
      if (!isValid) {
       phone.classList.add('error');
-      phoneError.textContent = 'رقم المستخدم يجب أن يبدأ ب 963+ وأن يكون 9 خانات    ';
+      phoneError.textContent = 'رقم المستخدم يجب أن يبدأ ب 09    ';
     } else {
       phone.classList.remove('error');
       phoneError.textContent = '';
