@@ -22,21 +22,25 @@ function displayProjects() {
                     projectli.innerHTML = `
                         <p> ${project.name}</p>
 					
-							<a>   <i class='bx bxs-heart' id='support-${project.id}'></i>  </a>
-							<a><i class='bx bxs-group'  id='volunter-${project.id}'></i> </a>
-						</li>
-                        `;
+                        <a>   <i class='bx bxs-heart' id='support-${project.id}'></i>  </a>
+                        <a><i class='fas fa-user-alt'  id='volunter-${project.id}'></i> </a>
+                        </li>
+                      `;
                  
                     projectContainer.appendChild(projectli);
                     if(project.doners.length ===0){
                         document.getElementById(`support-${project.id}`).className=`fas fa-heart-broken`;
                         
                  }
-                // Create a update button and add an event listener
-                const supportButton = document.getElementById(`support-${project.id}`);
+                 if(project.user.length ===0){
+                  document.getElementById(`volunter-${project.id}`).className=`fas fa-user-alt-slash`;
+                  
+           }
+              // Create a update button and add an event listener
+              const supportButton = document.getElementById(`support-${project.id}`);
                 
         
-                supportButton.addEventListener('click',  () => {
+              supportButton.addEventListener('click',  () => {
                 if(supportButton.className !=`fas fa-heart-broken`)
               {  localStorage.setItem("doners", JSON.stringify(project.doners));
                 let doners = localStorage.getItem("doners");
@@ -44,8 +48,24 @@ function displayProjects() {
                    
                 window.location.href =`/support/support.html`;}
         
-           });
-                });
+              });
+               // Create a update button and add an event listener
+              const volunterButton = document.getElementById(`volunter-${project.id}`);
+                
+              volunterButton.addEventListener('click',  () => {
+                if(volunterButton.className !=`fas fa-user-alt-slash`)
+               { 
+                localStorage.setItem("users", JSON.stringify(project.user));
+                localStorage.setItem("employees", JSON.stringify(project.employees));
+                  
+              
+                    
+                 window.location.href =`/home/usersProject.html`;
+                }
+         
+               });
+                
+          });
             } else {
                 console.error('Error fetching projects:', xhr.statusText);
             }
@@ -53,8 +73,66 @@ function displayProjects() {
     };
     xhr.send();
   }
-  window.addEventListener('load', displayProjects); 
- 
+
+  function displayrequest() {
+    const xhr = new XMLHttpRequest();
+
+    xhr.open('GET', 'http://127.0.0.1:8000/api/user/request', true);
+    console.log("inside displayrequest");
+    xhr.onreadystatechange = function () {
+      console.log("inside displayrequest12");
+        if (xhr.readyState === 4) {
+          console.log("inside displayrequest");
+            if (xhr.status === 200) {
+             
+                const requests = JSON.parse(xhr.responseText);
+              
+                const requestContainer = document.getElementById('requests');
+                
+                // Clear existing requests
+                requestContainer.innerHTML = '';
+                
+                requests.forEach(function(request) {
+                    const requesttr = document.createElement('tr');
+                   requesttr.className='tra';
+                    requesttr.innerHTML = `
+                        <td>
+                        <a href="/prof.html"> <img src="${request.image}" ></a>
+                        <p id='name-${request.id}'></p>
+                        </td>
+                        <td>${request.date}</td>
+                        <td><span class="status completed"  id="avalible-${request.id}>موظف</span></td>
+                        </tr>
+                      `;
+                      
+                    requestContainer.appendChild(requesttr);
+                    const span = document.getElementById(`avalible-${request.id}`);
+                    if(request.is_user)
+                      {
+                        document.getElementById(`name-${request.id}`).textContent=request.first_name+" "+request.last_name;
+                        
+                        span.className = 'completed';
+                      }
+                      else{
+                        document.getElementById(`name-${request.id}`).textContent=request.name;
+                       
+                        span.className = 'not-completed';
+                      }
+                  
+                });
+                
+        
+            }
+        }
+    xhr.send();
+  }
+}
+  window.addEventListener('load', () => {
+    displayProjects();
+    
+    displayrequest();
+  
+  });
   function showAlert(data, message, status) {
     // Show the success message in the "success-message" div
     const Message = document.getElementById('project');

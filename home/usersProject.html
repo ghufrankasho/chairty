@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- HEADER -->
+<div id="header-placeholder"></div>
+<script>
+	fetch('/header.html')
+		.then(response => response.text())
+		.then(text => document.getElementById('header-placeholder').innerHTML = text);
+</script>
+<!-- HEADER -->
+<body>
+
+
+	<!-- SIDEBAR -->
+	<section id="sidebar">
+		<!-- sidebar -->
+		<div id="sidebar-placeholder"></div>
+		<script>
+			fetch('/sidebar.html')
+				.then(response => response.text())
+				.then(text => document.getElementById('sidebar-placeholder').innerHTML = text);
+		</script>
+		<!-- sidebar -->
+	</section>
+	<!-- SIDEBAR -->
+
+
+
+	<!-- CONTENT -->
+	<section id="content">
+		 
+		<!-- NAV BAR -->
+			<div id="nav-placeholder"></div>
+			<script>
+				fetch('/nav.html')
+					.then(response => response.text())
+					.then(text => document.getElementById('nav-placeholder').innerHTML = text);
+			</script>
+       <!-- NAV BAR -->
+	 
+
+		<!-- MAIN -->
+		<main>
+			 
+
+			 
+			<ul class="box-info">
+				<li>
+					<i class='bx bxs-group' ></i>
+					<span class="text">
+						<h3 id="num_employees"></h3>
+						<p> الموظفون  
+                      
+						</p>
+					</span>
+				</li> 
+				<li>
+					<i class='bx bxs-group' ></i>
+					<span class="text">
+						<h3 id="num_users"></h3>
+						<p> المستخدمون   
+
+						</p>
+					</span>
+				</li>
+				
+				</li>
+			</ul>
+			<div class="table-data">
+				<div class="order">
+					<div class="head">
+						<h3 > الموظفون</h3>
+				 
+					 
+					</div>
+					<table>
+					 
+						<tbody id="employees">
+						 
+						 
+						</tbody>
+					</table>
+				</div>
+
+				 
+			</div>
+			<div class="table-data">
+				<div class="order">
+					<div class="head">
+						<h3> المستخدمون</h3>
+						 
+					 
+					</div>
+					<table>
+						 
+						<tbody id="users">
+						 
+						 
+						</tbody>
+					</table>
+				</div>
+
+				 
+			</div>
+		</main>
+		<!-- MAIN -->
+	</section>
+	<!-- CONTENT -->
+	
+	<script src="/js/script.js"></script>
+	<script  >
+		function showemployees(employees) {
+
+			const num_employ = document.getElementById('num_employees');
+		  
+		  
+		  
+			const employeeContainer = document.getElementById('employees');
+			num_employ.textContent = employees.length;
+		  
+			// Clear existing employee_request
+			employeeContainer.innerHTML = '';
+		  
+			employees.forEach(function (employee) {
+		  
+			  const employeetr = document.createElement('tr');
+		  
+			  employeetr.innerHTML = `
+							   <td>
+							  <img src="${employee.image}">
+								  <p> ${employee.name} </p>
+							  </td>
+								 
+							  <td> <a  ><i class='bx bx-message-square-x' id="delete-${employee.id}"></i></a>
+							  <a ><i class='bx bx-edit-alt' id="update-${employee.id}">عرض</i></a></td>
+						   ` ;
+		  
+			  employeeContainer.appendChild(employeetr);
+			  const deleteButton = document.getElementById(`delete-${employee.id}`);
+			  deleteButton.addEventListener('click', function () {
+				if (window.confirm("هل  أنت متأكد ؟")) {
+				  deleteemployee(employee.id);
+				}
+			  });
+		  
+		  
+			  // Create a update button and add an event listener
+			  const updateButton = document.getElementById(`update-${employee.id}`);
+		  
+		  
+			  updateButton.addEventListener('click', () => {
+		  
+				const employeeId = employee.id;
+		  
+				window.location.href = `/employee/viewemployee.html?employeeId=${employeeId}`;
+		  
+			  });
+			});
+		  
+		  
+		  
+		  
+		  }
+		function showVolunter(users) {
+		  
+		  
+			const num_volunter = document.getElementById('num_users');
+		  
+			const vlounterContainer = document.getElementById('users');
+			num_volunter.textContent = users.length;
+			console.log(users.length);
+			// Clear existing employee_request
+			vlounterContainer.innerHTML = '';
+		  
+			users.forEach(function (volunter) {
+		  
+			  const voluntertr = document.createElement('tr');
+		  
+			  voluntertr.innerHTML = `
+							   <td>
+							  <img src="${volunter.image}">
+								  <p> ${volunter.first_name} </p>
+							  </td>
+								 
+							  <td> <a  ><i class='bx bx-message-square-x' id="delete-${volunter.id}"></i></a>
+								<a ><i class='bx bx-edit-alt' id="view-${volunter.id}">عرض</i></a></td>
+							   
+						   `;
+		  
+			  vlounterContainer.appendChild(voluntertr);
+			  const deleteButton = document.getElementById(`delete-${volunter.id}`);
+			  deleteButton.addEventListener('click', function () {
+				if (window.confirm("هل  أنت متأكد ؟")) {
+				  deleteuser(volunter.id);
+				}
+			  });
+		  
+		  
+			  // Create a update button and add an event listener
+			  const updateButton = document.getElementById(`view-${volunter.id}`);
+		  
+		  
+			  updateButton.addEventListener('click', () => {
+				localStorage.setItem("user", JSON.stringify(volunter));
+				
+		  
+				window.location.href = `/home/view.html`;
+		  
+			  });
+			});
+		  
+		  
+		  
+		  }
+		let users = localStorage.getItem("users");
+		let employees = localStorage.getItem("employees");
+		if (users && employees) {
+		  employees = JSON.parse(employees);
+		  users = JSON.parse(users);
+		
+		  showemployees(employees);
+		  showVolunter(users);
+		
+		}
+	</script>
+</body>
+</html>

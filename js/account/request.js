@@ -1,23 +1,23 @@
 function displayemployees() {
   console.log("  console.log(employee_request);");
-    const xhr = new XMLHttpRequest();
-    const num_employ = document.getElementById('num_employ');
-    xhr.open('GET', 'http://127.0.0.1:8000/api/employee/request', true);
-    xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4 & xhr.status === 200) {
-         
-                const employee_request = JSON.parse(xhr.responseText);
-                const employeeContainer = document.getElementById('employee_request');
-                num_employ.textContent= employee_request[0].number;
-                 
-                // Clear existing employee_request
-                employeeContainer.innerHTML = '';
-               
-                employee_request.forEach(function(employee) {
-                
-                    const employeetr = document.createElement('tr');
-                    
-                    employeetr.innerHTML = `
+  const xhr = new XMLHttpRequest();
+  const num_employ = document.getElementById('num_employ');
+  xhr.open('GET', 'http://127.0.0.1:8000/api/employee/request', true);
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState === 4 & xhr.status === 200) {
+
+      const employee_request = JSON.parse(xhr.responseText);
+      const employeeContainer = document.getElementById('employee_request');
+      num_employ.textContent = employee_request.length;
+
+      // Clear existing employee_request
+      employeeContainer.innerHTML = '';
+
+      employee_request.forEach(function (employee) {
+
+        const employeetr = document.createElement('tr');
+
+        employeetr.innerHTML = `
                      <td>
                     <img src="${employee.image}">
                         <p> ${employee.name} </p>
@@ -26,61 +26,63 @@ function displayemployees() {
                     <td> <a  ><i class='bx bx-message-square-x' id="delete-${employee.id}"></i></a>
                     <a ><i class='bx bx-edit-alt' id="update-${employee.id}">عرض</i></a></td>
                  ` ;
-                    
-                employeeContainer.appendChild(employeetr);
-                const deleteButton = document.getElementById(`delete-${employee.id}`);
-                deleteButton.addEventListener('click', function () {
-                  if (window.confirm("هل  أنت متأكد ؟")) { 
-                    deleteemployee(employee.id); }
-                });
-              
-               
-                 // Create a update button and add an event listener
-                 const updateButton = document.getElementById(`update-${employee.id}`);
-                 
-       
-                 updateButton.addEventListener('click',  () => {
-       
-                   const employeeId = employee.id;
-                   
-                   window.location.href =`employmentapplication.html?employeeId=${employeeId}`;
-       
-                 });
-                });
-                const searchButton = document.getElementById(`search`);    
-                searchButton.addEventListener('click',  function(e) {
-                e.stopImmediatePropagation();
-                const search=document.getElementById('search_input').value;
-                
-                searchemployee(search);});
-                }
-            
-        else {
-          console.log('Error fetching employee_request:', xhr.statusText);
+
+        employeeContainer.appendChild(employeetr);
+        const deleteButton = document.getElementById(`delete-${employee.id}`);
+        deleteButton.addEventListener('click', function () {
+          if (window.confirm("هل  أنت متأكد ؟")) {
+            deleteemployee(employee.id);
           }
-        } 
-      xhr.send();
+        });
+
+
+        // Create a update button and add an event listener
+        const updateButton = document.getElementById(`update-${employee.id}`);
+
+
+        updateButton.addEventListener('click', () => {
+
+          const employeeId = employee.id;
+
+          window.location.href = `employmentapplication.html?employeeId=${employeeId}`;
+
+        });
+      });
+      const searchButton = document.getElementById(`search`);
+      searchButton.addEventListener('click', function (e) {
+        e.stopImmediatePropagation();
+        const search = document.getElementById('search_input').value;
+
+        searchemployee(search);
+      });
+    }
+
+    else {
+      console.log('Error fetching employee_request:', xhr.statusText);
+    }
+  }
+  xhr.send();
 }
 function displayVolunter() {
   console.log("  console.log(employee_request);");
-    const xhr = new XMLHttpRequest();
-    const num_volunter = document.getElementById('num_volunter');
-    xhr.open('GET', 'http://127.0.0.1:8000/api/user/get_volunter', true);
-    xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4 & xhr.status === 200) {
-         
-                const volunter_request = JSON.parse(xhr.responseText);
-                const vlounterContainer = document.getElementById('volunter_request');
-                num_volunter.textContent= volunter_request[0].number;
-                 
-                // Clear existing employee_request
-                vlounterContainer.innerHTML = '';
-               
-                volunter_request.forEach(function(volunter) {
-                
-                    const voluntertr = document.createElement('tr');
-                    
-                    voluntertr.innerHTML = `
+  const xhr = new XMLHttpRequest();
+  const num_volunter = document.getElementById('num_volunter');
+  xhr.open('GET', 'http://127.0.0.1:8000/api/user/get_volunter', true);
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState === 4 & xhr.status === 200) {
+
+      const volunter_request = JSON.parse(xhr.responseText);
+      const vlounterContainer = document.getElementById('volunter_request');
+      num_volunter.textContent = volunter_request.number;
+
+      // Clear existing employee_request
+      vlounterContainer.innerHTML = '';
+
+      volunter_request.forEach(function (volunter) {
+
+        const voluntertr = document.createElement('tr');
+
+        voluntertr.innerHTML = `
                      <td>
                     <img src="${volunter.image}">
                         <p> ${volunter.first_name} </p>
@@ -89,61 +91,63 @@ function displayVolunter() {
                     <td> <a  ><i class='bx bx-message-square-x' id="delete-${volunter.id}"></i></a>
                     <a ><i class='bx bx-edit-alt' id="update-${volunter.id}">عرض</i></a></td>
                  `;
-                    
-                vlounterContainer.appendChild(voluntertr);
-                const deleteButton = document.getElementById(`delete-${volunter.id}`);
-                deleteButton.addEventListener('click', function () {
-                  if (window.confirm("هل  أنت متأكد ؟")) { 
-                    deleteuser(volunter.id); }
-                });
-              
-               
-                 // Create a update button and add an event listener
-                 const updateButton = document.getElementById(`update-${volunter.id}`);
-                 
-       
-                 updateButton.addEventListener('click',  () => {
-       
-                   const volunterId = volunter.id;
-                
-                   window.location.href =`employmentapplication.html?volunterId=${volunterId}`;
-       
-                 });
-                });
-                const searchButton = document.getElementById(`search`);    
-                searchButton.addEventListener('click',  function(e) {
-                e.stopImmediatePropagation();
-                const search=document.getElementById('search_input').value;
-                
-                searchemployee(search);});
-                }
-            
-        else {
-          console.log('Error fetching employee_request:', xhr.statusText);
+
+        vlounterContainer.appendChild(voluntertr);
+        const deleteButton = document.getElementById(`delete-${volunter.id}`);
+        deleteButton.addEventListener('click', function () {
+          if (window.confirm("هل  أنت متأكد ؟")) {
+            deleteuser(volunter.id);
           }
-        } 
-      xhr.send();
+        });
+
+
+        // Create a update button and add an event listener
+        const updateButton = document.getElementById(`update-${volunter.id}`);
+
+
+        updateButton.addEventListener('click', () => {
+
+          const volunterId = volunter.id;
+
+          window.location.href = `employmentapplication.html?volunterId=${volunterId}`;
+
+        });
+      });
+      const searchButton = document.getElementById(`search`);
+      searchButton.addEventListener('click', function (e) {
+        e.stopImmediatePropagation();
+        const search = document.getElementById('search_input').value;
+
+        searchemployee(search);
+      });
+    }
+
+    else {
+      console.log('Error fetching employee_request:', xhr.statusText);
+    }
+  }
+  xhr.send();
 }
 function searchemployee(input) {
-    console.log("inside searchemployee" +input);
-    const data = JSON.stringify({ "search": input });  // Ensure id is an integer
+  console.log("inside searchemployee" + input);
+  const data = JSON.stringify({ "search": input });  // Ensure id is an integer
 
-    
-    const xhr = new XMLHttpRequest();
-    xhr.open('POST', 'http://127.0.0.1:8000/api/user/search_employee/', true);
-    xhr.setRequestHeader('Content-Type', 'application/json');
-    xhr.onreadystatechange = function () {
-       
-        if (xhr.readyState === 4) {
-            if (xhr.status === 200) {
-                
-                const employee_request = JSON.parse(xhr.responseText);
-                const employeeContainer = document.getElementById('employee_request');
-                employeeContainer.innerHTML='';
-                employee_request.forEach(function(employee) {
-                  const employeetr = document.createElement('tr');
-                  
-                  employeetr.innerHTML = `
+
+  const xhr = new XMLHttpRequest();
+  xhr.open('POST', 'http://127.0.0.1:8000/api/user/search_employee/', true);
+  xhr.setRequestHeader('Content-Type', 'application/json');
+  xhr.onreadystatechange = function () {
+
+    if (xhr.readyState === 4) {
+      if (xhr.status === 200) {
+
+        const employee_request = JSON.parse(xhr.responseText);
+        const employeeContainer = document.getElementById('employee_request');
+        employeeContainer.innerHTML = '';
+        employee_request.forEach(function (employee) {
+          const employeetr = document.createElement('tr');
+
+          employeetr.innerHTML = `
                   
                   <td>
                     
@@ -163,17 +167,17 @@ function searchemployee(input) {
   
               </div></td>
               <td> <input type="checkbox"  value="0" id='${employee.id}'></td>`;
-                  
-               employeeContainer.appendChild(employeetr);
-            
-              });
-               
-            } 
-            else {
-              if (xhr.status === 204) {
-                // show no result message
-                console.log("no result");
-               
+
+          employeeContainer.appendChild(employeetr);
+
+        });
+
+      }
+      else {
+        if (xhr.status === 204) {
+          // show no result message
+          console.log("no result");
+
           const employeethead = document.getElementById('thead');
           employeethead.innerHTML = '';
           const employeeContainer = document.getElementById('employee_request');
@@ -189,66 +193,66 @@ function searchemployee(input) {
             
          `;
           employeeContainer.appendChild(employeetr);
-              }
-            }
         }
-    };
-    xhr.send(data);
-    
-}  
- 
+      }
+    }
+  };
+  xhr.send(data);
+
+}
+
 function deleteemployee(id) {
-    const data = JSON.stringify({ "id": id });  // Ensure id is an integer
-    const xhr = new XMLHttpRequest();
-    xhr.open('DELETE', 'http://127.0.0.1:8000/api/employee/delete', true);
-    xhr.setRequestHeader('Content-Type', 'application/json');
-    xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4) {
-            if (xhr.status === 200) {
-                const response = JSON.parse(xhr.responseText);
-                console.log('Delete success:', response.message);
-                 
-                // Optionally, refresh the employee_request list or remove the deleted employee from the DOM
-                displayemployees();
-            } else {
-                const response = JSON.parse(xhr.responseText);
-                showAlert(response.errors ,response.message,response.status,'employee_request');
-                 
-            }
-        }
-    };
-    xhr.send(data);
-  }  
-  function deleteuser(id) {
-    const data = JSON.stringify({ "id": id });  // Ensure id is an integer
-    const xhr = new XMLHttpRequest();
-    xhr.open('DELETE', 'http://127.0.0.1:8000/api/user/delete', true);
-    xhr.setRequestHeader('Content-Type', 'application/json');
-    xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4) {
-            if (xhr.status === 200) {
-                const response = JSON.parse(xhr.responseText);
-                console.log('Delete success:', response.message);
-                 
-                // Optionally, refresh the employee_request list or remove the deleted employee from the DOM
-                displayVolunter();
-            } else {
-                const response = JSON.parse(xhr.responseText);
-                showAlert(response.errors ,response.message,response.status,'volunter_request');
-                 
-            }
-        }
-    };
-    xhr.send(data);
-  }  
-function showAlert(data, message, status,form) {
-    // Show the success message in the "success-message" div
-    const Message = document.getElementById(form);
-    const div = document.createElement('div');
-    console.log(data)
-    if (status) {
-      div.className = "success alert d-none mt-3 mx-auto"
-      div.innerHTML = ` 
+  const data = JSON.stringify({ "id": id });  // Ensure id is an integer
+  const xhr = new XMLHttpRequest();
+  xhr.open('DELETE', 'http://127.0.0.1:8000/api/employee/delete', true);
+  xhr.setRequestHeader('Content-Type', 'application/json');
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState === 4) {
+      if (xhr.status === 200) {
+        const response = JSON.parse(xhr.responseText);
+        console.log('Delete success:', response.message);
+
+        // Optionally, refresh the employee_request list or remove the deleted employee from the DOM
+        displayemployees();
+      } else {
+        const response = JSON.parse(xhr.responseText);
+        showAlert(response.errors, response.message, response.status, 'employee_request');
+
+      }
+    }
+  };
+  xhr.send(data);
+}
+function deleteuser(id) {
+  const data = JSON.stringify({ "id": id });  // Ensure id is an integer
+  const xhr = new XMLHttpRequest();
+  xhr.open('DELETE', 'http://127.0.0.1:8000/api/user/delete', true);
+  xhr.setRequestHeader('Content-Type', 'application/json');
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState === 4) {
+      if (xhr.status === 200) {
+        const response = JSON.parse(xhr.responseText);
+        console.log('Delete success:', response.message);
+
+        // Optionally, refresh the employee_request list or remove the deleted employee from the DOM
+        displayVolunter();
+      } else {
+        const response = JSON.parse(xhr.responseText);
+        showAlert(response.errors, response.message, response.status, 'volunter_request');
+
+      }
+    }
+  };
+  xhr.send(data);
+}
+function showAlert(data, message, status, form) {
+  // Show the success message in the "success-message" div
+  const Message = document.getElementById(form);
+  const div = document.createElement('div');
+  console.log(data)
+  if (status) {
+    div.className = "success alert d-none mt-3 mx-auto"
+    div.innerHTML = ` 
     <div class="content" id ="AlertMessage">
       <div class="icon">
         <svg width="50" height="50" id="Layer_1" style="enable-background:new 0 0 128 128;" version="1.1" viewBox="0 0 128 128" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g><circle fill="#fff" cx="64" cy="64" r="64"/></g><g><path fill="#3EBD61" d="M54.3,97.2L24.8,67.7c-0.4-0.4-0.4-1,0-1.4l8.5-8.5c0.4-0.4,1-0.4,1.4,0L55,78.1l38.2-38.2   c0.4-0.4,1-0.4,1.4,0l8.5,8.5c0.4,0.4,0.4,1,0,1.4L55.7,97.2C55.3,97.6,54.7,97.6,54.3,97.2z"/></g></svg>
@@ -262,10 +266,10 @@ function showAlert(data, message, status,form) {
   <svg height="18px" id="Layer_1" style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" width="18px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path fill="#69727D" d="M437.5,386.6L306.9,256l130.6-130.6c14.1-14.1,14.1-36.8,0-50.9c-14.1-14.1-36.8-14.1-50.9,0L256,205.1L125.4,74.5  c-14.1-14.1-36.8-14.1-50.9,0c-14.1,14.1-14.1,36.8,0,50.9L205.1,256L74.5,386.6c-14.1,14.1-14.1,36.8,0,50.9  c14.1,14.1,36.8,14.1,50.9,0L256,306.9l130.6,130.6c14.1,14.1,36.8,14.1,50.9,0C451.5,423.4,451.5,400.6,437.5,386.6z"/></svg>
   </button>
   `
-    }
-    if (!status) {
-      div.className = "warning alert d-none mt-3 mx-auto"
-      div.innerHTML = ` 
+  }
+  if (!status) {
+    div.className = "warning alert d-none mt-3 mx-auto"
+    div.innerHTML = ` 
     
     <div class="content" id ="AlertMessage">
       <div class="icon">
@@ -282,10 +286,10 @@ function showAlert(data, message, status,form) {
   </div>
   
   `
-    }
-    if (status == null) {
-      div.className = "danger alert d-none mt-3 mx-auto"
-      div.innerHTML = ` 
+  }
+  if (status == null) {
+    div.className = "danger alert d-none mt-3 mx-auto"
+    div.innerHTML = ` 
     
     <div class="content" id ="AlertMessage">
       <div class="icon">
@@ -299,20 +303,31 @@ function showAlert(data, message, status,form) {
   </div>
   
   `
-    }
-    Message.appendChild(div);
-    div.classList.remove('d-none');
-    const alertButton = document.getElementById('AlertButton');
-    alertButton.addEventListener('click', () => {
-      // Get the message container
-  
-  
-      // Remove the message container from the DOM
-      div.remove();
-    });
   }
-window.addEventListener('load', function(){
-  displayVolunter();
-  displayemployees();
-});
+  Message.appendChild(div);
+  div.classList.remove('d-none');
+  const alertButton = document.getElementById('AlertButton');
+  alertButton.addEventListener('click', () => {
+    // Get the message container
+
+
+    // Remove the message container from the DOM
+    div.remove();
+  });
+}
+
+window.addEventListener('load', function () {
+   
+ 
+    displayVolunter();
+    displayemployees();
   
+
+
+
+});
+ 
+ 
+
+
+ 
