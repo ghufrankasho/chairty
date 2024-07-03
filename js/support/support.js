@@ -1,5 +1,6 @@
+ 
 function displayDoners() {
-  console.log("inside diasplay doners");
+ 
   const xhr = new XMLHttpRequest();
   xhr.open('GET', 'http://127.0.0.1:8000/api/doner/', true);
   xhr.onreadystatechange = function () {
@@ -252,10 +253,59 @@ function showAlert(data, message, status) {
       displayDoners();
     });
 }
- 
+function showDoners(doners) {
+  console.log(doners);
+  const donerContainer = document.getElementById('doners');
+  donerContainer.innerHTML = '';
 
-  
-window.addEventListener('load', displayDoners);
+  doners.forEach(function(doner) {
+      const donertdiv = document.createElement('tr');
+       
+      donertdiv.innerHTML = `
+          <td>
+              <img src="${doner.image}">
+              <p>${doner.name}</p>
+          </td>
+          
+          <td>
+              <a><i class='bx bx-message-square-x' id='delete-${doner.id}'></i></a>
+              <a><i class='bx bx-edit-alt' id='update-${doner.id}'></i></a>
+          </td>`;
+      
+      donerContainer.appendChild(donertdiv);
+
+      const deleteButton = document.getElementById(`delete-${doner.id}`);
+      deleteButton.addEventListener('click', function() {
+          if (window.confirm("هل متأكد من أنك تريد حذف هذا الجهة الداعمة؟")) {
+              deletedoner(doner.id);
+          }
+      });
+
+      const updateButton = document.getElementById(`update-${doner.id}`);
+      updateButton.addEventListener('click', () => {
+          window.location.href = `updateSupport.html?donerId=${doner.id}`;
+      });
+  });
+
+  const searchButton = document.getElementById('search');
+  searchButton.addEventListener('click', function(e) {
+      e.stopImmediatePropagation();
+      const search = document.getElementById('search_input').value;
+      searchdoner(search);
+  });
+ 
+}
+
+window.addEventListener('load', () => {
+  let doners = localStorage.getItem("doners");
+  if (doners) {
+      doners = JSON.parse(doners);
+      showDoners(doners);
+      localStorage.removeItem("doners");
+  } else {
+      displayDoners();
+  }
+});
 
 
 
