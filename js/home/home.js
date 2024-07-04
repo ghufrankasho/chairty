@@ -72,60 +72,74 @@ function displayProjects() {
         }
     };
     xhr.send();
-  }
+}
 
-  function displayrequest() {
+function displayrequest() {
     const xhr = new XMLHttpRequest();
-
+    const request_num=document.getElementById('request_num');
+    const orphen_num=document.getElementById('orphen_num');
     xhr.open('GET', 'http://127.0.0.1:8000/api/user/request', true);
-    console.log("inside displayrequest");
+   
+
     xhr.onreadystatechange = function () {
-      console.log("inside displayrequest12");
+    
         if (xhr.readyState === 4) {
-          console.log("inside displayrequest");
+       
             if (xhr.status === 200) {
              
                 const requests = JSON.parse(xhr.responseText);
-              
+                request_num.textContent=requests.length;
+                orphen_num.textContent=requests[0].orphen;
                 const requestContainer = document.getElementById('requests');
                 
                 // Clear existing requests
                 requestContainer.innerHTML = '';
                 
                 requests.forEach(function(request) {
+                  console.log(request);
                     const requesttr = document.createElement('tr');
+                   
                    requesttr.className='tra';
+                   requesttr.id='tra';
                     requesttr.innerHTML = `
                         <td>
                         <a href="/prof.html"> <img src="${request.image}" ></a>
                         <p id='name-${request.id}'></p>
                         </td>
                         <td>${request.date}</td>
-                        <td><span class="status completed"  id="avalible-${request.id}>موظف</span></td>
+                        <td><li   id="avalible-${request.id}">موظف</li></td>
                         </tr>
                       `;
                       
-                    requestContainer.appendChild(requesttr);
-                    const span = document.getElementById(`avalible-${request.id}`);
+                    
+                      requestContainer.appendChild(requesttr);
+                      const span = document.getElementById(`avalible-${request.id}`);
+                      console.log(span);
                     if(request.is_user)
                       {
+                        span.className='status completed';
+                        span.textContent='متطوع';
                         document.getElementById(`name-${request.id}`).textContent=request.first_name+" "+request.last_name;
                         
-                        span.className = 'completed';
+                        
                       }
                       else{
+                        span.className='status not-completed' ;
                         document.getElementById(`name-${request.id}`).textContent=request.name;
-                       
-                        span.className = 'not-completed';
+                        
+                        
                       }
+                  
+                      
                   
                 });
                 
         
             }
         }
-    xhr.send();
-  }
+   
+  };
+  xhr.send();
 }
   window.addEventListener('load', () => {
     displayProjects();

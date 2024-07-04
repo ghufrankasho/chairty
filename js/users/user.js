@@ -100,9 +100,11 @@ function deleteuser(id) {
   }
 function searchuser(input) {
   
-    
+  const data = JSON.stringify({ "search": input ,
+    "is_user":true
+  });  
     const xhr = new XMLHttpRequest();
-    xhr.open('GET', `http://127.0.0.1:8000/api/user/search/${input}`, true);
+    xhr.open('POST', `http://127.0.0.1:8000/api/user/search`, true);
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.onreadystatechange = function () {
        
@@ -157,7 +159,7 @@ function searchuser(input) {
             }
         }
     };
-    xhr.send();
+    xhr.send(data);
     
   }
 function showAlert(data, message, status) {

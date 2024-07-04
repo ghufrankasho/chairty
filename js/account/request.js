@@ -48,12 +48,12 @@ function displayemployees() {
 
         });
       });
-      const searchButton = document.getElementById(`search`);
+      const searchButton = document.getElementById(`search_employee`);
       searchButton.addEventListener('click', function (e) {
         e.stopImmediatePropagation();
-        const search = document.getElementById('search_input').value;
+        const search_input_employee = document.getElementById('search_input_employee').value;
 
-        searchemployee(search);
+        search(search_input_employee,false);
       });
     }
 
@@ -73,7 +73,7 @@ function displayVolunter() {
 
       const volunter_request = JSON.parse(xhr.responseText);
       const vlounterContainer = document.getElementById('volunter_request');
-      num_volunter.textContent = volunter_request.number;
+      num_volunter.textContent = volunter_request[0].number;
 
       // Clear existing employee_request
       vlounterContainer.innerHTML = '';
@@ -85,7 +85,7 @@ function displayVolunter() {
         voluntertr.innerHTML = `
                      <td>
                     <img src="${volunter.image}">
-                        <p> ${volunter.first_name} </p>
+                        <p> ${volunter.first_name} ${volunter.last_name} </p>
                     </td>
                        
                     <td> <a  ><i class='bx bx-message-square-x' id="delete-${volunter.id}"></i></a>
@@ -113,12 +113,12 @@ function displayVolunter() {
 
         });
       });
-      const searchButton = document.getElementById(`search`);
+      const searchButton = document.getElementById(`search_user`);
       searchButton.addEventListener('click', function (e) {
         e.stopImmediatePropagation();
-        const search = document.getElementById('search_input').value;
+        const search_input_user = document.getElementById('search_input_user').value;
 
-        searchemployee(search);
+        search(search_input_user,true);
       });
     }
 
@@ -128,71 +128,88 @@ function displayVolunter() {
   }
   xhr.send();
 }
-function searchemployee(input) {
-  console.log("inside searchemployee" + input);
-  const data = JSON.stringify({ "search": input });  // Ensure id is an integer
+function search(input,is_user) {
+   
+  const data = JSON.stringify({ "search": input ,
+    "is_user":is_user
+  });  // Ensure id is an integer
 
 
   const xhr = new XMLHttpRequest();
-  xhr.open('POST', 'http://127.0.0.1:8000/api/user/search_employee/', true);
+  xhr.open('POST', 'http://127.0.0.1:8000/api/user/search/', true);
   xhr.setRequestHeader('Content-Type', 'application/json');
   xhr.onreadystatechange = function () {
 
     if (xhr.readyState === 4) {
+   
       if (xhr.status === 200) {
-
-        const employee_request = JSON.parse(xhr.responseText);
-        const employeeContainer = document.getElementById('employee_request');
-        employeeContainer.innerHTML = '';
-        employee_request.forEach(function (employee) {
+        var Container = '';
+        if(is_user)Container=document.getElementById('volunter_request');
+        else Container=document.getElementById('employee_request');
+        const request = JSON.parse(xhr.responseText);
+       
+        Container.innerHTML = '';
+        request.forEach(function (data) {
           const employeetr = document.createElement('tr');
 
-          employeetr.innerHTML = `
-                  
-                  <td>
-                    
-                  <p>${employee.email}</p>
-              </td>
-              <td>${employee.date}</td>
-               <td><div class="col-lg-12 col-md-6 col-sm-6  mb-3">
-                  
-                  <select name="type" id="type-${employee.id}">
-                      <option >${employee.type}</option>
-                      <option value="0"> مستخدم</option>
-                      <option value="2">جهة داعمة </option>
-                      <option value="3">موظف </option>
-                      <option value="4">رئيس قسم </option>
+        employeetr.innerHTML = `
+                     <td>
+                    <img src="${data.image}">
+                        <p id="name-${data.id}"> ${data.name} </p>
+                    </td>
                        
-                  </select>
-  
-              </div></td>
-              <td> <input type="checkbox"  value="0" id='${employee.id}'></td>`;
+                    <td> <a  ><i class='bx bx-message-square-x' id="delete-${data.id}"></i></a>
+                    <a ><i class='bx bx-edit-alt' id="update-${data.id}">عرض</i></a></td>
+                 ` ;
 
-          employeeContainer.appendChild(employeetr);
+        Container.appendChild(employeetr);
+        const name = document.getElementById(`name-${data.id}`);
+        console.log(name);
+        if(is_user) name.textContent=data.first_name +" "+data.last_name;
+        
+        const deleteButton = document.getElementById(`delete-${data.id}`);
+        deleteButton.addEventListener('click', function () {
+          if (window.confirm("هل  أنت متأكد ؟")) {
+            if(is_user)deleteuser(data.id);
+            else deleteemployee(data.id);
+          }
+        });
 
+
+        // Create a update button and add an event listener
+        const updateButton = document.getElementById(`update-${data.id}`);
+
+
+        updateButton.addEventListener('click', () => {
+
+          const employeeId = data.id;
+
+          window.location.href = `employmentapplication.html?employeeId=${employeeId}`;
+
+        });
+        Container.appendChild(employeetr);
         });
 
       }
       else {
         if (xhr.status === 204) {
+          var Container = '';
+          if(is_user)Container=document.getElementById('volunter_request');
+          else Container=document.getElementById('employee_request');
           // show no result message
-          console.log("no result");
+           
+          Container.innerHTML = '';
 
-          const employeethead = document.getElementById('thead');
-          employeethead.innerHTML = '';
-          const employeeContainer = document.getElementById('employee_request');
-          employeeContainer.innerHTML = '';
+          const accounttr = document.createElement('tr');
 
-          const employeetr = document.createElement('tr');
-
-          employeetr.innerHTML = `
+          accounttr.innerHTML = `
                       
             <td>
              
             <td > no result found !!</td>    
             
          `;
-          employeeContainer.appendChild(employeetr);
+         Container.appendChild(accounttr);
         }
       }
     }
