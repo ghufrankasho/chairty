@@ -11,6 +11,7 @@ function displayProjects() {
                 projectContainer.innerHTML = '';
                 
                 projects.forEach(function(project) {
+                  
                     const projectli = document.createElement('li');
                     if(project.prograss>=80)
                    {
