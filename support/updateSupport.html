@@ -13,6 +13,9 @@
     <link rel="stylesheet" href="/css/bootstrap.min.css" />
     <link rel="stylesheet" href="/css/all.min.css" />
     <link rel="stylesheet" href="/css/style.css">
+    <!-- Boxicons -->
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;500&display=swap" rel="stylesheet" />
@@ -23,48 +26,59 @@
         <legend dir="rtl" class="text-success fw-bold">معلومات الجهة الداعمة</legend>
         <div class="row" id="doner">
 
-            <form class="col-lg-6 text-center text-sm-center m-auto form" dir="rtl" id="form">
-                <div class="rr ph offset col-lg-6 col-md-6 col-sm-6 mt-4 inp">
-                    <img src="/img/p1.jpeg" width="150px" height="150px" id="profile-pic">
-                    <label for="input-file" class="update-img">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-upload" viewBox="0 0 16 16">
-                            <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5"/>
-                            <path d="M7.646 1.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 2.707V11.5a.5.5 0 0 1-1 0V2.707L5.354 4.854a.5.5 0 1 1-.708-.708z"/>
-                        </svg>
-                    </label>
-                    <input dir="rtl" type="file" accept="image/jpeg, image/png, image/jpg" id="input-file">
-                    <br>
+            <form class="col-lg-6 text-center text-sm-center m-auto " dir="rtl" id="form">
+
+                <div class=" col-lg-6 col-md-6 col-sm-6 mt-4 user-image-container inp">
+                    <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="صورة المستخدم" id="profile-pic">
+
+
+
+                    <div class="round">
+                        <input type="file" id="input-file" accept=".jpg,.png,.jpeg,.gif,.svg,.webp"
+                            class="account-settings-fileinput">
+                        <i class='bx bx-camera' style="color: #fff;"></i>
+
+                    </div>
+
                 </div>
-                <div class="rr col-lg-12 col-md-6 col-sm-6 mb-3 mt-3">
+
+
+
+                <div class="rr  mb-3 mt-3">
                     <label for="name">الاسم </label>
                     <input dir="rtl" type="text" id="nameInput">
                     <span id="nameError" class="error-message"></span>
                     <br>
                 </div>
-                <div class="rr col-lg-12 col-md-6 col-sm-6 mb-3 mt-3">
+                <div class="rr  mb-3 mt-3">
                     <label for="name">العنوان </label>
                     <input dir="rtl" type="text" id="address">
                     <span id="addressError" class="error-message"></span>
                     <br>
                 </div>
-                <div class="rr col-lg-12 col-md-6 col-sm-6 mb-3 mt-3">
+                <div class="rr  mb-3 mt-3">
                     <label for="name">رقم الهاتف </label>
-                    <input dir="ltr" type="text" id="phone">
+                    <input dir="ltr" type="text" id="phone" style="margin-left: 20px; ">
                     <span id="phoneError" class="error-message"></span>
                     <br>
                 </div>
-                <div class="rr col-lg-12 col-md-6 col-sm-6 mb-3 mt-3">
+                <div class="rr  mb-3 mt-3">
                     <label for="name"> البريد الالكتروني </label>
-                    <input dir="ltr" type="text" id="email">
+                    <input dir="ltr" type="text" id="email" style="margin-left: 52px; ">
                     <span id="emailError" class="error-message"></span>
                     <br>
                 </div>
-              
+
             </form>
-            <div class="button">
-              
-                <button onclick="updateDoner()">   تعديل  </button>
+
+            <div class="button ">
+
+                <button class="button-48" role="button" onclick="updateDoner()"><span class="text"> تعديل
+                    </span></button>
+
+
             </div>
+
 
         </div>
 
@@ -76,8 +90,7 @@
     let profilePic = document.getElementById("profile-pic");
     let inputFile = document.getElementById("input-file");
 
-    inputFile.onchange = function()
-    {
+    inputFile.onchange = function () {
         profilePic.src = URL.createObjectURL(inputFile.files[0]);
     }
 </script>

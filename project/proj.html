@@ -29,36 +29,38 @@
 	<!-- CONTENT -->
 	<section id="content">
 		<!-- NAVBAR -->
-			<!-- NAV BAR -->
-			<div id="nav-placeholder"></div>
-			<script>
-				fetch('/nav.html')
-					.then(response => response.text())
-					.then(text => document.getElementById('nav-placeholder').innerHTML = text);
-			</script>
-       <!-- NAV BAR -->
+		<!-- NAV BAR -->
+		<div id="nav-placeholder"></div>
+		<script>
+			fetch('/nav.html')
+				.then(response => response.text())
+				.then(text => document.getElementById('nav-placeholder').innerHTML = text);
+		</script>
+		<!-- NAV BAR -->
 		<!-- NAVBAR -->
 
 
 
-		<section class="project" >
+		<section class="project">
 			<header class="head">
 				<div class="h d-flex" role="search" dir="rtl">
-					<input class="form-control me-2 p-2" id="search_input" type="search" placeholder="بحث" aria-label="Search">
-					<a class="nav-link align-items-center" id="search"  type="submit"> <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-search"
-						viewBox="0 0 16 16">
-						<path
-						  d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
-					  </svg>
+					<input class="form-control me-2 p-2" id="search_input" type="search" placeholder="بحث"
+						aria-label="Search">
+					<a class="nav-link align-items-center" id="search" type="submit"> <svg
+							xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+							class="bi bi-search" viewBox="0 0 16 16">
+							<path
+								d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+						</svg>
 					</a>
 					<a class="nav-link d-flex">
-						<a href="/project/addproj.html">	<i class='bx bx-plus' ></i></a>
+						<a href="/project/addproj.html"> <i class='bx bx-plus'></i></a>
 					</a>
 				</div>
 			</header>
 			<div class="container" id="projects">
-				
-		</div>
+
+			</div>
 		</section>
 		<script src="/js/script.js"></script>
 		<script src="/js/project/project.js"></script>

@@ -9,6 +9,9 @@
 
     <link rel="stylesheet" href="/css/all.min.css" />
     <link rel="stylesheet" href="/css/style.css">
+        <!-- Boxicons -->
+        <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+
 
 </head>
 
@@ -18,15 +21,23 @@
             <h1>إضافة موظف</h1>
             <form action="#" id="form">
 
-
-                <div class="user-image-container">
+                <div class=" col-lg-6 col-md-6 col-sm-6 mt-4 user-image-container inp">
                     <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="صورة المستخدم" id="userImage">
-                    <i class="change-user-image" title="تغيير الصورة"></i>
-                </div>
-                <i class='bx bxs-image-alt'> <input type="file" id="userImageInput" accept=".jpg,.png,.jpeg,.gif,.svg,.webp" class="account-settings-fileinput">
-                </i>
 
-                <div class="input-group" dir="rtl"> <label for="name" dir="rtl">  الاسم :</label>
+
+
+                    <div class="round">
+                        <input type="file" id="userImageInput"  accept=".jpg,.png,.jpeg,.gif,.svg,.webp"
+                            class="account-settings-fileinput">
+                        <i class='bx bx-camera' style="color: #fff;"></i>
+
+                    </div>
+
+                </div>
+
+
+                <div class="input-group" dir="rtl"> 
+                    <label for="name" dir="rtl">  الاسم :</label>
                     <input type="text" id="name" name="name" required class="validate-input">
                     <span id="name-length-error" class="error-message"></span>
                 </div>
@@ -43,24 +54,28 @@
                     
                     
                 </div>
-                <div class="input-group" dir="rtl">
-                    <label for="job"> البريد الالكتروني :</label>
+                <div class="input-group" style="margin-left: 50px;" dir="rtl">
+                    <label for="job" > البريد الالكتروني :</label>
                     <input dir="rtl" type="text" id="email" required>
                     <span id="emailError" class="error-message"></span>
                     <br>
                 </div>
-                <div class="input-group" dir="rtl"> <label for="job">CV :</label>
+                <div class="input-group" dir="rtl" style="margin-right: 106px;"> <label for="job">CV :</label>
                  
                     <i class='bx bxs-image-alt'> <input type="file" id="cvInput" accept=".pdf,.txt" class="account-settings-fileinput">
                     </i>
                         
               
                 </div>
-         
-                <div class="button">
-              
-                    <button onclick="addemployee(event)">   حفظ  </button>
+                <div class="button ">
+
+                    <button class="button-48" role="button" onclick="addemployee(event)"><span class="text">حفظ
+                        </span></button>
+    
+    
                 </div>
+         
+            
             </form>
 
 

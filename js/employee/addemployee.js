@@ -48,6 +48,8 @@ console.log(...formData);
 
   xhr.send(formData);
 }
+
+ 
 function showAlert(data, message, status) {
   // Show the success message in the "success-message" div
   const Message = document.getElementById('form');
@@ -119,6 +121,7 @@ function showAlert(data, message, status) {
    if(status) window.location.href =`/employee/employees.html`;
   });
 }
+
 document.addEventListener('DOMContentLoaded', () => {
   
   const urlParams = new URLSearchParams(window.location.search);

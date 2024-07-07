@@ -33,14 +33,9 @@ function displayDoners() {
                     </td>
                     <td > ${DonerNames}</td>    
                     <td> <a  ><i class='bx bx-message-square-x' id="delete-${doner.id}"></i></a>
-                   
-                       <svg xmlns="http://www.w3.org/2000/svg" id="view-${doner.id}" width="20" height="20" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
-                          <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8M1.173 8a13 13 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5s3.879 1.168 5.168 2.457A13 13 0 0 1 14.828 8q-.086.13-.195.288c-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5s-3.879-1.168-5.168-2.457A13 13 0 0 1 1.172 8z"/>
-                          <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5M4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0"/>
-                          </svg>
-                         </a></td>
+                    <a ><i class='bx bx-edit-alt' id="update-${doner.id}"></i></a></td>
                  `;
- // <a ><i class='bx bx-edit-alt' id="update-${doner.id}"></i></a>
+
           donerContainer.appendChild(donertdiv);
 
           const deleteButton = document.getElementById(`delete-${doner.id}`);
@@ -50,25 +45,16 @@ function displayDoners() {
           });
         
          
-          //  // Create a update button and add an event listener
-          //  const updateButton = document.getElementById(`update-${doner.id}`);
-          //  updateButton.textContent = 'تعديل';
+           // Create a update button and add an event listener
+           const updateButton = document.getElementById(`update-${doner.id}`);
+           updateButton.textContent = 'تعديل';
  
-          //  updateButton.addEventListener('click',  () => {
+           updateButton.addEventListener('click',  () => {
  
-          //    const donerId = doner.id;
-          //    console.log(donerId)
-          //    window.location.href =`updateSupport.html?donerId=${donerId}`;
+             const donerId = doner.id;
+             console.log(donerId)
+             window.location.href =`updateSupport.html?donerId=${donerId}`;
  
-          //  });
-           const viewButton = document.getElementById(`view-${doner.id}`);
-                  
-        
-           viewButton.addEventListener('click',  () => {
-     
-            
-             window.location.href =`viewSupport.html?donerId=${doner.id}`;
-     
            });
         });
         const searchButton = document.getElementById(`search`);
@@ -284,12 +270,6 @@ function showDoners(doners) {
           <td>
               <a><i class='bx bx-message-square-x' id='delete-${doner.id}'></i></a>
               <a><i class='bx bx-edit-alt' id='update-${doner.id}'></i></a>
-               <a  >
-                        <svg xmlns="http://www.w3.org/2000/svg" id="view-${doner.id}" width="20" height="20" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
-                          <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8M1.173 8a13 13 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5s3.879 1.168 5.168 2.457A13 13 0 0 1 14.828 8q-.086.13-.195.288c-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5s-3.879-1.168-5.168-2.457A13 13 0 0 1 1.172 8z"/>
-                          <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5M4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0"/>
-                          </svg>
-                         </a>
           </td>`;
       
       donerContainer.appendChild(donertdiv);
@@ -304,15 +284,6 @@ function showDoners(doners) {
       const updateButton = document.getElementById(`update-${doner.id}`);
       updateButton.addEventListener('click', () => {
           window.location.href = `updateSupport.html?donerId=${doner.id}`;
-      });
-      const viewButton = document.getElementById(`view-${doner.id}`);
-                  
-        
-      viewButton.addEventListener('click',  () => {
-
-       
-        window.location.href =`viewSupport.html?donerId=${doner.id}`;
-
       });
   });
 

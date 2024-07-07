@@ -13,19 +13,33 @@
     <link rel="stylesheet" href="/css/bootstrap.min.css" />
     <link rel="stylesheet" href="/css/all.min.css" />
     <link rel="stylesheet" href="/css/style.css">
+         <!-- Boxicons -->
+         <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;500&display=swap" rel="stylesheet" />
 </head>
 
 <section class="addpro">
-    <div class="container text-center " id="addpro">
+    <div class="container text-center " id="addpro" style="color: darkgray;" >
         <legend dir="rtl" class="text-success fw-bold">تغيير الفرع او القسم الخاص بالموظف</legend>
-        <div class="row" id="doner">
+        <div class="row" id="doner" >
 
-            <form class="col-lg-6 text-center text-sm-center m-auto form" dir="rtl" id="form">
+            <form class="col-lg-6 text-center text-sm-center m-auto form" dir="rtl" id="form" style="color: darkgray;">
                 <div class="card-body">
-                    <img src="/img/p1.jpeg" width="150px" height="150px" id="profile-pic">
+                    <div class=" col-lg-6 col-md-6 col-sm-6 mt-4 user-image-container inp">
+                        <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="صورة المستخدم" id="profile-pic">
+    
+    
+    
+                    
+    
+                    </div>
+    
+
+                    
                   
  
                     <br>
@@ -35,7 +49,7 @@
                     <p class="card-text" id="name"></p>
                 </div>
                
-                <div class="rr col-lg-12 col-md-6 col-sm-6 mb-3 mt-3">
+                <div class="rr mb-3 mt-3">
                     <div class="offset1">
                         <label for="num">  الفرع :</label>
                         <select name="branchs" id="branchs" onchange="updateDepartments()">
@@ -44,7 +58,7 @@
                         
                     </div>
                 </div>
-                <div class="rr col-lg-12 col-md-6 col-sm-6 mb-3 mt-3">
+                <div class="rr  mb-3 mt-3">
                     <div class="offset1">
                         <label for="num"> القسم :</label>
                         <select name="departments" id="departments">
@@ -52,18 +66,17 @@
                         
                     </div>
                 </div>
-                <!-- <div class="rr col-lg-12 col-md-6 col-sm-6 mb-3 mt-3">
-                    <div class="offset1">
-                        <label for="num"> المشاريع :</label>
-                        <select name="projects" id="projects"></select>
-                    </div>
-                </div> -->
+            
               
             </form>
-            <div class="button">
-              
-                <button onclick="updateemployee()">   تعديل  </button>
+            <div class="button ">
+
+                <button class="button-48" role="button" onclick="updateemployee()"><span class="text">حفظ
+                    </span></button>
+
+
             </div>
+          
 
         </div>
 

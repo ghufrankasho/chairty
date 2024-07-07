@@ -75,8 +75,8 @@ function displayEmployee(){
                             const deleteButton = document.getElementById(`delete-${project.id}`);
                             deleteButton.addEventListener('click', function() {
                                 
-                            if(window.confirm("هل متأكد من أنك تريد حذف هذا المشروع؟"))
-                                {deleteProject(project.id);}
+                                if(window.confirm("هل متأكد من أنك تريد حذف هذا المشروع؟"))
+                                  {deleteProject(project.id);}
                             });
                             // Create a update button and add an event listener
                             const updateButton = document.getElementById(`update-${project.id}`);
@@ -124,28 +124,38 @@ function displayEmployee(){
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.send(JSON.stringify(data));
 }
-function deleteProject(id) {
-    const data = JSON.stringify({ "id": id });  // Ensure id is an integer
+function requestEmployee(){
+
+    const data = { id: employee_id };
     const xhr = new XMLHttpRequest();
-    xhr.open('DELETE', `http://127.0.0.1:8000/api/project/delete/${id}`, true);
-    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.open('POST', 'http://127.0.0.1:8000/api/employee/show/', true);
+  
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4) {
             if (xhr.status === 200) {
                 const response = JSON.parse(xhr.responseText);
-                console.log('Delete success:', response.message);
-                // showAlert(null,response.message,response.status);
-                // Optionally, refresh the projects list or remove the deleted project from the DOM
-                displayEmployee();
+               
+                try {
+                    const response = JSON.parse(xhr.responseText);
+                    document.getElementById('image').src = response.image;
+                    document.getElementById('name').textContent = response.name;
+                    document.getElementById('address').textContent = response.address;
+                    document.getElementById('phone').textContent = response.phone;
+                    document.getElementById('email').textContent = response.email;
+                    
+                    
+                } catch (e) {
+                    console.error("Failed to parse response JSON:", e);
+                }
             } else {
-                const response = JSON.parse(xhr.responseText);
-                showAlert(response.errors ,response.message,response.status);
-                console.error('Delete error:', response.errors || response.message);
+                console.error("Error with request, status code:", xhr.status);
             }
         }
     };
-    xhr.send();
-  }
+  
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.send(JSON.stringify(data));
+}
  // Call the displayProject function when the page loads
   window.addEventListener('load', () => {
     // Get the project ID from the query parameters (e.g., "?projectId=20")
