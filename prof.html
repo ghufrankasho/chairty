@@ -6,9 +6,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Profile</title>
-    <link rel="stylesheet" href="css/bootstrap.min.css" />
-    <link rel="stylesheet" href="css/all.min.css" />
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/all.min.css" />
+    <link rel="stylesheet" href="/css/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
@@ -26,11 +26,11 @@
                             <div class="tab-pane fade active show" id="account-general">
                                 <div class="card-body media align-items-center text-right" dir="rtl">
                                     <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt
-                                        class="d-block ui-w-80">
+                                        class="d-block ui-w-80" id="profile-pic">
                                     <div class="media-body ml-4">
                                         <label class="btn btn-outline-primary m-3">
                                             تحميل صورة
-                                            <input type="file" class="account-settings-fileinput">
+                                            <input type="file" class="account-settings-fileinput" id="input-file">
                                         </label> &nbsp;
  
                                     </div>
@@ -38,177 +38,52 @@
                                 
                             </div>
 
-
-
-
-                            <div class="tab-pane fade text-right" id="account-change-password" dir="rtl">
+                            <div class="tab-pane fade text-right" id="reset-password" dir="rtl">
                                 <div class="card-body pb-2">
+                                     
                                     <div class="form-group">
                                         <label class="form-label">كلمة المرور الحالية</label>
-                                        <input type="password" class="form-control">
+                                        <input type="password" class="form-control" id="old_password">
                                     </div>
                                     <div class="form-group">
                                         <label class="form-label">كلمة المرور الجديدة </label>
-                                        <input type="password" class="form-control">
+                                        <input type="password" class="form-control" id="new_password">
                                     </div>
                                     <div class="form-group">
                                         <label class="form-label">أعد كتابة كلمة المرو</label>
-                                        <input type="password" class="form-control">
+                                        <input type="password" class="form-control" id="confirmed_password">
+                                    </div>
+                                    <div class="form-group">
+                                        <button type="button" class="btn btn-info" onclick="resetPassword(event)">حفظ </button>&nbsp;
                                     </div>
                                 </div>
                             </div>
-                            <div class="tab-pane fade text-right" id="account-info" dir="rtl">
+                            
+                            <div class="tab-pane fade text-right" id="branchs" dir="rtl">
                                 <div class="card-body pb-2">
+                                     
                                     <div class="form-group">
-                                        <label class="form-label">السيرة الذاتية</label>
-                                        <textarea class="form-control"
-                                            rows="5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nunc arcu, dignissim sit amet sollicitudin iaculis, vehicula id urna. Sed luctus urna nunc. Donec fermentum, magna sit amet rutrum pretium, turpis dolor molestie diam, ut lacinia diam risus eleifend sapien. Curabitur ac nibh nulla. Maecenas nec augue placerat, viverra tellus non, pulvinar risus.</textarea>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="form-label">تاريخ الميلاد</label>
-                                        <input type="text" class="form-control" value="May 3, 1995">
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="form-label">المدينة</label>
-                                        <select class="custom-select">
-                                            <option>حلب</option>
-                                            <option selected>دمشق</option>
-                                            <option>حماة</option>
-                                            <option>إدلب</option>
-                                            <option>حمص</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <hr class="border-light m-0">
-                                <div class="card-body pb-2">
-                                    <h6 class="mb-4">للتواصل</h6>
-                                    <div class="form-group">
-                                        <label class="form-label">الهاتف المحمول </label>
-                                        <input type="text" class="form-control" value="+963 988 365 365">
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="form-label">مواقع الانترنت</label>
-                                        <input type="text" class="form-control" value>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="tab-pane fade text-right" id="account-social-links" dir="rtl">
-                                <div class="card-body pb-2">
-                                    <div class="form-group">
-                                        <label class="form-label">Twitter</label>
-                                        <input type="text" class="form-control" value="https://twitter.com/user">
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="form-label">Facebook</label>
-                                        <input type="text" class="form-control" value="https://www.facebook.com/user">
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="form-label">Google+</label>
-                                        <input type="text" class="form-control" value>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="form-label">LinkedIn</label>
-                                        <input type="text" class="form-control" value>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="form-label">Instagram</label>
-                                        <input type="text" class="form-control" value="https://www.instagram.com/user">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="tab-pane fade text-right" id="account-connections" dir="rtl">
-                                <div class="card-body">
-                                    <button type="button" class="btn btn-twitter">Connect to
-                                        <strong>Twitter</strong></button>
-                                </div>
-                                <hr class="border-light m-0">
-                                <div class="card-body">
-                                    <h5 class="mb-2">
-                                        <a href="javascript:void(0)" class="float-left text-muted text-tiny"><i
-                                                class="ion ion-md-close"></i> حذف</a>
-                                        <i class="ion ion-logo-google text-google"></i>
-                                        You are connected to Google:
-                                    </h5>
-                                    <a href="/cdn-cgi/l/email-protection" class="__cf_email__"
-                                        data-cfemail="f9979498818e9c9595b994989095d79a9694">[email&#160;protected]</a>
-                                </div>
-                                <hr class="border-light m-0">
-                                <div class="card-body">
-                                    <button type="button" class="btn btn-facebook">Connect to
-                                        <strong>Facebook</strong></button>
-                                </div>
-                                <hr class="border-light m-0">
-                                <div class="card-body">
-                                    <button type="button" class="btn btn-instagram">Connect to
-                                        <strong>Instagram</strong></button>
-                                </div>
-                            </div>
-                            <div class="tab-pane fade text-right" id="account-notifications" dir="rtl">
-                                <div class="card-body pb-2 text-right" dir="rtl">
-                                    <h6 class="mb-4">Activity</h6>
-                                    <div class="form-group">
-                                        <label class="switcher">
-                                             <span class="switcher-label">وصول رسالة قبول في الجمعية
-                                                </span>
-                                            <input type="checkbox" class="switcher-input" checked>
-                                            <span class="switcher-indicator">
-                                                <span class="switcher-yes"></span>
-                                                <span class="switcher-no"></span>
-                                            </span>
-                                           
-                                        </label>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="switcher">
-                                            <span class="switcher-label">وصول رسالة استلام راتب                                                 </span>
-                                            <input type="checkbox" class="switcher-input" checked>
-                                            <span class="switcher-indicator">
-                                                <span class="switcher-yes"></span>
-                                                <span class="switcher-no"></span>
-                                            </span>
-                                            
-                                        </label>
+                                        <label class="form-label"> اسم الفرع </label>
+                                        <input type="password" class="form-control" id="old_password">
                                     </div>
                                     
-                                </div>
-                                
-                               
-                            </div>
-
-                            <div class="tab-pane fade text-right" id="account-sitting" dir="rtl">
-                                <div class="card-body pb-2">
-                                    <label class="form-label"> حذف الحساب</label>
-                                    <div class="delete_m">
-                                        <button 
-                                          onclick="document.querySelector('.delete_cont').style.display = 'block'"
-                                        >
-                                          حذف
-                                        </button>
-                                        <div class="delete_cont">
-                                          <span
-                                            onclick="document.querySelector('.delete_cont').style.display = 'none'"
-                                            class="close"
-                                            title="close"
-                                            >&times;</span
-                                          >
-                                          <div class="delete_txt">
-                                            <p>هل أنت متأكد من حذف حسابك؟</p>
-                                          </div>
-                                          <div
-                                            onclick="document.querySelector('.delete_cont').style.display = 'none'"
-                                            class="delete_actions"
-                                          >
-                                            <button class="cancel">
-                                             إلغاء
-                                            </button>
-                                            <button class="delete">
-                                             حذف
-                                            </button>
-                                          </div>
+                                    <div class="rr col-lg-12 col-md-6 col-sm-6 mb-3 mt-3">
+                                        <div class="offset">
+                                            <label for="type">الاقسام  التابعة له </label>
+                                            <select name="type" id="types"></select>
                                         </div>
-                                      </div>
+                                        <br>
+                                    </div>
+                                    <div class="form-group">
+                                        <button type="button" class="btn btn-info" onclick="resetPassword(event)">حفظ </button>&nbsp;
+                                    </div>
                                 </div>
                             </div>
+                            
+                          
+                             
+
+                        
 
                         </div>
                     </div>
@@ -218,10 +93,11 @@
                             <a style="text-align: right;" class="list-group-item list-group-item-action active"
                                 data-toggle="list" href="#account-general">الصفحة الشخصية</a>
                             <a style="text-align: right;" class="list-group-item list-group-item-action"
-                                data-toggle="list" href="#account-change-password">تغيير كلمة السر </a>
-                            
+                                data-toggle="list" href="#reset-password">تغيير كلمة السر </a>
+                            <a style="text-align: right;" class="list-group-item list-group-item-action"
+                                data-toggle="list" href="#branchs">تغيير الفرع و واقسامه </a>
                                 <a style="text-align: right;" class="list-group-item list-group-item-action"
-                               href="login.html">تسجيل خروج <a href="login.html"></a></a>
+                               href="/account/loginInside.html">تسجيل خروج </a>
                         </div>
                     </div>
                 </div>
@@ -237,8 +113,15 @@
     <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script type="text/javascript">
-
+   <script src="/js/account/login.js"></script>
+    <script >
+        let profilePic = document.getElementById("profile-pic");
+        let inputFile = document.getElementById("input-file");
+    
+        inputFile.onchange = function()
+        {
+            profilePic.src = URL.createObjectURL(inputFile.files[0]);
+        }
     </script>
 </body>
 
