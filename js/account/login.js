@@ -64,7 +64,6 @@ function submitSignUpForm(event) {
     xhr.send(JSON.stringify(formData)); // Send the form data as JSON
 
 }
-
 function submitSignInForm(event) {
     event.preventDefault(); // Prevent default form submission
 
@@ -91,7 +90,7 @@ function submitSignInForm(event) {
             var response = JSON.parse(xhr.responseText);
             // showSuccessAlert(null,response.message,true);
             
-           console.log(response.user.type,response);
+            
             if (response.user.type=="0"){
               
               // window.location.href =`/users/userindex.html`;
@@ -102,7 +101,12 @@ function submitSignInForm(event) {
               // window.location.href =`/employee/employeeindex.html`;
               window.location.href =`/employee/employees.html`;
              }
-            else{window.location.href =`/index.html`;}
+            else{
+              localStorage.setItem('token',response.access_token);
+              
+
+              window.location.href =`/index.html`;
+              }
             
             // Handle response as needed
         } else {
@@ -121,8 +125,68 @@ function submitSignInForm(event) {
     };
     xhr.send(JSON.stringify(formData)); // Send the form data as JSON
 }
+function resetPassword(event) {
+  event.preventDefault(); // Prevent default form submission
 
+  // Get form data
+  var new_password = document.getElementById('new_password').value;
+  var old_password = document.getElementById('old_password').value;
+  var password_confirmation = document.getElementById('confirmed_password').value;
+  let token=localStorage.getItem('token');
+  
 
+  var formData = {
+    old_password: old_password,
+      new_password: new_password,
+      new_password_confirmation:password_confirmation
+     
+     
+    };
+    
+  // Add your AJAX request here
+
+  var xhr = new XMLHttpRequest();
+  xhr.open('POST', 'http://127.0.0.1:8000/api/auth/reset_password', true);
+  xhr.setRequestHeader('Content-Type', 'application/json'); // Set the content type to JSON
+  xhr.onreadystatechange = function () {
+      if (xhr.readyState === 4 && xhr.status === 200) {
+          // Handle successful response
+          var response = JSON.parse(xhr.responseText);
+          // showSuccessAlert(null,response.message,true);
+          
+         console.log(response.user.type,response);
+          if (response.user.type=="0"){
+            console.log(response.message)
+            if(window.confirm(response.message))
+              {             window.location.href =`/index.html`;}
+            // window.location.href =`/users/userindex.html`;
+
+           }
+          if (response.user.type=="2"){
+            
+            // window.location.href =`/employee/employeeindex.html`;
+            window.location.href =`/employee/employees.html`;
+           }
+          else{window.location.href =`/index.html`;}
+          
+          // Handle response as needed
+      } else {
+          if((xhr.readyState === 4 && xhr.status === 400) )
+              {var response = JSON.parse(xhr.responseText);
+
+              // Handle errors or other states
+              showSuccessAlert(response.errors,'',false,`reset-password`);
+           
+}
+          else{
+                  console.log("something went wrong",response.errors);
+                  showSuccessAlert('Error occurred during login .',response.errors,null,`signInForm`);
+              }
+      }
+  };
+  xhr.setRequestHeader( "Authorization", "Bearer " + token );
+  xhr.send(JSON.stringify(formData)); // Send the form data as JSON
+}
 function showSuccessAlert(data, message, status,form) {
     // Show the success message in the "success-message" div
     const Message = document.getElementById(form);

@@ -11,6 +11,7 @@ function displayProjects() {
                 projectContainer.innerHTML = '';
                 
                 projects.forEach(function(project) {
+                  
                     const projectli = document.createElement('li');
                     if(project.prograss>=80)
                    {
@@ -96,7 +97,7 @@ function displayrequest() {
                 requestContainer.innerHTML = '';
                 
                 requests.forEach(function(request) {
-                  console.log(request);
+            
                     const requesttr = document.createElement('tr');
                    
                    requesttr.className='tra';
@@ -114,7 +115,7 @@ function displayrequest() {
                     
                       requestContainer.appendChild(requesttr);
                       const span = document.getElementById(`avalible-${request.id}`);
-                      console.log(span);
+                    
                     if(request.is_user)
                       {
                         span.className='status completed';
@@ -142,6 +143,7 @@ function displayrequest() {
   xhr.send();
 }
   window.addEventListener('load', () => {
+
     displayProjects();
     
     displayrequest();
