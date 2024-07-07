@@ -16,6 +16,7 @@ function displayemployee() {
                 employeeContainer.innerHTML =``;
                
                 employees.forEach(function(employee) {
+                  localStorage.setItem( `employee`+`${employee.id}`, employee );
                   
                   employeenum.textContent=employees[0].number;
                   const employeetr = document.createElement('tr');

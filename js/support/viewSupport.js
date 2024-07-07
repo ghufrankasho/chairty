@@ -1,11 +1,11 @@
-var employee_id=0;
-let originalemployee = {};
+var doner_id=0;
+let originaldoner = {};
 
-function displayEmployee(){
+function displaydoner(){
 
-    const data = { id: employee_id };
+    
     const xhr = new XMLHttpRequest();
-    xhr.open('POST', 'http://127.0.0.1:8000/api/employee/show/', true);
+    xhr.open('GET', `http://127.0.0.1:8000/api/doner/show?id=`+`${doner_id}`, true);
   
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4) {
@@ -16,26 +16,18 @@ function displayEmployee(){
                     const response = JSON.parse(xhr.responseText);
                     document.getElementById('image').src = response.image;
                     document.getElementById('name').textContent = response.name;
-                    if(response.depart !==null){
-                        document.getElementById('branch').textContent = response.depart.branch.name;
-                        document.getElementById('department').textContent = response.depart.name;
-                    }
-                    else{
-                        document.getElementById('branch').textContent = "does not belonge to branch yet";
-                        document.getElementById('department').textContent = "does not belonge to department yet";
-                    }
                     document.getElementById('phone').textContent = response.phone;
                     document.getElementById('email').textContent = response.email;
                     
-                    if(response.depart!==null)
+                    if(response.projects!==null)
                      {
-                        if(response.depart. projects.length!=0 )
+                        if(response. projects.length!=0 )
                         {const projectContainer = document.getElementById('projects');
               
                         // Clear existing projects
                         projectContainer.innerHTML = '';
                         
-                        response.depart. projects.forEach(function(project) {
+                        response. projects.forEach(function(project) {
                             const projectDiv = document.createElement('div');
                             projectDiv.className = 'box';
                             projectDiv.innerHTML = `
@@ -105,11 +97,11 @@ function displayEmployee(){
                           
                         });}
                         else{
-                            document.getElementById("employeesh").style.display = "block"
+                            document.getElementById("donersh").style.display = "block"
                        }
                     }
                     else{
-                         document.getElementById("employeesh").style.display = "block"
+                         document.getElementById("donersh").style.display = "block"
                     }
                     
                 } catch (e) {
@@ -122,10 +114,10 @@ function displayEmployee(){
     };
   
     xhr.setRequestHeader('Content-Type', 'application/json');
-    xhr.send(JSON.stringify(data));
+    xhr.send();
 }
 function deleteProject(id) {
-    const data = JSON.stringify({ "id": id });  // Ensure id is an integer
+      // Ensure id is an integer
     const xhr = new XMLHttpRequest();
     xhr.open('DELETE', `http://127.0.0.1:8000/api/project/delete/${id}`, true);
     xhr.setRequestHeader('Content-Type', 'application/json');
@@ -136,7 +128,7 @@ function deleteProject(id) {
                 console.log('Delete success:', response.message);
                 // showAlert(null,response.message,response.status);
                 // Optionally, refresh the projects list or remove the deleted project from the DOM
-                displayEmployee();
+                displaydoner();
             } else {
                 const response = JSON.parse(xhr.responseText);
                 showAlert(response.errors ,response.message,response.status);
@@ -150,14 +142,14 @@ function deleteProject(id) {
   window.addEventListener('load', () => {
     // Get the project ID from the query parameters (e.g., "?projectId=20")
     const urlParams = new URLSearchParams(window.location.search);
-    const employeeId = urlParams.get('employeeId');
+    const donerId = urlParams.get('donerId');
     
-    console.log("employeeId from URL:", employeeId);
-    employee_id=employeeId;
-    // Call the function with the retrieved employee ID
-    if (employeeId) {
-        displayEmployee();
+    console.log("donerId from URL:", donerId);
+    doner_id=donerId;
+    // Call the function with the retrieved doner ID
+    if (donerId) {
+        displaydoner();
     } else {
-        console.error("No employeeId found in URL parameters.");
+        console.error("No donerId found in URL parameters.");
     }
   });

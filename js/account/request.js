@@ -64,7 +64,7 @@ function displayemployees() {
   xhr.send();
 }
 function displayVolunter() {
-  console.log("  console.log(employee_request);");
+  
   const xhr = new XMLHttpRequest();
   const num_volunter = document.getElementById('num_volunter');
   xhr.open('GET', 'http://127.0.0.1:8000/api/user/get_volunter', true);
