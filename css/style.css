@@ -2707,7 +2707,7 @@ body {
 }
 
 .site-main .brand-area .first-row .col-lg-4 > .single-brand{
-    border: 1px solid var(--border-color);
+    border: 1px solid #201f1f17;;
     text-align: center;
     padding: 1.8rem 0rem;
     margin: .9rem 0;
@@ -2722,12 +2722,12 @@ body {
 }
 
 .site-main .brand-area .first-row .col-lg-4 > .single-brand:hover{
-    box-shadow: var(--box-shadow);
+    box-shadow:  0px 10px 30px rgba(57, 56, 61, 0.205);
     transform: scale(1.1);
 }
 
 .site-main .brand-area .first-row .col-lg-4 > .single-brand:hover > img{
-    filter: brightness(0.15);
+    filter: brightness(1.1);
 }
 
 .site-main .brand-area .experience-area{
@@ -2747,29 +2747,19 @@ body {
     position: relative;
 }
 
-.site-main .brand-area .experience-area .bg-panel{
-    position: absolute;
-    left: -190px; top: 0%;
-    background: #e029290a;
-    width: 400px;
-    height: 400px;
-    margin-left: 340px;
-    z-index: -1;
-}
+
 
 .site-main .brand-area .experience-area .years-area .years{
-    font: normal bold 84px/40px var(--roboto);
-    color: var(--primary-color2);
+    font: normal bold 84px/40px 'Roboto', cursive;
+    color: #4458dc;
     z-index: 2;
 }
 
 .site-main .brand-area .experience-area .years-area h2 > span{
-    font: normal 600 22px/30px var(--roboto);
+    font: normal 600 22px/30px 'Roboto', cursive;
 }
 
-.site-main .brand-area .experience-area .call-area{
-    padding-left: 10rem;
-}
+
 
 /* End Brand Area */ 
 
@@ -2992,3 +2982,47 @@ padding-bottom: 7rem;
  width: 75%;
 }
 /****************end homepageesuup**************/
+
+
+
+
+.homepageemp .content-table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    min-width: 400px;
+    border-radius: 5px 5px 0 0;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    margin: auto;
+   
+}
+
+.homepageemp .content-table thead tr {
+    background-color: #308574;
+    color: #ffffff;
+    text-align: left;
+    font-weight: bold;
+}
+
+.homepageemp .content-table th,
+.homepageemp .content-table td {
+    padding: 12px 15px;
+}
+
+.homepageemp .content-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.homepageemp .content-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.homepageemp .content-table tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+}
+
+.homepageemp .content-table tbody tr.active-row {
+    font-weight: bold;
+    color: #009879;
+}
