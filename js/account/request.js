@@ -1,5 +1,5 @@
 function displayemployees() {
-  console.log("  console.log(employee_request);");
+ 
   const xhr = new XMLHttpRequest();
   const num_employ = document.getElementById('num_employ');
   xhr.open('GET', 'http://127.0.0.1:8000/api/employee/request', true);
@@ -57,10 +57,8 @@ function displayemployees() {
       });
     }
 
-    else {
-      console.log('Error fetching employee_request:', xhr.statusText);
-    }
-  }
+    
+  };
   xhr.send();
 }
 function displayVolunter() {
@@ -73,7 +71,11 @@ function displayVolunter() {
 
       const volunter_request = JSON.parse(xhr.responseText);
       const vlounterContainer = document.getElementById('volunter_request');
-      num_volunter.textContent = volunter_request[0].number;
+      if(volunter_request.length ==0)
+      {num_volunter.textContent = 0;}
+      else{
+        num_volunter.textContent = volunter_request[0].number;
+      }
 
       // Clear existing employee_request
       vlounterContainer.innerHTML = '';
@@ -122,10 +124,8 @@ function displayVolunter() {
       });
     }
 
-    else {
-      console.log('Error fetching employee_request:', xhr.statusText);
-    }
-  }
+    
+  };
   xhr.send();
 }
 function search(input,is_user) {
