@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Blooger</title>
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="css/all.css">
+
+
+    <!-- ------------ AOS Library ------------------------- -->
+    <link rel="stylesheet" href="css/aos.css">
+
+    <!-- Custom Style   -->
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+
+
+    <!----------------------------- Main Site Section ------------------------------>
+
+    <div class="prodetail">
+
+
+
+        <!-- ---------------------- Site Content -------------------------->
+
+        <section class="container">
+            <div class="site-content">
+                <div class="posts">
+                    <div class="post-content" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="post-image">
+                            <div>
+                                <img src="img/blog1.png" class="img" alt="blog1">
+                            </div>
+                            <div class="post-info flex-row">
+                                <span><i class="fas fa-user text-gray"></i>&nbsp;&nbsp;employee</span>
+                                <span><i class="fas fa-calendar-alt text-gray"></i>&nbsp;&nbsp;January 14, 2019</span>
+                                <span>2 supprt</span>
+                            </div>
+                        </div>
+                        <div class="post-title">
+                            <a href="#">orem ipsum dolor sit amet consectetur adipisicing elit. Neque volupt
+                               contry</a>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque voluptas deserunt beatae
+                                adipisci iusto totam placeat corrupti ipsum, tempora magnam incidunt aperiam tenetur a
+                                nobis, voluptate, numquam architecto fugit. Eligendi quidem ipsam ducimus minus magni
+                                illum similique veniam tempore unde?
+                            </p>
+                            
+                    </div>
+                    <hr>
+                   
+                    
+                    
+                  
+                </div>
+
+            </div>
+        </section>
+
+        <!-- -----------x---------- Site Content -------------x------------>
+
+    </div>
+
+    <!---------------x------------- Main Site Section ---------------x-------------->
+
+
+ 
+
+
+
+
+</body>
+    <!-- Jquery Library file -->
+    <script src="js/Jquery3.4.1.min.js"></script>
+
+    <!-- ------------ AOS js Library  ------------------------- -->
+    <script src="js/aos.js"></script>
+
+       <script>
+     
+$(document).ready(function () {
+
+    
+
+
+
+// click to scroll top
+$('.move-up span').click(function () {
+    $('.site-content').animate({
+        scrollTop: 0
+    }, 1000);
+})
+
+// AOS Instance
+AOS.init();
+
+});</script>
+
+</html>
