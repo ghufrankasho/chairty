@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- HEADER -->
+<div id="header-placeholder"></div>
+<script>
+	fetch('/headerproject.html')
+		.then(response => response.text())
+		.then(text => document.getElementById('header-placeholder').innerHTML = text);
+</script>
+<!-- HEADER -->
+
+<body>
+
+
+
+	<!-- SIDEBAR -->
+	<section id="sidebar">
+		<!-- sidebar -->
+		<div id="sidebar-placeholder"></div>
+		<script>
+			fetch('/sidebar.html')
+				.then(response => response.text())
+				.then(text => document.getElementById('sidebar-placeholder').innerHTML = text);
+		</script>
+		<!-- sidebar -->
+	</section>
+	<!-- SIDEBAR -->
+
+	<!-- CONTENT -->
+	<section id="content">
+		<!-- NAVBAR -->
+		<!-- NAV BAR -->
+		<div id="nav-placeholder"></div>
+		<script>
+			fetch('/nav.html')
+				.then(response => response.text())
+				.then(text => document.getElementById('nav-placeholder').innerHTML = text);
+		</script>
+		<!-- NAV BAR -->
+		<!-- NAVBAR -->
+
+
+
+		<section class="project">
+			<header class="head">
+				<div class="h d-flex" role="search" dir="rtl">
+					 
+					<a class="nav-link d-flex">
+						<a href="/news/addnews.html"> <i class='bx bx-plus'></i></a>
+					</a>
+				</div>
+			</header>
+			<div class="container" id="sliders">
+
+			</div>
+		</section>
+		 
+		<script src="/js/news/news.js"></script>
+</body>
+
+</html>
