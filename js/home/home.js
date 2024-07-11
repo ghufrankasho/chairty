@@ -13,7 +13,7 @@ function displayProjects() {
                 projects.forEach(function(project) {
                   
                     const projectli = document.createElement('li');
-                    if(project.prograss>=80)
+                    if(project.prograss>=50)
                    {
                     projectli.className = 'completed';
                    }

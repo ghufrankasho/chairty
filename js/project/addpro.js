@@ -136,8 +136,8 @@ function displayProject() {
  
 function addProject() {
   const formData = new FormData();  
-  const deparElement = document.querySelector('#departments');
-  const department = deparElement.options[deparElement.selectedIndex].id;
+  const select_depart = document.getElementById('departments');
+  const department = select_depart.options[select_depart.selectedIndex].value;
   const typeElement = document.querySelector('#types');
   const type = typeElement.options[typeElement.selectedIndex].id;
 
@@ -145,6 +145,7 @@ function addProject() {
       name: document.getElementById('nameInput').value,
       department: department,
       type: type,
+      
       start_date: document.getElementById('dateInput1').value,
       end_date: document.getElementById('dateInput2').value,
       description: document.getElementById('desc').value
@@ -168,6 +169,9 @@ function addProject() {
   }
   if (currentProject.description !== originalProject.description) {
       formData.append('description', currentProject.description);
+  }
+  if(document.getElementById('fundrise').value !==null){
+    formData.append('fundrise',document.getElementById('fundrise').value );
   }
 
   // Check if a new image file has been selected
@@ -197,11 +201,106 @@ console.log(...formData);
 
   xhr.send(formData);
 }
+function displayBranches() {
+  const xhr = new XMLHttpRequest();
+  xhr.open('GET', 'http://127.0.0.1:8000/api/branch/', true);
 
-  
+  xhr.onreadystatechange = function() {
+      if (xhr.readyState === 4) {
+          if (xhr.status === 200) {
+              try {
+                  const response = JSON.parse(xhr.responseText);
+                  const select_branch = document.getElementById('branchs');
+                  const select_project = document.getElementById('projects');
+                 
+                  select_branch.options.length = 0;
+                   // Clear existing options
+                   const option = document.createElement("option");
+                   option.text ="select branch";
+                   option.value ="0";
+                   select_branch.add(option);
+                  // Populate branches
+                  for (const key in response) {
+                      
+                          const branch = response[key];
+                          const option = document.createElement("option");
+                          option.text = branch.name;
+                          option.value = branch.id;
+                          select_branch.add(option);
+                    
+                   
+                  }
+                  // response.projects.forEach(function(project){
+                  //   var option = document.createElement("option");
+                  //   option.text = project.name;
+                  //   option.value = project.id;
+                  //   select_project.add(option);
+                  // });
+                  
+                  // Automatically update departments for the first branch
+                  updateDepartments();
+                  
+              } catch (e) {
+                  console.error("Failed to parse response JSON:", e);
+              }
+          } else {
+              console.error("Error with request, status code:", xhr.status);
+          }
+      }
+  };
+
+  xhr.send();
+}
+function updateDepartments() {
+  const select_branch = document.getElementById('branchs');
+  const select_depart = document.getElementById('departments');
+  const branchId = select_branch.value;
+
+  const xhr = new XMLHttpRequest();
+  xhr.open('GET', 'http://127.0.0.1:8000/api/branch/', true);
+
+  xhr.onreadystatechange = function() {
+      if (xhr.readyState === 4) {
+          if (xhr.status === 200) {
+              try {
+                  const response = JSON.parse(xhr.responseText);
+                  
+                  // Clear existing options
+                  select_depart.options.length = 0;
+                  const option = document.createElement("option");
+                  option.text ="select department";
+                  option.value ="0";
+                  select_depart.add(option);
+                  // Find the selected branch's departments
+                  for (const key in response) {
+                      
+                          const branch = response[key];
+                          if (branch.id == branchId) {
+                              branch.departments.forEach(function(department) {
+                                  var option = document.createElement("option");
+                                  option.text = department.name;
+                                  option.value = department.id;
+                                  select_depart.add(option);
+                              });
+                              break;
+                          }
+                      
+                  }
+                  
+              } catch (e) {
+                  console.error("Failed to parse response JSON:", e);
+              }
+          } else {
+              console.error("Error with request, status code:", xhr.status);
+          }
+      }
+  };
+
+  xhr.send();
+}
   // Call the displayProject function when the page loads
   window.addEventListener('load', () => {
-    
+    displayBranches(); 
     displayProject();
     
   });

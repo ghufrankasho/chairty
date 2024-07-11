@@ -47,7 +47,7 @@ function viewProject(projectId) {
                     }
                     // showing volunter of the project
                     const userClass=document.getElementById('users');
-                    if(response.user !=null){
+                    if(response.user.length !==0){
                       
                         response.user.forEach(function (use) {
                     

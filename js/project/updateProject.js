@@ -118,7 +118,7 @@ function displayProject(projectId) {
                     document.getElementById('dateInput1').value = response.start_date;
                     document.getElementById('dateInput2').value = response.end_date;
                     document.getElementById('desc').value = response.description;
-                  
+                    document.getElementById('fundrise').value = response.fundrise;
                     // Store original values
                     originalProject = {
                         name: response.name,
@@ -126,7 +126,8 @@ function displayProject(projectId) {
                         type: select.value,
                         start_date: response.start_date,
                         end_date: response.end_date,
-                        description: response.description
+                        description: response.description,
+                        fundrise:response.fundrise,
                     };
                 } catch (e) {
                     console.error("Failed to parse response JSON:", e);
@@ -155,7 +156,8 @@ function updateProject() {
       type: type,
       start_date: document.getElementById('dateInput1').value,
       end_date: document.getElementById('dateInput2').value,
-      description: document.getElementById('desc').value
+      description: document.getElementById('desc').value,
+      fundrise:document.getElementById('fundrise').value,
   };
 
   // Compare current values with original values and append only changed fields
@@ -177,6 +179,9 @@ function updateProject() {
   if (currentProject.description !== originalProject.description) {
       formData.append('description', currentProject.description);
   }
+  if (currentProject.fundrise !== originalProject.fundrise) {
+    formData.append('fundrise', currentProject.fundrise);
+}
 
   // Check if a new image file has been selected
   const imageInput = document.getElementById('input-file');
@@ -185,7 +190,7 @@ function updateProject() {
   }
 
   formData.append('id', project_id); // Always include the project ID
-
+   console.log(...formData);
   const xhr = new XMLHttpRequest();
   xhr.open('POST', 'http://127.0.0.1:8000/api/project/update/', true);
 
