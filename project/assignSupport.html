@@ -39,10 +39,18 @@
                               
                                 <p class="card-title fw-bold"> وصف المشروع  </p>
                                 <p class="card-text" id="desc"></p>
-                                <div class="card-title fw-bold">
+                                <div class="card-title fw-bold" id="suports_div" style = "display:none">
                                     <div class="offset1">
                                         <label for="num"> اختر الجهة الداعمة :</label>
                                         <select name="supports" id="supports">
+                                        </select>
+                                        
+                                    </div>
+                                </div>
+                                <div class="card-title fw-bold" id="vlounters_div" style = "display:none">
+                                    <div class="offset1">
+                                        <label for="num"> اختر  متطوعا :</label>
+                                        <select name="volunters" id="volunters">
                                         </select>
                                         
                                     </div>
@@ -59,7 +67,7 @@
                         <div class="col-md-5 ">
                             <div class="card-body">
                                 <span class="rr col-lg-12 col-md-6 col-sm-6  mb-3">
-                                    <a href="#" class=" m-2   mt-2 mb-2 fw-bolder p-2 " onclick="assignProjectToSupport()" type="button" value="update" style="text-decoration: none;
+                                    <a href="#" class=" m-2   mt-2 mb-2 fw-bolder p-2 " id="save_btn" onclick="assignProjectToSupport()" type="button" value="update" style="text-decoration: none;
                                     border-radius: 10px;
                                     box-shadow: 0 2px 2px 2px rgba(130, 209, 134, 0.904);
                                     color: black;"> حفظ </a>
@@ -81,10 +89,7 @@
     document.getElementById('name').textContent=name;
     document.getElementById('desc').textContent=description;
     document.getElementById('image').src=image;
-    
-    localStorage.removeItem("name", project.name);
-    localStorage.removeItem("description", project.description);
-    localStorage.removeItem("image", project.image);
+     
 
 </script>        
 

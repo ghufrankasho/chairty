@@ -1,5 +1,5 @@
- 
-function displayProject() {
+var project_id=null;
+function displaysupport() {
    
 
     const xhr = new XMLHttpRequest();
@@ -10,8 +10,12 @@ function displayProject() {
             if (xhr.status === 200) {
                 try {
                     const response = JSON.parse(xhr.responseText);
+                    const div_supports = document.getElementById('suports_div');
+                     
+                    div_supports.style.display='block';
                     const select_supports = document.getElementById('supports');
-                   
+                     
+                
                  
                   select_supports.options.length = 0;
                    // Clear existing options
@@ -48,13 +52,65 @@ function displayProject() {
   
     xhr.send();
 }
+function displayvolunter() {
+   
+
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', 'http://127.0.0.1:8000/api/user/volunter', true);
+  
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+                try {
+                    const response = JSON.parse(xhr.responseText);
+                    const divvolunters = document.getElementById('vlounters_div');
+                     
+                    divvolunters.style.display='block';
+                    const selectvolunters = document.getElementById('volunters');
+                   
+                 
+                    selectvolunters.options.length = 0;
+                   // Clear existing options
+                   const option = document.createElement("option");
+                   option.text ="select";
+                   option.value ="0";
+                   selectvolunters.add(option);
+                  // Populate branches
+                  for (const key in response) {
+                      
+                          const user = response[key];
+                          const option = document.createElement("option");
+                          option.text = user.first_name+" "+user.last_name;
+                          option.value = user.id;
+                          selectvolunters.add(option);
+                    
+                   
+                  }
+                    
+                   
+                    
+                  
+                  
+                   
+                } catch (e) {
+                    console.error("Failed to parse response JSON:", e);
+                }
+            } else {
+                console.error("Error with request, status code:", xhr.status);
+            }
+        }
+    };
+  
+  
+    xhr.send();
+}
 function assignProjectToSupport() {
     let project_id=localStorage.getItem('id');
     
     const supportElement = document.querySelector('#supports');
     const support = supportElement.options[supportElement.selectedIndex].value;
     const data = { project_id: project_id ,
-        doner_id:support
+        user_id:support
 
     };
     console.log("data inside", data);
@@ -82,11 +138,61 @@ function assignProjectToSupport() {
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.send(JSON.stringify(data));
 }
- 
+
+function assignProjectTovolunter() {
+    
+    
+    const supportElement = document.querySelector('#volunters');
+    const support = supportElement.options[supportElement.selectedIndex].value;
+    const data = { project_id: project_id ,
+        user_id:support
+
+    };
+    console.log("data inside", data);
+
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', 'http://127.0.0.1:8000/api/user/attach', true);
+  
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+                
+                    const response = JSON.parse(xhr.responseText);
+                    console.log('Update success:', response.message);
+                    showAlert(null, response.message, true);
+            }
+            else {
+                    const response = JSON.parse(xhr.responseText);
+                    showAlert(response.errors, response.message, response.status);
+                    console.error('Update error:', response.errors || response.message);
+                }
+         
+        }
+    };
+  
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.send(JSON.stringify(data));
+}
   // Call the displayProject function when the page loads
   window.addEventListener('load', () => {
-   
-        displayProject();
+    const urlParams = new URLSearchParams(window.location.search);
+    const projectId = urlParams.get('projectId');
+    project_id=projectId;
+    console.log("projectId from URL:", projectId);
+  
+    // Call the function with the retrieved project ID
+    if (projectId) {
+        project_id=projectId;
+        const save_btn= document.getElementById('save_btn');
+        save_btn.onclick=function(){
+            assignProjectTovolunter();
+        }
+        displayvolunter();
+    } else {
+
+        displaysupport();
+    }
+       
  
      
     

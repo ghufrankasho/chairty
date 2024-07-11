@@ -82,7 +82,13 @@ function displayProjects() {
                  window.location.href =`/home/usersProject.html`;
                 }
               else{
-                localStorage.setItem("users", JSON.stringify(project.user));
+            
+                   
+                  localStorage.setItem("name", project.name);
+                  localStorage.setItem("description", project.description);
+                  localStorage.setItem("image", project.image);
+                  window.location.href =`/project/assignSupport.html?projectId=${project.id}`;
+                
                 }
          
                });
