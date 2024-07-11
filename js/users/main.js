@@ -8,7 +8,7 @@ function displayProjects() {
                 const projectContainer = document.getElementById('projects');
                 
                 // // Clear existing projects
-                //  projectContainer.innerHTML = '';
+                 projectContainer.innerHTML = '';
                 
                 projects.forEach(function(project,index) {
                   
