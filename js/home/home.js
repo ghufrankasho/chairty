@@ -13,6 +13,7 @@ function displayProjects() {
                 projects.forEach(function(project) {
                   
                     const projectli = document.createElement('li');
+                   
                     if(project.prograss>=50)
                    {
                     projectli.className = 'completed';
@@ -21,7 +22,7 @@ function displayProjects() {
                     projectli.className = 'not-completed';
                    }
                     projectli.innerHTML = `
-                        <p> ${project.name}</p>
+                       <a id="${project.id}"><p> ${project.name}</p></a>
 					
                         <a>   <i class='bx bxs-heart' id='support-${project.id}'></i>  </a>
                         <a><i class='fas fa-user-alt'  id='volunter-${project.id}'></i> </a>
@@ -33,10 +34,19 @@ function displayProjects() {
                         document.getElementById(`support-${project.id}`).className=`fas fa-heart-broken`;
                         
                  }
-                 if(project.user.length ===0){
+                if(project.user.length ===0){
                   document.getElementById(`volunter-${project.id}`).className=`fas fa-user-alt-slash`;
                   
-           }
+                }
+            // Create a project button and add an event listener
+            const btnproject = document.getElementById(`${project.id}`);
+                
+        
+            btnproject.addEventListener('click',  () => {
+              localStorage.setItem('id',project.id);
+              window.location.href =`/project/projDesc.html`;
+      
+            });
               // Create a update button and add an event listener
               const supportButton = document.getElementById(`support-${project.id}`);
                 
@@ -53,7 +63,8 @@ function displayProjects() {
                 localStorage.setItem("id", project.id);
                 localStorage.setItem("name", project.name);
                 localStorage.setItem("description", project.description);
-                window.location.href =`/project/assignSuppoer.html`;
+                localStorage.setItem("image", project.image);
+                window.location.href =`/project/assignSupport.html`;
               }
         
               });
