@@ -42,19 +42,26 @@ function displayProjects() {
                 
         
               supportButton.addEventListener('click',  () => {
-                if(supportButton.className !=`fas fa-heart-broken`)
-              {  localStorage.setItem("doners", JSON.stringify(project.doners));
-                let doners = localStorage.getItem("doners");
-                console.log(doners);
-                   
-                window.location.href =`/support/support.html`;}
+              if(supportButton.className !=`fas fa-heart-broken`)
+              {  
+                localStorage.setItem("doners", JSON.stringify(project.doners));
+                
+                 
+                window.location.href =`/support/support.html`;
+              }
+              else{
+                localStorage.setItem("id", project.id);
+                localStorage.setItem("name", project.name);
+                localStorage.setItem("description", project.description);
+                window.location.href =`/project/assignSuppoer.html`;
+              }
         
               });
                // Create a update button and add an event listener
               const volunterButton = document.getElementById(`volunter-${project.id}`);
                 
               volunterButton.addEventListener('click',  () => {
-                if(volunterButton.className !=`fas fa-user-alt-slash`)
+              if(volunterButton.className !=`fas fa-user-alt-slash`)
                { 
                 localStorage.setItem("users", JSON.stringify(project.user));
                 localStorage.setItem("employees", JSON.stringify(project.employees));
@@ -62,6 +69,9 @@ function displayProjects() {
               
                     
                  window.location.href =`/home/usersProject.html`;
+                }
+              else{
+                localStorage.setItem("users", JSON.stringify(project.user));
                 }
          
                });

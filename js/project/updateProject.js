@@ -168,7 +168,7 @@ function updateProject() {
       formData.append('department_id', currentProject.department);
   }
   if (currentProject.type !== originalProject.type) {
-      formData.append('type_id', currentProject.type);
+      formData.append('project_type_id', currentProject.type);
   }
   if (currentProject.start_date !== originalProject.start_date) {
       formData.append('start_date', currentProject.start_date);
