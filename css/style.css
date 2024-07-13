@@ -10,7 +10,6 @@
 .color {
 	background-color: rgb(240, 234, 235) !important;
 }
-
 .title h2::before {
 	position: absolute;
 	content: " ";
