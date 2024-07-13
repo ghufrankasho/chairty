@@ -15,7 +15,7 @@ function displayProjects() {
                   projectDiv.className = 'box';
                   projectDiv.innerHTML = `
                       <img src="${project.image}" alt="">
-                      <div class="content-message-alert">
+                      <div class="content">
                           <h3>${project.name}</h3>
                          
                           <p>${project.description}</p>
@@ -140,7 +140,7 @@ function searchproject(input) {
                   projectDiv.className = 'box';
                   projectDiv.innerHTML = `
                       <img src="${project.image}" alt="">
-                      <div class="content-message-alert">
+                      <div class="content">
                           <h3>${project.name}</h3>
                          
                           <p>${project.description}</p>

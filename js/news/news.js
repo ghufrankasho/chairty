@@ -16,7 +16,7 @@
                     sliderDiv.className = 'box';
                     sliderDiv.innerHTML = `
                         <img src="${slider.image}" alt="">
-                        <div class="content-message-alert">
+                        <div class="content">
                             <h3>${slider.title}</h3>
                            
                             <p>${slider.description}</p>
