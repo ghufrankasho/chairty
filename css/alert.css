@@ -1,5 +1,5 @@
 
-.alert{
+.alert message{
     display: flex;
     align-items:center;
     padding: 0.55rem 0.65rem 0.55rem 0.75rem;
@@ -15,7 +15,7 @@
     0px 48px 208.9px rgba(0, 0, 0, 0.05),
     0px 115px 500px rgba(0, 0, 0, 0.07)
   }
-  .content{
+  .content-message{
     display: flex;
     align-items:center;
   }
@@ -54,11 +54,11 @@
   .success .icon{
     background-color:#095d2148;
   }
-  .info{
+  .info-message{
     background-color: rgba(0, 108, 227,0.2);
     border:2px solid #006CE3;
   }
-  .info .icon{
+  .info-message .icon{
     background-color: #006CE3;
   }
   .warning{
