@@ -53,7 +53,8 @@ function submitSignUpForm(event) {
                   {var response = JSON.parse(xhr.responseText);
   
                   // Handle errors or other states
-                  console.log(response.errors);
+                  d=JSON.stringify(response.errors);
+                  
                   showSuccessAlert(response.errors, '',false,`signUpForm`);
               }
           else{ 
@@ -114,7 +115,8 @@ function submitSignInForm(event) {
                 {var response = JSON.parse(xhr.responseText);
 
                 // Handle errors or other states
-                showSuccessAlert(response.errors,'',false,`signInForm`);
+                console.log(response.errors[0],response.errors)
+                showSuccessAlert(response.errors[0],'',false,`signInForm`);
              
 }
             else{
