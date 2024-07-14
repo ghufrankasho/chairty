@@ -20,7 +20,7 @@
                             <h3>${slider.title}</h3>
                            
                             <p>${slider.description}</p>
-                            
+                            <p id="main-${slider.id}"></p>
                             <div class="info">
                              
                             <a href="#">
@@ -47,6 +47,10 @@
                         if(window.confirm("هل متأكد من أنك تريد حذف هذا السلايدر"))
                           {deleteslider(slider.id);}
                     });
+                    // check if slider is main slider
+                    const pmain = document.getElementById(`main-${slider.id}`);
+                    if(slider.main)pmain.textContent='سلايد اخبار رئيسية';
+                    else pmain.textContent='  سلايد اخبار غير رئيسية '
                     // Create a update button and add an event listener
                     const updateButton = document.getElementById(`update-${slider.id}`);
                     
@@ -56,6 +60,7 @@
                       localStorage.setItem('description',slider.description);
                       localStorage.setItem('image',slider.image);
                       localStorage.setItem('id',slider.id);
+                      localStorage.setItem('main',slider.main);
                       const sliderId = slider.id;
                        
                       // console.log(sliderId)

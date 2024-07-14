@@ -89,40 +89,38 @@ function submitSignInForm(event) {
         if (xhr.readyState === 4 && xhr.status === 200) {
             // Handle successful response
             var response = JSON.parse(xhr.responseText);
-            // showSuccessAlert(null,response.message,true);
+            // showSuccessAlert(null,response.message,true,`signInForm`);
             
-            
-            if (response.user.type=="0"){
+            console.log(response);
+            if (response.account.type=="0"){
               
-           
-              window.location.href =`/users/userHome.html`;
+              localStorage.setItem('account_id',response.account.id)
+              window.location.href =`/main.html`;
               
-             }
-            if (response.user.type=="2"){
-              
-              // window.location.href =`/employee/employeeindex.html`;
-              window.location.href =`/employee/employeeHome.html`;
             }
-            else{
+            if (response.account.type=="2"){
+              localStorage.setItem('account_id',response.account.id)
+              // window.location.href =`/employee/employeeindex.html`;
+              window.location.href =`/main.html`;
+            }
+            if(response.account.type=="1"){
               localStorage.setItem('token',response.access_token);
               
-              window.location.href =`/index.html`;
+              console.log(response);
+                window.location.href =`/index.html`;
               }
             
             // Handle response as needed
-        } else {
+        }
+         else {
             if((xhr.readyState === 4 && xhr.status === 400) )
-                {var response = JSON.parse(xhr.responseText);
+                {
+                  var response = JSON.parse(xhr.responseText);
 
-                // Handle errors or other states
-                console.log(response.errors[0],response.errors)
-                showSuccessAlert(response.errors[0],'',false,`signInForm`);
+                
+                showSuccessAlert(response.errors,'',response.status,`signInForm`);
              
-}
-            else{
-                    console.log("something went wrong",response.errors);
-                    showSuccessAlert('Error occurred during login .',response.errors,null,`signInForm`);
-                }
+} 
         }
     };
     xhr.send(JSON.stringify(formData)); // Send the form data as JSON
@@ -156,15 +154,15 @@ function resetPassword(event) {
           var response = JSON.parse(xhr.responseText);
           // showSuccessAlert(null,response.message,true);
           
-         console.log(response.user.type,response);
-          if (response.user.type=="0"){
+         console.log(response.account.type,response);
+          if (response.account.type=="0"){
             console.log(response.message)
             if(window.confirm(response.message))
               {             window.location.href =`/index.html`;}
             // window.location.href =`/users/userindex.html`;
 
            }
-          if (response.user.type=="2"){
+          if (response.account.type=="2"){
             
             // window.location.href =`/employee/employeeindex.html`;
             window.location.href =`/employee/employees.html`;

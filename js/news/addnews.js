@@ -1,5 +1,6 @@
 var slider_id=null;
-
+var main=0;
+let originalslider = {};
  
 document.addEventListener('DOMContentLoaded', () => {
     const nameInput = document.getElementById('nameInput');
@@ -10,14 +11,15 @@ document.addEventListener('DOMContentLoaded', () => {
     if(sliderId !=null){
        
       slider_id=sliderId;
-      console.log(sliderId);
+      
     }
     else{
-      console.log(sliderId,'inside else');
+       
       localStorage.removeItem('image');
       localStorage.removeItem('description');
       localStorage.removeItem('title');
       localStorage.removeItem('id'); 
+      localStorage.removeItem('main'); 
     }
     
     nameInput.addEventListener('input', validateName);
@@ -58,12 +60,13 @@ document.addEventListener('DOMContentLoaded', () => {
         descError.textContent = '';
     }
   }
-  
-  let originalslider = {};
-  
- 
-  
+  function ismain(){
+    main=1;
+  }  
+  function isNotmain(){
    
+    main=0;
+  }
   function addslider() {
     const formData = new FormData();  
    
@@ -75,7 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     formData.append('description', currentslider.description);
     formData.append('title', currentslider.title);
-    formData.append('type',0);
+    formData.append('main',main);
   
     // Check if a new image file has been selected
     const imageInput = document.getElementById('input-file');
@@ -96,7 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 showAlert(null, response, true);
             } else {
                 const response = JSON.parse(xhr.responseText);
-                showAlert(response, response.message, response.status);
+                showAlert(response.errors, response.message, response.status);
            
             }
         }
@@ -109,15 +112,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const title=localStorage.getItem('title');
     const description=localStorage.getItem('description');
-    
+    const curr_main=localStorage.getItem('main');
+  
     const formData = new FormData();  
     
     const currentdslider = {
     
         title: document.getElementById('nameInput').value,
-         
+        description: document.getElementById('descr').value,
        
-        description: document.getElementById('descr').value
     };
     
   
@@ -129,7 +132,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (currentdslider.description !== description) {
         formData.append('description',description);
     }
-  
+    if(curr_main !=main) formData.append('main',main);
+   
     // Check if a new image file has been selected
     const imageInput = document.getElementById('input-file');
     if ( imageInput !=null && imageInput.files.length > 0) {
@@ -230,4 +234,4 @@ document.addEventListener('DOMContentLoaded', () => {
           console.log('inside if statment');
           window.location.href =`/news/news.html`};
       });
-    }
+  }
