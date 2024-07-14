@@ -94,18 +94,18 @@ function submitSignInForm(event) {
             
             if (response.user.type=="0"){
               
-              // window.location.href =`/users/userindex.html`;
-              window.location.href =`/index.html`;
+           
+              window.location.href =`/users/userHome.html`;
+              
              }
             if (response.user.type=="2"){
               
               // window.location.href =`/employee/employeeindex.html`;
-              window.location.href =`/employee/employees.html`;
-             }
+              window.location.href =`/employee/employeeHome.html`;
+            }
             else{
               localStorage.setItem('token',response.access_token);
               
-
               window.location.href =`/index.html`;
               }
             

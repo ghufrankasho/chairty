@@ -91,7 +91,7 @@ function displaysliders() {
                         sliderItem.classList.add('active');
                     }
                     value=1000+10000*index;
-                    sliderItem.setAttribute('data-bs-interval', 0);
+                    sliderItem.setAttribute('data-bs-interval', value);
                     sliderItem.innerHTML = `
                         <img src="${slider.image}" class="d-block" alt="${slider.title}">
                         <div class="carousel-caption d-none d-md-block">

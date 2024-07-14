@@ -83,20 +83,17 @@ function displayvolunter() {
                           option.text = user.first_name+" "+user.last_name;
                           option.value = user.id;
                           selectvolunters.add(option);
-                    
-                   
-                  }
-                    
-                   
-                    
-                  
-                  
-                   
+                 }
                 } catch (e) {
                     console.error("Failed to parse response JSON:", e);
                 }
-            } else {
-                console.error("Error with request, status code:", xhr.status);
+            } 
+            else {
+              const response = JSON.parse(xhr.responseText);
+              showAlert(response.errors, response.message, response.status);
+             
+              // const v=document.getElementById('no_volunter');
+              // v.style.display='block';
             }
         }
     };
@@ -110,7 +107,7 @@ function assignProjectToSupport() {
     const supportElement = document.querySelector('#supports');
     const support = supportElement.options[supportElement.selectedIndex].value;
     const data = { project_id: project_id ,
-        user_id:support
+        doner_id:support,
 
     };
     console.log("data inside", data);
