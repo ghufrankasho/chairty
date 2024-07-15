@@ -10,9 +10,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Patua+One&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="css/style.css">
 
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/fontawesome.min.css" integrity="sha512-d0olNN35C6VLiulAobxYHZiXJmq+vl+BGIgAxQtD5+kqudro/xNMvv2yIHAciGHpExsIbKX3iLg+0B6d0k4+ZA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/brands.min.css" integrity="sha512-8RxmFOVaKQe/xtg6lbscU9DU0IRhURWEuiI0tXevv+lXbAHfkpamD4VKFQRto9WgfOJDwOZ74c/s9Yesv3VvIQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <title>ihsan</title>
         <!-- Boxicons -->
@@ -24,11 +26,133 @@
 
 
 
-<header>
-
-    <body class="p-3 m-0 border-0 ">
 
 
+    <header class="sticky-top" style="width: 100%;">
+        <div class="header sticky-top">
+          <div class="logo-part ">
+            <div class="parent">
+              <div class="contact d-flex">
+                <a class="btn position-relative search  ">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-search"
+                    viewBox="0 0 16 16">
+                    <path
+                      d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+                  </svg>
+                </a>
+        
+                <input type="text" placeholder="بحث" dir="rtl" class=" rounded-pill ">
+                <a class="nav-link btn position-relative search order-3  " href="prof.html">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                    class="bi bi-person-circle  " viewBox="0 0 16 16">
+                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
+                    <path fill-rule="evenodd"
+                      d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
+                  </svg>
+                </a>
+        
+              </div>
+        
+        
+        
+              <div class="logo d-flex align-items-center">
+                <p>جمعية البر و الإحسان الخيرية</p>
+                <a class=" navbar-brand  " href="#">
+                  <img src="img/logo1.jpg" width="80" height="80" alt="">
+                </a>
+        
+              </div>
+        
+            </div>
+          </div>
+        
+          <nav class="navbar-brand navbar navbar-expand-lg  sticky-top">
+        
+        
+            <div class="container">
+        
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main" aria-controls="main"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fa-solid fa-bars"></i>
+              </button>
+              <div class="collapse navbar-collapse " dir="rtl" id="main">
+                <ul class="navbar-nav   mx-auto mb-2 mb-lg-0 order-1 text-center">
+                  <li class="nav-item rtl">
+                    <a class="nav-link p-2 p-lg-3 active" aria-current="page" href="main.html"> الرئيسية</a>
+                  </li>
+        
+                  <li class="nav-item">
+                    <a class="nav-link p-2 p-lg-3" href="mainPro.html">المشاريع</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link p-2 p-lg-3" href="news.html">آخر الأخبار</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link p-2 p-lg-3" href="#">ادعمنا</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link p-2 p-lg-3" href="#">تطوع معنا</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link p-2 p-lg-3" href="info.html">لمحة</a>
+                  </li>
+                  
+                  <li class="nav-item">
+                    <a class="nav-link p-2 p-lg-3" href="contact us.html">تواصل معنا </a>
+                  </li>
+        
+              </div>
+            </div>
+          </nav>
+        </div>
+      </header>
+
+
+
+
+ <body class=" m-0 border-0 ">
+
+
+
+      
+    
+ <div class="slider1">
+
+    <section id="carousel-scroll-container" class="h-screen w-screen overflow-hidden">
+        <div class="planets-carousel"  >
+            <div id="carousel-solar-system" class="landing-carousel-item">
+                <div >
+                    <div class="text-xl">Solar system</div>
+                    <div class="mb-2 text-lg">Gain useful information about aur lovely solar system</div>
+                    <a href="#planets" class="button-48">Learn more</a>
+                </div>
+            </div>
+            <div id="carousel-earth" class="landing-carousel-item">
+                <div class="text-xl">Earth</div>
+                <div class="mb-2 text-lg">Our beautifu lovely planet</div>
+                <a href="" class="button-48">Discover</a>
+            </div>
+            <div id="carousel-saturn" class="landing-carousel-item">
+                <div class="text-xl">Saturn</div>
+                <div class="mb-2 text-lg">Cool planet with gas ring around it</div>
+                <a href="" class="button-48">Discover</a>
+            </div>
+        </div>
+        <div class="landing-carousel-dots">
+            <a class="dot active" href="#carousel-solar-system" title="Solar system"></a>
+            <a class="dot" href="#carousel-earth" title="Earth"></a>
+            <a class="dot" href="#carousel-saturn" title="Saturn"></a>
+        </div>
+    </section>
+ </div>
+
+
+
+
+
+
+
+     <!-- 
         <div id="carouselExampleDark" class="carousel carousel-dark slide">
             <div class="carousel-indicators">
                 <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active"
@@ -73,11 +197,14 @@
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Next</span>
             </button>
-        </div>
+        </div> -->
 
 
 
-</header>
+
+
+
+
 <main>
     <!-- /* **************************section1 *****************************/ -->
     <section class="section1" id="part">
@@ -329,10 +456,6 @@
 
 
 
-
-    <!-- /* **************************section3 *****************************/ -->
-
-    <!-- /* ************************** end section3 *****************************/ -->
 
 
 

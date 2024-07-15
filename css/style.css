@@ -5,7 +5,12 @@
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+	scroll-behavior: smooth;
+    box-sizing: border-box;
 }
+body {
+    margin: 0;
+    padding: 0;}
 
 .color {
 	background-color: rgb(240, 234, 235) !important;
@@ -2829,11 +2834,10 @@ body {
 	font-size: 1.5rem;
 }
 
-/* -------x-------- Site Content --------x-------*/
 
 
 
-/*              Viewport less then or equal to 1130px            */
+
 
 @media only screen and (max-width: 1130px) {
 	.prodetail .site-content .post-content>.post-image .post-info {
@@ -2848,10 +2852,7 @@ body {
 
 }
 
-/*      x       Viewport less then or equal to 1130px    x     */
 
-
-/*              Viewport less then or equal to 750px            */
 
 @media only screen and (max-width: 750px) {
 
@@ -2866,7 +2867,7 @@ body {
 }
 
 
-/*        x      Viewport less then or equal to 750px       x     */
+/*        x            x     */
 
 
 /****************start homepageesuup**************/
@@ -3035,4 +3036,215 @@ body {
 .homepageemp .content-table tbody tr.active-row {
 	font-weight: bold;
 	color: #009879;
+}
+
+
+
+
+/***************************************************/
+
+
+.planets-carousel {
+    position: relative;
+    height: 75%;
+    display: flex;
+    align-items: stretch;
+}
+
+.landing-carousel-item {
+    width: 100%;
+    padding: 2rem;
+    flex-shrink: 0;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    row-gap: 0.5rem;
+}
+
+.landing-carousel-dots {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    column-gap: 1rem;
+}
+.landing-carousel-dots .dot {
+    display: inline-block;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 100%;
+    background-color: transparent;
+    border: 2px solid white;
+}
+
+.landing-carousel-dots .dot.active {
+    background: white;
+}
+
+
+.landing-carousel-dots .dot:active {
+    background-color: white;
+}
+.landing-carousel-dots .dot::before {
+    content: '';
+}
+
+
+#carousel-solar-system {
+    background-image: linear-gradient(to left, #0000, #00000017), 
+    url('../img/slider1/1.jpg');
+    background-position: right;
+    background-size: cover;
+}
+
+#carousel-earth {
+    background-image: linear-gradient(to left,  #0000, #00000017), url('../img/slider1/2.jpg');
+    background-position: center;
+    background-size: contain;
+}
+
+#carousel-saturn {
+    background-image: linear-gradient(to left,  #0000, #00000017), url('../img/slider1/4.jpg');
+    background-position: center;
+    background-size: contain;
+}
+
+@media (min-width: 900px) {
+#carousel-earth {
+	background-image: linear-gradient(to left, #0000, #00000017), url('../img/slider1/2.jpg');
+    background-position: right;
+    background-size: contain;
+}
+
+#carousel-saturn {
+	background-image: linear-gradient(to left, #0000, #00000017), url('../img/slider1/4.jpg');
+    background-position: right;
+    background-size: contain;
+}
+
+
+}
+
+
+.slider1 .min-h-screen {
+    min-height: 100vh;
+}
+
+.slider1 .h-screen {
+    height: 100vh;
+}
+
+.slider1 .w-screen {
+    width: 100vw;
+}
+
+/* margins */
+
+.slider1 .mx-2 {
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+.slider1 .mb-1 {
+    margin-bottom: 0.2rem;
+}
+
+.slider1 .mb-2 {
+    margin-bottom: 1rem;
+}
+
+
+/* padding */
+
+.slider1 .p-2 {
+    padding: 1rem;
+}
+.slider1 .py-4 {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+
+.slider1 .float-r {
+    float: right;
+}
+
+/* bg */
+
+.slider1 .bg-base-2 {
+    background-color: var(--c-base-2);
+}
+
+.slider1 .overflow-x {
+    overflow: auto;
+}
+
+.slider1 .overflow-hidden {
+    overflow: hidden;
+}
+
+
+
+/* text */
+
+.slider1 .text-center {
+    text-align: center;
+}
+
+.slider1 .text-md {
+    font-size: 1.5rem;
+}
+
+.slider1 .text-lg {
+    font-size: 2rem;
+}
+
+.slider1 .text-xl {
+    font-size: 4rem;
+}
+
+.slider1 .block {
+    display: block;
+}
+
+.slider1 .flex {
+    display: flex;
+}
+
+.slider1 .inline-flex {
+    display: inline-flex;
+}
+
+.slider1 .flex-wrap {
+    flex-wrap: wrap;
+}
+
+.slider1 .flex-col {
+    flex-direction: column;
+}
+
+.slider1 .justify-center {
+    justify-content: center;
+}
+.slider1 .justify-between{
+    justify-content: space-between;
+}
+
+.slider1.justify-end {
+    justify-content: end;
+}
+
+.slider1 .items-center {
+    align-items: center;
+}
+
+.slider1 .gap-2 {
+    gap: 1rem;
+}
+
+.slider1 .flex-1 {
+    flex: 1;
 }
