@@ -11,7 +11,7 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <link rel="stylesheet" href="/css/bootstrap.min.css" />
-
+    <link rel="stylesheet" href="/css/alert.css">
     <link rel="stylesheet" href="/css/all.min.css" />
     <link rel="stylesheet" href="/css/style.css">
        <!-- Boxicons -->
@@ -61,22 +61,33 @@
               
 
                 <div class="rr " style="margin-right: 20px;">
-                    <label for="name">اسم المشروع</label>
+                    <label for="name">اسم المشروع:</label>
                     <input dir="rtl" type="text" id="nameInput">
                     <span id="nameError" class="error-message"></span>
 
                 </div>
 
-                <div class="rr " style="margin-left: 20px;">
-
-                    <label for="num">اسم الفرع</label>
-                    <select name="type" id="departments"></select>
-
+                <div class="rr mb-3 mt-3">
+                    <div class="offset1">
+                        <label for="num">  الفرع :</label>
+                        <select name="branchs" id="branchs" onchange="updateDepartments()">
+                            
+                        </select>
+                        
+                    </div>
+                </div>
+                <div class="rr  mb-3 mt-3">
+                    <div class="offset1">
+                        <label for="num"> القسم :</label>
+                        <select name="departments" id="departments">
+                        </select>
+                        
+                    </div>
                 </div>
 
                 <div class="rr " style="margin-left: 74px;">
 
-                    <label for="type">نوع المشروع</label>
+                    <label for="type">نوع المشروع :</label>
                     <select name="type" id="types"></select>
 
 
@@ -84,7 +95,7 @@
 
                 <div class="rr  ">
 
-                    <label for="type">تاريخ البداية</label>
+                    <label for="type">تاريخ البداية :</label>
                     <input type="date" id="dateInput1">
                     <span id="dateE" class="error-message"></span>
 
@@ -93,7 +104,7 @@
 
                 <div class="rr ">
 
-                    <label for="type">تاريخ النهاية</label>
+                    <label for="type">تاريخ النهاية :</label>
                     <input type="date" id="dateInput2">
                     <span id="dateError2" class="error-message"></span>
 
@@ -101,9 +112,17 @@
                 </div>
                 <div class="rr ">
 
-                    <label for="type">وصف المشروع</label>
+                    <label for="type">وصف المشروع:</label>
                     <textarea id="desc" cols="20" rows="1"></textarea>
                     <span id="descError" class="error-message"></span>
+
+
+                </div>
+                <div class="rr ">
+
+                    <label for="type">حملة تبرعات لهذا المشروع :</label>
+                    <input type="number" min="0" id="fundrise">
+                     
 
 
                 </div>

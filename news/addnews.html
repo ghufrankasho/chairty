@@ -11,7 +11,7 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <link rel="stylesheet" href="/css/bootstrap.min.css" />
-
+    <link rel="stylesheet" href="/css/alert.css">
     <link rel="stylesheet" href="/css/all.min.css" />
     <link rel="stylesheet" href="/css/style.css">
        <!-- Boxicons -->
@@ -62,6 +62,20 @@
 
 
                 </div>
+                
+                <div class="rr ">
+
+                    <label for="type"> هل تريد وضعه ضمن الأخبار الرئيسية:</label>
+                    <div class="card-body">
+                        <input type="radio" value="html" onchange="ismain()" id="radio_yes" name="lang">
+                        <label for="">نعم</label>
+                        <input type="radio" value="html" onchange="isNotmain()" id="radio_no" name="lang">
+                        <label for="">لا</label>
+        
+                    </div>
+
+
+                </div>
 
             </form>
 
@@ -93,6 +107,10 @@
      document.getElementById("profile-pic").src=localStorage.getItem('image');
      document.getElementById('descr').value=localStorage.getItem('description');
      document.getElementById('nameInput').value=localStorage.getItem('title');
+     main=localStorage.getItem('main');
+     console.log(main);
+     if(main==1) document.getElementById('radio_yes').checked=true;
+    else document.getElementById('radio_no').checked=true;
      
      localStorage.removeItem('id'); 
      btn.onclick=function(){

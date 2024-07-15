@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
         integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-
+    <link rel="stylesheet" href="/css/alert.css">
     <link rel="stylesheet" href="/css/bootstrap.min.css" />
     <link rel="stylesheet" href="/css/all.min.css" />
     <link rel="stylesheet" href="/css/style.css">
@@ -49,14 +49,14 @@
                 </div>
                 <div class="rr  mb-3 mt-3">
                     <div class="offset1">
-                        <label for="num">اسم الفرع</label>
+                        <label for="num">اسم القسم</label>
                         <select name="type" id="departments"></select>
                     </div>
                 </div>
                 <div class="rr  mb-3 mt-3">
                     <div class="offset">
                         <label for="type">نوع المشروع</label>
-                        <select name="type" id="types"></select>
+                        <select name="types" id="types"></select>
                     </div>
                     <br>
                 </div>
@@ -83,6 +83,14 @@
                         <span id="descError" class="error-message"></span>
                     </div>
                     <br>
+                </div>
+                <div class="rr ">
+
+                    <label for="type">حملة تبرعات لهذا المشروع :</label>
+                    <input type="number" min="0" id="fundrise">
+                     
+
+
                 </div>
             </form>
             <div class="button ">
