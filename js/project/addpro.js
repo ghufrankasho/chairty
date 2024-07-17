@@ -90,7 +90,7 @@ function displayProject() {
    
  
     const xhr = new XMLHttpRequest();
-    xhr.open('GET', 'http://127.0.0.1:8000/api/project/type_department', true);
+    xhr.open('GET', 'http://127.0.0.1:8000/api/projectType', true);
   
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4) {
@@ -100,17 +100,10 @@ function displayProject() {
                    
                     const response = JSON.parse(xhr.responseText);
                     
-                    const select1 = document.getElementById('departments');
                    
-                    response.data[1].forEach(function(department) {
-                        var c1 = document.createElement("option");
-                        c1.text = department.name;
-                        c1.id = department.id;
-                        select1.options.add(c1, department.name);
-                    });
                     const select = document.getElementById('types');
                    
-                    response.data[0].forEach(function(type) {
+                    response.forEach(function(type) {
                         var c = document.createElement("option");
                         c.text = type.name;
                         c.id = type.id;
