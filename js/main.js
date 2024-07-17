@@ -1,34 +1,64 @@
-document.addEventListener("DOMContentLoaded", function() {
-    document.querySelectorAll('.dropdown-menu').forEach(function(element) {
-        element.addEventListener('click', function(e) {
-            e.stopPropagation();
-        });
+// document.addEventListener("DOMContentLoaded", function() {
+//     document.querySelectorAll('.dropdown-menu').forEach(function(element) {
+//         element.addEventListener('click', function(e) {
+//             e.stopPropagation();
+//         });
+//     })
+
+//     if (window.innerWidth < 992) {
+
+//         document.querySelectorAll('.dropdown-menu a').forEach(function(element) {
+//             element.addEventListener('click', function(e) {
+
+//                 let nextEl = this.nextElementSibling;
+//                 if (nextEl && nextEl.classList.contains('submenu')) {
+//                     e.preventDefault();
+//                     if (nextEl.style.display == 'block') {
+//                         nextEl.style.display = 'none';
+//                     } else {
+//                         nextEl.style.display = 'block';
+//                     }
+
+//                 }
+//             });
+//         })
+//     }
+
+// });
+
+
+
+
+
+
+
+  
+
+var carouselItems = document.querySelectorAll('.landing-carousel-item');
+var carouselDots = document.querySelectorAll('.landing-carousel-dots>.dot');
+var currentItem = 0;
+
+function scrollToCarouselItem(i) {
+    carouselDots[currentItem].classList.remove('active');
+    carouselDots[i].classList.add('active');
+
+    document.getElementById('carousel-scroll-container').scrollTo({
+        left: window.innerWidth * i,
+        behavior: 'smooth'
     })
+    currentItem = i;
+}
 
-    if (window.innerWidth < 992) {
+carouselDots.forEach((dot, i) => {
+    dot.addEventListener('click', ev => {
+        ev.preventDefault();
+        scrollToCarouselItem(i);
+    })
+})
 
-        document.querySelectorAll('.dropdown-menu a').forEach(function(element) {
-            element.addEventListener('click', function(e) {
-
-                let nextEl = this.nextElementSibling;
-                if (nextEl && nextEl.classList.contains('submenu')) {
-                    e.preventDefault();
-                    if (nextEl.style.display == 'block') {
-                        nextEl.style.display = 'none';
-                    } else {
-                        nextEl.style.display = 'block';
-                    }
-
-                }
-            });
-        })
-    }
-
-});
-
-
-
-
+setInterval(() => {
+    scrollToCarouselItem((currentItem + 1) % carouselItems.length)
+}, 5000);
 
 
 const productContainers = [...document.querySelectorAll('.product-container')];
@@ -90,3 +120,17 @@ fetch("https://api.currencyfreaks.com/latest?apikey=631d974204e04c35afe1d8403bd9
     console.log(currency.rates["SAR"]);
     console.log(currency.rates["SYP"]);
   });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
