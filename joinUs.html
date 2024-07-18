@@ -4,20 +4,22 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
-      <title>جمعية البر والإحسان</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      <title>إضافة متطوع</title>
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
     integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
     <link rel="stylesheet" href="/css/alert.css">
     <link rel="stylesheet" href="css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/all.min.css" />
     <link rel="stylesheet" href="css/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <!-- Boxicons -->
+      <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+    <!-- <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;500&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;500&display=swap" rel="stylesheet" /> -->
   </head>
 
-<section class="addpro">
+<!-- <section class="addpro">
 <div class="container text-center " id="addpro">
     <legend dir="rtl" class="text-success fw-bold">معلومات المتطوع</legend>
     <div class="row ">
@@ -58,6 +60,91 @@
     </div>
 
 </div>
-</section>
+</section> -->
+<body>
+    <div class="addvolent">
+        <div class="container">
+            <h1>إضافة متطوع</h1>
+            <form action="#" id="form">
+
+                <div class=" col-lg-6 col-md-6 col-sm-6 mt-4 user-image-container inp">
+                    <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="صورة المستخدم" id="userImage">
+
+
+
+                    <div class="round">
+                        <input type="file" id="userImageInput"  accept=".jpg,.png,.jpeg,.gif,.svg,.webp"
+                            class="account-settings-fileinput">
+                        <i class='bx bx-camera' style="color: #fff;"></i>
+
+                    </div>
+
+                </div>
+
+
+                <div class="input-group" dir="rtl" style="margin-right: 140px;"> 
+                    <label for="name" dir="rtl">  الاسم :</label>
+                    <input type="text" id="name" name="name" required class="validate-input">
+                    <span id="name-length-error" class="error-message"></span>
+                </div>
+               
+
+                <div class="input-group" dir="rtl" style="margin-right: 130px;"> <label for="job">العنوان:</label>
+                    <input type="text" id="address" name="address" required>
+                    <span id="address-length-error" class="error-message"></span>
+                    
+                </div>
+                <div class="input-group" dir="rtl" style="margin-right: 130px;"> <label for="job">الهاتف :</label>
+                    <input type="text" id="phone" name="phone" required>
+                  <span id="phone-length-error" class="error-message"></span>
+                    
+                    
+                </div>
+                <div class="input-group" style="margin-right: 7px;" dir="rtl">
+                    <label for="job" > البريد الالكتروني :</label>
+                    <input dir="rtl" type="text" id="email" required>
+                    <span id="emailError" class="error-message"></span>
+                    <br>
+                </div>
+                <div class="input-group" dir="rtl" style="margin-right: 106px;"> <label for="job">CV :</label>
+                 
+                    <i class='bx bxs-image-alt'> <input type="file" id="cvInput" accept=".pdf,.txt" class="account-settings-fileinput">
+                    </i>
+                        
+              
+                </div>
+                <div class="button ">
+
+                    <button class="button-48" role="button" onclick="addemployee(event)"><span class="text">حفظ
+                        </span></button>
+    
+    
+                </div>
+         
+            
+            </form>
+
+
+
+        </div>
+    </div>
+    <script src="/js/employee/addemployee.js"></script>
+    <script>
+        let profilePic = document.getElementById("userImage");
+        let inputFile = document.getElementById("userImageInput");
+    
+        inputFile.onchange = function()
+        {
+            profilePic.src = URL.createObjectURL(inputFile.files[0]);
+        }
+    </script>
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+
+
+    <script src="/js/app.js"></script>
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/all.min.js"></script>
+</body>
+
 <script src="js/script.js"></script>
 </html>
