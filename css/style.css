@@ -3638,3 +3638,146 @@ body {
 /**************************/
 
 
+
+/*****************add volnteer***********************/
+
+.addvolent .container {
+	width: 500px;
+	margin: 50px auto;
+	background-image: linear-gradient(to bottom, #f0f0f0, #e0e0e0);
+	padding: 20px;
+	border: none;
+	border-radius: 8px;
+
+	box-shadow: 0 3px 9px 3px rgba(87, 156, 90, 0.904);
+}
+
+
+.addvolent h1 {
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+.addvolent form {
+	display: flex;
+
+	flex-direction: column;
+
+	justify-content: center;
+
+	align-items: center;
+
+}
+
+
+.addvolent .input-group {
+	display: flex;
+	align-items: center;
+	margin-bottom: 15px;
+    margin-top: 5px;
+
+}
+
+.addvolent .input-group:hover input[type="text"] {
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+
+}
+
+
+
+.addvolent button[type="submit"] {
+	background-color: #4CAF50;
+	color: white;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	width: 100%;
+	background-image: linear-gradient(to right, #4CAF50, #388E3C);
+
+}
+
+.addvolent button[type="submit"]:active {
+	animation: bounce 0.3s ease-in-out;
+
+}
+
+@keyframes bounce {
+	0% {
+		transform: translateY(0);
+
+	}
+
+	50% {
+		transform: translateY(-10px);
+
+	}
+
+	100% {
+		transform: translateY(0);
+
+	}
+}
+
+
+.addvolent .input-group label,
+.addvolent .input-group input[type="text"] {
+
+
+	padding: 8px;
+	border: none;
+	border-radius: 3px;
+	font-weight: normal;
+
+}
+
+.addvolent .input-group label {
+
+	margin-right: 15px;
+	transition: top 0.2s ease-in-out;
+
+}
+
+.addvolent .input-group:focus-within label {
+	top: 10px;
+
+	font-size: 0.8rem;
+
+}
+
+#projectuser {
+	margin-left: 14px;
+}
+
+
+
+
+
+#userImage {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.change-user-image {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	cursor: pointer;
+	font-size: 20px;
+	color: #fff;
+}
+
+
+.error-message {
+	color: red;
+	font-size: 12px;
+	display: flex;
+	flex-direction: column;
+	/* Stack elements vertically */
+	align-items: flex-start;
+
+
+}
+
+/****************************/
