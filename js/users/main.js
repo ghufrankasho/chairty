@@ -75,7 +75,7 @@ function displayProjects() {
 
 function displaysliders() {
     const xhr = new XMLHttpRequest();
-    xhr.open('GET', 'http://127.0.0.1:8000/api/slider/', true);
+    xhr.open('GET', 'http://127.0.0.1:8000/api/slider/1', true);
 
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4) {
