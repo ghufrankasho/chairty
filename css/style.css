@@ -2181,7 +2181,10 @@ body {
 	transform: scale(1.2);
 	transition: 1s
 }
-
+.section1 .card-img-top {
+	height: 160px;
+	object-fit: contain;
+}
 
 
 /* ************************** end section1 *****************************/
