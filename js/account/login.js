@@ -109,6 +109,11 @@ function submitSignInForm(event) {
               console.log(response);
                 window.location.href =`/index.html`;
               }
+            if (response.account.type=="3"){
+             
+                window.location.href =`/main.html`;
+                }
+              window.location.href =`/main.html`;
             
             // Handle response as needed
         }

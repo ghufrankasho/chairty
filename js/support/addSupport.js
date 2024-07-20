@@ -104,7 +104,7 @@ function showAlert(data, message, status,form) {
 
       // Remove the message container from the DOM
       div.remove();
-      if(status) window.location.href =`/support/support.html`;
+      if(status) window.location.href =`/main.html`;
     });
   }
 document.addEventListener('DOMContentLoaded', () => {
@@ -153,41 +153,42 @@ function validateAddress() {
 }
 function validatePhone() {
   const phone = document.getElementById('phone');
-    const phoneError = document.getElementById('phoneError');
+    const phoneError = document.getElementById('phone-length-error');
     const value = phone.value.trim();
-    const pattern =/^\+963\d{3}\d{3}\d{3}$/;
+    const pattern =/^09\d{2}\d{3}\d{3}$/;
 
     // Validate phone number and update message
    
     if (!value) {
       phone.classList.add('error');
-      phoneError.textContent = 'رقم الهاتف  الخاص بالجهة الداعمة مطلوب';
+      phoneError.textContent = 'رقم الهاتف  الخاص بالمستخدم مطلوب';
     } else 
    { const isValid = pattern.test(value);
      if (!isValid) {
       phone.classList.add('error');
-      phoneError.textContent = 'رقم المشروع يجب أن يبدأ ب 963+ وأن يكون 9 خانات    ';
+      phoneError.textContent = 'رقم المستخدم يجب أن يبدأ ب 09       ';
     } else {
       phone.classList.remove('error');
       phoneError.textContent = '';
     }}
-} 
+}
+
 function validateEmail() {
-    const email = document.getElementById('email');
-    const emailError = document.getElementById('emailError');
-    const value = email.value.trim();
-    const pattern =/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!value) {
+  const email = document.getElementById('email');
+  const emailError = document.getElementById('emailError');
+  const value = email.value.trim();
+  const pattern =/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!value) {
+    email.classList.add('error');
+    emailError.textContent = 'الايميل  مطلوب';
+  } else 
+  {
+    const isValid = pattern.test(value);
+    if (!isValid) {
       email.classList.add('error');
-      emailError.textContent = 'الايميل  مطلوب';
-    } else 
-    {
-      const isValid = pattern.test(value);
-      if (!isValid) {
-        email.classList.add('error');
-        emailError.textContent = 'هذا الحقل يجب أن يكون ايميل';
-    } else {
-      email.classList.remove('error');
-      emailError.textContent = '';
-    }}
-  }
+      emailError.textContent = 'هذا الحقل يجب أن يكون ايميل';
+  } else {
+    email.classList.remove('error');
+    emailError.textContent = '';
+  }}
+}

@@ -1,6 +1,6 @@
 function displayProjects() {
   const xhr = new XMLHttpRequest();
-  xhr.open('GET', 'http://127.0.0.1:8000/api/project/', true);
+  xhr.open('GET', 'http://127.0.0.1:8000/api/project/get', true);
   xhr.onreadystatechange = function () {
       if (xhr.readyState === 4) {
           if (xhr.status === 200) {
