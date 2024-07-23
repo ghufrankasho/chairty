@@ -2454,7 +2454,7 @@ body {
 .mainPro .box {
 
 	box-shadow: 0 3px 9px 3px rgba(0, 0, 0, 0.5);
-	transition: all 0.5s ease-in-out;
+	transition: all 1.5s ease-in-out;
 }
 
 .mainPro .box:hover {
@@ -2473,7 +2473,7 @@ body {
 .mainPro .sbox {
 	background-color: #96acf1;
 	cursor: pointer;
-	transition: 0.5s;
+	transition: 1.5s;
 	position: relative;
 }
 
