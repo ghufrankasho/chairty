@@ -2704,77 +2704,6 @@ body {
 
 
 
-/* Start Brand Area */
-
-.site-main .brand-area {
-	padding: 1rem 20rem;
-	margin-bottom: 4rem;
-}
-
-.site-main .brand-area .first-row .col-lg-4 {
-	display: flex;
-	justify-content: center;
-}
-
-.site-main .brand-area .first-row .col-lg-4>.single-brand {
-	border: 1px solid #201f1f17;
-	;
-	text-align: center;
-	padding: 1.8rem 0rem;
-	margin: .9rem 0;
-	width: 180px;
-	height: 100px;
-	cursor: pointer;
-	transition: transform .4s ease;
-}
-
-.site-main .brand-area .first-row .col-lg-4>.single-brand>img {
-	width: 50%;
-}
-
-.site-main .brand-area .first-row .col-lg-4>.single-brand:hover {
-	box-shadow: 0px 10px 30px rgba(57, 56, 61, 0.205);
-	transform: scale(1.1);
-}
-
-.site-main .brand-area .first-row .col-lg-4>.single-brand:hover>img {
-	filter: brightness(1.1);
-}
-
-.site-main .brand-area .experience-area {
-	padding-left: 1rem;
-}
-
-.site-main .brand-area .experience-area span {
-	display: block;
-}
-
-.site-main .brand-area .experience-area .years-area {
-	background: url(../img/client-info-bg.png) no-repeat 45px 20px;
-	padding: 2rem 0;
-	width: 40rem;
-	height: 18rem;
-	padding-left: 8rem;
-	position: relative;
-}
-
-
-
-.site-main .brand-area .experience-area .years-area .years {
-	font: normal bold 84px/40px 'Roboto', cursive;
-	color: #4458dc;
-	z-index: 2;
-}
-
-.site-main .brand-area .experience-area .years-area h2>span {
-	font: normal 600 22px/30px 'Roboto', cursive;
-}
-
-
-
-/* End Brand Area */
-
-
 
 
 
@@ -3785,4 +3714,164 @@ body {
 
 }
 
-/****************************/
+/****************cart************/
+
+
+.cart input:focus,
+.cart button:focus,
+.cart .form-control:focus{
+	outline: none;
+	box-shadow: none;
+}
+
+.cart .form-control:disabled, .form-control[readonly]{
+	background-color: #fff;
+
+}
+.cart .table tr,
+.cart .table tr td{
+	vertical-align: midlle;
+}
+
+.cart  .button-container{
+	display: flex;
+	align-items: center;
+}
+.cart  .button-container .form-control{
+	max-width: 80px;
+	text-align: center;
+	display: inline-block;
+	margin: 0px 5px;
+
+}
+
+#mytable .form-control{
+	width: auto;
+	display: inline-block;
+}
+
+.cart .cart-qty-plus,
+.cart .cart-qty-minus{
+height: 38px;
+width: 38px;
+background-color: #fff;
+border: 1px solid #ced4da;
+border-radius:  .25rem;
+}
+.cart .cart-qty-plus:hover,
+.cart .cart-qty-minus:hover{
+	background-color: #5161ce;
+	color: #fff;
+
+
+}
+
+.img-prdct{
+
+	width: 50px;
+	height: 50px;
+
+	border-radius: 4px;
+}
+
+.img-prdct img{
+	width: 100% ;
+}
+
+
+
+
+
+
+
+.don{
+	font-family: 'Poppins', sans-serif;
+	margin:0; padding:0;
+	box-sizing: border-box;
+	outline: none; border:none;
+	text-transform: capitalize;
+	transition: all .2s linear;
+  }
+  
+  .don .container{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding:25px;
+	min-height: 100vh;
+	background: linear-gradient(90deg, #2ecc71 60%, #27ae60 40.1%);
+  }
+  
+  .don .container form{
+	padding:20px;
+	width:700px;
+	background: #fff;
+	box-shadow: 0 5px 10px rgba(0,0,0,.1);
+  }
+  
+  .don .container form .row{
+	display: flex;
+	flex-wrap: wrap;
+	gap:15px;
+  }
+  
+  .don .container form .row .col{
+	flex:1 1 250px;
+  }
+  
+  .don .container form .row .col .title{
+	font-size: 20px;
+	color:#333;
+	padding-bottom: 5px;
+	text-transform: uppercase;
+  }
+  
+  .don .container form .row .col .inputBox{
+	margin:15px 0;
+  }
+  
+  .don .container form .row .col .inputBox span{
+	margin-bottom: 10px;
+	display: block;
+  }
+  
+  .don .container form .row .col .inputBox input{
+	width: 100%;
+	border:1px solid #ccc;
+	padding:10px 15px;
+	font-size: 15px;
+	text-transform: none;
+  }
+  
+  .don .container form .row .col .inputBox input:focus{
+	border:1px solid #000;
+  }
+  
+  .don .container form .row .col .flex{
+	display: flex;
+	gap:15px;
+  }
+  
+  .don .container form .row .col .flex .inputBox{
+	margin-top: 5px;
+  }
+  
+  .don .container form .row .col .inputBox img{
+	height: 34px;
+	margin-top: 5px;
+	filter: drop-shadow(0 0 1px #000);
+  }
+  
+  .don .container form .submit-btn{
+	width: 100%;
+	padding:12px;
+	font-size: 17px;
+	background: #27ae60;
+	color:#fff;
+	margin-top: 5px;
+	cursor: pointer;
+  }
+  
+  .don .container form .submit-btn:hover{
+	background: #2ecc71;
+  }
