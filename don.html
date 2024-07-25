@@ -15,88 +15,55 @@
     <div class="don">
         <div class="container" dir="rtl">
 
-            <form action=""dir="rtl">
+            <form id="paymentForm" dir="rtl">
 
                 <div class="row" dir="rtl">
- <div class="col" dir="rtl">
-
-                        <h3 class="title">billing address</h3>
-
-                        <div class="inputBox">
-                            <span>full name :</span>
-                            <input type="text" placeholder="john deo">
-                        </div>
-                        <div class="inputBox">
-                            <span>email :</span>
-                            <input type="email" placeholder="example@example.com">
-                        </div>
-                        <div class="inputBox">
-                            <span>address :</span>
-                            <input type="text" placeholder="room - street - locality">
-                        </div>
-                        <div class="inputBox">
-                            <span>city :</span>
-                            <input type="text" placeholder="mumbai">
-                        </div>
-
-                        <div class="flex">
-                            <div class="inputBox">
-                                <span>amount :</span>
-                                <input type="text" placeholder="1234">
-                            </div>
-
-                        </div>
-
-                    </div>
-
                     <div class="col" dir="rtl">
-
-                        <h3 class="title">payment</h3>
+                        <h3 class="title">Payment</h3>
 
                         <div class="inputBox">
-                            <span>cards accepted :</span>
+                            <span>Cards Accepted :</span>
                             <img src="img/card_img.png" alt="">
                         </div>
                         <div class="inputBox">
-                            <span>name on card :</span>
-                            <input type="text" placeholder="mr. john deo">
+                            <span>Name on Card :</span>
+                            <input type="text" placeholder="Mr. John Doe" id="card_name" required>
                         </div>
                         <div class="inputBox">
-                            <span>credit card number :</span>
-                            <input type="number" placeholder="1111-2222-3333-4444">
+                            <span>Credit Card Number :</span>
+                            <input type="text" placeholder="1111-2222-3333-4444" id="card_number" required pattern="\d{4}-\d{4}-\d{4}-\d{4}">
+                            <small id="card_number_error" class="error"></small>
                         </div>
                         <div class="inputBox">
-                            <span>exp month :</span>
-                            <input type="text" placeholder="january">
+                            <span>Exp Month :</span>
+                            <input type="text" placeholder="January" id="exp_month" required pattern="^(0[1-9]|1[0-2])$">
+                            <small id="exp_month_error" class="error"></small>
                         </div>
 
                         <div class="flex">
                             <div class="inputBox">
-                                <span>exp year :</span>
-                                <input type="number" placeholder="2022">
+                                <span>Exp Year :</span>
+                                <input type="text" placeholder="2022" id="exp_year" required pattern="\d{4}">
+                                <small id="exp_year_error" class="error"></small>
                             </div>
                             <div class="inputBox">
-                                <span>zip code :</span>
-                                <input type="text" placeholder="123 456">
+                                <span>Amount :</span>
+                                <input type="number" id="amount" placeholder="$10" required min="0" step="10">
+                                <small id="amount_error" class="error"></small>
                             </div>
-
                         </div>
 
                     </div>
-
-                   
-
-
-
-
                 </div>
 
-                <input type="submit" value="proceed to checkout" class="submit-btn">
+                <input type="submit" id="checkout" value="Proceed to Checkout" class="submit-btn">
 
             </form>
 
         </div>
     </div>
+
+    <script src="js/main/donation.js"></script>
 </body>
 
 </html>
