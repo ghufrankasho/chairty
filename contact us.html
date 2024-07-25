@@ -132,45 +132,54 @@
       </div>
       <div class="box">
         <!-------form-------->
-        <div class="contact form">
+        <div class="contact form" id="form">
           <h3>إرسال رسالة</h3>
           <form>
             <div class="formbox">
               <div class="row50">
                 <div class="inputbox">
                   <span>الاسم الأول</span>
-                  <input type="text" placeholder="rama" id="name1">
+                  <input type="text" id="first_name" name="name" required class="validate-input">
+                  <span id="firstname-length-error" class="error"></span>
+                
                 </div>
                 <div class="inputbox">
                   <span>الاسم الأخير</span>
-                  <input type="text" placeholder="alzain" id="name2">
+                  <input type="text" id="last_name" name="name" required class="validate-input">
+                  <span id="lastname-length-error" class="error"></span>
                 </div>
+                 
               </div>
               <div class="row50">
                 <div class="inputbox">
                   <span>الإيميل</span>
-                  <input type="text" placeholder="rama@email.com" id="email">
-                </div>
+                  <input dir="rtl" type="text" id="email" required>
+                  <span id="emailError" class="error"></span>
+                  </div>
                 <div class="inputbox">
-                  <span style="direction: ltr;">الموبايل</span>
-                  <input type="text" placeholder="+963 988 363 365">
+                  <span style="direction: rtl;">الموبايل</span>
+                  <input type="text" id="mobile" name="mobile" required>
+                  <span id="mobile-length-error" class="error"></span>
+                   
                 </div>
               </div>
 
               <div class="row100">
                 <div class="inputbox">
                   <span>الرسالة</span>
-                  <textarea placeholder="......اكتب رسالتك هنا" id="msg"></textarea>
+                  <textarea placeholder="......اكتب رسالتك هنا" id="message" required></textarea>
+                  <span id="message-length-error" class="error"></span>
+                   
                 </div>
               </div>
 
 
 
 
-              <div class="message">
+              <!-- <div class="message">
                 <div class="success" id="success">تم الإرسال بنجاح</div>
                 <div class="danger" id="danger">لا يمكن أن تكون الحقول فارغة</div>
-              </div>
+              </div> -->
 
 
             </div>
@@ -178,7 +187,7 @@
 
           
           <div class="button">
-            <button id="send" onclick="message()">إرسال</button>
+            <button onclick="addcontact(event)">   إرسال  </button>
           </div>
         </div>
 
@@ -226,7 +235,7 @@
 
 
 
-  <script src="js/contact.js"></script>
+  <!-- <script src="js/contact.js"></script> -->
   <script src="js/users/contact.js"></script>
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>

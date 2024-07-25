@@ -227,10 +227,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     if (accountId) {
         displayuser();
-    } else {
-        addvolunter();
-        // console.error("No accountId found in URL parameters.");
-    }
+    }  
   const firstnameInput = document.getElementById('first_name');
   const lastnameInput = document.getElementById('last_name');
  

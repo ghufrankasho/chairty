@@ -182,9 +182,9 @@ function validatemessage() {
     if (!value) {
         messageInput.classList.add('error');
         messageError.textContent = 'الكنية  مطلوبة';
-    } else if (value.length > 100) {
+    } else if (value.length > 200) {
         messageInput.classList.add('error');
-        messageError.textContent = 'الرسالة  لا يجب أن يتجاوز 500 حرف';
+        messageError.textContent = 'الرسالة  لا يجب أن يتجاوز 200 حرف';
     } else {
         messageInput.classList.remove('error');
         messageError.textContent = '';
@@ -224,7 +224,7 @@ function validatemobile() {
         const isValid = pattern.test(value);
         if (!isValid) {
             mobile.classList.add('error');
-            mobileError.textContent = 'رقم المستخدم يجب أن يبدأ ب 09    ';
+            mobileError.textContent = ' رقم المستخدم يجب أن يبدأ ب 09 ويكون 10 خانات   ';
         } else {
             mobile.classList.remove('error');
             mobileError.textContent = '';
