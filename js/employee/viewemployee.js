@@ -3,9 +3,9 @@ let originalemployee = {};
 
 function displayEmployee(){
 
-    const data = { id: employee_id };
+    
     const xhr = new XMLHttpRequest();
-    xhr.open('POST', 'http://127.0.0.1:8000/api/employee/show/', true);
+    xhr.open('GET', `http://127.0.0.1:8000/api/employee/show?id=${employee_id}`, true);
   
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4) {
@@ -122,7 +122,7 @@ function displayEmployee(){
     };
   
     xhr.setRequestHeader('Content-Type', 'application/json');
-    xhr.send(JSON.stringify(data));
+    xhr.send();
 }
 function deleteProject(id) {
     const data = JSON.stringify({ "id": id });  // Ensure id is an integer

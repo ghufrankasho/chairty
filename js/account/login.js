@@ -35,15 +35,15 @@ function submitSignUpForm(event) {
             console.log(type,account_id);
             if (type=="0"){
               console.log("inside if",type,account_id);
-             window.location.href =`/users/adduser.html?accountId=${account_id}`;
+             window.location.href =`/main.html?accountId=${account_id}`;
             }
             if (type=="2"){
             console.log("inside if",type,account_id);
-            window.location.href =`/employee/addemployee.html?accountId=${account_id}`;
+            window.location.href =`/main.html?accountId=${account_id}`;
             }
             if (type=="3"){
              
-              window.location.href =`/support/addSupport.html`;
+              window.location.href =`/main.html`;
               }
               
         } 
@@ -113,7 +113,7 @@ function submitSignInForm(event) {
              
                 window.location.href =`/main.html`;
                 }
-              window.location.href =`/main.html`;
+              // window.location.href =`/main.html`;
             
             // Handle response as needed
         }

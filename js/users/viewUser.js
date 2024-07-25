@@ -20,7 +20,9 @@ function displayuser(){
                     document.getElementById('phone').textContent = response.mobile;
                     document.getElementById('email').textContent = response.account.email;
                      
-                    if(response. project!=null )
+                    
+                     
+                    if(response. project!==null )
                     {
                         const projectContainer = document.getElementById('projects');
               

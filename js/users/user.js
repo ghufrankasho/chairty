@@ -7,7 +7,7 @@ function displayusers() {
         if (xhr.readyState === 4) {
             if (xhr.status === 200) {
                 const users = JSON.parse(xhr.responseText);
-                usersnum.textContent=users.length;
+                usersnum.textContent=users.length-1;
                 const userContainer = document.getElementById('users');
                 
                  
@@ -17,8 +17,8 @@ function displayusers() {
                 userContainer.innerHTML =``;
                
                 users.forEach(function(user) {
-                  
-                  
+                 
+                if(user.account_id !==1) {        
                   const usertr = document.createElement('tr');
                     
                    
@@ -28,7 +28,7 @@ function displayusers() {
                         <td>${user.work_id}</td>
                         <td>${user.address}</td>
                         <td>${user.mobile}</td>
-                        <td>${user.project_id}</td>
+                       
                         <td> <a href="#"><i class='bx bx-message-square-x' id="delete-${user.id}"></i></a>
                           <a href="#">  
                           <svg xmlns="http://www.w3.org/2000/svg" id="view-${user.id}" width="20" height="20" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
@@ -59,7 +59,7 @@ function displayusers() {
                   window.location.href =`/users/viewUser.html?userId=${user.id}`;
                   // viewuser(user.id);
                    
-                });
+                });}
                 });
                 const searchButton = document.getElementById(`search`);
                     
