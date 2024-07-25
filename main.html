@@ -425,12 +425,15 @@
             let type=localStorage.getItem('type');
             console.log(type);
             if(type==0)
-           { let user = JSON.parse(localStorage.getItem('user')); // Parse the stringified JSON
-            if (user) {
+           {
+             let user =  localStorage.getItem('user'); // Parse the stringified JSON
+            if (user  ) {
+               let  t=JSON.parse(localStorage.getItem('user'));
+                
                 let img = document.getElementById('pro-image');
                 let profile = document.getElementById('href');
                 profile.href='/users/userHome.html';
-                img.src = user.image;
+                img.src = t.image;
             } else {
                 console.log("User not found or image is missing");
             }

@@ -96,7 +96,7 @@ function submitSignInForm(event) {
             if (response.account.type=="0"){
               // user
               localStorage.setItem('account_id',response.account.id)
-              localStorage.setItem('user',response.user);
+              localStorage.setItem('user',JSON.stringify(response.user));
              
               window.location.href =`/main.html`;
               
