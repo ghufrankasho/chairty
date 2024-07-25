@@ -4,41 +4,27 @@ function adddonation(event) {
   event.preventDefault();
   const formData = new FormData();  
 
-  const first_nameInput = document.getElementById('first_name').value;
-  const last_nameInput = document.getElementById('last_name').value;
-  const address = document.getElementById('address').value;
-  const phone = document.getElementById('phone').value;
-  const typeElement = document.querySelector('#work_types');
-  const type = typeElement.options[typeElement.selectedIndex].id;
-  const email = document.getElementById('email').value;
+  const cardNumberInput = document.getElementById('card_number').value;
+  const expMonthInput = document.getElementById('exp_month').value;
+  const expYearInput = document.getElementById('exp_year').value;
+  const amountInput = document.getElementById('amount').value;
 
 
-  if(type !=='')formData.append('work_id', type);
-  if(first_nameInput !=='')formData.append('first_name', first_nameInput);
-  if(last_nameInput !=='')formData.append('last_name', last_nameInput);
-  if(address !=='')formData.append('address', address);
-  if(phone !=='')formData.append('mobile', phone);
-  if(email !=='')formData.append('email', email);
-  formData.append('account_id', account_id);
+  formData.append('detailes', cardNumberInput+"  "+expMonthInput+"  "+expYearInput);
+  if(amountInput !=='')formData.append('amount', amountInput);
+ 
+  formData.append('id', project_id);
   // Check if a new image file has been selected
  
-  const imageInput = document.getElementById('userImageInput');
-  if ( imageInput !=null && imageInput.files.length > 0) {
-      formData.append('image', imageInput.files[0]);
-  }
-   
-  const cvInput = document.getElementById('cvInput');
-  if ( cvInput !=null && cvInput.files.length > 0) {
-      formData.append('cv', cvInput.files[0]);
-  }
+  
 
 console.log(...formData);
   const xhr = new XMLHttpRequest();
-  xhr.open('POST', 'http://127.0.0.1:8000/api/user/add/', true);
+  xhr.open('POST', 'http://127.0.0.1:8000/api/project/donat/', true);
 
   xhr.onreadystatechange = function () {
       if (xhr.readyState === 4) {
-          if (xhr.status === 201) {
+          if (xhr.status === 200) {
               const response = JSON.parse(xhr.responseText);
                console.log(response.message);
               showAlert(null, response.message, response.status);
@@ -56,9 +42,9 @@ console.log(...formData);
  
 function showAlert(data, message, status) {
   // Show the success message in the "success-message" div
-  const Message = document.getElementById('form');
+  const Message = document.getElementById('paymentForm');
   const div = document.createElement('div');
-  console.log(data)
+ 
   if (status) {
     div.className = "success alert d-none mt-3 mx-auto"
     div.innerHTML = ` 
@@ -126,6 +112,11 @@ function showAlert(data, message, status) {
   });
 }
 document.addEventListener('DOMContentLoaded', function () {
+    const urlParams = new URLSearchParams(window.location.search);
+    const projectId = urlParams.get('projectId');
+    project_id=projectId;
+    console.log("projectId from URL:", projectId);
+   
     const cardNumberInput = document.getElementById('card_number');
     const expMonthInput = document.getElementById('exp_month');
     const expYearInput = document.getElementById('exp_year');
@@ -146,15 +137,15 @@ document.addEventListener('DOMContentLoaded', function () {
             amountError.textContent = '';
         }
     }
-    function validateCardNumber() {
-        const cardNumber = cardNumberInput.value;
-        const cardNumberPattern = /^\d{4}-\d{4}-\d{4}-\d{4}$/;
-        if (!cardNumberPattern.test(cardNumber)) {
-            cardNumberError.textContent = 'Card number must be in the format 1111-2222-3333-4444.';
-        } else {
-            cardNumberError.textContent = '';
-        }
-    }
+    // function validateCardNumber() {
+    //     const cardNumber = cardNumberInput.value;
+    //     const cardNumberPattern = /^\d{4}-\d{4}-\d{4}-\d{4}$/;
+    //     if (!cardNumberPattern.test(cardNumber)) {
+    //         cardNumberError.textContent = 'Card number must be in the format 1111-2222-3333-4444.';
+    //     } else {
+    //         cardNumberError.textContent = '';
+    //     }
+    // }
 
     function validateExpMonth() {
         const expMonth = expMonthInput.value;
@@ -181,7 +172,7 @@ document.addEventListener('DOMContentLoaded', function () {
             expYearError.textContent = '';
         }
     }
-    cardNumberInput.addEventListener('input', validateCardNumber);
+    // cardNumberInput.addEventListener('input', validateCardNumber);
     expMonthInput.addEventListener('input', validateExpMonth);
     expYearInput.addEventListener('input', validateExpYear);
     amountInput.addEventListener('input', validateAmount);
