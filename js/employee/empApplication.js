@@ -6,7 +6,7 @@ function requestEmployee(){
 
     const data = { id: employee_id };
     const xhr = new XMLHttpRequest();
-    xhr.open('POST', 'http://127.0.0.1:8000/api/employee/show/', true);
+    xhr.open('GET', 'http://127.0.0.1:8000/api/employee/show/', true);
   
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4) {
