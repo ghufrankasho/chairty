@@ -45,13 +45,8 @@
                     </a>
 
                     <input type="text" placeholder="بحث" dir="rtl" class=" rounded-pill ">
-                    <a class=" btn position-relative search order-3  " href="prof.html">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
-                            class="bi bi-person-circle  " viewBox="0 0 16 16">
-                            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
-                            <path fill-rule="evenodd"
-                                d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
-                        </svg>
+                    <a href="#" id="href" class="profile">
+                        <img id="pro-image">
                     </a>
 
                 </div>
@@ -103,9 +98,9 @@
                         <li class="nav-item">
                             <a class="nav-link p-2 p-lg-3" href="contact us.html">تواصل معنا </a>
                         </li>
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a class="nav-link p-2 p-lg-3" href="users/userHome.html"> <i class='bx bxs-user'></i></a>
-                        </li>
+                        </li> -->
 
                 </div>
             </div>
@@ -425,7 +420,37 @@
     <script src="/js/main.js" defer async></script>
     <script src="/js/users/main.js"></script>
     <script src="/js/Jquery3.4.1.min.js "></script>
-
+    <script >
+        document.addEventListener('DOMContentLoaded', function () {
+            let type=localStorage.getItem('type');
+            console.log(type);
+            if(type==0)
+           { let user = JSON.parse(localStorage.getItem('user')); // Parse the stringified JSON
+            if (user) {
+                let img = document.getElementById('pro-image');
+                let profile = document.getElementById('href');
+                profile.href='/users/userHome.html';
+                img.src = user.image;
+            } else {
+                console.log("User not found or image is missing");
+            }
+            console.log(user);}
+            if(type==2)
+            { 
+            
+                let employee = JSON.parse(localStorage.getItem('employee')); // Parse the stringified JSON
+                if (employee) {
+                    let profile = document.getElementById('href');
+                    profile.href='/employee/employeeHome.html';
+                    let img = document.getElementById('pro-image');
+                    img.src = employee.image;
+                } else {
+                    console.log("employee not found or image is missing");
+                }
+                console.log(employee);}
+            
+        });
+    </script>
 
 </body>
 
