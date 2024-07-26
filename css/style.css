@@ -2653,8 +2653,12 @@ body {
 }
 
 .site-main .site-banner .banner-image>img {
-	padding: 7rem 0;
-	width: 90rem;
+	padding: 7rem 0 ;
+	height:29rem;
+    object-fit: cover;
+    border-radius: 50%;
+	width: 15rem;
+	margin-left: 100px;
 }
 
 .site-banner {
@@ -2939,7 +2943,7 @@ body {
 }
 
 .homepageemp .content-table thead tr {
-	background-color: #009879;
+	background-color: #0a7511;
 	color: #ffffff;
 	text-align: left;
 	font-weight: bold;
@@ -2959,12 +2963,12 @@ body {
 }
 
 .homepageemp .content-table tbody tr:last-of-type {
-	border-bottom: 2px solid #009879;
+	border-bottom: 2px solid #0a7511;
 }
 
 .homepageemp .content-table tbody tr.active-row {
 	font-weight: bold;
-	color: #009879;
+	color: #0a7511;
 }
 
 

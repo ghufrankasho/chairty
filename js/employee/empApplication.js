@@ -4,9 +4,9 @@ var volunter_id=0;
 var accepted=false;
 function requestEmployee(){
 
-    const data = { id: employee_id };
+    
     const xhr = new XMLHttpRequest();
-    xhr.open('GET', 'http://127.0.0.1:8000/api/employee/show/', true);
+    xhr.open('GET', `http://127.0.0.1:8000/api/employee/show?id=${employee_id}`, true);
   
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4) {
@@ -32,13 +32,13 @@ function requestEmployee(){
     };
   
     xhr.setRequestHeader('Content-Type', 'application/json');
-    xhr.send(JSON.stringify(data));
+    xhr.send();
 }
 function requestuser(){
 
-    const data = { id: volunter_id };
+    
     const xhr = new XMLHttpRequest();
-    xhr.open('POST', 'http://127.0.0.1:8000/api/user/show/', true);
+    xhr.open('GET', `http://127.0.0.1:8000/api/user/show?id=${volunter_id}`, true);
   
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4) {
@@ -64,7 +64,7 @@ function requestuser(){
     };
   
     xhr.setRequestHeader('Content-Type', 'application/json');
-    xhr.send(JSON.stringify(data));
+    xhr.send();
 }
  // Call the displayProject function when the page loads
   window.addEventListener('load', () => {

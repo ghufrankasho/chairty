@@ -35,7 +35,7 @@ function submitSignUpForm(event) {
             console.log(type,account_id);
             if (type=="0"){
               console.log("inside if",type,account_id);
-             window.location.href =`/users/adduser.html?accountId=${account_id}`;
+             window.location.href =`/main.html?accountId=${account_id}`;
             }
             if (type=="2"){
             console.log("inside if",type,account_id);
@@ -43,7 +43,7 @@ function submitSignUpForm(event) {
             }
             if (type=="3"){
              
-              window.location.href =`/support/addSupport.html`;
+              window.location.href =`/support/addSupport.html?accountId=${account_id}`;
               }
               
         } 
@@ -90,32 +90,40 @@ function submitSignInForm(event) {
             // Handle successful response
             var response = JSON.parse(xhr.responseText);
             // showSuccessAlert(null,response.message,true,`signInForm`);
-            
+            localStorage.setItem('token',response.access_token);
+            localStorage.setItem('type',response.account.type);
             console.log(response);
             if (response.account.type=="0"){
-              
+              // user
               localStorage.setItem('account_id',response.account.id)
+              localStorage.setItem('user',JSON.stringify(response.user));
+             
               window.location.href =`/main.html`;
               
             }
             if (response.account.type=="2"){
+              //employee
               localStorage.setItem('account_id',response.account.id)
-              // window.location.href =`/employee/employeeindex.html`;
+              localStorage.setItem('employee',JSON.stringify(response.user));
+               
+               
+               
               window.location.href =`/main.html`;
             }
             if(response.account.type=="1"){
-              localStorage.setItem('token',response.access_token);
               
-              console.log(response);
+              //admin
+              // console.log(response);
                 window.location.href =`/index.html`;
               }
             if (response.account.type=="3"){
-             
+             //support
+               localStorage.setItem('support',JSON.stringify(response.user));
                 window.location.href =`/main.html`;
                 }
-              window.location.href =`/main.html`;
+              // window.location.href =`/main.html`;
             
-            // Handle response as needed
+        
         }
          else {
             if((xhr.readyState === 4 && xhr.status === 400) )
@@ -192,6 +200,7 @@ function resetPassword(event) {
   xhr.setRequestHeader( "Authorization", "Bearer " + token );
   xhr.send(JSON.stringify(formData)); // Send the form data as JSON
 }
+
 function showSuccessAlert(data, message, status,form) {
     // Show the success message in the "success-message" div
     const Message = document.getElementById(form);

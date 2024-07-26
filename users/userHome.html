@@ -36,7 +36,7 @@
             <input type="checkbox" name="" id="toggler">
             <label for="toggler" class="fas fa-bars"></label>
 
-            <a href="/users/userHome.html"  class="logo" id="user_name">younisef<span>.</span></a>
+            <a href="/users/userHome.html"  class="logo" id="user_name"><span>.</span></a>
 
             <nav class="navu">
              <a href="#proj">زمن المشروع</a>  
@@ -66,9 +66,8 @@
                     <div class="row">
                         <div class="col-lg-6 col-md-12 site-title">
                             <h3 class="title-text">Hey</h3>
-                            <h1 class="title-text text-uppercase" id="user_name"> younisef</h1>
-                            <h4 class="title-text text-uppercase"> lorream5
-                            </h4>
+                            <h1 class="title-text text-uppercase" id="user_name1"> </h1>
+                            
                             <div class="site-buttons">
                                 <div class="d-flex flex-row flex-wrap">
 
@@ -92,8 +91,8 @@
             <div class="hard pt-5" id="projj">
 
                 <div class="container">
-                    <div class="row align-items-center">
-                        <div class="col-md-6 col-lg-3 box1 mb-5">
+                    <div class="row align-items-center" id="projects">
+                        <!-- <div class="col-md-6 col-lg-3 box1 mb-5">
                             <div class="box bg-light">
                                 <img class="img-fluid " src="/img/p1.jpeg">
                                 <h4 class="p-3 text-success text-center">Water Damage</h4>
@@ -140,7 +139,11 @@
                                     <i class="fas fa-long-arrow-alt-right"></i>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
+                        <div class="title text-center py-2 m-5">
+                            <h2 class="position-relative d-inline-block" dir="rtl"> المشاريع </h2>
+                            <h5 class="card-title" id="usersh" style = "display:none">لا يوجد  مشاريع</h5>
+                          </div>
                     </div>
                 </div>
             </div>
@@ -209,7 +212,97 @@
         </section>
 
     </div>
+    <script >
+        document.addEventListener('DOMContentLoaded', function () {
+            let user = JSON.parse(localStorage.getItem('user')); // Parse the stringified JSON
+            if (user && user.image) {
+                let img = document.getElementById('user_img');
+                let name = document.getElementById('user_name');
+                let name1 = document.getElementById('user_name1');
+                img.src = user.image;
+                name.textContent=user.first_name ;
+                name1.textContent=user.last_name ;
+            } else {
+                console.log("User not found or image is missing");
+            }
+            console.log(user);
+            displayuser(user.id);
+        });
+        function displayuser(id){
 
+    
+                const xhr = new XMLHttpRequest();
+                xhr.open('GET', `http://127.0.0.1:8000/api/user/show?id=${id}`, true);
+            
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === 4) {
+                        if (xhr.status === 200) {
+                            const response = JSON.parse(xhr.responseText);
+                        
+                            try {
+                                const response = JSON.parse(xhr.responseText);
+                            
+                                
+                                if(response. project!==null )
+                                {
+                                    const projectContainer = document.getElementById('projects');
+                        
+                                    // Clear existing projects
+                                    projectContainer.innerHTML = '';
+                                    
+                                    
+                                        const projectDiv = document.createElement('div');
+                                        projectDiv.className = 'col-md-6 col-lg-3 box1 mb-5';
+                                        projectDiv.innerHTML = `
+                                        <div class="box bg-light">
+                                            <img class="img-fluid "  src="${response. project.image}" alt="">
+                                        
+                                            <h4 class="p-3 text-success text-center">${response. project.name}</h4>
+                                            <p class=" p-3 ">${response. project.description}</p>
+                                        <div class="info">
+                                            <a href="#" id="more-${response.project.id}">Read more</a>
+                                            <i class="fas fa-long-arrow-alt-right"></i>
+                                        </div>
+                                        </div>
+                                            </div>`;
+                                        
+                                        projectContainer.appendChild(projectDiv);
+                                        
+                                        const moreButton = document.getElementById(`more-${response.project.id}`);
+                                        moreButton.addEventListener('click', function() {
+                                            event.preventDefault(); // Prevent default link behavior
+                                            const projectId = response.project.id;
+                                            localStorage.setItem('image',response.project.image);
+                                            localStorage.setItem('description',response.project.description);
+                                            localStorage.setItem('name',response.project.name);
+                                            if(response.project.fundrise==0)localStorage.setItem('fundrise',0);
+                                            else localStorage.setItem('fundrise',response.project.fundrise);
+                                            
+                                            window.location.href = `/prodetail.html?projectId=${response.project.id}`;
+                                        });
+                                        
+                                    
+                                
+                                }
+                                else{
+                                    document.getElementById("usersh").style.display = "block"
+                                }
+                                
+                                
+                            } catch (e) {
+                                console.error("Failed to parse response JSON:", e);
+                            }
+                        } else {
+                            console.error("Error with request, status code:", xhr.status);
+                        }
+                    }
+                };
+
+                xhr.setRequestHeader('Content-Type', 'application/json');
+                xhr.send();
+         }
+        
+    </script>
 </body>
 
 </html>

@@ -54,6 +54,7 @@ function adduser(event) {
   const phone = document.getElementById('phone').value;
   const typeElement = document.querySelector('#work_types');
   const type = typeElement.options[typeElement.selectedIndex].id;
+  const email = document.getElementById('email').value;
 
 
   if(type !=='')formData.append('work_id', type);
@@ -61,7 +62,58 @@ function adduser(event) {
   if(last_nameInput !=='')formData.append('last_name', last_nameInput);
   if(address !=='')formData.append('address', address);
   if(phone !=='')formData.append('mobile', phone);
+  if(email !=='')formData.append('email', email);
   formData.append('account_id', account_id);
+  // Check if a new image file has been selected
+ 
+  const imageInput = document.getElementById('userImageInput');
+  if ( imageInput !=null && imageInput.files.length > 0) {
+      formData.append('image', imageInput.files[0]);
+  }
+   
+  const cvInput = document.getElementById('cvInput');
+  if ( cvInput !=null && cvInput.files.length > 0) {
+      formData.append('cv', cvInput.files[0]);
+  }
+
+console.log(...formData);
+  const xhr = new XMLHttpRequest();
+  xhr.open('POST', 'http://127.0.0.1:8000/api/user/add/', true);
+
+  xhr.onreadystatechange = function () {
+      if (xhr.readyState === 4) {
+          if (xhr.status === 201) {
+              const response = JSON.parse(xhr.responseText);
+               console.log(response.message);
+              showAlert(null, response.message, response.status);
+          } else {
+              const response = JSON.parse(xhr.responseText);
+              console.log(response.errors,response.message);
+              showAlert(response, response, response.status);
+             
+          }
+      }
+  };
+
+  xhr.send(formData);
+}
+function addvolunter(event) {
+  event.preventDefault();
+  const formData = new FormData();  
+
+  const first_nameInput = document.getElementById('first_name').value;
+  const last_nameInput = document.getElementById('last_name').value;
+  const address = document.getElementById('address').value;
+  const phone = document.getElementById('phone').value;
+  const email = document.getElementById('email').value;
+
+
+ formData.append('work_id', 5);
+  if(first_nameInput !=='')formData.append('first_name', first_nameInput);
+  if(last_nameInput !=='')formData.append('last_name', last_nameInput);
+  if(address !=='')formData.append('address', address);
+  if(phone !=='')formData.append('mobile', phone);
+  if(email !=='')formData.append('email', email);
   // Check if a new image file has been selected
  
   const imageInput = document.getElementById('userImageInput');
@@ -163,7 +215,7 @@ function showAlert(data, message, status) {
 
     // Remove the message container from the DOM
     div.remove();
-    if(status)window.location.href =`/users/Users.html`;
+    if(status)window.location.href =`/main.html`;
   });
 }
 document.addEventListener('DOMContentLoaded', () => {
@@ -176,21 +228,20 @@ document.addEventListener('DOMContentLoaded', () => {
     // Call the function with the retrieved project ID
     
     if (accountId) {
+    
         displayuser();
-    } else {
-      // displayuser();
-        console.error("No accountId found in URL parameters.");
-    }
+    }  
   const firstnameInput = document.getElementById('first_name');
   const lastnameInput = document.getElementById('last_name');
- 
+
   const address = document.getElementById('address');
   const phone = document.getElementById('phone');
-
+  const email = document.getElementById('email');
   firstnameInput.addEventListener('input', validateFirstName);
   lastnameInput.addEventListener('input', validateLastName);
   address.addEventListener('input', validateAddress);
   phone.addEventListener('input', validatePhone);
+  email.addEventListener('input', validateEmail);
  
 });
 function validateFirstName() {
@@ -203,7 +254,7 @@ function validateFirstName() {
         nameError.textContent = 'اسم  مطلوب';
     } else if (value.length > 100) {
         nameInput.classList.add('error');
-        nameError.textContent = 'اسم المشروع لا يجب أن يتجاوز 100 أحرف';
+        nameError.textContent = 'الاسم  لا يجب أن يتجاوز 100 أحرف';
     } else {
         nameInput.classList.remove('error');
         nameError.textContent = '';
@@ -219,7 +270,7 @@ function validateLastName() {
       nameError.textContent = 'الكنية  مطلوبة';
   } else if (value.length > 100) {
       nameInput.classList.add('error');
-      nameError.textContent = 'اسم المشروع لا يجب أن يتجاوز 100 أحرف';
+      nameError.textContent = 'الاسم  لا يجب أن يتجاوز 100 أحرف';
   } else {
       nameInput.classList.remove('error');
       nameError.textContent = '';
@@ -256,11 +307,30 @@ function validatePhone() {
    { const isValid = pattern.test(value);
      if (!isValid) {
       phone.classList.add('error');
-      phoneError.textContent = 'رقم المستخدم يجب أن يبدأ ب 09    ';
+      phoneError.textContent =  ' رقم المستخدم يجب أن يبدأ ب 09 ويكون 10 خانات   ';
     } else {
       phone.classList.remove('error');
       phoneError.textContent = '';
     }}
+}
+function validateEmail() {
+  const email = document.getElementById('email');
+  const emailError = document.getElementById('emailError');
+  const value = email.value.trim();
+  const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!value) {
+      email.classList.add('error');
+      emailError.textContent = 'الايميل  مطلوب';
+  } else {
+      const isValid = pattern.test(value);
+      if (!isValid) {
+          email.classList.add('error');
+          emailError.textContent = 'هذا الحقل يجب أن يكون ايميل';
+      } else {
+          email.classList.remove('error');
+          emailError.textContent = '';
+      }
+  }
 }
 function displaycv(){
   const typeElement = document.querySelector('#work_types');

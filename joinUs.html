@@ -83,11 +83,15 @@
 
 
                 <div class="input-group" dir="rtl" style="margin-right: 140px;"> 
-                    <label for="name" dir="rtl">  الاسم :</label>
-                    <input type="text" id="name" name="name" required class="validate-input">
-                    <span id="name-length-error" class="error-message"></span>
+                    <label for="name" dir="rtl">   الاسم  :</label>
+                    <input type="text" id="first_name" name="name" required class="validate-input">
+                    <span id="firstname-length-error" class="error-message"></span>
                 </div>
-               
+                <div class="input-group" dir="rtl" style="margin-right: 140px;"> 
+                    <label for="name" dir="rtl">  الكنية :</label>
+                    <input type="text" id="last_name" name="name" required class="validate-input">
+                    <span id="lastname-length-error" class="error-message"></span>
+                </div>
 
                 <div class="input-group" dir="rtl" style="margin-right: 130px;"> <label for="job">العنوان:</label>
                     <input type="text" id="address" name="address" required>
@@ -115,7 +119,7 @@
                 </div>
                 <div class="button ">
 
-                    <button class="button-48" role="button" onclick="addemployee(event)"><span class="text">حفظ
+                    <button class="button-48" role="button" onclick="addvolunter(event)"><span class="text">حفظ
                         </span></button>
     
     
@@ -128,7 +132,7 @@
 
         </div>
     </div>
-    <script src="/js/employee/addemployee.js"></script>
+    <script src="/js/users/adduser.js"></script>
     <script>
         let profilePic = document.getElementById("userImage");
         let inputFile = document.getElementById("userImageInput");

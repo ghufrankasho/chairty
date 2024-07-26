@@ -1,39 +1,30 @@
-var account_id=0;
+var project_id=0;
  
-function addemployee(event) {
+function adddonation(event) {
   event.preventDefault();
   const formData = new FormData();  
 
-  const nameInput = document.getElementById('name').value;
-  const email = document.getElementById('email').value;
-  const address = document.getElementById('address').value;
-  const phone = document.getElementById('phone').value;
-  
+  const cardNumberInput = document.getElementById('card_number').value;
+  const expMonthInput = document.getElementById('exp_month').value;
+  const expYearInput = document.getElementById('exp_year').value;
+  const amountInput = document.getElementById('amount').value;
 
+
+  formData.append('detailes', cardNumberInput+"  "+expMonthInput+"  "+expYearInput);
+  if(amountInput !=='')formData.append('amount', amountInput);
  
-  if(nameInput !=='')formData.append('name', nameInput);
-  if(email !=='')formData.append('email', email);
-  if(address !=='')formData.append('address', address);
-  if(phone !=='')formData.append('phone', phone);
-  formData.append('account_id', account_id);
+  formData.append('id', project_id);
   // Check if a new image file has been selected
  
-  const imageInput = document.getElementById('userImageInput');
-  if ( imageInput !=null && imageInput.files.length > 0) {
-      formData.append('image', imageInput.files[0]);
-  }
-  const cvInput = document.getElementById('cvInput');
-  if ( cvInput !=null && cvInput.files.length > 0) {
-      formData.append('cv', cvInput.files[0]);
-  }
+  
 
 console.log(...formData);
   const xhr = new XMLHttpRequest();
-  xhr.open('POST', 'http://127.0.0.1:8000/api/employee/add/', true);
+  xhr.open('POST', 'http://127.0.0.1:8000/api/project/donat/', true);
 
   xhr.onreadystatechange = function () {
       if (xhr.readyState === 4) {
-          if (xhr.status === 201) {
+          if (xhr.status === 200) {
               const response = JSON.parse(xhr.responseText);
                console.log(response.message);
               showAlert(null, response.message, response.status);
@@ -48,11 +39,12 @@ console.log(...formData);
 
   xhr.send(formData);
 }
+ 
 function showAlert(data, message, status) {
   // Show the success message in the "success-message" div
-  const Message = document.getElementById('form');
+  const Message = document.getElementById('paymentForm');
   const div = document.createElement('div');
-  console.log(data)
+ 
   if (status) {
     div.className = "success alert d-none mt-3 mx-auto"
     div.innerHTML = ` 
@@ -116,113 +108,73 @@ function showAlert(data, message, status) {
 
     // Remove the message container from the DOM
     div.remove();
-   if(status) window.location.href =`/main.html`;
+    if(status)window.location.href =`/main.html`;
   });
 }
-document.addEventListener('DOMContentLoaded', () => {
-  
-  const urlParams = new URLSearchParams(window.location.search);
-  const accountId = urlParams.get('accountId');
-  account_id=accountId;
+document.addEventListener('DOMContentLoaded', function () {
+    const urlParams = new URLSearchParams(window.location.search);
+    const projectId = urlParams.get('projectId');
+    project_id=projectId;
+    console.log("projectId from URL:", projectId);
    
-  
-  const  nameInput = document.getElementById('name');
-  const email = document.getElementById('email');
- 
-  const address = document.getElementById('address');
-  const phone = document.getElementById('phone');
+    const cardNumberInput = document.getElementById('card_number');
+    const expMonthInput = document.getElementById('exp_month');
+    const expYearInput = document.getElementById('exp_year');
+    const amountInput = document.getElementById('amount');
 
-  nameInput.addEventListener('input', validateFirstName);
-  email.addEventListener('input', validateEmail);
-  address.addEventListener('input', validateAddress);
-  phone.addEventListener('input', validatePhone);
- 
+    const cardNumberError = document.getElementById('card_number_error');
+    const expMonthError = document.getElementById('exp_month_error');
+    const expYearError = document.getElementById('exp_year_error');
+    const amountError = document.getElementById('amount_error');
+
+    function validateAmount() {
+        const amount = amountInput.value;
+        const amountPattern = /^(?!0\d)(\d+(\.\d{1,2})?)$/; // Positive number with up to 2 decimal places
+
+        if (!amountPattern.test(amount)) {
+            amountError.textContent = 'Amount must be a positive number with up to two decimal places.';
+        } else {
+            amountError.textContent = '';
+        }
+    }
+    // function validateCardNumber() {
+    //     const cardNumber = cardNumberInput.value;
+    //     const cardNumberPattern = /^\d{4}-\d{4}-\d{4}-\d{4}$/;
+    //     if (!cardNumberPattern.test(cardNumber)) {
+    //         cardNumberError.textContent = 'Card number must be in the format 1111-2222-3333-4444.';
+    //     } else {
+    //         cardNumberError.textContent = '';
+    //     }
+    // }
+
+    function validateExpMonth() {
+        const expMonth = expMonthInput.value;
+        const expMonthPattern = /^(0[1-9]|1[0-2])$/; // MM format
+        if (!expMonthPattern.test(expMonth)) {
+            expMonthError.textContent = 'Expiration month must be between 01 and 12.';
+        } else {
+            expMonthError.textContent = '';
+        }
+    }
+
+    function validateExpYear() {
+        const expYear = expYearInput.value;
+        const expYearPattern = /^\d{4}$/;
+        const currentYear = new Date().getFullYear();
+        const minYear = currentYear; // Set minimum year as current year
+        const maxYear = currentYear + 10; // Optional: Set a maximum year limit, e.g., 10 years ahead
+
+        if (!expYearPattern.test(expYear)) {
+            expYearError.textContent = 'Expiration year must be a four-digit number.';
+        } else if (parseInt(expYear) < minYear || parseInt(expYear) > maxYear) {
+            expYearError.textContent = `Expiration year must be between ${minYear} and ${maxYear}.`;
+        } else {
+            expYearError.textContent = '';
+        }
+    }
+    // cardNumberInput.addEventListener('input', validateCardNumber);
+    expMonthInput.addEventListener('input', validateExpMonth);
+    expYearInput.addEventListener('input', validateExpYear);
+    amountInput.addEventListener('input', validateAmount);
 });
-function validateEmail() {
-  const email = document.getElementById('email');
-  const emailError = document.getElementById('emailError');
-  const value = email.value.trim();
-  const pattern =/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!value) {
-    email.classList.add('error');
-    emailError.textContent = 'الايميل  مطلوب';
-  } else 
-  {
-    const isValid = pattern.test(value);
-    if (!isValid) {
-      email.classList.add('error');
-      emailError.textContent = 'هذا الحقل يجب أن يكون ايميل';
-  } else {
-    email.classList.remove('error');
-    emailError.textContent = '';
-  }}
-}
-function validateFirstName() {
-  const nameInput =document.getElementById('first_name');
-  const nameError = document.getElementById('firstname-length-error');
-  const value = nameInput.value.trim();
 
-  if (!value) {
-        nameInput.classList.add('error');
-        nameError.textContent = 'اسم  مطلوب';
-    } else if (value.length > 100) {
-        nameInput.classList.add('error');
-        nameError.textContent = 'اسم المشروع لا يجب أن يتجاوز 100 أحرف';
-    } else {
-        nameInput.classList.remove('error');
-        nameError.textContent = '';
-    }
-}
-function validateLastName() {
-  const nameInput =document.getElementById('last_name');
-  const nameError = document.getElementById('lastname-length-error');
-  const value = nameInput.value.trim();
-
-  if (!value) {
-      nameInput.classList.add('error');
-      nameError.textContent = 'الكنية  مطلوبة';
-  } else if (value.length > 100) {
-      nameInput.classList.add('error');
-      nameError.textContent = 'اسم المشروع لا يجب أن يتجاوز 100 أحرف';
-  } else {
-      nameInput.classList.remove('error');
-      nameError.textContent = '';
-  }
-}
-function validateAddress() {
-  const address = document.getElementById('address');
-    const addressError = document.getElementById('address-length-error');
-    const value = address.value.trim();
-  
-    if (!value) {
-      address.classList.add('error');
-      addressError.textContent = 'عنوان المستخدم مطلوب';
-    } else if (value.length > 200) {
-      address.classList.add('error');
-      addressError.textContent = 'عنوان المستخدم لا يجب أن يتجاوز 200 أحرف';
-    } else {
-      address.classList.remove('error');
-        addressError.textContent = '';
-    }
-}
-function validatePhone() {
-  const phone = document.getElementById('phone');
-    const phoneError = document.getElementById('phone-length-error');
-    const value = phone.value.trim();
-    // const pattern1 =/^\0963\d{3}\d{3}\d{3}$/;
-    const pattern =/^09\d{2}\d{3}\d{3}$/;
-    // Validate phone number and update message
-   
-    if (!value) {
-      phone.classList.add('error');
-      phoneError.textContent = 'رقم الهاتف  الخاص بالمستخدم مطلوب';
-    } else 
-   { const isValid = pattern.test(value);
-     if (!isValid) {
-      phone.classList.add('error');
-      phoneError.textContent =  ' رقم المستخدم يجب أن يبدأ ب 09 ويكون 10 خانات   ';
-    } else {
-      phone.classList.remove('error');
-      phoneError.textContent = '';
-    }}
-}

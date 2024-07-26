@@ -41,14 +41,14 @@ function displayProjects() {
                                     <div class="card-heading">${project.name}</div>
                                     <p class="card-text">${project.description}
                                     </p>
-                                    <a class="btn btn-blue  text-light" href="reg.html">
+                                    <a class="btn btn-blue  text-light" href="£">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
                                             fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
                                             <path
                                                 d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
                                         </svg>
                                     </a>
-                                    <a class="btn btn-blue text-light" href="reg.html"><svg
+                                    <a class="btn btn-blue text-light" id="don-${project.id}" href="#"><svg
                                             xmlns="http://www.w3.org/2000/svg" width="30" height="30"
                                             fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
                                             <path
@@ -61,7 +61,12 @@ function displayProjects() {
                  
                     projectContainer.appendChild(projectdiv);
                
-             
+                    const cartButton = document.getElementById(`don-${project.id}`);
+                    cartButton.addEventListener('click', function () {
+                       
+                    window.location.href = `/don.html?projectId=${project.id}`;
+                      
+                    });
             
                 
           });
@@ -154,7 +159,7 @@ function displayDonations() {
                          <div class="product-image">
                             <img src="${project.image}" background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75))
                                , class="product-thumb" alt=""> 
-                            <button class="card-btn" id="card-${project.id}">add to wishlist</button>
+                            <button class="card-btn" id="card-${project.id}">Donat Now</button>
                         </div>
                         <div class="product-info">
                             <h2 class="product-brand">${project.name}</h2>
@@ -167,7 +172,9 @@ function displayDonations() {
                     projectContainer.appendChild(projectdiv);
                     const cartButton = document.getElementById(`card-${project.id}`);
                     cartButton.addEventListener('click', function () {
-                      if (window.confirm("هل متأكد من أنك تريد دعم هذا المشروع")) { }
+                       
+                    window.location.href = `/don.html?projectId=${project.id}`;
+                      
                     });
              
             
