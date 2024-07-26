@@ -39,11 +39,11 @@ function submitSignUpForm(event) {
             }
             if (type=="2"){
             console.log("inside if",type,account_id);
-            window.location.href =`/main.html?accountId=${account_id}`;
+            window.location.href =`/employee/addemployee.html?accountId=${account_id}`;
             }
             if (type=="3"){
              
-              window.location.href =`/main.html`;
+              window.location.href =`/support/addSupport.html?accountId=${account_id}`;
               }
               
         } 

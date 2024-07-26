@@ -16,82 +16,46 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;500&display=swap" rel="stylesheet" />
   </head>
-  <header class="sticky-top">
-    <div class="header sticky-top">
-      <div class="logo-part ">
-        <div class="parent">
-          <div class="contact d-flex">
-            <a class="btn position-relative search  ">
-              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-search"
-                viewBox="0 0 16 16">
-                <path
-                  d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
-              </svg>
-            </a>
-    
-            <input type="text" placeholder="بحث" dir="rtl" class=" rounded-pill ">
-            <a class="nav-link btn position-relative search order-3  " href="prof.html">
-              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
-                class="bi bi-person-circle  " viewBox="0 0 16 16">
-                <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
-                <path fill-rule="evenodd"
-                  d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
-              </svg>
-            </a>
-    
-          </div>
-    
-    
-    
-          <div class="logo d-flex align-items-center">
-            <p>جمعية البر و الإحسان الخيرية</p>
-            <a class=" navbar-brand  " href="#">
-              <img src="img/logo1.jpg" width="80" height="80" alt="">
-            </a>
-    
-          </div>
-    
-        </div>
-      </div>
-    
-      <nav class="navbar-brand navbar navbar-expand-lg  ">
-        <div class="container">
-    
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main" aria-controls="main"
-            aria-expanded="false" aria-label="Toggle navigation">
-            <i class="fa-solid fa-bars"></i>
-          </button>
-          <div class="collapse navbar-collapse " dir="rtl" id="main">
-            <ul class="navbar-nav   mx-auto mb-2 mb-lg-0 order-1 text-center">
-              <li class="nav-item rtl">
-                <a class="nav-link p-2 p-lg-3 active" aria-current="page" href="main.html"> الرئيسية</a>
-              </li>
-    
-              <li class="nav-item">
-                <a class="nav-link p-2 p-lg-3" href="mainPro.html">المشاريع</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link p-2 p-lg-3" href="news.html">آخر الأخبار</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link p-2 p-lg-3" href="#">ادعمنا</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link p-2 p-lg-3" href="joinUs.html">تطوع معنا</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link p-2 p-lg-3" href="info.html">لمحة</a>
-              </li>
-              
-              <li class="nav-item">
-                <a class="nav-link p-2 p-lg-3" href="contact us.html">تواصل معنا </a>
-              </li>
-    
-          </div>
-        </div>
-      </nav>
-    </div>
-  </header>
+
+  <div id="header-placeholder"></div>
+  <script>
+    fetch('headerMain.html')
+        .then(response => response.text())
+        .then(text =>{ document.getElementById('header-placeholder').innerHTML = text;
+        let img = document.getElementById('pro-image');
+        img.src='img/logo1.jpg';
+        
+        let type = localStorage.getItem('type');
+        console.log(type);
+
+        if (type == 0) {
+            let join = document.getElementById('joinus');
+            join.style.display='block';
+            let user = localStorage.getItem('user'); // Parse the stringified JSON
+            if (user) {
+                let t = JSON.parse(localStorage.getItem('user'));
+                let img = document.getElementById('pro-image');
+                let profile = document.getElementById('href');
+                profile.href = '/users/userHome.html';
+                img.src = t.image;
+            } else {
+                console.log("User not found or image is missing");
+            }
+            console.log(user);
+        } else if (type == 2) {
+            let employee = JSON.parse(localStorage.getItem('employee')); // Parse the stringified JSON
+            if (employee) {
+                let profile = document.getElementById('href');
+                profile.href = '/employee/employeeHome.html';
+                let img = document.getElementById('pro-image');
+                img.src = employee.image;
+            } else {
+                console.log("Employee not found or image is missing");
+            }
+            console.log(employee);
+        }
+        });
+</script>
   <body>
   
    

@@ -1,29 +1,40 @@
-// document.addEventListener("DOMContentLoaded", function() {
-//     document.querySelectorAll('.dropdown-menu').forEach(function(element) {
-//         element.addEventListener('click', function(e) {
-//             e.stopPropagation();
-//         });
-//     })
+ 
+ 
 
-//     if (window.innerWidth < 992) {
-
-//         document.querySelectorAll('.dropdown-menu a').forEach(function(element) {
-//             element.addEventListener('click', function(e) {
-
-//                 let nextEl = this.nextElementSibling;
-//                 if (nextEl && nextEl.classList.contains('submenu')) {
-//                     e.preventDefault();
-//                     if (nextEl.style.display == 'block') {
-//                         nextEl.style.display = 'none';
-//                     } else {
-//                         nextEl.style.display = 'block';
-//                     }
-
-//                 }
-//             });
-//         })
+ 
+// document.addEventListener('DOMContentLoaded', function () {
+ 
+  
+//     let type=localStorage.getItem('type');
+//     console.log(type);
+//     if(type==0)
+//    {
+//      let user =  localStorage.getItem('user'); // Parse the stringified JSON
+//     if (user  ) {
+//        let  t=JSON.parse(localStorage.getItem('user'));
+        
+//         let img = document.getElementById('pro-image');
+//         let profile = document.getElementById('href');
+//         profile.href='/users/userHome.html';
+//         img.src = t.image;
+//     } else {
+//         console.log("User not found or image is missing");
 //     }
-
+//     console.log(user);}
+//     if(type==2)
+//     { 
+    
+//         let employee = JSON.parse(localStorage.getItem('employee')); // Parse the stringified JSON
+//         if (employee) {
+//             let profile = document.getElementById('href');
+//             profile.href='/employee/employeeHome.html';
+//             let img = document.getElementById('pro-image');
+//             img.src = employee.image;
+//         } else {
+//             console.log("employee not found or image is missing");
+//         }
+//         console.log(employee);}
+    
 // });
 
 

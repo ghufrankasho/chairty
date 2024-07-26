@@ -1,3 +1,4 @@
+var account_id=0;
 function addDoner() {
 
     const formData = new FormData();  
@@ -10,6 +11,7 @@ function addDoner() {
     if(address !=='')formData.append('address', address);
     if(phone !=='')formData.append('phone', phone);
     if(email !=='')formData.append('email', email);
+    formData.append('account_id', account_id);
     // Check if a new image file has been selected
     const imageInput = document.getElementById('input-file');
     if ( imageInput !=null && imageInput.files.length > 0) {
@@ -108,6 +110,10 @@ function showAlert(data, message, status,form) {
     });
   }
 document.addEventListener('DOMContentLoaded', () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const accountId = urlParams.get('accountId');
+    account_id=accountId;
+    console.log("accountId from URL:", account_id);
     const nameInput = document.getElementById('nameInput');
     const address = document.getElementById('address');
     const phone = document.getElementById('phone');
