@@ -26,7 +26,7 @@ function addDoner() {
         if (xhr.readyState === 4) {
             if (xhr.status === 201) {
                 const response = JSON.parse(xhr.responseText);
-                 
+                 localStorage.setItem('support',JSON.stringify(response.data))
                 showAlert(null, response.message, response.status,'form');
             } else {
                 const response = JSON.parse(xhr.responseText);

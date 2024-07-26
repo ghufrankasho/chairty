@@ -44,10 +44,15 @@
 
       if (type == 0) {
           let join = document.getElementById('joinus');
-          join.style.display='block';
+         
+         
           let user = localStorage.getItem('user'); // Parse the stringified JSON
           if (user) {
+            join.style.display='block';
+           
               let t = JSON.parse(localStorage.getItem('user'));
+              console.log(t);
+              join.href=`/users/adduser.html?accountId=${t.account_id}`;
               let img = document.getElementById('pro-image');
               let profile = document.getElementById('href');
               profile.href = '/users/userHome.html';
@@ -56,17 +61,27 @@
               console.log("User not found or image is missing");
           }
           console.log(user);
-      } else if (type == 2) {
+      } 
+      else
+       if (type == 2) {
           let employee = JSON.parse(localStorage.getItem('employee')); // Parse the stringified JSON
           if (employee) {
               let profile = document.getElementById('href');
               profile.href = '/employee/employeeHome.html';
               let img = document.getElementById('pro-image');
               img.src = employee.image;
-          } else {
-              console.log("Employee not found or image is missing");
-          }
-          console.log(employee);
+          } 
+         
+      
+      }
+      if(type == 3){
+        let support = JSON.parse(localStorage.getItem('support')); // Parse the stringified JSON
+        if (support) {
+            let profile = document.getElementById('href');
+            profile.href = '/support/supportHome.html';
+            let img = document.getElementById('pro-image');
+            img.src = support.image;
+        }
       }
       });
 </script>

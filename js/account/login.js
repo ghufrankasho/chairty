@@ -113,11 +113,12 @@ function submitSignInForm(event) {
             if(response.account.type=="1"){
               
               //admin
-              console.log(response);
+              // console.log(response);
                 window.location.href =`/index.html`;
               }
             if (response.account.type=="3"){
              //support
+               localStorage.setItem('support',JSON.stringify(response.user));
                 window.location.href =`/main.html`;
                 }
               // window.location.href =`/main.html`;
