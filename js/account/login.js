@@ -31,23 +31,24 @@ function submitSignUpForm(event) {
              
            
             
-          //  localStorage.removeItem('user');
-          //  localStorage.removeItem('employee');
-          //  localStorage.removeItem('support');
+           if(localStorage.hasOwnProperty('user'))localStorage.removeItem('user');
+           if(localStorage.hasOwnProperty('employee'))localStorage.removeItem('employee');
+           if(localStorage.hasOwnProperty('support'))localStorage.removeItem('support');
             localStorage.setItem('type',response.account.type);
             localStorage.setItem('account_id',response.account.id);
             console.log(response);
             if (type=="0"){
-            
+             
+          
              window.location.href =`/main.html`;
             }
             if (type=="2"){
             
-            window.location.href =`/employee/addemployee.html?accountId=${account_id}`;
+            window.location.href =`/employee/addemployee.html?accountId=${response.account.id}`;
             }
             if (type=="3"){
              
-              window.location.href =`/support/addSupport.html?accountId=${account_id}`;
+              window.location.href =`/support/addSupport.html?accountId=${response.account.id}`;
               }
               
         } 
@@ -213,7 +214,7 @@ function showSuccessAlert(data, message, status,form) {
     const Message = document.getElementById(form);
  
     const div = document.createElement('div');
-    console.log(message)
+   
     if (status) {
       div.className = "success alert d-none mt-3 mx-auto"
       div.innerHTML = ` 

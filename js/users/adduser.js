@@ -84,8 +84,16 @@ console.log(...formData);
       if (xhr.readyState === 4) {
           if (xhr.status === 201) {
               const response = JSON.parse(xhr.responseText);
-               console.log(response.message);
+               console.log(response.message,response.data);
+               if(localStorage.getItem('user') !==null){
+                console.log(localStorage.getItem('user'),"fffffffffffffff");
+                localStorage.removeItem('user');
+               }
+               
+               
+                localStorage.setItem('user',JSON.stringify(response.data));
                 
+               
               showAlert(null, response.message, response.status);
           } else {
               const response = JSON.parse(xhr.responseText);
