@@ -3506,13 +3506,15 @@ body {
     justify-content: space-between;
 }
 .prodetail  .hpro{
-    margin: 10px 20px;
+	margin: 30px 120px;
+    font-size: 31px;
     height: 40px;
+    font-weight: 800;
     width: 90%;
     display: flex;
     justify-content: space-between;
     align-content: center;
-    color: gray;
+    color: gray
 }
 .prodetail  .content-body{
     display: flex;
@@ -3536,10 +3538,11 @@ body {
     width: 80%;
 }
 .prodetail  .prod p{
-    font-size: 13px;
+    font-size: 32px;
     color: gray;
-    width: 70%;
-}
+    width: 74%;
+	margin-top: 22px;
+	}
 .prodetail  .title{
     font-size: 64px;
 }
