@@ -31,14 +31,18 @@ function submitSignUpForm(event) {
              
            
             
-            account_id=response.account.id;
-            console.log(type,account_id);
+          //  localStorage.removeItem('user');
+          //  localStorage.removeItem('employee');
+          //  localStorage.removeItem('support');
+            localStorage.setItem('type',response.account.type);
+            localStorage.setItem('account_id',response.account.id);
+            console.log(response);
             if (type=="0"){
-              console.log("inside if",type,account_id);
-             window.location.href =`/main.html?accountId=${account_id}`;
+            
+             window.location.href =`/main.html`;
             }
             if (type=="2"){
-            console.log("inside if",type,account_id);
+            
             window.location.href =`/employee/addemployee.html?accountId=${account_id}`;
             }
             if (type=="3"){
@@ -58,7 +62,7 @@ function submitSignUpForm(event) {
                   showSuccessAlert(response.errors, '',false,`signUpForm`);
               }
           else{ 
-            showSuccessAlert('Error occurred during login .',response.errors,null);
+            showSuccessAlert('Error occurred during login .',response,null);
           }
         }
     };

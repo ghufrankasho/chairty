@@ -2,41 +2,7 @@
  
 
  
-// document.addEventListener('DOMContentLoaded', function () {
  
-  
-//     let type=localStorage.getItem('type');
-//     console.log(type);
-//     if(type==0)
-//    {
-//      let user =  localStorage.getItem('user'); // Parse the stringified JSON
-//     if (user  ) {
-//        let  t=JSON.parse(localStorage.getItem('user'));
-        
-//         let img = document.getElementById('pro-image');
-//         let profile = document.getElementById('href');
-//         profile.href='/users/userHome.html';
-//         img.src = t.image;
-//     } else {
-//         console.log("User not found or image is missing");
-//     }
-//     console.log(user);}
-//     if(type==2)
-//     { 
-    
-//         let employee = JSON.parse(localStorage.getItem('employee')); // Parse the stringified JSON
-//         if (employee) {
-//             let profile = document.getElementById('href');
-//             profile.href='/employee/employeeHome.html';
-//             let img = document.getElementById('pro-image');
-//             img.src = employee.image;
-//         } else {
-//             console.log("employee not found or image is missing");
-//         }
-//         console.log(employee);}
-    
-// });
-
 
 
 

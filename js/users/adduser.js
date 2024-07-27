@@ -85,6 +85,7 @@ console.log(...formData);
           if (xhr.status === 201) {
               const response = JSON.parse(xhr.responseText);
                console.log(response.message);
+                
               showAlert(null, response.message, response.status);
           } else {
               const response = JSON.parse(xhr.responseText);

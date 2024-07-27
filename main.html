@@ -40,6 +40,8 @@
       
       let type = localStorage.getItem('type');
       console.log(type,"ffffffffffffffffffff");
+      
+       
       const searchButton = document.getElementById(`search`);
       
       searchButton.addEventListener('click', function (e) {
@@ -54,16 +56,17 @@
       if (type == 0) {
           let join = document.getElementById('joinus');
           let account_id = JSON.parse(localStorage.getItem('account_id'));
-        
+         
+         
           join.style.display='block';
           join.href=`/users/adduser.html?accountId=${account_id}`;
          
           let user = JSON.parse(localStorage.getItem('user')); // Parse the stringified JSON
-        
+ 
           if (user !=null) {
             
               let t = JSON.parse(localStorage.getItem('user'));
-              console.log(t,"ttttttttttttttttttttttt");
+             
               
               let img = document.getElementById('pro-image');
               //let profile = document.getElementById('href');
