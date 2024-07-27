@@ -13,7 +13,7 @@ function adddonation(event) {
   formData.append('detailes', cardNumberInput+"  "+expMonthInput+"  "+expYearInput);
   if(amountInput !=='')formData.append('amount', amountInput);
  
-  formData.append('id', project_id);
+  if(project_id!==0) formData.append('id', project_id);
   // Check if a new image file has been selected
  
   
@@ -114,7 +114,7 @@ function showAlert(data, message, status) {
 document.addEventListener('DOMContentLoaded', function () {
     const urlParams = new URLSearchParams(window.location.search);
     const projectId = urlParams.get('projectId');
-    project_id=projectId;
+    if(projectId)project_id=projectId;
     console.log("projectId from URL:", projectId);
    
     const cardNumberInput = document.getElementById('card_number');
