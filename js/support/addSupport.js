@@ -159,7 +159,7 @@ function validateAddress() {
 }
 function validatePhone() {
   const phone = document.getElementById('phone');
-    const phoneError = document.getElementById('phone-length-error');
+    const phoneError = document.getElementById('phoneError');
     const value = phone.value.trim();
     const pattern =/^09\d{2}\d{3}\d{3}$/;
 

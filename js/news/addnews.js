@@ -141,7 +141,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   
     formData.append('id', slider_id); // Always include the dslider ID
-  
+   console.log(...formData);
     const xhr = new XMLHttpRequest();
     xhr.open('POST', 'http://127.0.0.1:8000/api/slider/', true);
   
