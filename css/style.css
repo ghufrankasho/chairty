@@ -2143,7 +2143,9 @@ body {
 
 /* **************************section1 *****************************/
 
-
+.section1.card-body .card-text p{
+    height: 100px;
+}
 
 
 .section1 .icon-text {
