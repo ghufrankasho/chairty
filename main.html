@@ -40,7 +40,16 @@
       img.src='img/logo1.jpg';
       
       let type = localStorage.getItem('type');
-      console.log(type);
+      const searchButton = document.getElementById(`search`);
+      console.log(searchButton);
+      searchButton.addEventListener('click', function (e) {
+        e.stopImmediatePropagation();
+        const search = document.getElementById('search-input').value;
+        
+        window.location.href =`mainPro.html?search=${search}`;
+
+
+      });
 
       if (type == 0) {
           let join = document.getElementById('joinus');
@@ -106,7 +115,7 @@
                         <div class="mb-2 text-lg" >ارحم اليتيم وامسح رأسه  
                             وأطعمه  <br>
                              من طعامك يلن قلبك وتدرك حاجتك</div>
-                        <a href="#planets" class="btn btn-outline">تبرع  </a>
+                        <a href="/don.html" class="btn btn-outline" id="donat"  >تبرع  </a>
                     </div>
                 </div>
                 <div id="carousel-earth" class="landing-carousel-item">
