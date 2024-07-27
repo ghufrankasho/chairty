@@ -15,6 +15,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;500&display=swap" rel="stylesheet" />
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
   </head>
 
   <div id="header-placeholder"></div>
@@ -74,7 +75,7 @@
   <body>
   
    
-      <section id="about" class="py-5" >
+      <section id="aboutSection" class="fullContainer py-5" >
         <div class="container">
           <div class="row gy-lg-5 align-items-center" >
             <div class="col-lg-6 order-lg-1 text-center "  >
@@ -90,7 +91,128 @@
               <img src="img/photo.png" alt="" class="img-fluid" width="400"height="400">
             </div> 
           </div>
-          <div class="row gy-lg-5 align-items-center" >
+          <div class="title pt-3 mb-2 text-center" >
+            <h2 class="position-relative d-inline-block ms-2 ">المهام </h2>
+        </div>
+          <div class="cards">
+             <div class="donationBox">
+              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-heart-pulse" viewBox="0 0 16 16">
+                <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053.918 3.995.78 5.323 1.508 7H.43c-2.128-5.697 4.165-8.83 7.394-5.857q.09.083.176.171a3 3 0 0 1 .176-.17c3.23-2.974 9.522.159 7.394 5.856h-1.078c.728-1.677.59-3.005.108-3.947C13.486.878 10.4.28 8.717 2.01zM2.212 10h1.315C4.593 11.183 6.05 12.458 8 13.795c1.949-1.337 3.407-2.612 4.473-3.795h1.315c-1.265 1.566-3.14 3.25-5.788 5-2.648-1.75-4.523-3.434-5.788-5"/>
+                <path d="M10.464 3.314a.5.5 0 0 0-.945.049L7.921 8.956 6.464 5.314a.5.5 0 0 0-.88-.091L3.732 8H.5a.5.5 0 0 0 0 1H4a.5.5 0 0 0 .416-.223l1.473-2.209 1.647 4.118a.5.5 0 0 0 .945-.049l1.598-5.593 1.457 3.642A.5.5 0 0 0 12 9h3.5a.5.5 0 0 0 0-1h-3.162z"/>
+              </svg>
+               <div class="title"> تقديم مساعدات طبية</div>
+               <p>إحداث مستوصفات ومراكز صحية خيرية لمعالجة الفقراء والمحتاجين</p>
+             </div>
+             <!-- donation box end -->
+             
+             <div class="volunteerBox">
+              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-house-heart" viewBox="0 0 16 16">
+                <path d="M8 6.982C9.664 5.309 13.825 8.236 8 12 2.175 8.236 6.336 5.309 8 6.982"/>
+                <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.707L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.646a.5.5 0 0 0 .708-.707L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z"/>
+              </svg>
+              <div class="title">المطبخ الخيري </div>
+              <p>تقوم الجمعية أسبوعياً بتقديم وجبات غذائية للمحتاجين ويعتبر هذا المشروع من المشاريع الدائمة</p>
+            </div>
+            <!-- donation box end -->
+
+            <div class="scholarshipBox">
+              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-mortarboard-fill" viewBox="0 0 16 16">
+                <path d="M8.211 2.047a.5.5 0 0 0-.422 0l-7.5 3.5a.5.5 0 0 0 .025.917l7.5 3a.5.5 0 0 0 .372 0L14 7.14V13a1 1 0 0 0-1 1v2h3v-2a1 1 0 0 0-1-1V6.739l.686-.275a.5.5 0 0 0 .025-.917z"/>
+                <path d="M4.176 9.032a.5.5 0 0 0-.656.327l-.5 1.7a.5.5 0 0 0 .294.605l4.5 1.8a.5.5 0 0 0 .372 0l4.5-1.8a.5.5 0 0 0 .294-.605l-.5-1.7a.5.5 0 0 0-.656-.327L8 10.466z"/>
+              </svg>
+              <div class="title">مساعدة طالب علم </div>
+            
+              <p>تشجيع طلاب العلم والباحثين في مجال الدراسات و تقديم مبالغ مالية لهم</p>
+            </div>
+            <!-- donation box end -->
+          </div>
+     
+
+    <section id="about" class="py-5">
+  <div class="container">
+    <div class="row gy-lg-5 align-items-center">
+      <div class="col-lg-6 order-lg-1 text-center text-lg-end">
+        <div class="title pt-3 pb-5">
+            <h2 class="position-relative d-inline-block ms-4" dir="rtl">الجهات الراعية</h2>
+        </div>
+        <p class="lead text-muted" dir="rtl" style="font-size: 35px;">
+          وزارة الشؤون الاجتماعية والعمل <br>
+          محافظة حلب
+        </p>
+      </div> 
+      <div class="col-lg-6 order-lg-0">
+        <img src="img/photo_2024-07-26_06-47-31.jpg" class="img-fluid" style="    height: 400px;
+        margin-left: 22px;">
+      </div> 
+    </div>
+  </div>  
+</section>
+
+<div class="title pt-3 mb-2 text-lg-center align-items-center text-md-center text-sm-center text-center" >
+  <h2 class="position-relative d-inline-block ms-2 " dir="rtl">الشركاء </h2>
+</div>
+<div class="box-content">
+  <div class="row gy-lg-5 align-items-center">
+     <div class="col-lg-3 col-md-3 col-sm-3 ">
+         <img class="img-investor img-fluid m-x-auto m-b align-items-center" src="img/p1.png">
+      </div>
+       <div class="col-lg-3 col-md-3 col-sm-3">
+           <img class="img-investor img-fluid m-x-auto m-b" src="img/p2.png">
+        </div>
+          <div class="col-lg-3 col-md-3 col-sm-3">
+            <img class="img-investor img-fluid m-x-auto m-b" src="img/p3.png">
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-3">
+             <img class="img-investor img-fluid m-x-auto m-b" src="img/p4.png">
+          </div>
+           <div class="col-lg-3 col-md-3 col-sm-3">
+             <img class="img-investor img-fluid m-x-auto m-b" src="img/p5.png">
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3">
+               <img class="img-investor img-fluid m-x-auto m-b" src="img/p6.png">
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3">
+               <img class="img-investor img-fluid m-x-auto m-b" src="img/p7.png">
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3">
+                 <img class="img-investor img-fluid m-x-auto m-b" src="img/p8.png">
+             </div>
+         
+</div>
+            
+     <section class="statistic text-center m-2">
+          <div class="data ">
+            <div class="title pt-3 mb-2 mt-4">
+              <h2 class="position-relative d-inline-block ms-2 ">إحصائيات الجمعية</h2>
+            </div>
+            
+            <div class="container d-flex align-items-center justify-content-between mt-3">
+                 <div>
+                     <i class="fa fa-users fa-5x" style="color: green;"></i>
+                      <p class="fw-bold">9950</p>
+                   </div>
+                   <div>
+                    <img src="img/dish.png" style="width: 95px;
+                    height: 95px; color: green;">
+                     <!-- <i class="fa fa-suitcase fa-5x" style="color: green;"></i> -->
+                     <p class="fw-bold">3000</p>
+                 </div>
+                   <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="currentColor" class="bi bi-bag-heart-fill" viewBox="0 0 16 16" style="color: green;">
+                      <path d="M11.5 4v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4zM8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m0 6.993c1.664-1.711 5.825 1.283 0 5.132-5.825-3.85-1.664-6.843 0-5.132"/>
+                        </svg>
+                     <!-- <i class="fa fa-comments fa-5x" style="color: green;"></i> -->
+                        <p class="fw-bold">25000</p>
+                   </div>
+                   
+          </div>
+        </section>
+        
+      
+    </section>
+          
+
+          <!-- <div class="row gy-lg-5 align-items-center" >
             <div class="col-lg-8 order-lg-1 text-center "  >
               <div class="title pt-3 mb-2" >
                   <h2 class="position-relative d-inline-block ms-2 ">المهام </h2>
@@ -108,16 +230,10 @@
              </ol>
               
             </div> 
-            <div class="col-lg-4  order-lg-0 text-center text-md-center text-sm-center mt-2 ">
-                <h4 class="text-lg-end text-primary"> ثانياً: الجهات الراعية</h4>
-                <ol class="text-lg-end paragraph list-unstyled box-content" dir="rtl">
-                    <li>وزارة الشؤون الاجتماعية والعمل</li>
-                    <li>محافظة حلب</li>
-                </ol>
-            </div> 
-          </div>
+           
+          </div> -->
 
-          <div class="row gy-lg-5 align-items-center text-md-center text-sm-center text-center" >
+          <!-- <div class="row gy-lg-5 align-items-center text-md-center text-sm-center text-center" >
            
             <div class="col-lg-6">
               <ul class="text-lg-end paragraph list-unstyled box-content" dir="rtl">
@@ -153,8 +269,8 @@
               </ul>
             </div> 
             
-          </div>
-          <div class="title pt-3 mb-2 text-lg-center align-items-center text-md-center text-sm-center text-center" >
+          </div> -->
+          <!-- <div class="title pt-3 mb-2 text-lg-center align-items-center text-md-center text-sm-center text-center" >
             <h2 class="position-relative d-inline-block ms-2 " dir="rtl">الشركاء </h2>
         </div>
           <div class="box-content">
@@ -185,7 +301,7 @@
                        </div>
                    
         </div>
-        </div>
+        </div> -->
         </div>  
       </section>
       <footer class="bg-dark py-5" dir="rtl">
