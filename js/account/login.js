@@ -92,19 +92,22 @@ function submitSignInForm(event) {
             // showSuccessAlert(null,response.message,true,`signInForm`);
             localStorage.setItem('token',response.access_token);
             localStorage.setItem('type',response.account.type);
-            console.log(response);
+            localStorage.setItem('account_id',response.account.id);
+            console.log(response,response.account.id);
             if (response.account.type=="0"){
               // user
-              localStorage.setItem('account_id',response.account.id)
-              localStorage.setItem('user',JSON.stringify(response.user));
+              //localStorage.setItem('account_id',response.account.id);
+              if(response.user!==null)
+                localStorage.setItem('user',JSON.stringify(response.user));
+              
              
               window.location.href =`/main.html`;
               
             }
             if (response.account.type=="2"){
               //employee
-              localStorage.setItem('account_id',response.account.id)
-              localStorage.setItem('employee',JSON.stringify(response.user));
+              // localStorage.setItem('account_id',response.account.id);
+              if(response.user!==null) localStorage.setItem('employee',JSON.stringify(response.user));
                
                
                
@@ -118,7 +121,7 @@ function submitSignInForm(event) {
               }
             if (response.account.type=="3"){
              //support
-               localStorage.setItem('support',JSON.stringify(response.user));
+             if(response.user!==null) localStorage.setItem('support',JSON.stringify(response.user));
                 window.location.href =`/main.html`;
                 }
               // window.location.href =`/main.html`;

@@ -23,31 +23,44 @@
     fetch('headerMain.html')
         .then(response => response.text())
         .then(text =>{ document.getElementById('header-placeholder').innerHTML = text;
-        let img = document.getElementById('pro-image');
-        img.src='img/logo1.jpg';
+       
         
         let type = localStorage.getItem('type');
-        console.log(type);
+        console.log(type,"ffffffffffffffffffff");
+        const searchButton = document.getElementById(`search`);
+        
+        searchButton.addEventListener('click', function (e) {
+          e.stopImmediatePropagation();
+          const search = document.getElementById('search-input').value;
+          
+          window.location.href =`mainPro.html?search=${search}`;
+  
+  
+        });
   
         if (type == 0) {
             let join = document.getElementById('joinus');
+            let account_id = JSON.parse(localStorage.getItem('account_id'));
+          
+            join.style.display='block';
+            join.href=`/users/adduser.html?accountId=${account_id}`;
            
-           
-            let user = localStorage.getItem('user'); // Parse the stringified JSON
-            if (user) {
-              join.style.display='block';
-             
+            let user = JSON.parse(localStorage.getItem('user')); // Parse the stringified JSON
+          
+            if (user !=null) {
+              
                 let t = JSON.parse(localStorage.getItem('user'));
-                console.log(t);
-                join.href=`/users/adduser.html?accountId=${t.account_id}`;
+                console.log(t,"ttttttttttttttttttttttt");
+                
                 let img = document.getElementById('pro-image');
-                let profile = document.getElementById('href');
-                profile.href = '/users/userHome.html';
+                //let profile = document.getElementById('href');
+                //profile.href = '/users/userHome.html';
                 img.src = t.image;
-            } else {
+              } 
+            else {
                 console.log("User not found or image is missing");
             }
-            console.log(user);
+      
         } 
         else
          if (type == 2) {
@@ -63,15 +76,19 @@
         }
         if(type == 3){
           let support = JSON.parse(localStorage.getItem('support')); // Parse the stringified JSON
-          if (support) {
+          console.log(support,"ttttttttttttttttttttttt");
+          if (support !=null) {
               let profile = document.getElementById('href');
               profile.href = '/support/supportHome.html';
               let img = document.getElementById('pro-image');
               img.src = support.image;
+          }else {
+              console.log("support not found or image is missing");
           }
         }
         });
   </script>
+  
   <body>
   
    
