@@ -2299,6 +2299,7 @@ body {
 	text-transform: capitalize;
 	margin: 5px 0;
 	overflow-y: scroll;
+	
   }
   
   .price {
@@ -3514,7 +3515,8 @@ body {
     display: flex;
     flex-direction: column;
     align-content: center;
-    justify-content: space-between;
+
+	overflow: hidden;
 }
 .prodetail  .hpro{
     margin: 10px 20px;
