@@ -2,6 +2,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Reem+Kufi:wght@400..700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Gulzar&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&family=Gulzar&family=Lateef:wght@200;300;400;500;600;700;800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 * {
 	margin: 0;
 	padding: 0;
@@ -2139,7 +2141,15 @@ body {
 
 /* **************************section1 *****************************/
 
-
+.section1,
+.product{
+	font-family: "Cairo", sans-serif;
+	font-optical-sizing: auto;
+	font-weight: <weight>;
+	font-style: normal;
+	font-variation-settings:
+	  "slnt" 0;
+}
 
 
 .section1 .icon-text {
@@ -2208,14 +2218,17 @@ body {
 	overflow: hidden;
 	padding: 20px;
 	
+	
   }
   
   .product-container {
 	padding: 0 10vw;
 	display: flex;
+
 	overflow-x: auto;
 	scroll-behavior: smooth;
 	height: 100vh;
+
   }
   
   .product-container::-webkit-scrollbar {
@@ -2227,6 +2240,7 @@ body {
 	width: 250px;
 	height: 450px;
 	margin-right: 40px;
+
   }
   
   .product-image {
@@ -2299,6 +2313,7 @@ body {
 	text-transform: capitalize;
 	margin: 5px 0;
 	overflow-y: scroll;
+
 	
   }
   
@@ -3290,7 +3305,12 @@ body {
 }
 
 .news .product-brand {
+	font-size: 25px;
 	text-transform: uppercase;
+
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 
 .news .product-short-description {
@@ -3301,6 +3321,8 @@ body {
 	opacity: 0.5;
 	text-transform: capitalize;
 	margin: 5px 0;
+      overflow-y: scroll;
+
 }
 
 
