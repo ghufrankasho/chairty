@@ -6,14 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>prodetail</title>
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="css/all.css">
     <link rel="stylesheet" href="/css/alert.css">
 
     <!-- ------------ AOS Library ------------------------- -->
     <link rel="stylesheet" href="css/aos.css">
-  
+
     <!-- Custom Style   -->
     <link rel="stylesheet" href="css/style.css">
 
@@ -21,7 +22,7 @@
 
 <body>
 
-<!-- 
+    <!-- 
 
 
 
@@ -74,82 +75,82 @@
 
   -->
 
-  <div class="prodetail">
-    <div class="container">
-        <div class="cover" id="image"></div>
-        <div class="content">
-            <div class="hpro">
-                <span class="logo">جمعية البر والإحسان</span>
-                <span></span>
-            </div>
-            <div class="content-body">
-                <div class="pages" m-3>
-                    
+    <div class="prodetail">
+        <div class="container">
+            <div class="cover" id="image"></div>
+            <div class="content">
+                <div class="hpro">
+                    <span class="logo">جمعية البر والإحسان</span>
+                    <span></span>
                 </div>
-                <div class="prod">
-                    <span class="title" id="name"><b>1 مشروع</b></span>
-                    <p id="description">Lorem ipsum, dolor sit amet consectetur adipisicing elit. 
-                       Tenetur corporis modi aliquam, quis laborum a nam fugit ducimus? 
-                       Molestiae repellendus adipisci ea aut eligendi nemo velit itaque,
-                        illum placeat? Velit.
-                        </p>
-                       
-               
-                            <div class="prix">
-                               <span><b id="fundrise"></b></span>
-                               <span class="crt">Add to card</span>
-                           </div>
-                           </div>
+                <div class="content-body">
+                    <div class="pages">
 
-               
+                    </div>
+                    <div class="prod">
+                        <span class="title" id="name"><b>1 مشروع</b></span>
+                        <p id="description">Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                            Tenetur corporis modi aliquam, quis laborum a nam fugit ducimus?
+                            Molestiae repellendus adipisci ea aut eligendi nemo velit itaque,
+                            illum placeat? Velit.
+                        </p>
+
+
+                        <div class="prix">
+                            <span><b id="fundrise"></b></span>
+                            <span class="crt">Add to card</span>
+                        </div>
+                    </div>
+
+
+                </div>
+
             </div>
-            
         </div>
     </div>
-   </div>
 
 
 </body>
 <script>
-    let image=localStorage.getItem('image');
-    let name=localStorage.getItem('name');
-    let description=localStorage.getItem('description');
-    let fundrise=localStorage.getItem('fundrise');
-    console.log(fundrise,description,name);
-    let imagepro=document.getElementById('image');
+    let image = localStorage.getItem('image');
+    let name = localStorage.getItem('name');
+    let description = localStorage.getItem('description');
+    let fundrise = localStorage.getItem('fundrise');
+    console.log(fundrise, description, name);
+    let imagepro = document.getElementById('image');
 
-     imagepro.style.backgroundImage=`url(${image})`; 
-    let descriptionpro=document.getElementById('description');
-    descriptionpro.textContent=description;
-    let namepro=document.getElementById('name');
-    namepro.textContent=name;
-    let fundrisepro=document.getElementById('fundrise');
-    fundrisepro.textContent= `$`+fundrise;
+    imagepro.style.backgroundImage = `url(${image})`;
+    let descriptionpro = document.getElementById('description');
+    descriptionpro.textContent = description;
+    let namepro = document.getElementById('name');
+    namepro.textContent = name;
+    let fundrisepro = document.getElementById('fundrise');
+    fundrisepro.textContent = `$` + fundrise;
 </script>
-    <!-- Jquery Library file -->
-    <script src="js/Jquery3.4.1.min.js"></script>
+<!-- Jquery Library file -->
+<script src="js/Jquery3.4.1.min.js"></script>
 
-    <!-- ------------ AOS js Library  ------------------------- -->
-    <script src="js/aos.js"></script>
+<!-- ------------ AOS js Library  ------------------------- -->
+<script src="js/aos.js"></script>
 
-       <script>
-     
-$(document).ready(function () {
+<script>
 
-    
+    $(document).ready(function () {
 
 
 
-// click to scroll top
-$('.move-up span').click(function () {
-    $('.site-content').animate({
-        scrollTop: 0
-    }, 1000);
-})
 
-// AOS Instance
-AOS.init();
 
-});</script>
+        // click to scroll top
+        $('.move-up span').click(function () {
+            $('.site-content').animate({
+                scrollTop: 0
+            }, 1000);
+        })
+
+        // AOS Instance
+        AOS.init();
+
+    });</script>
 
 </html>
