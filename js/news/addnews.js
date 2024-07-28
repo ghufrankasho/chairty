@@ -130,7 +130,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
    
     if (currentdslider.description !== description) {
-        formData.append('description',description);
+        formData.append('description',currentdslider.description );
     }
     if(curr_main !=main) formData.append('main',main);
    

@@ -50,6 +50,7 @@ function adduser(event) {
 
   const first_nameInput = document.getElementById('first_name').value;
   const last_nameInput = document.getElementById('last_name').value;
+  const gurdian_nameInput = document.getElementById('gurdian_name').value;
   const address = document.getElementById('address').value;
   const phone = document.getElementById('phone').value;
   const typeElement = document.querySelector('#work_types');
@@ -60,6 +61,7 @@ function adduser(event) {
   if(type !=='')formData.append('work_id', type);
   if(first_nameInput !=='')formData.append('first_name', first_nameInput);
   if(last_nameInput !=='')formData.append('last_name', last_nameInput);
+  if(gurdian_nameInput !=='')formData.append('gurdian', gurdian_nameInput);
   if(address !=='')formData.append('address', address);
   if(phone !=='')formData.append('mobile', phone);
   if(email !=='')formData.append('email', email);
@@ -242,12 +244,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }  
   const firstnameInput = document.getElementById('first_name');
   const lastnameInput = document.getElementById('last_name');
-
+  const gurdiannameInput = document.getElementById('gurdian_name');
   const address = document.getElementById('address');
   const phone = document.getElementById('phone');
   const email = document.getElementById('email');
   firstnameInput.addEventListener('input', validateFirstName);
   lastnameInput.addEventListener('input', validateLastName);
+  gurdiannameInput.addEventListener('input', validateGurdianName);
   address.addEventListener('input', validateAddress);
   phone.addEventListener('input', validatePhone);
   email.addEventListener('input', validateEmail);
@@ -261,6 +264,22 @@ function validateFirstName() {
   if (!value) {
         nameInput.classList.add('error');
         nameError.textContent = 'اسم  مطلوب';
+    } else if (value.length > 100) {
+        nameInput.classList.add('error');
+        nameError.textContent = 'الاسم  لا يجب أن يتجاوز 100 أحرف';
+    } else {
+        nameInput.classList.remove('error');
+        nameError.textContent = '';
+    }
+}
+function validateGurdianName() {
+  const nameInput =document.getElementById('gurdian_name');
+  const nameError = document.getElementById('gurdianError');
+  const value = nameInput.value.trim();
+
+  if (!value) {
+        nameInput.classList.add('error');
+        nameError.textContent = 'اسم الوصي مطلوب';
     } else if (value.length > 100) {
         nameInput.classList.add('error');
         nameError.textContent = 'الاسم  لا يجب أن يتجاوز 100 أحرف';
@@ -347,6 +366,13 @@ function displaycv(){
  console.log(type);
  if(type=='متطوع'){
   document.getElementById("cv").style.display = "block";
+ }
+ else{document.getElementById("cv").style.display = "none";}
+ if(type=='يتيم'){
+  document.getElementById("gurdian").style.display = "block";
+ }
+ else{
+  document.getElementById("gurdian").style.display = "none";
  }
 
 }
