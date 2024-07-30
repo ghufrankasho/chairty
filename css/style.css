@@ -2301,7 +2301,11 @@ body {
   }
   
   .product-brand {
+	font-size: 27px;
 	text-transform: uppercase;
+	white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   
   .product-short-description {
