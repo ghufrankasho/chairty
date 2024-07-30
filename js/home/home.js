@@ -119,7 +119,7 @@ function displayrequest() {
                 const requests = JSON.parse(xhr.responseText);
                 request_num.textContent=requests.length;
                 orphen_num.textContent=requests[0].orphen;
-                donation_num.textContent=requests[0].donations;
+                donation_num.textContent= '$ '+requests[0].donations;
                 const requestContainer = document.getElementById('requests');
                 
                 // Clear existing requests
