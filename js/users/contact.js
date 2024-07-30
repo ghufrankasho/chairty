@@ -6,7 +6,7 @@ function addcontact(event) {
     const last_nameInput = document.getElementById('last_name').value;
     const email = document.getElementById('email').value;
     const mobile = document.getElementById('mobile').value;
-    const message = document.getElementById('message');
+    const message = document.getElementById('message').value;
     
 
 
