@@ -102,10 +102,8 @@ function submitSignInForm(event) {
             if (response.account.type=="0"){
               // user
               //localStorage.setItem('account_id',response.account.id);
-              if(response.user!==null)
-                localStorage.setItem('user',JSON.stringify(response.user));
+              if(response.user!==null)localStorage.setItem('user',JSON.stringify(response.user));
               
-             
               window.location.href =`/main.html`;
               
             }
@@ -121,8 +119,10 @@ function submitSignInForm(event) {
             if(response.account.type=="1"){
               
               //admin
-              // console.log(response);
-                window.location.href =`/index.html`;
+              if(response.user!==null) localStorage.setItem('Admin',JSON.stringify(response.user));
+               
+               console.log(response);
+              window.location.href =`/index.html`;
               }
             if (response.account.type=="3"){
              //support
@@ -208,7 +208,6 @@ function resetPassword(event) {
   xhr.setRequestHeader( "Authorization", "Bearer " + token );
   xhr.send(JSON.stringify(formData)); // Send the form data as JSON
 }
-
 function showSuccessAlert(data, message, status,form) {
     // Show the success message in the "success-message" div
     const Message = document.getElementById(form);

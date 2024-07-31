@@ -34,7 +34,28 @@
 		<script>
 			fetch('/nav.html')
 				.then(response => response.text())
-				.then(text => document.getElementById('nav-placeholder').innerHTML = text);
+				.then(text => {document.getElementById('nav-placeholder').innerHTML = text;
+			let admin=	 JSON.parse(localStorage.getItem('Admin'));
+			console.log(admin);
+			let img=document.getElementById("admin-img");
+			img.src=admin.image;
+			const switchMode = document.getElementById('switch-mode');
+
+			switchMode.addEventListener('change', function () {
+				if(this.checked) {
+					document.body.classList.add('dark');
+				} else {
+					document.body.classList.remove('dark');
+				}
+			});
+			// TOGGLE SIDEBAR
+			const menuBar = document.querySelector('#content nav .bx.bx-menu');
+			const sidebar = document.getElementById('sidebar');
+
+			menuBar.addEventListener('click', function () {
+				sidebar.classList.toggle('hide');
+			});
+			});
 		</script>
 		<!-- NAV BAR -->
 		<!-- NAVBAR -->
