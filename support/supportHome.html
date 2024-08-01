@@ -91,8 +91,12 @@
             <div class="hard pt-5" id="projj">
 
                 <div class="container">
-                   <!--  <div class="row align-items-center" id="projects">
-                        <div class="col-md-6 col-lg-3 box1 mb-5">
+                    <div class="title text-center py-2 m-5">
+                        <h2 class="position-relative d-inline-block" dir="rtl"> المشاريع </h2>
+                        <h5 class="card-title" id="usersh" style="display:none">لا يوجد مشاريع</h5>
+                    </div>
+                   <div class="row align-items-center" id="projects">
+                        <!-- <div class="col-md-6 col-lg-3 box1 mb-5">
                             <div class="box bg-light">
                                 <img class="img-fluid " src="/img/p1.jpeg">
                                 <h4 class="p-3 text-success text-center">Water Damage</h4>
@@ -157,13 +161,10 @@
                                     <i class="fas fa-long-arrow-alt-right"></i>
                                 </div>
                             </div>
-                        </div> -->
+                        </div>  -->
 
 
-                        <div class="title text-center py-2 m-5">
-                            <h2 class="position-relative d-inline-block" dir="rtl"> المشاريع </h2>
-                            <h5 class="card-title" id="usersh" style="display:none">لا يوجد مشاريع</h5>
-                        </div>
+                       
                     </div>
                 </div>
             </div>
@@ -351,24 +352,24 @@
                         try {
                             const response = JSON.parse(xhr.responseText);
 
+                            const projectContainer = document.getElementById('projects');
 
+                            // Clear existing projects
+                            projectContainer.innerHTML = '';
                             if (response.projects.length != 0) {
-                                const projectContainer = document.getElementById('projects');
+                    
 
-                                // Clear existing projects
-                                projectContainer.innerHTML = '';
-
-
+                                response.projects.forEach(function(project) {
                                 const projectDiv = document.createElement('div');
                                 projectDiv.className = 'col-md-6 col-lg-3 box1 mb-5';
                                 projectDiv.innerHTML = `
                                         <div class="box bg-light">
-                                            <img class="img-fluid "  src="${response.project.image}" alt="">
+                                            <img class="img-fluid "  src="${project.image}" alt="">
                                         
-                                            <h4 class="p-3 text-success text-center">${response.project.name}</h4>
-                                            <p class=" p-3 ">${response.project.description}</p>
+                                            <h4 class="p-3 text-success text-center">${project.name}</h4>
+                                            <p class=" p-3 ">${project.description}</p>
                                         <div class="info">
-                                            <a href="#" id="more-${response.project.id}">Read more</a>
+                                            <a href="#" id="more-${project.id}">Read more</a>
                                             <i class="fas fa-long-arrow-alt-right"></i>
                                         </div>
                                         </div>
@@ -376,22 +377,23 @@
 
                                 projectContainer.appendChild(projectDiv);
 
-                                const moreButton = document.getElementById(`more-${response.project.id}`);
+                                const moreButton = document.getElementById(`more-${project.id}`);
                                 moreButton.addEventListener('click', function () {
                                     event.preventDefault(); // Prevent default link behavior
-                                    const projectId = response.project.id;
-                                    localStorage.setItem('image', response.project.image);
-                                    localStorage.setItem('description', response.project.description);
-                                    localStorage.setItem('name', response.project.name);
-                                    if (response.project.fundrise == 0) localStorage.setItem('fundrise', 0);
-                                    else localStorage.setItem('fundrise', response.project.fundrise);
+                                    const projectId = project.id;
+                                    localStorage.setItem('image', project.image);
+                                    localStorage.setItem('description', project.description);
+                                    localStorage.setItem('name', project.name);
+                                    if (project.fundrise == 0) localStorage.setItem('fundrise', 0);
+                                    else localStorage.setItem('fundrise', project.fundrise);
 
-                                    window.location.href = `/prodetail.html?projectId=${response.project.id}`;
+                                    window.location.href = `/prodetail.html?projectId=${project.id}`;
                                 });
-
+                            });
 
 
                             }
+                           
                             else {
                                 document.getElementById("usersh").style.display = "block"
                             }

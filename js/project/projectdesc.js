@@ -140,6 +140,15 @@ function displayProject(projectId) {
                     document.getElementById('end').textContent = response.end_date;
                     document.getElementById('desc').textContent = response.description;
                     const employeesClass=document.getElementById('employees');
+
+                    const btnproject = document.getElementById(`add-supporter`);
+                
+        
+                    btnproject.addEventListener('click',  () => {
+                      localStorage.setItem('id',response.id);
+                      window.location.href =`/project/assignSupport.html`;
+              
+                    });
                     if(response.employees.length !==0){
                        
                         response.employees.forEach(function (employee) {
