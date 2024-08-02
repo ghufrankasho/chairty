@@ -1,411 +1,555 @@
 <!DOCTYPE html>
 <html lang="ar">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
-      <title>جمعية البر والإحسان</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>جمعية البر والإحسان</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
     integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="/css/alert.css">
-    <link rel="stylesheet" href="css/bootstrap.min.css" />
-    <link rel="stylesheet" href="css/all.min.css" />
-    <link rel="stylesheet" href="css/style.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;500&display=swap" rel="stylesheet" />
-    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
-  </head>
+  <!-- CSS Libraries -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+  <link href="lib/flaticon/font/flaticon.css" rel="stylesheet">
+  <link href="lib/animate/animate.min.css" rel="stylesheet">
+  <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
 
-  <div id="header-placeholder"></div>
-  <script>
-    fetch('headerMain.html')
-        .then(response => response.text())
-        .then(text =>{ document.getElementById('header-placeholder').innerHTML = text;
-       
-        
-        let type = localStorage.getItem('type');
-        console.log(type,"ffffffffffffffffffff");
-        
-         
-        const searchButton = document.getElementById(`search`);
-        
-        searchButton.addEventListener('click', function (e) {
-          e.stopImmediatePropagation();
-          const search = document.getElementById('search-input').value;
-          
-          window.location.href =`mainPro.html?search=${search}`;
-  
-  
-        });
-  
-        if (type == 0) {
-            
-            let account_id = JSON.parse(localStorage.getItem('account_id'));
-             
-            let join = document.getElementById('joinus');
-            join.style.display='block';
-            join.href=`/users/adduser.html?accountId=${account_id}`;
-           
-            let user = JSON.parse(localStorage.getItem('user')); // Parse the stringified JSON
-            console.log(user)
-            if (localStorage.hasOwnProperty('user')) {
-          
-              join.style.display='none';
-              join.href=`#`;
-              if(user.work.name=='يتيم') {
-                 let profile = document.getElementById('href');
-                  profile.href = '/users/userHome.html';
-              }
-             
-                let img = document.getElementById('pro-image');
-               
-                img.src = user.image;
-              } 
-            else {
-                console.log("User not found or image is missing");
-            }
-      
-        } 
-        else
-         if (type == 2) {
-            let employee = localStorage.getItem('employee');
-            
-            if (localStorage.hasOwnProperty('employee')) {
-               employee=JSON.parse(employee);
-               
-                let profile = document.getElementById('href');
-                profile.href = '/employee/employeeHome.html';
-                let img = document.getElementById('pro-image');
-                img.src = employee.image;
-            } 
-           
-        
-        }
-        if(type == 3){
-          let support = JSON.parse(localStorage.getItem('support')); // Parse the stringified JSON
-          console.log(support,"ttttttttttttttttttttttt");
-          if (support !=null) {
-              let profile = document.getElementById('href');
-              profile.href = '/support/supportHome.html';
-              let img = document.getElementById('pro-image');
-              img.src = support.image;
-          }else {
-              console.log("support not found or image is missing");
+
+  <link rel="stylesheet" href="/css/alert.css">
+  <link rel="stylesheet" href="css/bootstrap.min.css" />
+  <link rel="stylesheet" href="css/all.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+
+
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;500&display=swap" rel="stylesheet" />
+  <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<div id="header-placeholder"></div>
+<script>
+  fetch('headerMain.html')
+    .then(response => response.text())
+    .then(text => {
+      document.getElementById('header-placeholder').innerHTML = text;
+
+
+      let type = localStorage.getItem('type');
+      console.log(type, "ffffffffffffffffffff");
+
+
+      const searchButton = document.getElementById(`search`);
+
+      searchButton.addEventListener('click', function (e) {
+        e.stopImmediatePropagation();
+        const search = document.getElementById('search-input').value;
+
+        window.location.href = `mainPro.html?search=${search}`;
+
+
+      });
+
+      if (type == 0) {
+
+        let account_id = JSON.parse(localStorage.getItem('account_id'));
+
+        let join = document.getElementById('joinus');
+        join.style.display = 'block';
+        join.href = `/users/adduser.html?accountId=${account_id}`;
+
+        let user = JSON.parse(localStorage.getItem('user')); // Parse the stringified JSON
+        console.log(user)
+        if (localStorage.hasOwnProperty('user')) {
+
+          join.style.display = 'none';
+          join.href = `#`;
+          if (user.work.name == 'يتيم') {
+            let profile = document.getElementById('href');
+            profile.href = '/users/userHome.html';
           }
+
+          let img = document.getElementById('pro-image');
+
+          img.src = user.image;
         }
-        });
-  </script>
-  
-  
-  <body>
-  
-   
-      <section id="aboutSection" class="fullContainer py-5" >
-        <div class="container">
-          <div class="row gy-lg-5 align-items-center" >
-            <div class="col-lg-6 order-lg-1 text-center "  >
-              <div class="title pt-3 mb-2" >
-                  <h2 class="position-relative d-inline-block ms-2">من نحن</h2>
-              </div>
-              <p class="lead text-muted text-center paragraph box-content"  > 
-                جمعية البر والإحسان الخيرية (BICS) هي جمعية أهلية خيرية اجتماعية صحية تنموية علمية غير ربحية مرخصة من وزارة الشؤون الاجتماعية بموجب قرار الإشهار رقم 1095 في عام 2012 ومدرج اسمها ضمن قائمة الجمعيات المسموح لها بالتعامل مع المنظمات الدولية، ويتناول نشاطها محافظة حلب وسائر أنحاء القطر العربي السوري.<br>
-                بدأت الجمعية عملها بتاريخ 1/2/2013م، ونظرا للظروف الصعبة التي كانت تمر بها البلاد آنذاك حيث قرر مجلس الإدارة الانطلاق بالعمل في العديد من المجالات الإنسانية للتخفيف من معاناة الفقراء والمحتاجين
-                </p>
-            </div> 
-            <div class="col-lg-6 order-lg-0 align-items-center">
-              <img src="img/photo.png" alt="" class="img-fluid" width="400"height="400">
-            </div> 
-          </div>
-          <div class="title pt-3 mb-2 text-center" >
-            <h2 class="position-relative d-inline-block ms-2 ">المهام </h2>
+        else {
+          console.log("User not found or image is missing");
+        }
+
+      }
+      else
+        if (type == 2) {
+          let employee = localStorage.getItem('employee');
+
+          if (localStorage.hasOwnProperty('employee')) {
+            employee = JSON.parse(employee);
+
+            let profile = document.getElementById('href');
+            profile.href = '/employee/employeeHome.html';
+            let img = document.getElementById('pro-image');
+            img.src = employee.image;
+          }
+
+
+        }
+      if (type == 3) {
+        let support = JSON.parse(localStorage.getItem('support')); // Parse the stringified JSON
+        console.log(support, "ttttttttttttttttttttttt");
+        if (support != null) {
+          let profile = document.getElementById('href');
+          profile.href = '/support/supportHome.html';
+          let img = document.getElementById('pro-image');
+          img.src = support.image;
+        } else {
+          console.log("support not found or image is missing");
+        }
+      }
+    });
+</script>
+
+
+<body>
+
+
+
+
+
+
+
+  <!-- Page Header Start -->
+  <div class="page-header  ">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <h2>About Us</h2>
         </div>
-          <div class="cards">
-             <div class="donationBox">
-              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-heart-pulse" viewBox="0 0 16 16">
-                <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053.918 3.995.78 5.323 1.508 7H.43c-2.128-5.697 4.165-8.83 7.394-5.857q.09.083.176.171a3 3 0 0 1 .176-.17c3.23-2.974 9.522.159 7.394 5.856h-1.078c.728-1.677.59-3.005.108-3.947C13.486.878 10.4.28 8.717 2.01zM2.212 10h1.315C4.593 11.183 6.05 12.458 8 13.795c1.949-1.337 3.407-2.612 4.473-3.795h1.315c-1.265 1.566-3.14 3.25-5.788 5-2.648-1.75-4.523-3.434-5.788-5"/>
-                <path d="M10.464 3.314a.5.5 0 0 0-.945.049L7.921 8.956 6.464 5.314a.5.5 0 0 0-.88-.091L3.732 8H.5a.5.5 0 0 0 0 1H4a.5.5 0 0 0 .416-.223l1.473-2.209 1.647 4.118a.5.5 0 0 0 .945-.049l1.598-5.593 1.457 3.642A.5.5 0 0 0 12 9h3.5a.5.5 0 0 0 0-1h-3.162z"/>
-              </svg>
-               <div class="title"> تقديم مساعدات طبية</div>
-               <p>إحداث مستوصفات ومراكز صحية خيرية لمعالجة الفقراء والمحتاجين</p>
-             </div>
-             <!-- donation box end -->
-             
-             <div class="volunteerBox">
-              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-house-heart" viewBox="0 0 16 16">
-                <path d="M8 6.982C9.664 5.309 13.825 8.236 8 12 2.175 8.236 6.336 5.309 8 6.982"/>
-                <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.707L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.646a.5.5 0 0 0 .708-.707L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z"/>
-              </svg>
-              <div class="title">المطبخ الخيري </div>
-              <p>تقوم الجمعية أسبوعياً بتقديم وجبات غذائية للمحتاجين ويعتبر هذا المشروع من المشاريع الدائمة</p>
-            </div>
-            <!-- donation box end -->
+        <div class="col-12">
+          <a href="">Home</a>
 
-            <div class="scholarshipBox">
-              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-mortarboard-fill" viewBox="0 0 16 16">
-                <path d="M8.211 2.047a.5.5 0 0 0-.422 0l-7.5 3.5a.5.5 0 0 0 .025.917l7.5 3a.5.5 0 0 0 .372 0L14 7.14V13a1 1 0 0 0-1 1v2h3v-2a1 1 0 0 0-1-1V6.739l.686-.275a.5.5 0 0 0 .025-.917z"/>
-                <path d="M4.176 9.032a.5.5 0 0 0-.656.327l-.5 1.7a.5.5 0 0 0 .294.605l4.5 1.8a.5.5 0 0 0 .372 0l4.5-1.8a.5.5 0 0 0 .294-.605l-.5-1.7a.5.5 0 0 0-.656-.327L8 10.466z"/>
-              </svg>
-              <div class="title">مساعدة طالب علم </div>
-            
-              <p>تشجيع طلاب العلم والباحثين في مجال الدراسات و تقديم مبالغ مالية لهم</p>
-            </div>
-            <!-- donation box end -->
-          </div>
-     
-
-    <section id="about" class="py-5">
-  <div class="container">
-    <div class="row gy-lg-5 align-items-center">
-      <div class="col-lg-6 order-lg-1 text-center text-lg-end">
-        <div class="title pt-3 pb-5">
-            <h2 class="position-relative d-inline-block ms-4" dir="rtl">الجهات الراعية</h2>
         </div>
-        <p class="lead text-muted" dir="rtl" style="font-size: 35px;">
-          وزارة الشؤون الاجتماعية والعمل <br>
-          محافظة حلب
-        </p>
-      </div> 
-      <div class="col-lg-6 order-lg-0">
-        <img src="img/photo_2024-07-26_06-47-31.jpg" class="img-fluid" style="    height: 400px;
-        margin-left: 22px;">
-      </div> 
-    </div>
-  </div>  
-</section>
-
-<div class="title pt-3 mb-2 text-lg-center align-items-center text-md-center text-sm-center text-center" >
-  <h2 class="position-relative d-inline-block ms-2 " dir="rtl">الشركاء </h2>
-</div>
-<div class="box-content">
-  <div class="row gy-lg-5 align-items-center">
-     <div class="col-lg-3 col-md-3 col-sm-3 ">
-         <img class="img-investor img-fluid m-x-auto m-b align-items-center" src="img/p1.png">
       </div>
-       <div class="col-lg-3 col-md-3 col-sm-3">
-           <img class="img-investor img-fluid m-x-auto m-b" src="img/p2.png">
+    </div>
+  </div>
+  <!-- Page Header End -->
+
+  
+      <!-- Testimonial Start -->
+      <div class="testimonial">
+        <div class="container">
+          <div class="section-header text-center">
+            <p>Testimonial</p>
+            <h2>What people are talking about our charity activities</h2>
+          </div>
+          <div class="owl-carousel testimonials-carousel">
+            <div class="testimonial-item">
+              <div class="testimonial-profile">
+                <img src="img/about/testimonial-1.jpg" alt="Image">
+                <div class="testimonial-name">
+                  <h3>Person Name</h3>
+
+                </div>
+              </div>
+              <div class="testimonial-text">
+                <p>
+                  Lorem ipsum dolor sit amet elit. Phasel preti mi facilis ornare velit non vulputa. Aliqu metus tortor,
+                  auctor id gravid vivera quis
+                </p>
+              </div>
+            </div>
+            <div class="testimonial-item">
+              <div class="testimonial-profile">
+                <img src="img/about/testimonial-2.jpg" alt="Image">
+                <div class="testimonial-name">
+                  <h3>Person Name</h3>
+
+                </div>
+              </div>
+              <div class="testimonial-text">
+                <p>
+                  Lorem ipsum dolor sit amet elit. Phasel preti mi facilis ornare velit non vulputa. Aliqu metus tortor,
+                  auctor id gravid vivera quis
+                </p>
+              </div>
+            </div>
+            <div class="testimonial-item">
+              <div class="testimonial-profile">
+                <img src="img/about/testimonial-3 .jpg" alt="Image">
+                <div class="testimonial-name">
+                  <h3>Person Name</h3>
+
+                </div>
+              </div>
+              <div class="testimonial-text">
+                <p>
+                  Lorem ipsum dolor sit amet elit. Phasel preti mi facilis ornare velit non vulputa. Aliqu metus tortor,
+                  auctor id gravid vivera quis
+                </p>
+              </div>
+            </div>
+            <div class="testimonial-item">
+              <div class="testimonial-profile">
+                <img src="img/about/testimonial-4.jpg" alt="Image">
+                <div class="testimonial-name">
+                  <h3>Person Name</h3>
+
+                </div>
+              </div>
+              <div class="testimonial-text">
+                <p>
+                  Lorem ipsum dolor sit amet elit. Phasel preti mi facilis ornare velit non vulputa. Aliqu metus tortor,
+                  auctor id gravid vivera quis
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
+      <!-- Testimonial End -->
+
+
+      
+  <!-- Facts Start -->
+  <div class="facts" data-parallax="scroll" data-image-src="img/about/facts.jpg">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-lg-4 col-md-6">
+          <div class="facts-item">
+            <i class="flaticon-charity"></i>
+            <div class="facts-text">
+              <h3 class="facts-plus" data-toggle="counter-up">400</h3>
+              <p>Volunteers</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="facts-item">
+            <i class="flaticon-kindness"></i>
+            <div class="facts-text">
+              <h3 class="facts-dollar" data-toggle="counter-up">10000</h3>
+              <p>Our Goal</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="facts-item">
+            <i class="flaticon-donation"></i>
+            <div class="facts-text">
+              <h3 class="facts-dollar" data-toggle="counter-up">5000</h3>
+              <p>Raised</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Facts End -->
+
+
+
+
+
+
+
+
+  <section id="aboutSection" class="fullContainer  ">
+    <div class="container">
+      <div class="row gy-lg-5 align-items-center">
+        <div class="col-lg-6 order-lg-1 text-center ">
+          <div class="title pt-3 mb-2">
+            <h2 class="position-relative d-inline-block ms-2">من نحن</h2>
+          </div>
+          <p class="lead text-muted text-center paragraph box-content">
+            جمعية البر والإحسان الخيرية (BICS) هي جمعية أهلية خيرية اجتماعية صحية تنموية علمية غير ربحية مرخصة من
+            وزارة
+            الشؤون الاجتماعية بموجب قرار الإشهار رقم 1095 في عام 2012 ومدرج اسمها ضمن قائمة الجمعيات المسموح لها
+            بالتعامل مع المنظمات الدولية، ويتناول نشاطها محافظة حلب وسائر أنحاء القطر العربي السوري.<br>
+            بدأت الجمعية عملها بتاريخ 1/2/2013م، ونظرا للظروف الصعبة التي كانت تمر بها البلاد آنذاك حيث قرر مجلس
+            الإدارة
+            الانطلاق بالعمل في العديد من المجالات الإنسانية للتخفيف من معاناة الفقراء والمحتاجين
+          </p>
+        </div>
+        <div class="col-lg-6 order-lg-0 align-items-center">
+          <img src="img/photo.png" alt="" class="img-fluid" width="400" height="400">
+        </div>
+      </div>
+      <div class="title pt-3 mb-2 text-center">
+        <h2 class="position-relative d-inline-block ms-2 ">المهام </h2>
+      </div>
+      <div class="cards">
+        <div class="donationBox">
+          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-heart-pulse"
+            viewBox="0 0 16 16">
+            <path
+              d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053.918 3.995.78 5.323 1.508 7H.43c-2.128-5.697 4.165-8.83 7.394-5.857q.09.083.176.171a3 3 0 0 1 .176-.17c3.23-2.974 9.522.159 7.394 5.856h-1.078c.728-1.677.59-3.005.108-3.947C13.486.878 10.4.28 8.717 2.01zM2.212 10h1.315C4.593 11.183 6.05 12.458 8 13.795c1.949-1.337 3.407-2.612 4.473-3.795h1.315c-1.265 1.566-3.14 3.25-5.788 5-2.648-1.75-4.523-3.434-5.788-5" />
+            <path
+              d="M10.464 3.314a.5.5 0 0 0-.945.049L7.921 8.956 6.464 5.314a.5.5 0 0 0-.88-.091L3.732 8H.5a.5.5 0 0 0 0 1H4a.5.5 0 0 0 .416-.223l1.473-2.209 1.647 4.118a.5.5 0 0 0 .945-.049l1.598-5.593 1.457 3.642A.5.5 0 0 0 12 9h3.5a.5.5 0 0 0 0-1h-3.162z" />
+          </svg>
+          <div class="title"> تقديم مساعدات طبية</div>
+          <p>إحداث مستوصفات ومراكز صحية خيرية لمعالجة الفقراء والمحتاجين</p>
+        </div>
+        <!-- donation box end -->
+
+        <div class="volunteerBox">
+          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-house-heart"
+            viewBox="0 0 16 16">
+            <path d="M8 6.982C9.664 5.309 13.825 8.236 8 12 2.175 8.236 6.336 5.309 8 6.982" />
+            <path
+              d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.707L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.646a.5.5 0 0 0 .708-.707L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z" />
+          </svg>
+          <div class="title">المطبخ الخيري </div>
+          <p>تقوم الجمعية أسبوعياً بتقديم وجبات غذائية للمحتاجين ويعتبر هذا المشروع من المشاريع الدائمة</p>
+        </div>
+        <!-- donation box end -->
+
+        <div class="scholarshipBox">
+          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+            class="bi bi-mortarboard-fill" viewBox="0 0 16 16">
+            <path
+              d="M8.211 2.047a.5.5 0 0 0-.422 0l-7.5 3.5a.5.5 0 0 0 .025.917l7.5 3a.5.5 0 0 0 .372 0L14 7.14V13a1 1 0 0 0-1 1v2h3v-2a1 1 0 0 0-1-1V6.739l.686-.275a.5.5 0 0 0 .025-.917z" />
+            <path
+              d="M4.176 9.032a.5.5 0 0 0-.656.327l-.5 1.7a.5.5 0 0 0 .294.605l4.5 1.8a.5.5 0 0 0 .372 0l4.5-1.8a.5.5 0 0 0 .294-.605l-.5-1.7a.5.5 0 0 0-.656-.327L8 10.466z" />
+          </svg>
+          <div class="title">مساعدة طالب علم </div>
+
+          <p>تشجيع طلاب العلم والباحثين في مجال الدراسات و تقديم مبالغ مالية لهم</p>
+        </div>
+       
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <section id="about" class="py-5">
+        <div class="container">
+          <div class="row gy-lg-5 align-items-center">
+            <div class="col-lg-6 order-lg-1 text-center text-lg-end">
+              <div class="title pt-3 pb-5">
+                <h2 class="position-relative d-inline-block ms-4" dir="rtl">الجهات الراعية</h2>
+              </div>
+              <p class="lead text-muted" dir="rtl" style="font-size: 35px;">
+                وزارة الشؤون الاجتماعية والعمل <br>
+                محافظة حلب
+              </p>
+            </div>
+            <div class="col-lg-6 order-lg-0">
+              <img src="img/photo_2024-07-26_06-47-31.jpg" class="img-fluid" style="    height: 400px;
+        margin-left: 22px;">
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="title pt-3 mb-2 text-lg-center align-items-center text-md-center text-sm-center text-center">
+        <h2 class="position-relative d-inline-block ms-2 " dir="rtl">الشركاء </h2>
+      </div>
+      <div class="box-content">
+        <div class="row gy-lg-5 align-items-center">
+          <div class="col-lg-3 col-md-3 col-sm-3 ">
+            <img class="img-investor img-fluid m-x-auto m-b align-items-center" src="img/p1.png">
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-3">
+            <img class="img-investor img-fluid m-x-auto m-b" src="img/p2.png">
+          </div>
           <div class="col-lg-3 col-md-3 col-sm-3">
             <img class="img-investor img-fluid m-x-auto m-b" src="img/p3.png">
           </div>
           <div class="col-lg-3 col-md-3 col-sm-3">
-             <img class="img-investor img-fluid m-x-auto m-b" src="img/p4.png">
+            <img class="img-investor img-fluid m-x-auto m-b" src="img/p4.png">
           </div>
-           <div class="col-lg-3 col-md-3 col-sm-3">
-             <img class="img-investor img-fluid m-x-auto m-b" src="img/p5.png">
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-3">
-               <img class="img-investor img-fluid m-x-auto m-b" src="img/p6.png">
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-3">
-               <img class="img-investor img-fluid m-x-auto m-b" src="img/p7.png">
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-3">
-                 <img class="img-investor img-fluid m-x-auto m-b" src="img/p8.png">
-             </div>
-         
-</div>
-            
-     <section class="statistic text-center m-2">
-          <div class="data ">
-            <div class="title pt-3 mb-2 mt-4">
-              <h2 class="position-relative d-inline-block ms-2 ">إحصائيات الجمعية</h2>
-            </div>
-            
-            <div class="container d-flex align-items-center justify-content-between mt-3">
-                 <div>
-                     <i class="fa fa-users fa-5x" style="color: green;"></i>
-                      <p class="fw-bold">9950</p>
-                   </div>
-                   <div>
-                    <img src="img/dish.png" style="width: 95px;
-                    height: 95px; color: green;">
-                     <!-- <i class="fa fa-suitcase fa-5x" style="color: green;"></i> -->
-                     <p class="fw-bold">3000</p>
-                 </div>
-                   <div>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="currentColor" class="bi bi-bag-heart-fill" viewBox="0 0 16 16" style="color: green;">
-                      <path d="M11.5 4v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4zM8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m0 6.993c1.664-1.711 5.825 1.283 0 5.132-5.825-3.85-1.664-6.843 0-5.132"/>
-                        </svg>
-                     <!-- <i class="fa fa-comments fa-5x" style="color: green;"></i> -->
-                        <p class="fw-bold">25000</p>
-                   </div>
-                   
+          <div class="col-lg-3 col-md-3 col-sm-3">
+            <img class="img-investor img-fluid m-x-auto m-b" src="img/p5.png">
           </div>
-        </section>
-        
-      
-    </section>
-          
+          <div class="col-lg-3 col-md-3 col-sm-3">
+            <img class="img-investor img-fluid m-x-auto m-b" src="img/p6.png">
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-3">
+            <img class="img-investor img-fluid m-x-auto m-b" src="img/p7.png">
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-3">
+            <img class="img-investor img-fluid m-x-auto m-b" src="img/p8.png">
+          </div>
 
-          <!-- <div class="row gy-lg-5 align-items-center" >
-            <div class="col-lg-8 order-lg-1 text-center "  >
-              <div class="title pt-3 mb-2" >
-                  <h2 class="position-relative d-inline-block ms-2 ">المهام </h2>
+        </div>
+        <!-- 
+          <section class="statistic text-center m-2">
+            <div class="data ">
+              <div class="title pt-3 mb-2 mt-4">
+                <h2 class="position-relative d-inline-block ms-2 ">إحصائيات الجمعية</h2>
               </div>
-             <h4 class="text-lg-end text-primary"> أولاً: أهداف الجمعية</h4>
-             <ol class="text-lg-end paragraph box-content" dir="rtl">
-                <li>رعاية الأسر الفقيرة وطلاب العلم المحتاجين</li>
-                <li>رعاية اليتامى والمشردين وإحداث دور تعنى بشؤونهم</li>
-                <li>رعاية المعوقين وذوي الاحتياجات الخاصة وإحداث دور تعنى بشؤونهم</li>
-                <li>القيام بمشروعات خيرية كمشروع ماء السبيل وولائم الإفطار والأضاحي وتزويج الأعزاب والقرض الحسن للمحتاجين واستقبال فائض الأدوية والأطعمة والأثاث والملابس المستعملة وتوزيعها على المحتاجين</li>
-                <li>إحداث مراكز للإرشاد والتوعية الاجتماعية</li>
-                <li>إحداث مستوصفات ومراكز صحية خيرية لمعالجة الفقراء والمحتاجين</li>
-                <li>إحداث مراكز للتدريب المهني والحرفي للذكور والإناث مع تأمين فرص عمل مناسبة لهم بعد محو أميتهم</li>
-                <li>تشجيع طلاب العلم والباحثين في مجال الدراسات التربوية والعربية مع إقامة مسابقات علمية لهم.</li>
-             </ol>
-              
-            </div> 
-           
-          </div> -->
 
-          <!-- <div class="row gy-lg-5 align-items-center text-md-center text-sm-center text-center" >
-           
-            <div class="col-lg-6">
-              <ul class="text-lg-end paragraph list-unstyled box-content" dir="rtl">
-                <li> <span class="text-info fw-bold">في المجال الاجتماعي :</span>
-                  <br>
-                    تقوم الجمعية بتقديم إعانات نقدية وعينية لعائلات اليتامى والأرامل والمعاقين والمحتاجين بشكل شهري، بالإضافة إلى تقديم التوعية الاجتماعية في الموضوعات ذات الأهمية لبعض الفئات المجتمعية مع السعي لمحو أميتهم بالتنسيق مع الجهات المعنية.
-                </li>
-                <li> <span class="text-info fw-bold">في مجال المياه والإصحاح :</span>
-                  <br>
-                    تقوم الجمعية بحفر الآبار وتجهيزها في مدينة حلب ومتابعة تعقيمها، بالإضافة إلى تزويد المراكز الحيوية ذات الخدمات العامة بمياه الشرب (كالمدارس ودور الإيواء والعجزة والأيتام) من خلال صهريج مخصص لذلك بالتعاون مع الهلال الأحمر العربي السوري.
-                </li>
-                <li>  <span class="text-info fw-bold">في المجال العلمي: </span>
-                  <br>
-                    تقوم الجمعية بتقديم المساعدات العينية والنقدية والقروض الصغيرة للطلاب المحتاجين في مختلف مراحل التعليم (لا سيما الجامعيين منهم) تشجيعاً لهم على متابعة تعليمهم ليصبحوا عناصر فعالة في تنمية بلدهم وتطويره.
-                </li>
-              </ul>
-            </div>
-            <div class="col-lg-6 "  >
-              <h4 class="text-lg-end text-primary "> ثالثاً: أنشطة الجمعية</h4> 
-               <ul class="text-lg-end paragraph list-unstyled box-content" dir="rtl">
-                <li><span class="text-info fw-bold">في المجال الصحي :</span>
-                  <br>
-                تقوم الجمعية بتقديم الرعاية الصحية الأولية والثانوية للمرضى المحتاجين من معاينات وعمليات وتحاليل وتصوير وأدوية وغير ذلك من خلال مركز البر والإحسان الطبي في حي الشهباء ثم في حي الجابرية وبالتعاون مع بعض المشافي والمراكز الصحية والجمعيات ذات الصلة. كما تقوم الجمعية بمشاريع صحية لدعم وتوفير خدمات الرعاية الصحية الأولية للمجموعات الضعيفة والمهجرين في المناطق التي يمكن الوصول إليها حديثًاً في ريف مدينة حلب.
-               </li>
-               <li>
-                <span class="text-info fw-bold">في المجال التنموي :</span><br>
-                تقوم الجمعية بتعليم وتأهيل وتدريب الإناث من الأرامل واليتيمات والمطلقات وفاقدي الأزواج والمعيل على مهنة الخياطة والتفصيل ضمن مشروع التدريب المهني والحرفي من خلال تنفيذ دورات تدريبية تؤهل المتدربات لمزاولة هذه المهنة وإعالة أنفسهم وأسرهم مادياً، كما تساهم في تمكينهم في المجتمع وبالتالي خفض نسبة البطالة بينهم.
-               </li>
-               <li><span class="text-info fw-bold">في المجال الإغاثي :</span>
-                <br>
-                تقوم الجمعية بتقديم الإعانات الإغاثية من مواد غذائية وغير غذائية للمتضررين والمهجرين والعائدين من خلال ثلاثة مراكز إغاثية خاصة بالجمعية في كل من حلب الجديدة والحمدانية وباب النيرب، بالإضافة إلى تقديم الوجبات الساخنة لهم من خلال مطبخ الجمعية.
-               </li>
-              </ul>
-            </div> 
-            
-          </div> -->
-          <!-- <div class="title pt-3 mb-2 text-lg-center align-items-center text-md-center text-sm-center text-center" >
-            <h2 class="position-relative d-inline-block ms-2 " dir="rtl">الشركاء </h2>
-        </div>
-          <div class="box-content">
-            <div class="row gy-lg-5 align-items-center">
-               <div class="col-lg-3 col-md-3 col-sm-3 ">
-                   <img class="img-investor img-fluid m-x-auto m-b align-items-center" src="img/p1.png">
+              <div class="container d-flex align-items-center justify-content-between mt-3">
+                <div>
+                  <i class="fa fa-users fa-5x" style="color: green;"></i>
+                  <p class="fw-bold">9950</p>
                 </div>
-                 <div class="col-lg-3 col-md-3 col-sm-3">
-                     <img class="img-investor img-fluid m-x-auto m-b" src="img/p2.png">
-                  </div>
-                    <div class="col-lg-3 col-md-3 col-sm-3">
-                      <img class="img-investor img-fluid m-x-auto m-b" src="img/p3.png">
-                    </div>
-                    <div class="col-lg-3 col-md-3 col-sm-3">
-                       <img class="img-investor img-fluid m-x-auto m-b" src="img/p4.png">
-                    </div>
-                     <div class="col-lg-3 col-md-3 col-sm-3">
-                       <img class="img-investor img-fluid m-x-auto m-b" src="img/p5.png">
-                      </div>
-                      <div class="col-lg-3 col-md-3 col-sm-3">
-                         <img class="img-investor img-fluid m-x-auto m-b" src="img/p6.png">
-                      </div>
-                      <div class="col-lg-3 col-md-3 col-sm-3">
-                         <img class="img-investor img-fluid m-x-auto m-b" src="img/p7.png">
-                      </div>
-                      <div class="col-lg-3 col-md-3 col-sm-3">
-                           <img class="img-investor img-fluid m-x-auto m-b" src="img/p8.png">
-                       </div>
-                   
-        </div>
-        </div> -->
-        </div>  
-      </section>
-      <footer class="bg-dark py-5" dir="rtl">
-        <div class="container">
-           <div class="row text-white g-4">
-            <div class="col-lg-3 col-md-6 text-center">
-                <a class=" text-decoration-none brand text-white fw-bold" href="index.html">عن الجمعية</a>
-                <hr>
-                <p class="text-white text-muted mt-3">
-                  جمعية البر والإحسان الخيرية<br>
-      
-                  منظمة أهلية غير ربحية<br>
-                  
-                  رقم الإشهار(1095) عام(2012)
-                </p>
-            </div>
-            <div class="col-md-6 col-lg-3">
-                <h5 class="fw-bold text-center ">معلومات التواصل</h5>
-                <hr>
-                <ul class="list-unstyled ">
-                   <li class="my-3  text-muted">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
-                      <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z"/>
-                    </svg>
-                    حلب الجديدة-الجهة الغربية لجامع الإمام علي زين العابدين
-                    
-                   </li> 
-                   <li class="my-3 text-muted">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-telephone" viewBox="0 0 16 16">
-                      <path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.6 17.6 0 0 0 4.168 6.608 17.6 17.6 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.68.68 0 0 0-.58-.122l-2.19.547a1.75 1.75 0 0 1-1.657-.459L5.482 8.062a1.75 1.75 0 0 1-.46-1.657l.548-2.19a.68.68 0 0 0-.122-.58zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z"/>
-                    </svg>
-                    +963215232314 
-                    
-                   </li> 
-                   <li class="my-3 text-muted">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-telephone" viewBox="0 0 16 16">
-                      <path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.6 17.6 0 0 0 4.168 6.608 17.6 17.6 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.68.68 0 0 0-.58-.122l-2.19.547a1.75 1.75 0 0 1-1.657-.459L5.482 8.062a1.75 1.75 0 0 1-.46-1.657l.548-2.19a.68.68 0 0 0-.122-.58zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z"/>
-                    </svg>
-                    +963215232315
-                    
-                   </li> 
-                   <li class="my-3 text-muted">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-telephone" viewBox="0 0 16 16">
-                        <path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.6 17.6 0 0 0 4.168 6.608 17.6 17.6 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.68.68 0 0 0-.58-.122l-2.19.547a1.75 1.75 0 0 1-1.657-.459L5.482 8.062a1.75 1.75 0 0 1-.46-1.657l.548-2.19a.68.68 0 0 0-.122-.58zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z"/>
-                      </svg>
-                      +96321968002068 
-                   </li>
-                    
-                   <li class="my-3 tex">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-chat-left-text text-success" viewBox="0 0 16 16">
-                      <path d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/>
-                      <path d="M3 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5M3 6a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 6m0 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5"/>
-                    </svg>
-                    <a class="text-decoration-none text-success" href="mailto:ber_ihsan@hotmail.com">ber_ihsan@hotmail.com</a>
-                   </li> 
-                </ul>
-            </div>
-            <div class="col-lg-3 col-md-6">
-               <h5 class="fw-bold mb-3 text-center">الحسابات البنكية </h5>
-               <hr>
-               <div class="d-flex justify-content-start align-items-start my-2 text-muted">
-             
-                <span class="fw-light">
-                  للتبرع على الحساب / بنك البركة : 7000828
-                </span>
-               </div> 
-             
-            </div>
-            <div class="col-md-6 col-lg-3">
-              <a class=" navbar-brand  " href="#">
-                <img src="img/logo1.jpg" class="rounded-pill" width="200" height="200" alt="">
-              </a>
-            </div>
-           </div> 
-        </div>
-      </footer>
+                <div>
+                  <img src="img/dish.png" style="width: 95px;
+                    height: 95px; color: green;">
+                 <i class="fa fa-suitcase fa-5x" style="color: green;"></i> 
+                  <p class="fw-bold">3000</p>
+                </div>
+                <div>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="currentColor"
+                    class="bi bi-bag-heart-fill" viewBox="0 0 16 16" style="color: green;">
+                    <path
+                      d="M11.5 4v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4zM8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m0 6.993c1.664-1.711 5.825 1.283 0 5.132-5.825-3.85-1.664-6.843 0-5.132" />
+                  </svg>
+                <i class="fa fa-comments fa-5x" style="color: green;"></i> 
+                  <p class="fw-bold">25000</p>
+                </div>
 
-      
-  </body>
+              </div>
+
+            </div>
+          </section> -->
+
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+  </section>
+
+
+
+
+
+
+  <footer class="bg-dark py-5" dir="rtl">
+    <div class="container">
+      <div class="row text-white g-4">
+        <div class="col-lg-3 col-md-6 text-center">
+          <a class=" text-decoration-none brand text-white fw-bold" href="index.html">عن الجمعية</a>
+          <hr>
+          <p class="text-white text-muted mt-3">
+            جمعية البر والإحسان الخيرية<br>
+
+            منظمة أهلية غير ربحية<br>
+
+            رقم الإشهار(1095) عام(2012)
+          </p>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <h5 class="fw-bold text-center ">معلومات التواصل</h5>
+          <hr>
+          <ul class="list-unstyled ">
+            <li class="my-3  text-muted">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-house"
+                viewBox="0 0 16 16">
+                <path
+                  d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z" />
+              </svg>
+              حلب الجديدة-الجهة الغربية لجامع الإمام علي زين العابدين
+
+            </li>
+            <li class="my-3 text-muted">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-telephone"
+                viewBox="0 0 16 16">
+                <path
+                  d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.6 17.6 0 0 0 4.168 6.608 17.6 17.6 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.68.68 0 0 0-.58-.122l-2.19.547a1.75 1.75 0 0 1-1.657-.459L5.482 8.062a1.75 1.75 0 0 1-.46-1.657l.548-2.19a.68.68 0 0 0-.122-.58zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z" />
+              </svg>
+              +963215232314
+
+            </li>
+            <li class="my-3 text-muted">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-telephone"
+                viewBox="0 0 16 16">
+                <path
+                  d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.6 17.6 0 0 0 4.168 6.608 17.6 17.6 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.68.68 0 0 0-.58-.122l-2.19.547a1.75 1.75 0 0 1-1.657-.459L5.482 8.062a1.75 1.75 0 0 1-.46-1.657l.548-2.19a.68.68 0 0 0-.122-.58zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z" />
+              </svg>
+              +963215232315
+
+            </li>
+            <li class="my-3 text-muted">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-telephone"
+                viewBox="0 0 16 16">
+                <path
+                  d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.6 17.6 0 0 0 4.168 6.608 17.6 17.6 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.68.68 0 0 0-.58-.122l-2.19.547a1.75 1.75 0 0 1-1.657-.459L5.482 8.062a1.75 1.75 0 0 1-.46-1.657l.548-2.19a.68.68 0 0 0-.122-.58zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z" />
+              </svg>
+              +96321968002068
+            </li>
+
+            <li class="my-3 tex">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                class="bi bi-chat-left-text text-success" viewBox="0 0 16 16">
+                <path
+                  d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z" />
+                <path
+                  d="M3 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5M3 6a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 6m0 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5" />
+              </svg>
+              <a class="text-decoration-none text-success" href="mailto:ber_ihsan@hotmail.com">ber_ihsan@hotmail.com</a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <h5 class="fw-bold mb-3 text-center">الحسابات البنكية </h5>
+          <hr>
+          <div class="d-flex justify-content-start align-items-start my-2 text-muted">
+
+            <span class="fw-light">
+              للتبرع على الحساب / بنك البركة : 7000828
+            </span>
+          </div>
+
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <a class=" navbar-brand  " href="#">
+            <img src="img/logo1.jpg" class="rounded-pill" width="200" height="200" alt="">
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Pre Loader -->
+  <div id="loader" class="show">
+    <div class="loader"></div>
+  </div>
+
+  <!-- JavaScript Libraries -->
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+  <script src="lib/easing/easing.min.js"></script>
+  <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+  <script src="lib/waypoints/waypoints.min.js"></script>
+  <script src="lib/counterup/counterup.min.js"></script>
+  <script src="lib/parallax/parallax.min.js"></script>
+
+  <!-- Contact Javascript File -->
+  <script src="mail/jqBootstrapValidation.min.js"></script>
+  <script src="mail/contact.js"></script>
+
+  <!-- Template Javascript -->
+  <script src="js/users/about.js"></script>
+</body>
+
 </html>
