@@ -4166,3 +4166,40 @@ border-radius:  .25rem;
     line-height: 1.2;
 }
 
+
+
+
+
+
+
+
+
+
+.statue label{
+    width: 103px;
+    height: 55px;
+    display: block;
+    background-color: #000;
+    border-radius: 100px;
+    cursor: pointer;
+    position: relative;
+}
+.statue input[type="checkbox"]{
+    display: none;
+}
+.statue .moving_circle{
+    position: absolute;
+    left: 0px;
+	width: 45px;
+    height: 45px;
+    background-color: #fff;
+    border-radius: 100px;
+    margin: 5px;
+    transition: 0.2s;
+}
+
+
+.statue input[type="checkbox"]:checked + .moving_circle{
+    transform: translateX(50px);
+    box-shadow: 0px 0px 40px 20px #fff;
+}
