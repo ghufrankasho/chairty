@@ -30,11 +30,11 @@ body {
 }
 
 
-.box-content {
+/* .box-content {
 	box-shadow: 0 3px 9px 3px rgba(87, 156, 90, 0.904);
 	border-radius: 10%;
 	padding: 30px;
-}
+} */
 
 a {
 	text-decoration: none;
@@ -2145,7 +2145,7 @@ body {
 .product{
 	font-family: "Cairo", sans-serif;
 	font-optical-sizing: auto;
-	font-weight: <weight>;
+	font-weight:700;
 	font-style: normal;
 	font-variation-settings:
 	  "slnt" 0;
@@ -2301,7 +2301,7 @@ body {
   }
   
   .product-brand {
-	font-size: 27px;
+	font-size: 20px ;
 	text-transform: uppercase;
 	white-space: nowrap;
     overflow: hidden;
@@ -3922,7 +3922,63 @@ border-radius:  .25rem;
   }
 
 
+  /* ************************************************ */
+  #aboutSection .cards 
+  {
+	display: flex;
+	flex-wrap: nowrap;
+	justify-content: space-around;
+	margin-top: 50px;
+	height: 245px;
+	position: relative;
+	gap: 10px;
+  }
+  #aboutSection .cards > div
+  {
+	width: 340px;
+	padding: 35px;
+	background-color: #efefef;
+	text-align: center;
+	border-radius: 10px;
+	border:  1px solid green;
+	transition: all .5s ease-in-out;
+  }
+  #aboutSection .cards > div:hover
+  {
+	box-shadow: 0 3px 9px 3px rgba(87, 156, 90, 0.904);
+border:  1px solid rgb(24, 26, 24);
+ transform: scaleY(1.1)
 
+ 
+  }
+
+  #aboutSection .cards > div .title
+  {
+	font-size: 18px;
+	color: #f1d436;
+	font-weight: 600;
+  }
+  #aboutSection .cards > div p
+  {
+	font-size: 16px;
+	margin-top: 15px;
+  }
+  @media (max-width: 798px)  {
+	#aboutSection .cards  > div {
+		height: 340px;
+		width: 390px;
+		padding: 15px;
+		margin: 10px;
+	}
+  }
+
+
+@media (max-width: 798px)  {
+	#about .title {
+	
+		margin: 60px;
+	}
+  }
   /********************about****************/
 
   
@@ -4164,5 +4220,44 @@ border-radius:  .25rem;
     font-weight: 700;
 	color: #4a4c70;
     line-height: 1.2;
+	margin-bottom: 25px;
 }
 
+
+
+
+
+
+
+
+
+
+
+.statue label{
+    width: 103px;
+    height: 55px;
+    display: block;
+    background-color: #000;
+    border-radius: 100px;
+    cursor: pointer;
+    position: relative;
+}
+.statue input[type="checkbox"]{
+    display: none;
+}
+.statue .moving_circle{
+    position: absolute;
+    left: 0px;
+	width: 45px;
+    height: 45px;
+    background-color: #fff;
+    border-radius: 100px;
+    margin: 5px;
+    transition: 0.2s;
+}
+
+
+.statue input[type="checkbox"]:checked + .moving_circle{
+    transform: translateX(50px);
+    box-shadow: 0px 0px 40px 20px #fff;
+}

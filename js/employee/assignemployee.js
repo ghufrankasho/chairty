@@ -3,7 +3,7 @@
 let originalemployee = {};
 var employee_id=0;
 function displayemployee(employeeId) {
-    // const data = { id: employeeId };
+    const data = { id: employeeId };
     
     const xhr = new XMLHttpRequest();
     xhr.open('GET', `http://127.0.0.1:8000/api/employee/show?id=${employeeId}`, true);
