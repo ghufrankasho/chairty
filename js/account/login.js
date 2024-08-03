@@ -175,6 +175,7 @@ function resetPassword(event) {
           var response = JSON.parse(xhr.responseText);
           // showSuccessAlert(null,response.message,true);
           
+          showSuccessAlert(null,response.message,true,'reset-password');
          console.log(response.account.type,response);
           if (response.account.type=="0"){
             console.log(response.message)
@@ -188,7 +189,7 @@ function resetPassword(event) {
             // window.location.href =`/employee/employeeindex.html`;
             window.location.href =`/employee/employees.html`;
            }
-          else{window.location.href =`/index.html`;}
+          // else{window.location.href =`/index.html`;}
           
           // Handle response as needed
       } else {
@@ -401,7 +402,7 @@ function deleteMessage(id) {
               
               const response = JSON.parse(xhr.responseText);
               
-              showAlert(null,response.message,response.status);
+              // showAlert(null,response.message,response.status);
               displayMessages();
              
           } else {

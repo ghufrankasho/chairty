@@ -6,7 +6,7 @@ function displayemployee(employeeId) {
     const data = { id: employeeId };
     
     const xhr = new XMLHttpRequest();
-    xhr.open('POST', 'http://127.0.0.1:8000/api/employee/show/', true);
+    xhr.open('GET', `http://127.0.0.1:8000/api/employee/show?id=${employeeId}`, true);
   
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4) {
@@ -36,7 +36,7 @@ function displayemployee(employeeId) {
     };
   
     xhr.setRequestHeader('Content-Type', 'application/json');
-    xhr.send(JSON.stringify(data));
+    xhr.send();
 }
 function displayBranches() {
   const xhr = new XMLHttpRequest();
@@ -181,11 +181,14 @@ window.addEventListener('load', () => {
  
     const urlParams = new URLSearchParams(window.location.search);
     const employeeId = urlParams.get('employeeId');
+   
     employee_id=employeeId;
+    console.log(employeeId,employee_id);
     displayBranches();
      
     // Call the function with the retrieved employee ID
     if (employeeId) {
+      console.log(employeeId,employee_id);
         displayemployee(employeeId);
     } else {
         console.error("No employeeId found in URL parameters.");
