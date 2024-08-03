@@ -30,11 +30,11 @@ body {
 }
 
 
-.box-content {
+/* .box-content {
 	box-shadow: 0 3px 9px 3px rgba(87, 156, 90, 0.904);
 	border-radius: 10%;
 	padding: 30px;
-}
+} */
 
 a {
 	text-decoration: none;
@@ -3937,7 +3937,7 @@ border-radius:  .25rem;
   {
 	width: 340px;
 	padding: 35px;
-	background-color: #999;
+	background-color: #efefef;
 	text-align: center;
 	border-radius: 10px;
 	border:  1px solid green;
@@ -3945,17 +3945,17 @@ border-radius:  .25rem;
   }
   #aboutSection .cards > div:hover
   {
- width: 390px;
- /* margin-top: -10px; */
-height: 340px;
- border-color: #000;
- height: auto;
+	box-shadow: 0 3px 9px 3px rgba(87, 156, 90, 0.904);
+border:  1px solid rgb(24, 26, 24);
+ transform: scaleY(1.1)
+
  
   }
 
   #aboutSection .cards > div .title
   {
 	font-size: 18px;
+	color: #f1d436;
 	font-weight: 600;
   }
   #aboutSection .cards > div p
@@ -3963,7 +3963,7 @@ height: 340px;
 	font-size: 16px;
 	margin-top: 15px;
   }
-  @media (max-width: 769px)  {
+  @media (max-width: 798px)  {
 	#aboutSection .cards  > div {
 		height: 340px;
 		width: 390px;
@@ -3973,7 +3973,12 @@ height: 340px;
   }
 
 
-
+@media (max-width: 798px)  {
+	#about .title {
+	
+		margin: 60px;
+	}
+  }
   /********************about****************/
 
   
@@ -4215,6 +4220,7 @@ height: 340px;
     font-weight: 700;
 	color: #4a4c70;
     line-height: 1.2;
+	margin-bottom: 25px;
 }
 
 
