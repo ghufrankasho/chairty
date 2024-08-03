@@ -2145,7 +2145,7 @@ body {
 .product{
 	font-family: "Cairo", sans-serif;
 	font-optical-sizing: auto;
-	font-weight: <weight>;
+	font-weight:700;
 	font-style: normal;
 	font-variation-settings:
 	  "slnt" 0;
@@ -2301,7 +2301,7 @@ body {
   }
   
   .product-brand {
-	font-size: 27px;
+	font-size: 20px ;
 	text-transform: uppercase;
 	white-space: nowrap;
     overflow: hidden;
@@ -3919,4 +3919,54 @@ border-radius:  .25rem;
   
   .don .container form .submit-btn:hover{
 	background: #2ecc71;
+  }
+
+  /* ************************************************ */
+  #aboutSection .cards 
+  {
+	display: flex;
+	flex-wrap: nowrap;
+	justify-content: space-around;
+	margin-top: 50px;
+	height: 245px;
+	position: relative;
+	gap: 10px;
+  }
+  #aboutSection .cards > div
+  {
+	width: 340px;
+	padding: 35px;
+	background-color: #999;
+	text-align: center;
+	border-radius: 10px;
+	border:  1px solid green;
+	transition: all .5s ease-in-out;
+  }
+  #aboutSection .cards > div:hover
+  {
+ width: 390px;
+ /* margin-top: -10px; */
+height: 340px;
+ border-color: #000;
+ height: auto;
+ 
+  }
+
+  #aboutSection .cards > div .title
+  {
+	font-size: 18px;
+	font-weight: 600;
+  }
+  #aboutSection .cards > div p
+  {
+	font-size: 16px;
+	margin-top: 15px;
+  }
+  @media (max-width: 769px)  {
+	#aboutSection .cards  > div {
+		height: 340px;
+		width: 390px;
+		padding: 15px;
+		margin: 10px;
+	}
   }
