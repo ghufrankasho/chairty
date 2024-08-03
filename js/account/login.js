@@ -173,7 +173,7 @@ function resetPassword(event) {
       if (xhr.readyState === 4 && xhr.status === 200) {
           // Handle successful response
           var response = JSON.parse(xhr.responseText);
-          // showSuccessAlert(null,response.message,true);
+           showSuccessAlert(null,response.message,true,`reset-password`);
           
          console.log(response.account.type,response);
           if (response.account.type=="0"){
@@ -281,7 +281,10 @@ function showSuccessAlert(data, message, status,form) {
   
       // Remove the message container from the DOM
       div.remove();
-    });
+     if(status)
+     {
+      window.location.href= `/index.html`; }
+    })
 }
 function displayMessages() {
    
