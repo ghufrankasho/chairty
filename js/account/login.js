@@ -401,7 +401,7 @@ function deleteMessage(id) {
               
               const response = JSON.parse(xhr.responseText);
               
-              showAlert(null,response.message,response.status);
+              // showAlert(null,response.message,response.status);
               displayMessages();
              
           } else {
