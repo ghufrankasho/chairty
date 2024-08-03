@@ -16,6 +16,7 @@ function displayEmployee(){
                     const response = JSON.parse(xhr.responseText);
                     document.getElementById('image').src = response.image;
                     document.getElementById('name').textContent = response.name;
+                    document.getElementById('salary').textContent = response.salary;
                     if(response.depart !==null){
                         document.getElementById('branch').textContent = response.depart.branch.name;
                         document.getElementById('department').textContent = response.depart.name;

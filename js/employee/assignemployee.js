@@ -140,11 +140,12 @@ function updateemployee() {
   const formData = new FormData();  
   const select_depart = document.getElementById('departments');
  
-
+  const amountInput = document.getElementById('amount').value;
   const department = select_depart.options[select_depart.selectedIndex].value;
    
   const currentemployee = {
     department: department,
+
    
     
   };
@@ -155,7 +156,7 @@ console.log(currentemployee,originalemployee)
   }
  
  
-
+  formData.append('salary', amountInput); 
   formData.append('id', employee_id); // Always include the employee ID
 
   const xhr = new XMLHttpRequest();
@@ -181,7 +182,8 @@ window.addEventListener('load', () => {
  
     const urlParams = new URLSearchParams(window.location.search);
     const employeeId = urlParams.get('employeeId');
-   
+    const amountInput = document.getElementById('amount');
+    const amountError = document.getElementById('amount_error');
     employee_id=employeeId;
     console.log(employeeId,employee_id);
     displayBranches();
@@ -193,6 +195,18 @@ window.addEventListener('load', () => {
     } else {
         console.error("No employeeId found in URL parameters.");
     }
+    function validateAmount() {
+      const amount = amountInput.value;
+      const amountPattern = /^(?!0\d)(\d+(\.\d{1,2})?)$/; // Positive number with up to 2 decimal places
+
+      if (!amountPattern.test(amount)) {
+          amountError.textContent = 'الراتب يجب أن يكون رقم  لايحوي اشارة السالب';
+      } else {
+          amountError.textContent = '';
+      }
+  }
+
+    amountInput.addEventListener('input', validateAmount);
   });
 function showAlert(data, message, status) {
     // Show the success message in the "success-message" div
