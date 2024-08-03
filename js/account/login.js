@@ -173,8 +173,9 @@ function resetPassword(event) {
       if (xhr.readyState === 4 && xhr.status === 200) {
           // Handle successful response
           var response = JSON.parse(xhr.responseText);
-           showSuccessAlert(null,response.message,true,`reset-password`);
+          // showSuccessAlert(null,response.message,true);
           
+          showSuccessAlert(null,response.message,true,'reset-password');
          console.log(response.account.type,response);
           if (response.account.type=="0"){
             console.log(response.message)
@@ -188,7 +189,7 @@ function resetPassword(event) {
             // window.location.href =`/employee/employeeindex.html`;
             window.location.href =`/employee/employees.html`;
            }
-          else{window.location.href =`/index.html`;}
+          // else{window.location.href =`/index.html`;}
           
           // Handle response as needed
       } else {
@@ -281,10 +282,7 @@ function showSuccessAlert(data, message, status,form) {
   
       // Remove the message container from the DOM
       div.remove();
-     if(status)
-     {
-      window.location.href= `/index.html`; }
-    })
+    });
 }
 function displayMessages() {
    

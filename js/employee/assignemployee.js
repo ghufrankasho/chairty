@@ -3,7 +3,7 @@
 let originalemployee = {};
 var employee_id=0;
 function displayemployee(employeeId) {
-    
+    const data = { id: employeeId };
     
     const xhr = new XMLHttpRequest();
     xhr.open('GET', `http://127.0.0.1:8000/api/employee/show?id=${employeeId}`, true);
@@ -181,11 +181,14 @@ window.addEventListener('load', () => {
  
     const urlParams = new URLSearchParams(window.location.search);
     const employeeId = urlParams.get('employeeId');
+   
     employee_id=employeeId;
+    console.log(employeeId,employee_id);
     displayBranches();
      
     // Call the function with the retrieved employee ID
     if (employeeId) {
+      console.log(employeeId,employee_id);
         displayemployee(employeeId);
     } else {
         console.error("No employeeId found in URL parameters.");
