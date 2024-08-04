@@ -32,7 +32,7 @@
                 <div class="row no-gutters row-bordered row-border-light">
 
                     <div class="col-md-9">
-                        <div class="tab-content">
+                        <div class="tab-content" id="form">
                             <div class="tab-pane fade active show " id="account-general">
                                 <div class="card-body media align-items-center text-right" dir="rtl">
                                     <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt
@@ -45,6 +45,23 @@
                                         </label> &nbsp;
 
                                     </div>
+                                    <div class="media-body ml-4" dir="rtl" style="margin-right: 106px;"  id="cv">
+                                        <label for="form-label">السيرة الذاتية :
+                
+                                       <label class="btn btn-outline-primary m-3">
+                                           تحميل
+                                            <input type="file" id="cvInput" accept=".pdf,.txt" class="account-settings-fileinput">
+                                           </label></label> &nbsp;
+                                           
+                                 
+                                   </div>
+                                   <div class="media-body ml-4" id="status-div" style="display: none;">
+                                    <label class="form-label">   Avaliable: </label>
+                                    <label>
+                                        <input type="checkbox" id="status"  >
+                                        <div class="moving_circle"> </div>
+                                    </label>
+                                </div>
 
 
 
@@ -53,30 +70,45 @@
                                 <div class="card-body text-right"  dir="rtl">
                                     <div class="form-group">
                                         <label class="form-label">الاسم </label>
-                                        <input type="text" class="form-control mb-1" value="nmaxwell">
+                                        <input type="text" class="form-control mb-1" id="user-name">
+                                        <span id="nameError" class="error-message"></span>
                                     </div>
                                     <div class="form-group">
                                         <label class="form-label">العنوان</label>
-                                        <input type="text" class="form-control" value="Nelle Maxwell">
+                                        <input type="text" class="form-control" id="user-address" >
+                                        <span id="addressError" class="error-message"></span>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group" >
+                                        <label class="form-label">رقم الهاتف</label>
+                                        <input type="text" class="form-control mb-1" id="user-phone">
+                                        <span id="phoneError" class="error-message"></span>
+                                     
+                                    </div>
+                                    <div class="form-group" id="email" style="display: none;">
                                         <label class="form-label">البريد الالكتروني</label>
-                                        <input type="text" class="form-control mb-1" value="nmaxwell@mail.com">
+                                        <input type="text" class="form-control mb-1" id="employee-email">
+                                        <span id="emailError" class="error-message"></span>
                                      
                                     </div>
 
 
-                                    <div class="form-group">
+                                    <div class="form-group" id="salary-div" style="display: none;">
                                         <label class="form-label">  الراتب </label>
-                                      <p style="border: 1px black solid ;">gggggggg</p>
+                                      <p style="border: 1px black solid ;" id="user-salary"></p>
                                     </div>
+                                   
+
+                                       
+                               
+                                    <p class="card-title fw-bold" id="cv-div" > السيرة الذاتية 
+                                        <a href="" style="color: black;" id="cv">
+                                            <i class='bx bxs-user-detail'></i></a>
 
                                     
                                 </div>
 
                                 <div class=" text-left  m-3">
-                                    <button type="button" onclick="updateImage(event)" class="btn btn-info">حفظ
-                                    </button>&nbsp;
+                                    <button type="button" id="save-btn" class="btn btn-info">حفظ</button>&nbsp;
                                 </div>
 
 
@@ -112,10 +144,13 @@
                           
 
 
-                            <div class="tab-pane fade  text-right" id="account-info" dir="rtl">
-                                <div class="card-body pb-2" id="messages">
-
-                                    <div class="form-group">
+                            <div class="tab-pane fade  text-right"  id="account-info" dir="rtl">
+                                <div class="card-body pb-2" id="projects">
+                                    <div class="form-group" id="project-div" style="display: none;">
+                                        <label class="form-label">  لا يوجد مشاريع بعد </label>
+                                      
+                                    </div>
+                                    <!-- <div class="form-group">
                                         <div class="para  text-right" dir="rtl">
 
                                         
@@ -164,52 +199,35 @@
 
 
                                         </div>
-                                    </div>
+                                    </div> -->
+                                    
 
                                 </div>
                             </div>
 
 
 
-
-                            <div class="tab-pane fade text-right" id="statue" dir="rtl">
-                                <div class="card-body pb-2">
-
-                                    <div class="form-group  statue" >
-                                        <label>
-                                            <input type="checkbox">
-                                            <div class="moving_circle"></div>
-                                        </label>
-                                    </div>
-                                    
-
-                                    
-
-
-                                </div>
-                            </div>
-
+ 
 
                         </div>
                     </div>
 
 
 
-                    <div class="col-md-3 pt-0" dir="rtl">
+                    <div class="col-md-3 pt-0" dir="rtl" >
                         <div class="list-group list-group-flush account-settings-links" dir="rtl">
                             <a style="text-align: right;" class="list-group-item list-group-item-action active"
                                 data-toggle="list" href="#account-general">الصفحة الشخصية</a>
                             <a style="text-align: right;" class="list-group-item list-group-item-action"
                                 data-toggle="list" href="#reset-password">تغيير كلمة السر </a>
-                                <a style="text-align: right;" class="list-group-item list-group-item-action" data-toggle="list"
+                                <a style="text-align: right; display: none;" id="projects-item"  class="list-group-item list-group-item-action" data-toggle="list"
                                 href="#account-info">المشاريع</a>
-                                <a style="text-align: right;" class="list-group-item list-group-item-action" data-toggle="list"
-                                href="#statue">الحالة</a>
+                                
 
                            
                          
                             <a style="text-align: right;" class="list-group-item list-group-item-action"
-                                href="/account/loginInside.html">تسجيل خروج </a>
+                                href="/login.html">تسجيل خروج </a>
                         </div>
                     </div>
                 </div>
@@ -222,7 +240,588 @@
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="/js/account/login.js"></script>
+    <script>
+        let profilePic = document.getElementById("profile-pic");
+       
 
+        let inputFile = document.getElementById("input-file");
+      
+        inputFile.onchange = function () {
+            profilePic.src = URL.createObjectURL(inputFile.files[0]);
+        }
+        
+        document.addEventListener('DOMContentLoaded', function () {
+           // let support = JSON.parse(localStorage.getItem('support')); // Parse the stringified JSON
+           const urlParams = new URLSearchParams(window.location.search);
+           const nameInput = document.getElementById('user-name');
+           const address = document.getElementById('user-address');
+           const phone = document.getElementById('user-phone');
+           const email = document.getElementById('employee-email');
+         
+           nameInput.addEventListener('input', validateName);
+           address.addEventListener('input', validateAddress);
+           phone.addEventListener('input', validatePhone);
+           email.addEventListener('input', validateEmail);
+
+           const name = urlParams.get('name');
+            if (name != null) {
+                let user = JSON.parse(localStorage.getItem('user')); 
+                console.log(user);
+                let original_data = {};
+                if(name=='يتيم'){
+
+                    document.getElementById('salary-div').style.display='block';
+                    document.getElementById('cv-div').style.display='none';
+                    document.getElementById('cv').style.display='none';
+                 
+                    document.getElementById('profile-pic').src=user.image;
+                    document.getElementById('user-name').value=user.first_name +" "+user.last_name;
+                    document.getElementById('user-address').value=user.address;
+                    document.getElementById('user-phone').value=user.mobile;
+                    document.getElementById('user-salary').textContent=user.salary;
+
+                    
+                    original_data = {
+                        name: user.first_name +" "+user.last_name,
+                        address: user.address,
+                        phone: user.mobile
+                    };
+                    
+                }
+                if(name=='متطوع'){
+                    document.getElementById('salary-div').style.display='block';
+                    document.getElementById('projects-item').style.display='block';
+                    
+                    
+                    document.getElementById('profile-pic').src=user.image;
+                    document.getElementById('user-name').value=user.first_name +" "+user.last_name;
+                    document.getElementById('user-address').value=user.address;
+                    document.getElementById('user-phone').value=user.mobile;
+                    document.getElementById('user-salary').textContent=user.salary;
+                    document.getElementById('cv').href=user.cv;
+                    
+                    original_data = {
+                        name: user.first_name +" "+user.last_name,
+                        address: user.address,
+                        phone: user.mobile
+                    };
+               
+                }
+                const saveButton = document.getElementById('save-btn');
+                 
+                saveButton.onclick = function(){
+                    update_user(original_data,user.id);
+                }
+                const projectButton = document.getElementById('projects-item');
+                 
+                projectButton.onclick = function(){
+                    displayproject(user.id);
+                }
+        
+            }
+            else{
+                document.getElementById('salary-div').style.display='block';
+                document.getElementById('projects-item').style.display='block';
+               
+                document.getElementById('email').style.display='block';
+                document.getElementById('status-div').style.display='block';
+                let employee = localStorage.getItem('employee');
+                let original_data = {};
+                if (localStorage.hasOwnProperty('employee')) {
+                    employee=JSON.parse(employee);
+                    console.log(employee);
+
+                    document.getElementById('profile-pic').src=employee.image;
+                    document.getElementById('user-name').value=employee.name;
+                    document.getElementById('user-address').value=employee.address;
+                    document.getElementById('user-phone').value=employee.phone;
+                    document.getElementById('user-salary').textContent=employee.salary;
+                    document.getElementById('employee-email').value=employee.email;
+                    document.getElementById('cv').href=employee.cv;
+
+                    original_data = {
+                        name:employee.name,
+                        address:employee.address,
+                        phone:employee.phone,
+                        email:employee.email,
+                        avaliable:employee.avaliable
+
+                    };
+                    const status_btn = document.getElementById("status");
+                    
+                    
+                   status_btn.checked=employee.avaliable;
+                    
+                    const saveButton = document.getElementById('save-btn');
+                 
+                    saveButton.onclick = function(){
+                        update_employee(original_data,employee.id);
+                    }
+                    const projectButton = document.getElementById('projects-item');
+                 
+                    projectButton.onclick = function(){
+                        displayprojects(employee.id);
+                    }
+                    
+
+            }}
+
+            
+        });
+        function displayproject(user_id){
+
+    
+            const xhr = new XMLHttpRequest();
+            xhr.open('GET', `http://127.0.0.1:8000/api/user/get_project?id=${user_id}`, true);
+          
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200) {
+                        const response = JSON.parse(xhr.responseText);
+                       
+                        try {
+                            const response = JSON.parse(xhr.responseText);
+                           
+                            
+                             
+                            if(response!==null )
+                            {
+                                
+                                const projectContainer = document.getElementById('projects');
+                      
+                                // Clear existing projects
+                                projectContainer.innerHTML = '';
+                                
+                                 
+                                    const projectDiv = document.createElement('div');
+                                    projectDiv.className = 'form-group';
+                                    projectDiv.innerHTML = `
+                                         <div class="para  text-right" dir="rtl">
+                                                  <div class="homepageemp text-right " dir="rtl">
+
+                                                 <table class="content-table  text-right" style="margin-right: 30px;"
+                                                    dir="rtl">
+                                                    <thead>
+
+                                                        <tr class="text-right">
+
+                                                            <th> اسم المشروع </th>
+                                                            <th>تاريخ البداية  </th>
+                                                            <th>تاريخ النهاية </th>
+                                                            <th>تفاصيل المشروع</th>
+
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+
+                                                            <td>
+                                                                <p>${response.name}</p>
+                                                            </td>
+                                                            <td>
+                                                                <p>${response.start_date}
+                                                                </p>
+                                                            </td>
+                                                            <td>
+                                                                <p> ${response.end_date} </p>
+                                                            </td>
+                                                            <td>
+                                                                <p> ${response.description}</p>
+                                                            </td>
+
+                                                        </tr>
+
+
+                                                    </tbody>
+                                                </table>
+                                       </div >
+                                       </div >
+                                        </div>`;
+                                    
+                                    projectContainer.appendChild(projectDiv);
+                                    
+                                  
+                                     
+                              
+                            }
+                            else{
+                                document.getElementById("project-div").style.display = "block"
+                            }
+                            
+                            
+                        } catch (e) {
+                            console.error("Failed to parse response JSON:", e);
+                        }
+                    } else {
+                        console.error("Error with request, status code:", xhr.status);
+                    }
+                }
+            };
+          
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            xhr.send();
+        }
+        function displayprojects(employee_id){
+
+    
+            const xhr = new XMLHttpRequest();
+            xhr.open('GET', `http://127.0.0.1:8000/api/employee/get_projects?id=${employee_id}`, true);
+          
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200) {
+                        const response = JSON.parse(xhr.responseText);
+                       
+                        try {
+                            const response = JSON.parse(xhr.responseText);
+                           
+                            
+                             
+                            if(response.length!==0 )
+                            {
+                                
+                               
+                                const projectContainer = document.getElementById('projects');
+                      
+                                // Clear existing projects
+                                projectContainer.innerHTML = '';
+                                
+                                response.forEach(function(project) {
+                                    const projectDiv = document.createElement('div');
+                                    projectDiv.className = 'form-group';
+                                    projectDiv.innerHTML = `
+                                         <div class="para  text-right" dir="rtl">
+                                                  <div class="homepageemp text-right " dir="rtl">
+
+                                                 <table class="content-table  text-right" style="margin-right: 30px;"
+                                                    dir="rtl">
+                                                    <thead>
+
+                                                        <tr class="text-right">
+
+                                                            <th> اسم المشروع </th>
+                                                            <th>تاريخ البداية  </th>
+                                                            <th>تاريخ النهاية </th>
+                                                            <th>تفاصيل المشروع</th>
+
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+
+                                                            <td>
+                                                                <p>${project.name}</p>
+                                                            </td>
+                                                            <td>
+                                                                <p>${project.start_date}
+                                                                </p>
+                                                            </td>
+                                                            <td>
+                                                                <p> ${project.end_date} </p>
+                                                            </td>
+                                                            <td>
+                                                                <p> ${project.description}</p>
+                                                            </td>
+
+                                                        </tr>
+
+
+                                                    </tbody>
+                                                </table>
+                                       </div >
+                                       </div >
+                                        </div>`;
+                                    
+                                    projectContainer.appendChild(projectDiv);
+                                    
+                                  
+                                }      
+                              
+                            );}
+                            else{
+                                document.getElementById("project-div").style.display = "block"
+                            }
+                            
+                            
+                        } catch (e) {
+                            console.error("Failed to parse response JSON:", e);
+                        }
+                    } else {
+                        console.error("Error with request, status code:", xhr.status);
+                    }
+                }
+            };
+          
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            xhr.send();
+        }
+       
+        function update_user(original_data,id) {
+            const formData = new FormData();  
+            
+            const current = {
+                name: document.getElementById('user-name').value,
+                
+                phone: document.getElementById('user-phone').value,
+                
+                address: document.getElementById('user-address').value
+            };
+           console.log(original_data,"inside update function");
+            // Compare current values with original values and append only changed fields
+            if (current.name !== original_data.name) {
+                formData.append('first_name', current.name);
+            }
+           
+            
+             
+            if (current.phone !== original_data.phone) {
+                formData.append('phone', current.phone);
+            }
+            if (current.address !== original_data.address) {
+                formData.append('address', current.address);
+            }
+          
+            // Check if a new image file has been selected
+            const imageInput = document.getElementById('input-file');
+            if ( imageInput !=null && imageInput.files.length > 0) {
+                formData.append('image', imageInput.files[0]);
+            }
+            const cvInput = document.getElementById('cvInput');
+            if ( cvInput !=null && cvInput.files.length > 0) {
+                formData.append('cv', cvInput.files[0]);
+            }
+            formData.append('id',id); // Always include the  ID
+          console.log(...formData);
+            const xhr = new XMLHttpRequest();
+            xhr.open('POST', 'http://127.0.0.1:8000/api/user/update/', true);
+          
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200) {
+                        const response = JSON.parse(xhr.responseText);
+                      //   console.log('Update success:', response.message);
+                        showAlert(null, response.message, response.status);
+                    } else {
+                        const response = JSON.parse(xhr.responseText);
+                        showAlert(null, response.message, response.status);
+                      //   console.error('Update error:', response.errors || response.message);
+                    }
+                }
+            };
+          
+            xhr.send(formData);
+        }
+        function update_employee(original_data,id) {
+            const formData = new FormData();  
+            const status_btn = document.getElementById("status");
+            let avaliable=0;
+            
+            if(status_btn.checked)avaliable=1;
+
+            const current = {
+                name: document.getElementById('user-name').value,
+                
+                phone: document.getElementById('user-phone').value,
+                email: document.getElementById('employee-email').value,
+                address: document.getElementById('user-address').value,
+                avaliable:avaliable
+            };
+           console.log(original_data,"inside update function");
+            // Compare current values with original values and append only changed fields
+            if (current.name !== original_data.name) {
+                formData.append('name', current.name);
+            }
+            if (current.phone !== original_data.phone) {
+                formData.append('phone', current.phone);
+            }
+            if (current.address !== original_data.address) {
+                formData.append('address', current.address);
+            }
+            if (current.email !== original_data.email) {
+                formData.append('email', current.email);
+            }
+            if (current.avaliable !== original_data.avaliable) {
+                formData.append('avaliable', current.avaliable);
+            }
+          
+          
+            // Check if a new image file has been selected
+            const imageInput = document.getElementById('input-file');
+            if ( imageInput !=null && imageInput.files.length > 0) {
+                formData.append('image', imageInput.files[0]);
+            }
+            const cvInput = document.getElementById('cvInput');
+            if ( cvInput !=null && cvInput.files.length > 0) {
+                formData.append('cv', cvInput.files[0]);
+            }
+          
+            formData.append('id',id); // Always include the  ID
+          console.log(...formData);
+            const xhr = new XMLHttpRequest();
+            xhr.open('POST', 'http://127.0.0.1:8000/api/employee/update/', true);
+          
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200) {
+                        const response = JSON.parse(xhr.responseText);
+                      //   console.log('Update success:', response.message);
+                        showAlert(null, response.message, response.status);
+                    } else {
+                        const response = JSON.parse(xhr.responseText);
+
+                        showAlert(response.message, response.errors, response.status);
+                      //   console.error('Update error:', response.errors || response.message);
+                    }
+                }
+            };
+          
+            xhr.send(formData);
+        }
+
+        function showAlert(data, message, status) {
+            // Show the success message in the "success-message" div
+            const Message = document.getElementById('form');
+            const div = document.createElement('div');
+            console.log(data)
+            if (status) {
+              div.className = "success alert d-none mt-3 mx-auto"
+              div.innerHTML = ` 
+            <div class="content-message-alert" id ="AlertMessage">
+              <div class="icon">
+                <svg width="50" height="50" id="Layer_1" style="enable-background:new 0 0 128 128;" version="1.1" viewBox="0 0 128 128" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g><circle fill="#fff" cx="64" cy="64" r="64"/></g><g><path fill="#3EBD61" d="M54.3,97.2L24.8,67.7c-0.4-0.4-0.4-1,0-1.4l8.5-8.5c0.4-0.4,1-0.4,1.4,0L55,78.1l38.2-38.2   c0.4-0.4,1-0.4,1.4,0l8.5,8.5c0.4,0.4,0.4,1,0,1.4L55.7,97.2C55.3,97.6,54.7,97.6,54.3,97.2z"/></g></svg>
+              </div>
+              
+            <p  height="80px";>${message}</p>
+            
+          
+          </div>
+          <button class="close"  id="AlertButton">
+          <svg height="18px" id="Layer_1" style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" width="18px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path fill="#69727D" d="M437.5,386.6L306.9,256l130.6-130.6c14.1-14.1,14.1-36.8,0-50.9c-14.1-14.1-36.8-14.1-50.9,0L256,205.1L125.4,74.5  c-14.1-14.1-36.8-14.1-50.9,0c-14.1,14.1-14.1,36.8,0,50.9L205.1,256L74.5,386.6c-14.1,14.1-14.1,36.8,0,50.9  c14.1,14.1,36.8,14.1,50.9,0L256,306.9l130.6,130.6c14.1,14.1,36.8,14.1,50.9,0C451.5,423.4,451.5,400.6,437.5,386.6z"/></svg>
+          </button>
+          `
+            }
+            if (!status) {
+              div.className = "warning alert d-none mt-3 mx-auto"
+              div.innerHTML = ` 
+            
+            <div class="content-message-alert" id ="AlertMessage">
+              <div class="icon">
+                <svg height="50" viewBox="0 0 512 512" width="50" xmlns="http://www.w3.org/2000/svg"><path fill="#fff" d="M449.07,399.08,278.64,82.58c-12.08-22.44-44.26-22.44-56.35,0L51.87,399.08A32,32,0,0,0,80,446.25H420.89A32,32,0,0,0,449.07,399.08Zm-198.6-1.83a20,20,0,1,1,20-20A20,20,0,0,1,250.47,397.25ZM272.19,196.1l-5.74,122a16,16,0,0,1-32,0l-5.74-121.95v0a21.73,21.73,0,0,1,21.5-22.69h.21a21.74,21.74,0,0,1,21.73,22.7Z"/></svg>
+            </div>
+               
+            <p height="100px"> ${message} </p>
+            <p height="100px"> ${JSON.stringify(data)} </p>
+           
+            </div>
+            <button class="close" id="AlertButton">
+             <svg height="18px" id="Layer_1" style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" width="18px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path fill="#69727D" d="M437.5,386.6L306.9,256l130.6-130.6c14.1-14.1,14.1-36.8,0-50.9c-14.1-14.1-36.8-14.1-50.9,0L256,205.1L125.4,74.5  c-14.1-14.1-36.8-14.1-50.9,0c-14.1,14.1-14.1,36.8,0,50.9L205.1,256L74.5,386.6c-14.1,14.1-14.1,36.8,0,50.9  c14.1,14.1,36.8,14.1,50.9,0L256,306.9l130.6,130.6c14.1,14.1,36.8,14.1,50.9,0C451.5,423.4,451.5,400.6,437.5,386.6z"/></svg>
+            </button>
+          </div>
+          
+          `
+            }
+            if (status == null) {
+              div.className = "danger alert d-none mt-3 mx-auto"
+              div.innerHTML = ` 
+            
+            <div class="content-message-alert" id ="AlertMessage">
+              <div class="icon">
+              <svg height="50" viewBox="0 0 512 512" width="50" xmlns="http://www.w3.org/2000/svg"><path fill="#fff" d="M449.07,399.08,278.64,82.58c-12.08-22.44-44.26-22.44-56.35,0L51.87,399.08A32,32,0,0,0,80,446.25H420.89A32,32,0,0,0,449.07,399.08Zm-198.6-1.83a20,20,0,1,1,20-20A20,20,0,0,1,250.47,397.25ZM272.19,196.1l-5.74,122a16,16,0,0,1-32,0l-5.74-121.95v0a21.73,21.73,0,0,1,21.5-22.69h.21a21.74,21.74,0,0,1,21.73,22.7Z"/></svg>
+              </div>
+              <p height="100px"> ${message} </p>
+              </div>
+              <button class="close" id="AlertButton">
+               <svg height="18px" id="Layer_1" style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" width="18px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path fill="#69727D" d="M437.5,386.6L306.9,256l130.6-130.6c14.1-14.1,14.1-36.8,0-50.9c-14.1-14.1-36.8-14.1-50.9,0L256,205.1L125.4,74.5  c-14.1-14.1-36.8-14.1-50.9,0c-14.1,14.1-14.1,36.8,0,50.9L205.1,256L74.5,386.6c-14.1,14.1-14.1,36.8,0,50.9  c14.1,14.1,36.8,14.1,50.9,0L256,306.9l130.6,130.6c14.1,14.1,36.8,14.1,50.9,0C451.5,423.4,451.5,400.6,437.5,386.6z"/></svg>
+              </button>
+          </div>
+          
+          `
+            }
+            Message.appendChild(div);
+            div.classList.remove('d-none');
+            const alertButton = document.getElementById('AlertButton');
+            alertButton.addEventListener('click', () => {
+              // Get the message container
+          
+          
+              // Remove the message container from the DOM
+              div.remove();
+             // if(status) window.location.href =`/prof2.html`;
+            });
+          }
+        function validateName() {
+            const nameInput = document.getElementById('user-name');
+            const nameError = document.getElementById('nameError');
+            const value = nameInput.value.trim();
+          
+            if (!value) {
+                nameInput.classList.add('error');
+                nameError.textContent = 'الاسم مطلوب';
+            } else if (value.length > 100) {
+                nameInput.classList.add('error');
+                nameError.textContent = 'الاسم  لا يجب أن يتجاوز 100 حرف';
+            } else {
+                nameInput.classList.remove('error');
+                nameError.textContent = '';
+            }
+          }
+        function validateAddress() {
+          const address = document.getElementById('user-address');
+            const addressError = document.getElementById('addressError');
+            const value = address.value.trim();
+          
+            if (!value) {
+              address.classList.add('error');
+              addressError.textContent = 'العنوان  مطلوب';
+            } else if (value.length > 200) {
+              address.classList.add('error');
+              addressError.textContent = 'العنوان  لا يجب أن يتجاوز 200 حرف';
+            } else {
+              address.classList.remove('error');
+                addressError.textContent = '';
+            }
+        }
+        function validatePhone() {
+            const phone = document.getElementById('user-phone');
+              const phoneError = document.getElementById('phoneError');
+              const value = phone.value.trim();
+              // const pattern1 =/^\0963\d{3}\d{3}\d{3}$/;
+              const pattern =/^09\d{2}\d{3}\d{3}$/;
+              // Validate phone number and update message
+             
+              if (!value) {
+                phone.classList.add('error');
+                phoneError.textContent = 'رقم الهاتف  الخاص بالمستخدم مطلوب';
+              } else 
+             { const isValid = pattern.test(value);
+               if (!isValid) {
+                phone.classList.add('error');
+                phoneError.textContent =  ' رقم المستخدم يجب أن يبدأ ب 09 ويكون 10 خانات   ';
+              } else {
+                phone.classList.remove('error');
+                phoneError.textContent = '';
+              }}
+          }
+        function validateEmail() {
+            const email = document.getElementById('employee-email');
+            const emailError = document.getElementById('emailError');
+            const value = email.value.trim();
+            const pattern =/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!value) {
+              email.classList.add('error');
+              emailError.textContent = 'الايميل  مطلوب';
+            } else 
+            {
+              const isValid = pattern.test(value);
+              if (!isValid) {
+                email.classList.add('error');
+                emailError.textContent = 'هذا الحقل يجب أن يكون ايميل';
+            } else {
+              email.classList.remove('error');
+              emailError.textContent = '';
+            }}
+          }
+    </script>
 </body>
 
 </html>

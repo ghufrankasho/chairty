@@ -21,11 +21,8 @@ function displayemployee() {
                   employeenum.textContent=employees[0].number;
                   const employeetr = document.createElement('tr');
                     
-                  let avalible = false;
-                  if (employee.employed) {
-                        
-                        avalible = true;
-                    }
+                   
+                   
                   employeetr.innerHTML = ` <td>
                         <img src="${employee.image}">
                         <p>${employee.name}</p></td>
@@ -53,7 +50,7 @@ function displayemployee() {
                  
                  employeeContainer.appendChild(employeetr);
                  const span = document.getElementById(`avalible-${employee.id}`);
-                 if(avalible)
+                 if(employee.avaliable)
                  {
                     span.className='status completed' ;
                     span.textContent='متاح';

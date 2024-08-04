@@ -67,9 +67,9 @@
         
             join.style.display='none';
             join.href=`#`;
-            if(user.work.name=='يتيم') {
+            if(user.work.name=='يتيم' || user.work.name=='متطوع') {
                let profile = document.getElementById('href');
-                profile.href = '/users/userHome.html';
+                profile.href = `/prof2.html?name=${user.work.name}`;
             }
            
               let img = document.getElementById('pro-image');
@@ -89,7 +89,7 @@
              employee=JSON.parse(employee);
              
               let profile = document.getElementById('href');
-              profile.href = '/employee/employeeHome.html';
+              profile.href = `/prof2.html?type=${type}`;
               let img = document.getElementById('pro-image');
               img.src = employee.image;
           } 
