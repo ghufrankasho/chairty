@@ -147,3 +147,62 @@
     
 })(jQuery);
 
+function displayMessages() {
+   
+  
+    const xhr = new XMLHttpRequest();
+      xhr.open('GET', 'http://127.0.0.1:8000/api/contact/views', true);
+      xhr.onreadystatechange = function () {
+          if (xhr.readyState === 4) {
+              if (xhr.status === 200) {
+                  const messages = JSON.parse(xhr.responseText);
+                  
+                  const messagesContainer = document.getElementById('messages');
+                  
+                   
+                 
+                       
+                  // Clear existing user
+                  messagesContainer.innerHTML =``;
+                 
+                  messages.forEach(function(message) {
+                     
+                    const messagetr = document.createElement('owl-stage-outer');
+                      
+                     
+                    messagetr.innerHTML = ` 
+
+                       <div class="owl-item cloned" style="width: 351px;"><div class="testimonial-item">
+                        <div class="testimonial-profile">
+                            <img src="img/about/testimonial-3 .jpg" alt="Image">
+                            <div class="testimonial-name">
+                            <h3>Person Name</h3>
+
+                            </div>
+                        </div>
+                        <div class="testimonial-text">
+                            <p>
+                            Lorem ipsum dolor sit amet elit. Phasel preti mi facilis ornare velit non vulputa. Aliqu metus tortor,
+                            auctor id gravid vivera quis
+                            </p>
+                        </div>
+                        </div></div></div>
+                               `;
+  
+                      
+                  
+                   
+                   messagesContainer.appendChild(messagetr);
+                  
+                   });
+                  }
+                 
+                 
+                
+              } 
+              else {
+                  console.error('Error fetching user:', xhr.statusText);
+              }
+          }
+          xhr.send();
+  }  
