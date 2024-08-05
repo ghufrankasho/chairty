@@ -21,35 +21,35 @@
 
                 <div class="row" dir="rtl">
                     <div class="col" dir="rtl">
-                        <h3 class="title">Payment</h3>
+                        <h3 class="title">التبرع</h3>
 
                         <div class="inputBox">
-                            <span>Cards Accepted :</span>
+                            <span>البطاقات المتاحة</span>
                             <img src="img/card_img.png" alt="">
                         </div>
                         <div class="inputBox">
-                            <span>Name on Card :</span>
-                            <input type="text" placeholder="Mr. John Doe" id="card_name" required>
+                            <span>الاسم</span>
+                            <input type="text" placeholder="شادي" id="card_name" required>
                         </div>
                         <div class="inputBox">
-                            <span>Credit Card Number :</span>
-                            <input type="text" placeholder="1111-2222-3333-4444" id="card_number" required pattern="\d{4}-\d{4}-\d{4}-\d{4}">
+                            <span>رقم البطاقة</span>
+                            <input type="text" placeholder="111" id="card_number" required pattern="\d{4}-\d{4}-\d{4}-\d{4}">
                             <small id="card_number_error" class="error"></small>
                         </div>
                         <div class="inputBox">
-                            <span>Exp Month :</span>
-                            <input type="text" placeholder="January" id="exp_month" required pattern="^(0[1-9]|1[0-2])$">
+                            <span>الشهر</span>
+                            <input type="text" placeholder="شباط" id="exp_month" required pattern="^(0[1-9]|1[0-2])$">
                             <small id="exp_month_error" class="error"></small>
                         </div>
 
                         <div class="flex">
                             <div class="inputBox">
-                                <span>Exp Year :</span>
+                                <span>السنة</span>
                                 <input type="text" placeholder="2022" id="exp_year" required pattern="\d{4}">
                                 <small id="exp_year_error" class="error"></small>
                             </div>
                             <div class="inputBox">
-                                <span>Amount :</span>
+                                <span>كمية التبرع</span>
                                 <input type="number" id="amount" placeholder="$10" required min="0" step="10">
                                 <small id="amount_error" class="error"></small>
                             </div>
@@ -58,7 +58,7 @@
                     </div>
                 </div>
 
-                <input type="submit" id="checkout" onclick="adddonation(event)" value="Proceed to Checkout" class="submit-btn">
+                <input type="submit" id="checkout" onclick="adddonation(event)" value="تبرع هنا" class="submit-btn">
 
             </form>
 
