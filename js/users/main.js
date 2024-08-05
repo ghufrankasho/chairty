@@ -1,3 +1,5 @@
+var account_id=0;
+
 function displayProjects() {
     const xhr = new XMLHttpRequest();
     xhr.open('GET', 'http://127.0.0.1:8000/api/project/get/4', true);
@@ -26,13 +28,7 @@ function displayProjects() {
                     if(index%4==3){
                         projectdiv.className=`col-md-3 wow zoomInUp`; 
                     }
-                //     if(project.prograss>=80)
-                //    {
-                //     projectdiv.className = 'completed';
-                //    }
-                //    else{
-                //     projectdiv.className = 'not-completed';
-                //    }
+             
                  
                     projectdiv.innerHTML = `
                          <div class="card">
@@ -41,7 +37,7 @@ function displayProjects() {
                                     <div class="card-heading">${project.name}</div>
                                     <p class="card-text">${project.description}
                                     </p>
-                                    <a class="btn btn-blue  text-light" href="£">
+                                    <a class="btn btn-blue  text-light" href="#" id="cart-${project.id}">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
                                             fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
                                             <path
@@ -61,10 +57,16 @@ function displayProjects() {
                  
                     projectContainer.appendChild(projectdiv);
                
-                    const cartButton = document.getElementById(`don-${project.id}`);
-                    cartButton.addEventListener('click', function () {
+                    const donButton = document.getElementById(`don-${project.id}`);
+                    donButton.addEventListener('click', function () {
                        
                     window.location.href = `/don.html?projectId=${project.id}`;
+                      
+                    });
+                    const cartButton = document.getElementById(`cart-${project.id}`);
+                    cartButton.addEventListener('click', function () {
+                       
+                        add_to_cart(project.id);
                       
                     });
             
@@ -77,6 +79,40 @@ function displayProjects() {
     };
     xhr.send();
 }
+function add_to_cart(project_id){
+    
+        const data = { project_id: project_id,
+            account_id:account_id
+         };
+        
+        const xhr = new XMLHttpRequest();
+        xhr.open('POST', 'http://127.0.0.1:8000/api/cart/add/', true);
+      
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4) {
+                const response = JSON.parse(xhr.responseText);
+                if (xhr.status === 200) {
+                    try {
+                        
+                        const response = JSON.parse(xhr.responseText);
+                          console.log(response);
+                      if(window.confirm("هل  تريد تفقد  سلتك؟"))
+                        {  window.location.href =`/cart.html?cartId=${response.data.id}`;}
+                    } catch (e) {
+                        console.error("Failed to parse response JSON:", e);
+                    }
+                } else {
+                    if(window.confirm("هل  تريد تفقد  سلتك؟  هذا المشروع موجد مسبقا في السلة "))
+                        {  window.location.href =`/cart.html?cartId=${response.data.id}`;}
+                }
+            }
+        };
+      
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.send(JSON.stringify(data));
+    }
+
+    
 
 function displaysliders() {
     const xhr = new XMLHttpRequest();
@@ -190,7 +226,8 @@ function displayDonations() {
 
   window.addEventListener('load', () => {
 
-    
+    account_id = JSON.parse(localStorage.getItem('account_id'));
+    console.log(account_id);
     displaysliders();
     
     displayProjects();
