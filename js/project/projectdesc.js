@@ -11,7 +11,7 @@ function viewProject(projectId) {
                 try {
                     const response = JSON.parse(xhr.responseText);
                     document.getElementById('image').src = response.image;
-                    console.log(document.getElementById('image'));
+                     
                     document.getElementById('name').textContent = response.name;
                     document.getElementById('department').textContent=response.department_id;
                     document.getElementById('branch').textContent = response.branch.name;
@@ -19,6 +19,14 @@ function viewProject(projectId) {
                     document.getElementById('start').textContent = response.start_date;
                     document.getElementById('end').textContent = response.end_date;
                     document.getElementById('desc').textContent = response.description;
+                    const btnproject = document.getElementById(`add-supporter`);
+                
+        
+                    btnproject.addEventListener('click',  () => {
+                     localStorage.setItem('id',response.id);
+                      window.location.href =`/project/assignSupport.html`;
+              
+                    });
                     const employeesClass=document.getElementById('employees');
                     if(response.employees.length !==0){
                        
@@ -145,7 +153,7 @@ function displayProject(projectId) {
                 
         
                     btnproject.addEventListener('click',  () => {
-                      localStorage.setItem('id',response.id);
+                     
                       window.location.href =`/project/assignSupport.html`;
               
                     });
