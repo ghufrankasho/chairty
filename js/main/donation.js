@@ -3,7 +3,8 @@ var project_id=0;
 function adddonation(event) {
   event.preventDefault();
   const formData = new FormData();  
-
+  let account_id=JSON.parse(localStorage.getItem('account_id'));
+  console.log(account_id);
   const cardNumberInput = document.getElementById('card_number').value;
   const expMonthInput = document.getElementById('exp_month').value;
   const expYearInput = document.getElementById('exp_year').value;
@@ -13,7 +14,8 @@ function adddonation(event) {
   formData.append('detailes', cardNumberInput+"  "+expMonthInput+"  "+expYearInput);
   if(amountInput !=='')formData.append('amount', amountInput);
  
-  if(project_id!==0) formData.append('id', project_id);
+  if(project_id!==0) formData.append('project_id', project_id);
+  if(account_id!==null) formData.append('account_id', account_id);
   // Check if a new image file has been selected
  
   
@@ -31,7 +33,7 @@ console.log(...formData);
           } else {
               const response = JSON.parse(xhr.responseText);
               console.log(response.errors,response.message);
-              showAlert(response, response, response.status);
+              showAlert(response.errors, response.message, response.status);
              
           }
       }

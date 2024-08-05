@@ -48,7 +48,7 @@
 
             <div class="icons">
                 <a href="/#" class="fas fa-heart"></a>
-                <a href="/#" class="fas fa-shopping-cart"></a>
+                <a href="#" id="cart" class="fas fa-shopping-cart"></a>
 
             </div>
         </div>
@@ -96,74 +96,7 @@
                         <h5 class="card-title" id="usersh" style="display:none">لا يوجد مشاريع</h5>
                     </div>
                    <div class="row align-items-center" id="projects">
-                        <!-- <div class="col-md-6 col-lg-3 box1 mb-5">
-                            <div class="box bg-light">
-                                <img class="img-fluid " src="/img/p1.jpeg">
-                                <h4 class="p-3 text-success text-center">Water Damage</h4>
-                                <div class="progress-bar" style="margin: 10px;">
-                                    <div class="progress-per" per="81%" style="max-width:81%"></div>
-
-                                </div>
-                                <p class=" p-3 ">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eveniet</p>
-
-                                <div class="info">
-                                    <a href="/prodetail.html">Read more</a>
-                                    <i class="fas fa-long-arrow-alt-right"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg-3 box1 mb-5">
-                            <div class="box bg-light">
-                                <img class="img-fluid " src="/img/p3.png">
-                                <h4 class="p-3 text-success text-center">Water Damage</h4>
-
-
-                                <div class="progress-bar" style="margin: 10px;">
-                                    <div class="progress-per" per="81%" style="max-width:81%"></div>
-
-                                </div>
-                                <p class=" p-3 ">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eveniet</p>
-
-                                <div class="info">
-                                    <a href="/prodetail.html">Read more</a>
-                                    <i class="fas fa-long-arrow-alt-right"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg-3 box1 mb-5">
-                            <div class="box bg-light">
-                                <img class="img-fluid " src="/img/p2.png">
-                                <h4 class="p-3 text-success text-center">Crashed Screen</h4>
-                                <div class="progress-bar" style="margin: 10px;">
-                                    <div class="progress-per" per="81%" style="max-width:81%"></div>
-
-                                </div>
-                                <p class=" p-3 ">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eveniet</p>
-
-                                <div class="info">
-                                    <a href="/prodetail.html">Read more</a>
-                                    <i class="fas fa-long-arrow-alt-right"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg-3 box1 mb-5">
-                            <div class="box bg-light">
-                                <img class="img-fluid " src="/img/photo.png">
-                                <h4 class="p-3 text-success text-center">non Working Speaker</h4>
-                                <div class="progress-bar" style="margin: 10px;">
-                                    <div class="progress-per" per="81%" style="max-width:81%"></div>
-
-                                </div>
-                                <p class=" p-3 ">Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
-
-                                <div class="info">
-                                    <a href="/prodetail.html">Read more</a>
-                                    <i class="fas fa-long-arrow-alt-right"></i>
-                                </div>
-                            </div>
-                        </div>  -->
-
-
+                       
                        
                     </div>
                 </div>
@@ -257,67 +190,7 @@
         </div>
       </footer>
 
-    <!-- <div class="homepagesupp">
-        <section class="proj" id="proj">
-            <h2 class="heading text-center fw-bold text-success"> <span>مشاريع الجمعية</span></h2>
-            <div class="proj-row ">
-                <div class="proj-column ">
-                    <h3 class="title">المشاريع</h3>
-                    <div class="proj-box ">
-                        <div class="proj-content">
-                            <div class="progres">
-                                <h3>مطبخ خيري <span>90%</span></h3>
-                                <div class="bar"><span></span></div>
-                            </div>
-
-                            <div class="progres">
-                                <h3>زلزال<span>80%</span></h3>
-                                <div class="bar"><span></span></div>
-                            </div>
-
-                            <div class="progres">
-                                <h3>سلل غذائية <span>65%</span></h3>
-                                <div class="bar"><span></span></div>
-                            </div>
-
-                            <div class="progres">
-                                <h3>كفالة يتيم<span>75%</span></h3>
-                                <div class="bar"><span></span></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="proj-column ">
-                    <h3 class="title">المشاريع</h3>
-                    <div class="proj-box">
-                        <div class="proj-content">
-                            <div class="progres">
-                                <h3>مطبخ خيري <span>90%</span></h3>
-                                <div class="bar"><span></span></div>
-                            </div>
-
-                            <div class="progres">
-                                <h3>زلزال<span>80%</span></h3>
-                                <div class="bar"><span></span></div>
-                            </div>
-
-                            <div class="progres">
-                                <h3>سلل غذائية <span>65%</span></h3>
-                                <div class="bar"><span></span></div>
-                            </div>
-
-                            <div class="progres">
-                                <h3>كفالة يتيم<span>75%</span></h3>
-                                <div class="bar"><span></span></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-    </div> -->
+ 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             let support = JSON.parse(localStorage.getItem('support')); // Parse the stringified JSON
@@ -340,7 +213,8 @@
         });
         function displaysupport(id) {
 
-
+            let cart = document.getElementById('cart');
+            
             const xhr = new XMLHttpRequest();
             xhr.open('GET', `http://127.0.0.1:8000/api/doner/show?id=${id}`, true);
 
@@ -348,7 +222,7 @@
                 if (xhr.readyState === 4) {
                     if (xhr.status === 200) {
                         const response = JSON.parse(xhr.responseText);
-
+                        cart.href=`/cart.html?cartId=${response.cart.id}`;
                         try {
                             const response = JSON.parse(xhr.responseText);
 
