@@ -134,7 +134,7 @@ function search(input,is_user) {
     "is_user":is_user
   });  // Ensure id is an integer
 
-
+console.log(data)
   const xhr = new XMLHttpRequest();
   xhr.open('POST', 'http://127.0.0.1:8000/api/user/search/', true);
   xhr.setRequestHeader('Content-Type', 'application/json');
@@ -183,8 +183,8 @@ function search(input,is_user) {
         updateButton.addEventListener('click', () => {
 
           const employeeId = data.id;
-
-          window.location.href = `employmentapplication.html?employeeId=${employeeId}`;
+         if(is_user)window.location.href = `employmentapplication.html?volunterId=${data.id}`;
+          else window.location.href = `employmentapplication.html?employeeId=${employeeId}`;
 
         });
         Container.appendChild(employeetr);

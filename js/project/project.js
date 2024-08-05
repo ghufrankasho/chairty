@@ -73,12 +73,12 @@ function displayProjects() {
                 
                     const projectId = project.id;
                      
-                    // console.log(projectId)
+                 
                     window.location.href =`projDesc.html?projectId=${projectId}`;
                     
                   });
                   const searchButton = document.getElementById(`search`);
-                  console.log(searchButton);
+                  
                   searchButton.addEventListener('click', function (e) {
                     e.stopImmediatePropagation();
                     const search = document.getElementById('search_input').value;
