@@ -1,15 +1,18 @@
 var id=0;
-function displayCart(id){
+var account_id=0;
+function displayCart(card_id){
 
-    
+    let route=`http://127.0.0.1:8000/api/cart/show?id=`+`${card_id}`;
+    if(id !==0)route=`http://127.0.0.1:8000/api/cart/show?id=`+`${card_id}`;
+    else if(account_id !==0)route=`http://127.0.0.1:8000/api/cart/show?account_id=`+`${card_id}`;
     const xhr = new XMLHttpRequest();
-    xhr.open('GET', `http://127.0.0.1:8000/api/cart/show?id=`+`${id}`, true);
+    xhr.open('GET', route, true);
   
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4) {
             if (xhr.status === 200) {
                 const projects = JSON.parse(xhr.responseText);
-                
+                console.log(projects);
                 try {
                   
                      
@@ -190,9 +193,16 @@ window.addEventListener('load', () => {
  
     const urlParams = new URLSearchParams(window.location.search);
     const cartId = urlParams.get('cartId');
-    id=cartId;
+    const accountId = urlParams.get('accountId');
+    
     if(cartId){
+      
+      id=cartId;
         displayCart(cartId);
+    }
+    else if(accountId){
+      account_id=accountId;
+      displayCart(account_id);
     }
   
   });

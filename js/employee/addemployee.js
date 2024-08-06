@@ -40,7 +40,7 @@ console.log(...formData);
           } else {
               const response = JSON.parse(xhr.responseText);
               console.log(response.errors,response.message);
-              showAlert(response, response, response.status);
+              showAlert(response.errors, '', response.status);
              
           }
       }

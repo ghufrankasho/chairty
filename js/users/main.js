@@ -91,6 +91,7 @@ function add_to_cart(project_id){
         xhr.onreadystatechange = function () {
             if (xhr.readyState === 4) {
                 const response = JSON.parse(xhr.responseText);
+                console.log(response);
                 if (xhr.status === 200) {
                     try {
                         
