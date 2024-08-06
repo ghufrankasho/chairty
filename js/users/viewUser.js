@@ -90,7 +90,7 @@ function displayuser(){
           
                             viewButton.addEventListener('click',  () => {
                           
-                              const projectId = project.id;
+                              const projectId = response.project.id;
                                
                               // console.log(projectId)
                               window.location.href =`/project/projDesc.html?projectId=${projectId}`;

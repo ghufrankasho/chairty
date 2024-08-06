@@ -39,9 +39,9 @@
      
       
       let type = localStorage.getItem('type');
-      console.log(type,"ffffffffffffffffffff");
-      
-       
+      console.log()
+      let cart = document.getElementById('cart');
+     
       const searchButton = document.getElementById(`search`);
       
       searchButton.addEventListener('click', function (e) {
@@ -56,7 +56,8 @@
       if (type == 0) {
           
           let account_id = JSON.parse(localStorage.getItem('account_id'));
-           
+          cart.href=`/cart.html?accountId=${account_id}`;
+          console.log(cart);
           let join = document.getElementById('joinus');
           join.style.display='block';
           join.href=`/users/adduser.html?accountId=${account_id}`;
@@ -67,9 +68,9 @@
         
             join.style.display='none';
             join.href=`#`;
-            if(user.work.name=='يتيم') {
+            if(user.work.name=='يتيم' || user.work.name=='متطوع') {
                let profile = document.getElementById('href');
-                profile.href = '/users/userHome.html';
+                profile.href = `/prof2.html?name=${user.work.name}`;
             }
            
               let img = document.getElementById('pro-image');
@@ -83,13 +84,15 @@
       } 
       else
        if (type == 2) {
+        let account_id = JSON.parse(localStorage.getItem('account_id'));
+        cart.href=`/cart.html?accountId=${account_id}`;
           let employee = localStorage.getItem('employee');
           
           if (localStorage.hasOwnProperty('employee')) {
              employee=JSON.parse(employee);
              
               let profile = document.getElementById('href');
-              profile.href = '/employee/employeeHome.html';
+              profile.href = `/prof2.html?type=${type}`;
               let img = document.getElementById('pro-image');
               img.src = employee.image;
           } 
@@ -97,6 +100,7 @@
       
       }
       if(type == 3){
+        cart.style.display='none';
         let support = JSON.parse(localStorage.getItem('support')); // Parse the stringified JSON
         console.log(support,"ttttttttttttttttttttttt");
         if (support !=null) {
@@ -110,6 +114,7 @@
       }
       });
 </script>
+
 
 
 <body>

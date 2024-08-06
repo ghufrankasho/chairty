@@ -1,119 +1,92 @@
 <!DOCTYPE html>
 <html lang="ar">
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>جمعية البر والإحسان</title>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
-
-
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-    integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <!-- CSS Libraries -->
-  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-  <link href="lib/flaticon/font/flaticon.css" rel="stylesheet">
-  <link href="lib/animate/animate.min.css" rel="stylesheet">
-  <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-
-
-  <link rel="stylesheet" href="/css/alert.css">
-  <link rel="stylesheet" href="css/bootstrap.min.css" />
-  <link rel="stylesheet" href="css/all.min.css" />
-  <link rel="stylesheet" href="css/style.css" />
-
-
-  <!-- Google Font -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;500&display=swap" rel="stylesheet" />
-  <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
-</head>
 
 <div id="header-placeholder"></div>
 <script>
   fetch('headerMain.html')
-    .then(response => response.text())
-    .then(text => {
-      document.getElementById('header-placeholder').innerHTML = text;
-
-
+      .then(response => response.text())
+      .then(text =>{ document.getElementById('header-placeholder').innerHTML = text;
+     
+      
       let type = localStorage.getItem('type');
-      console.log(type, "ffffffffffffffffffff");
-
-
+      console.log()
+      let cart = document.getElementById('cart');
+     
       const searchButton = document.getElementById(`search`);
-
+      
       searchButton.addEventListener('click', function (e) {
         e.stopImmediatePropagation();
         const search = document.getElementById('search-input').value;
-
-        window.location.href = `mainPro.html?search=${search}`;
+        
+        window.location.href =`mainPro.html?search=${search}`;
 
 
       });
 
       if (type == 0) {
-
-        let account_id = JSON.parse(localStorage.getItem('account_id'));
-
-        let join = document.getElementById('joinus');
-        join.style.display = 'block';
-        join.href = `/users/adduser.html?accountId=${account_id}`;
-
-        let user = JSON.parse(localStorage.getItem('user')); // Parse the stringified JSON
-        console.log(user)
-        if (localStorage.hasOwnProperty('user')) {
-
-          join.style.display = 'none';
-          join.href = `#`;
-          if (user.work.name == 'يتيم') {
-            let profile = document.getElementById('href');
-            profile.href = '/users/userHome.html';
+          
+          let account_id = JSON.parse(localStorage.getItem('account_id'));
+          cart.href=`/cart.html?accountId=${account_id}`;
+          console.log(cart);
+          let join = document.getElementById('joinus');
+          join.style.display='block';
+          join.href=`/users/adduser.html?accountId=${account_id}`;
+         
+          let user = JSON.parse(localStorage.getItem('user')); // Parse the stringified JSON
+          console.log(user)
+          if (localStorage.hasOwnProperty('user')) {
+        
+            join.style.display='none';
+            join.href=`#`;
+            if(user.work.name=='يتيم' || user.work.name=='متطوع') {
+               let profile = document.getElementById('href');
+                profile.href = `/prof2.html?name=${user.work.name}`;
+            }
+           
+              let img = document.getElementById('pro-image');
+             
+              img.src = user.image;
+            } 
+          else {
+              console.log("User not found or image is missing");
           }
-
-          let img = document.getElementById('pro-image');
-
-          img.src = user.image;
-        }
-        else {
-          console.log("User not found or image is missing");
-        }
-
-      }
+    
+      } 
       else
-        if (type == 2) {
+       if (type == 2) {
+        let account_id = JSON.parse(localStorage.getItem('account_id'));
+        cart.href=`/cart.html?accountId=${account_id}`;
           let employee = localStorage.getItem('employee');
-
+          
           if (localStorage.hasOwnProperty('employee')) {
-            employee = JSON.parse(employee);
-
-            let profile = document.getElementById('href');
-            profile.href = '/employee/employeeHome.html';
-            let img = document.getElementById('pro-image');
-            img.src = employee.image;
-          }
-
-
-        }
-      if (type == 3) {
+             employee=JSON.parse(employee);
+             
+              let profile = document.getElementById('href');
+              profile.href = `/prof2.html?type=${type}`;
+              let img = document.getElementById('pro-image');
+              img.src = employee.image;
+          } 
+         
+      
+      }
+      if(type == 3){
+        cart.style.display='none';
         let support = JSON.parse(localStorage.getItem('support')); // Parse the stringified JSON
-        console.log(support, "ttttttttttttttttttttttt");
-        if (support != null) {
-          let profile = document.getElementById('href');
-          profile.href = '/support/supportHome.html';
-          let img = document.getElementById('pro-image');
-          img.src = support.image;
-        } else {
-          console.log("support not found or image is missing");
+        console.log(support,"ttttttttttttttttttttttt");
+        if (support !=null) {
+            let profile = document.getElementById('href');
+            profile.href = '/support/supportHome.html';
+            let img = document.getElementById('pro-image');
+            img.src = support.image;
+        }else {
+            console.log("support not found or image is missing");
         }
       }
-    });
+      });
 </script>
+
+
 
 
 <body>
@@ -408,6 +381,13 @@
   <script src="lib/waypoints/waypoints.min.js"></script>
   <script src="lib/counterup/counterup.min.js"></script>
   <script src="lib/parallax/parallax.min.js"></script>
+  <script src="js/users/contact.js"></script>
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+  <script src="js/app.js"></script>
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/all.min.js"></script>
 
   <!-- Contact Javascript File -->
   <script src="mail/jqBootstrapValidation.min.js"></script>

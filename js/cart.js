@@ -1,10 +1,10 @@
-var id=0;
+var cart_id=0;
 var account_id=0;
-function displayCart(card_id){
+function displayCart(id){
 
-    let route=`http://127.0.0.1:8000/api/cart/show?id=`+`${card_id}`;
-    if(id !==0)route=`http://127.0.0.1:8000/api/cart/show?id=`+`${card_id}`;
-    else if(account_id !==0)route=`http://127.0.0.1:8000/api/cart/show?account_id=`+`${card_id}`;
+    let route=`http://127.0.0.1:8000/api/cart/show?id=`+`${id}`;
+    if(cart_id !==0)route=`http://127.0.0.1:8000/api/cart/show?id=`+`${id}`;
+    else if(account_id !==0)route=`http://127.0.0.1:8000/api/cart/show?account_id=`+`${id}`;
     const xhr = new XMLHttpRequest();
     xhr.open('GET', route, true);
   
@@ -23,7 +23,7 @@ function displayCart(card_id){
                      cartContainer.innerHTML = '';
              
                      projects.forEach(function (project) {
-                       console.log(project);
+                       card_id=project.pivot.cart_id;
                        const carttdiv = document.createElement('tr');
              
                        carttdiv.innerHTML = `
@@ -58,10 +58,10 @@ function displayCart(card_id){
                          if (window.confirm("هل متأكد من أنك تريد حذف هذاالمشروع من سلتك؟")) { 
                             
                             const data = { project_id: project.id ,
-                                cart_id:JSON.parse(id),
+                                cart_id:project.pivot.cart_id,
                         
                             };
-                            console.log(project.id,id,data);
+                             
                            deleteproject(data); }
                        });
                      
@@ -92,7 +92,7 @@ function displayCart(card_id){
 }
 function deleteproject(data){
    
-    console.log(JSON.stringify(data),'inside delete');
+    
     const xhr = new XMLHttpRequest();
     xhr.open('POST', `http://127.0.0.1:8000/api/cart/dettach`, true);
     xhr.setRequestHeader('Content-Type', 'application/json');
@@ -103,8 +103,12 @@ function deleteproject(data){
 
           const response = JSON.parse(xhr.responseText);
           console.log('Delete success:', response.message);
-          showAlert(null,response.message,response.status);
+          // showAlert(null,response.message,response.status);
           // Optionally, refresh the doners list or remove the deleted doner from the DOM
+          console.log(data.cart_id,data,"dddddddddddddddddddddddddddddddddd");
+          if(cart_id!==0)displayCart(cart_id);
+          else displayCart(account_id);
+         
          
         } else {
           const response = JSON.parse(xhr.responseText);
@@ -185,8 +189,9 @@ function showAlert(data, message, status) {
   
       // Remove the message container from the DOM
       div.remove();
-      if(status) displayCart(id);
+      
     });
+    
   }
 window.addEventListener('load', () => {
 
@@ -197,8 +202,8 @@ window.addEventListener('load', () => {
     
     if(cartId){
       
-      id=cartId;
-        displayCart(cartId);
+      cart_id=cartId;
+        displayCart(cart_id);
     }
     else if(accountId){
       account_id=accountId;

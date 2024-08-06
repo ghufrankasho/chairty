@@ -24,6 +24,7 @@ function viewProject(projectId) {
         
                     btnproject.addEventListener('click',  () => {
                      localStorage.setItem('id',response.id);
+                     localStorage.setItem('image',response.image);
                       window.location.href =`/project/assignSupport.html`;
               
                     });
