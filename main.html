@@ -31,7 +31,7 @@
 
 
 
-<div id="header-placeholder"></div>
+<!-- <div id="header-placeholder"></div> -->
 <script>
   fetch('headerMain.html')
       .then(response => response.text())
@@ -121,6 +121,74 @@
 
 
 
+<header class="sticky-top" style="width: 100%;">
+    <div class="header sticky-top">
+        <div class="logo-part ">
+            <div class="parent">
+                <div class="contact d-flex">
+                    <a class="btn position-relative search">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                            class="bi bi-search" id="search" viewBox="0 0 16 16">
+                            <path
+                                d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+                        </svg>
+                    </a>
+
+                    <input type="text" placeholder=" بحث عن مشروع" dir="rtl" id="search-input" class=" rounded-pill ">
+                    <a href="#" id="href" class="profile">
+                        <img src="/img/person1.jpeg" id="pro-image" alt="User Image" style="width: 50px; height: 50px; border-radius: 50%;">
+                    </a>
+                    
+                </div>
+
+                <div class="logo d-flex align-items-center">
+                    <p>جمعية البر و الإحسان الخيرية</p>
+                    <a class="navbar-brand" href="#">
+                        <img src="img/logo1.jpg" width="80" height="80" alt="">
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <nav class="navbar-brand navbar navbar-expand-lg sticky-top">
+            <div class="container">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main"
+                    aria-controls="main" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+                <div class="collapse navbar-collapse" dir="rtl" id="main">
+                    <ul class="navbar-nav mx-auto mb-2 mb-lg-0 order-1 text-center">
+                        <li class="nav-item rtl">
+                            <a class="nav-link p-2 p-lg-3 active" aria-current="page" href="main.html"> الرئيسية</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link p-2 p-lg-3" href="mainPro.html">المشاريع</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link p-2 p-lg-3" href="news.html">آخر الأخبار</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link p-2 p-lg-3" href="don.html">ادعمنا</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link p-2 p-lg-3" href="/users/adduser.html" style="display: none;" id="joinus">انضم لنا</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link p-2 p-lg-3" href="info.html">لمحة</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link p-2 p-lg-3" href="contact us.html">تواصل معنا</a>
+                        </li>
+                        <li class="nav-item"> <a href="#" id="cart" class="fas fa-shopping-cart"> سلتك</a></li>
+                        <!-- <li class="nav-item">
+                            <a class="nav-link p-2 p-lg-3" href="users/userHome.html"> <i class='bx bxs-user'></i></a>
+                        </li> -->
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+</header>
 
     <div class="slider1">
 
@@ -138,12 +206,12 @@
                 <div id="carousel-earth" class="landing-carousel-item">
                     <div class="text-xl" style="color: green;">كفالة طالب علم </div>
                     <div class="mb-2 text-lg">كفالة طالب العلم صدقة جارية</div>
-                    <a href="" class="btn btn-outline ">اكفل</a>
+                    <a href="/don.html" class="btn btn-outline "  id="donat" >اكفل</a>
                 </div>
                 <div id="carousel-saturn" class="landing-carousel-item">
                     <div class="text-xl">ساعد </div>
                     <div class="mb-2 text-lg">كل قطرة تبرع تصنع فرقًا في حياة شخص ما</div>
-                    <a href="" class="btn btn-outline">ساعد</a>
+                    <a href="/don.html" class="btn btn-outline"  id="donat" >ساعد</a>
                 </div>
             </div>
             <div class="landing-carousel-dots">
