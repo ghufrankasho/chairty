@@ -108,7 +108,7 @@ function deleteemployee(id) {
     
     
     const xhr = new XMLHttpRequest();
-    xhr.open('DELETE', `http://127.0.0.1:8000/api/employee/delete/${id}`, true);
+    xhr.open('DELETE', `http://127.0.0.1:8000/api/employee/delete?id=${id}`, true);
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.onreadystatechange = function () {
        

@@ -293,7 +293,7 @@
                     
                 }
                 if(name=='متطوع'){
-                    document.getElementById('salary-div').style.display='block';
+                    document.getElementById('salary-div').style.display='none';
                     document.getElementById('projects-item').style.display='block';
                     
                     
@@ -579,7 +579,7 @@
             
              
             if (current.phone !== original_data.phone) {
-                formData.append('phone', current.phone);
+                formData.append('mobile', current.phone);
             }
             if (current.address !== original_data.address) {
                 formData.append('address', current.address);
